@@ -4,32 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MIU_33 | Digital Architect Console</title>
-
     <link rel="icon" type="image/jpeg" href="favicon.jpeg">
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body oncontextmenu="return false;">
 
-    <!-- SIDEBAR -->
     <nav class="sidebar">
-        <div class="status-indicator">
-            <span class="pulse"></span> ONLINE_NODE: RIYADH
-        </div>
-
+        <div class="status-indicator"><span class="pulse"></span> ONLINE_NODE: RIYADH</div>
         <h2 class="brand-id">MIU_33</h2>
         <div class="translated-id">缪联睿</div>
-
-        <div class="gate-label">CONNECTIVITY_GATE</div>
-
-        <div class="social-links">
-            <a href="https://www.linkedin.com/in/miu-digital-architect/" target="_blank">LinkedIn</a>
-            <a href="https://www.facebook.com/share/18KYkL41JW/" target="_blank">Facebook</a>
-            <a href="https://www.xiaohongshu.com/user/profile/95449308409" target="_blank">Rednote</a>
-            <a href="https://www.tiktok.com/@miuproton" target="_blank">TikTok</a>
-        </div>
-
-        <div class="nav-links" style="margin-top: 40px;">
+        <div class="nav-links">
             <a href="#home-hero">> HOME</a>
             <a href="#about-section">> ABOUT</a>
             <a href="#services-section">> SERVICES</a>
@@ -40,218 +24,101 @@
     </nav>
 
     <main class="content-wrapper">
-
-        <!-- HERO SECTION -->
         <section id="home-hero">
-            <div class="terminal-box animated-text">
+            <div class="terminal-box">
                 <p class="type-line">> Booting MIU_STUDIO_v3.3...</p>
                 <p class="type-line">> Location: RIYADH_NODE_ACTIVE</p>
                 <p class="type-line">> Integrity check: PASSED</p>
-                <p class="type-line">> Environment: SECURE. Welcome, 缪联睿.</p>
+                <p class="type-line">> Welcome, 缪联睿.</p>
             </div>
-
             <h2 style="color:var(--accent); margin-bottom:20px;">
-                I design intelligent spaces and digital systems where architecture, AI, and identity merge into adaptive environments.
+                Intelligent spaces where architecture, AI, and identity merge.
             </h2>
-
-            <img src="WhatsApp Image 2026-02-28 at 11.19.33 PM.jpeg"
-                 alt="System Init"
-                 class="hero-img">
+            <img src="WhatsApp Image 2026-02-28 at 11.19.33 PM.jpeg" alt="System Init" class="hero-img">
         </section>
 
-        <!-- CONTROL BAR -->
-        <div class="control-bar">
+        <div class="control-bar" style="margin-bottom: 30px;">
             <button onclick="readPhilosophy()" class="btn-terminal">[AUDIO_LOG]</button>
             <button onclick="togglePrivacy()" class="btn-terminal p-b">[CLOAK: OFF]</button>
         </div>
 
-        <!-- ABOUT SECTION -->
         <section id="about-section" class="about-layout">
-
-            <!-- IDENTITY PANEL -->
             <div class="identity-panel">
-                <img src="Copilot_20260301_000046.png"
-                     class="identity-img"
-                     alt="Digital Architect Identity">
+                <img src="Copilot_20260301_000046.png" class="identity-img" alt="Identity">
                 <div class="identity-label">miu_Digital Architect Studio</div>
-
-<button onclick="playAboutAudio()" class="btn-terminal id-audio-btn">[ABOUT_AUDIO]</button>
-
-
                 <button onclick="playAboutAudio()" class="btn-terminal id-audio-btn">[ABOUT_AUDIO]</button>
             </div>
-
-            <!-- BIOGRAPHY -->
             <div class="bio-content">
                 <p class="cmd-line">> [L_1]: WORKSPACE_LOG</p>
-
                 <h3>势 | Bridging Physical Space and Digital Vision</h3>
-
+                <p>We transform static spaces into dynamic, data-driven ecosystems powered by AI and spatial computing.</p>
                 <div class="studio-badge">MIU_Digital Architect Studio</div>
-
-                <p><strong>MIU_Digital Architect Studio</strong> stands at the intersection of architecture and advanced digital technology. We design environments where physical structures and digital systems merge into a single intelligent ecosystem.</p>
-
-                <p>Our work transforms static spaces into dynamic, data‑driven experiences powered by holography, AI, and spatial computing.</p>
-
-                <p>The studio is guided by the <strong>miu_Digital Architect</strong> — a hybrid professional who blends architectural mastery with digital fluency. This persona represents a new generation of designers who shape cities, interiors, and smart systems through both code and craft.</p>
-
-                <p>Our identity is anchored in the glyph <strong>势</strong>, symbolizing momentum, force, and the energy of transformation. It reflects our belief that architecture is evolving into something fluid, adaptive, and alive.</p>
-                <p>The studio is guided by the <strong>miu_Digital Architect</strong> — a hybrid professional who blends architectural mastery with digital fluency.</p>
-
-                <p>We create digital twins, smart city frameworks, holographic interiors, and human‑centered interfaces that bridge the gap between the built world and its digital counterpart. Every project is an exploration of what becomes possible when vision meets technology.</p>
-                <p>Our identity is anchored in the glyph <strong>势</strong>, symbolizing momentum, force, and transformation.</p>
-
-                <p><em>This is the future of design.<br>
-                This is the Architecture of Possibility.</em></p>
             </div>
         </section>
 
-        <!-- SERVICES SECTION -->
-        <section id="services-section" class="about-layout">
+        <section id="services-section" class="vault-interface">
             <p class="cmd-line">> [L_1B]: SERVICE_PROTOCOLS</p>
-
-            <h3>服务 | Intelligent Systems & Spatial Design</h3>
-
-            <div class="studio-badge">MIU_Digital Architect Studio</div>
-
-            <ul class="service-list">
-                <li>
-                    <strong>AI‑Driven Spatial Design</strong> — Machine intelligence integrated into architectural workflows.
-                    <button class="btn-terminal"
-                        onclick="playServiceAudio('AI Driven Spatial Design protocol initiated. Integrating machine intelligence with architectural logic.', this)">
-                        [AUDIO_LOG]
-                    </button>
+            <h3>服务 | Intelligent Systems</h3>
+            <ul class="service-list" style="list-style:none; padding:0;">
+                <li style="margin-bottom:15px;">
+                    <strong>AI-Driven Spatial Design</strong>
+                    <button class="btn-terminal" onclick="playServiceAudio('AI Driven Spatial Design protocol initiated.', this)">[AUDIO_LOG]</button>
                 </li>
-
-                <li>
-                    <strong>Digital Architecture Systems</strong> — Hybrid physical‑digital environments.
-                    <button class="btn-terminal"
-                        onclick="playServiceAudio('Digital Architecture Systems activated. Constructing hybrid spatial layers.', this)">
-                        [AUDIO_LOG]
-                    </button>
-                </li>
-
-                <li>
-                    <strong>Identity‑Based Experience Design</strong> — Spaces shaped by cultural and behavioral identity.
-                    <button class="btn-terminal"
-                        onclick="playServiceAudio('Identity Based Experience Design online. Mapping cultural and behavioral signatures.', this)">
-                        [AUDIO_LOG]
-                    </button>
-                </li>
-
-                <li>
-                    <strong>Security‑Aware Architectural Systems</strong> — Adaptive spatial security logic.
-                    <button class="btn-terminal"
-                        onclick="playServiceAudio('Security Aware Architectural Systems engaged. Embedding adaptive protection layers.', this)">
-                        [AUDIO_LOG]
-                    </button>
-                </li>
-
-                <li>
-                    <strong>Computational Design & Prototyping</strong> — Tools and systems for advanced design.
-                    <button class="btn-terminal"
-                        onclick="playServiceAudio('Computational Design protocol running. Generating high performance design tools.', this)">
-                        [AUDIO_LOG]
-                    </button>
+                <li style="margin-bottom:15px;">
+                    <strong>Digital Architecture Systems</strong>
+                    <button class="btn-terminal" onclick="playServiceAudio('Digital Architecture Systems activated.', this)">[AUDIO_LOG]</button>
                 </li>
             </ul>
         </section>
 
-        <!-- PROJECTS SECTION -->
         <section id="projects-section" class="vault-interface">
             <p class="cmd-line">> [L_2B]: PROJECT_ARCHIVE</p>
-
-            <h3>档案 | Concept Projects</h3>
-
             <div class="project-item">
-                <h4 onclick="toggleProject('p1')" style="cursor:pointer;">Adaptive Identity Pavilion</h4>
-                <div id="p1" class="project-hidden">
-                    <p>A responsive pavilion that shifts form and lighting based on identity patterns.</p>
-                    <button class="btn-terminal"
-                        onclick="playServiceAudio('Project Node P1: Adaptive Identity Pavilion. Spatial behavior responding to identity signatures.', this)">
-                        [AUDIO_LOG]
-                    </button>
-                </div>
-            </div>
-
-            <div class="project-item">
-                <h4 onclick="toggleProject('p2')" style="cursor:pointer;">Neural Urban Scanner</h4>
-                <div id="p2" class="project-hidden">
-                    <p>An AI system that maps urban environments and detects spatial flows.</p>
-                    <button class="btn-terminal"
-                        onclick="playServiceAudio('Project Node P2: Neural Urban Scanner. Mapping urban intelligence layers.', this)">
-                        [AUDIO_LOG]
-                    </button>
-                </div>
-            </div>
-
-            <div class="project-item">
-                <h4 onclick="toggleProject('p3')" style="cursor:pointer;">Digital Twin for Cultural Spaces</h4>
-                <div id="p3" class="project-hidden">
-                    <p>A simulation environment modeling cultural behavior and identity flows.</p>
-                    <button class="btn-terminal"
-                        onclick="playServiceAudio('Project Node P3: Cultural Digital Twin. Simulating identity flows in public space.', this)">
-                        [AUDIO_LOG]
-                    </button>
-                </div>
-            </div>
-
-            <div class="project-item">
-                <h4 onclick="toggleProject('p4')" style="cursor:pointer;">Sentient Interior System</h4>
-                <div id="p4" class="project-hidden">
-                    <p>An interior system that adjusts acoustics, lighting, and micro‑climate using machine learning.</p>
-                    <button class="btn-terminal"
-                        onclick="playServiceAudio('Project Node P4: Sentient Interior System. Adaptive environmental intelligence online.', this)">
-                        [AUDIO_LOG]
-                    </button>
+                <h4 onclick="toggleProject('p1')" style="cursor:pointer; color:var(--terminal);">[+] Adaptive Identity Pavilion</h4>
+                <div id="p1" style="display:none; padding:15px; border-left: 1px solid var(--accent);">
+                    <p>A responsive pavilion shifting form based on identity patterns.</p>
+                    <button class="btn-terminal" onclick="playServiceAudio('Project Node P1: Adaptive Identity Pavilion.', this)">[AUDIO_LOG]</button>
                 </div>
             </div>
         </section>
 
-        <!-- CONTACT CTA -->
         <section id="contact-section" class="vault-interface">
             <p class="cmd-line">> [L_3]: CONTACT_GATEWAY</p>
-
-            <h3>联络 | Connect with MIU_33</h3>
-
-            <p>Let’s build intelligent spaces and digital systems together.</p>
-
-            <a href="mailto:miu.digital.studio@proton.me class="btn-terminal" style="margin-top:20px;">
-                [INITIATE_CONTACT]
-            </a>
+            <form id="contact-form" style="display:flex; flex-direction:column; gap:10px; max-width:450px;">
+                <input type="text" id="name" placeholder="IDENT_NAME" required class="btn-terminal" style="text-align:left;">
+                <input type="email" id="email" placeholder="SECURE_EMAIL" required class="btn-terminal" style="text-align:left;">
+                <textarea id="message" placeholder="MESSAGE_DATA_PACKET" required class="btn-terminal" style="text-align:left; height:100px;"></textarea>
+                <button type="submit" class="btn-terminal">[TRANSMIT_DATA]</button>
+                <p id="status" style="font-size:0.75rem; color:var(--terminal); margin-top:10px;"></p>
+            </form>
         </section>
 
-        <!-- VAULT -->
         <section id="v-0" class="vault-interface">
             <p class="cmd-line">> [L_2]: ENCRYPTED_VAULT</p>
-
             <div class="input-group">
-                <input type="password" id="accessKey" placeholder="Enter Access Key">
+                <input type="password" id="accessKey" placeholder="Enter Access Key" class="btn-terminal" style="text-align:left;">
                 <button onclick="unlockVault()" class="btn-terminal">UNLOCK</button>
             </div>
-
-            <div id="secretContent" style="display:none;">
-                <p class="granted">> ACCESS_GRANTED</p>
-                <p style="color:#666;">[FILE_RECOVERY: CV_LOGS_PENDING]</p>
+            <div id="secretContent" style="display:none; margin-top:20px;">
+                <p style="color:var(--terminal);">> ACCESS_GRANTED: Welcome Architect.</p>
             </div>
         </section>
 
-        <!-- FOOTER -->
         <footer class="terminal-footer">
-            <div class="footer-content">
-                <div class="footer-left">
+            <div style="display:flex; justify-content:space-between; align-items:flex-end;">
+                <div>
                     <p>© 2026 ANAMY PADILLA | 缪联睿</p>
-                    <p class="status-msg">> STATUS: SYSTEM_ONLINE</p>
+                    <p style="color:var(--terminal); font-size:0.7rem;">> STATUS: SYSTEM_ONLINE</p>
                 </div>
-
-                <div class="footer-right">
+                <div style="text-align:right;">
                     <p>miu_Digital Architect Studio</p>
+                    <p style="font-size:0.6rem; color:#444;">RIYADH_NODE_v3.3</p>
                 </div>
             </div>
         </footer>
-
     </main>
 
     <script src="vault.js"></script>
+    <script src="contact.js"></script>
 </body>
 </html>
