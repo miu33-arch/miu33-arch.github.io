@@ -1,3 +1,30 @@
+function unlockVault() {
+    const key = document.getElementById('accessKey').value;
+    const content = document.getElementById('secretContent');
+    if (key === 'archmiu2026') {
+        content.style.display = 'block';
+    } else {
+        alert('SYSTEM_ERROR: Unauthorized Access');
+    }
+}
+
+function readPhilosophy() {
+    const text = "Architecting digital ecosystems with industrial precision.";
+    const msg = new SpeechSynthesisUtterance(text);
+    window.speechSynthesis.speak(msg);
+}
+
+function togglePrivacy() {
+    const main = document.querySelector('.content-wrapper');
+    const btn = document.querySelector('.p-b');
+    if (main.style.filter === 'blur(10px)') {
+        main.style.filter = 'none';
+        btn.innerText = '[CLOAK: OFF]';
+    } else {
+        main.style.filter = 'blur(10px)';
+        btn.innerText = '[CLOAK: ON]';
+    }
+}
 // simple section navigation (optional but handy)
 document.querySelectorAll('.nav-link').forEach(btn => {
   btn.addEventListener('click', () => {
@@ -10,11 +37,25 @@ document.querySelectorAll('.nav-link').forEach(btn => {
   });
 });
 
+function playAboutAudio() {
+    const audio = document.getElementById("aboutAudio");
+    const btn = document.querySelector('.id-audio-btn');
 // cyberpunk audio logs: Encrypted Packet / Data-Stream identity
 (function initAudioLogs() {
   const logs = document.querySelectorAll('.miu-audio-log');
   if (!logs.length) return;
 
+    if (audio.paused) {
+        audio.play();
+        btn.innerText = '[AUDIO: PLAYING]';
+    } else {
+        audio.pause();
+        audio.currentTime = 0;
+        btn.innerText = '[ABOUT_AUDIO]';
+    }
+}
+function playAboutAudio() {
+    const btn = document.querySelector('.id-audio-btn');
   let currentMain = null;
   let currentAmbient = null;
   let currentLogEl = null;
@@ -29,6 +70,12 @@ document.querySelectorAll('.nav-link').forEach(btn => {
     const end = new Audio('audio/sfx/packet_drop.mp3');
     ambient.loop = true;
 
+    const text = `
+    MIU Digital Architect Studio stands at the intersection of architecture and advanced digital technology.
+    We design environments where physical structures and digital systems merge into a single intelligent ecosystem.
+    Our work transforms static spaces into dynamic, data-driven experiences powered by holography, AI, and spatial computing.
+    This is the Architecture of Possibility.
+    `;
     log.addEventListener('click', () => {
       // if this one is already playing, pause it
       if (currentLogEl === log && !main.paused) {
@@ -41,6 +88,7 @@ document.querySelectorAll('.nav-link').forEach(btn => {
         return;
       }
 
+    const msg = new SpeechSynthesisUtterance(text);
       // stop any other playing log
       if (currentMain) {
         currentMain.pause();
@@ -51,10 +99,14 @@ document.querySelectorAll('.nav-link').forEach(btn => {
       document.querySelectorAll('.miu-audio-log.playing')
         .forEach(el => el.classList.remove('playing'));
 
+    btn.innerText = '[AUDIO: PLAYING]';
       currentLogEl = log;
       currentMain = main;
       currentAmbient = ambient;
 
+    msg.onend = () => {
+        btn.innerText = '[ABOUT_AUDIO]';
+    };
       // play pre-sound, then main + ambient
       pre.currentTime = 0;
       pre.play().catch(() => {});
@@ -103,6 +155,8 @@ document.querySelectorAll('.nav-link').forEach(btn => {
     }
   }
 
+    window.speechSynthesis.speak(msg);
+}
   unlockBtn.addEventListener('click', tryUnlock);
   keyInput.addEventListener('keydown', e => {
     if (e.key === 'Enter') tryUnlock();
