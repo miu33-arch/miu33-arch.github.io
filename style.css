@@ -44,3 +44,51 @@ body { background: var(--bg-dark); color: #e0e0e0; font-family: 'Courier New', m
     font-size: 0.9rem;
     color: #9a9a9a;
 }
+.section-title {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #eaeaea;
+    margin-bottom: 5px;
+}
+
+.section-sub {
+    font-size: 0.85rem;
+    color: #9a9a9a;
+    margin-bottom: 20px;
+}
+
+.service-list p {
+    margin: 6px 0;
+    font-size: 0.85rem;
+    color: #cfcfcf;
+}
+
+.service-tag {
+    color: var(--terminal);
+    font-weight: 500;
+}
+
+.project-title {
+    color: var(--terminal);
+    font-size: 1rem;
+    margin-bottom: 3px;
+}
+
+.project-protocol {
+    font-size: 0.75rem;
+    color: #888;
+    margin-bottom: 8px;
+}
+
+.project-desc {
+    font-size: 0.85rem;
+    color: #cfcfcf;
+    margin-bottom: 12px;
+}
+
+.project-img {
+    width: 100%;
+    border: 1px solid #222;
+    border-radius: 4px;
+    margin-top: 5px;
+}
