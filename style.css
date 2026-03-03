@@ -20,7 +20,7 @@ body { background: var(--bg-dark); color: #e0e0e0; font-family: 'Courier New', m
 }
 .sidebar-logo { width: 100%; max-width: 140px; height: auto; display: block; margin: 0 auto 10px auto; filter: drop-shadow(0 0 5px var(--terminal)); }
 
-/* TERMINAL CONTENT */
+/* CONTENT WRAPPER */
 .content-wrapper { margin-left: 220px; padding: 60px; max-width: 900px; width: 100%; box-sizing: border-box; }
 .terminal-box { border: 1px solid var(--terminal); padding: 25px; margin-bottom: 40px; background: rgba(0, 255, 65, 0.02); }
 .btn-terminal { background: transparent; border: 1px solid var(--terminal); color: var(--terminal); padding: 5px 10px; cursor: pointer; }
