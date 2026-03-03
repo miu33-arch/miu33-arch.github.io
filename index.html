@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MIU_33 | Digital Architect Console</title>
-    
+   
     <meta name="description" content="miu_Digital Architect Studio: Bridging physical space and digital vision. Founded by Anamy Padilla.">
     <meta name="keywords" content="miu_Digital Architect, 缪联睿, AI Architecture, Riyadh Node, Digital Twin China, Anamy Padilla">
     <link rel="canonical" href="https://miu33-arch.github.io/">
@@ -38,11 +38,12 @@
             <div><span class="pulse"></span> ONLINE: RIYADH</div>
             <div id="backend-status" style="font-size:0.6rem; opacity:0.6; margin-top:5px;">GATEWAY: ACTIVE</div>
         </div>
-        
+       
         <div class="nav-links">
             <a href="#home-hero">> HOME</a>
             <a href="#services-section">> SERVICES</a>
             <a href="#projects-section">> PROJECTS</a>
+            <a href="#ai-spatial">> AI SPATIAL</a>
             <a href="#contact-section">> CONTACT</a>
             <a href="#v-0">> VAULT</a>
         </div>
@@ -53,7 +54,7 @@
     </nav>
 
     <main class="content-wrapper">
-        
+       
 <section id="home-hero">
     <div class="terminal-box">
         <p class="type-line">> Booting MIU_STUDIO_v3.3...</p>
@@ -61,7 +62,6 @@
         <p class="type-line">> Welcome, 缪联睿.</p>
     </div>
 
-    <!-- Professional clarity layer (30%) -->
     <div class="hero-clarity">
         <h1 class="hero-title">Architectural design for physical and digital spaces.</h1>
         <p class="hero-sub">Blending architectural craft with advanced digital workflows.</p>
@@ -74,7 +74,7 @@
             <button onclick="toggleTranscript()" class="btn-terminal">VIEW_TRANSCRIPT</button>
         </div>
         <audio id="miu-audio" src="audio/ai_spatial.mp3" preload="auto"></audio>
-        
+       
         <div id="audio-transcript" style="display:none; margin-top:15px; font-size:0.75rem; color:#888; border-top:1px dashed var(--terminal); padding-top:10px;">
             <p>> LOG_01: Evolution from Riyadh RN to Digital Architect. Exit: 2026.02.02. Identity: 缪联睿.</p>
         </div>
@@ -82,7 +82,8 @@
 
     <img src="WhatsApp Image 2026-02-28 at 11.19.33 PM.jpeg" class="hero-img">
 </section>
-        <section id="services-section" class="terminal-box">
+
+<section id="services-section" class="terminal-box">
     <p class="cmd-line">> [L_1B]: SERVICE_PROTOCOLS</p>
 
     <h3 class="section-title">Services</h3>
@@ -110,32 +111,48 @@
     </div>
 </section>
 
-        <section id="contact-section" class="terminal-box">
-            <p class="cmd-line">> [L_3]: CONTACT_GATEWAY</p>
-            <form id="contact-form">
-                <input type="text" id="name" placeholder="IDENT_NAME" required class="btn-terminal" style="width:100%; margin-bottom:10px;">
-                <input type="email" id="email" placeholder="SECURE_EMAIL" required class="btn-terminal" style="width:100%; margin-bottom:10px;">
-                <textarea id="message" placeholder="COMMUNICATION_CONTENT" required class="btn-terminal" style="width:100%; height:80px; margin-bottom:10px;"></textarea>
-                <button type="submit" class="btn-terminal">SEND_TO_PROTON_NODE</button>
-            </form>
-            <p id="status" style="font-size:0.7rem; margin-top:10px; color:var(--terminal);"></p>
-        </section>
+<!-- ⭐ NEW AI SPATIAL SECTION ⭐ -->
+<section id="ai-spatial" class="terminal-box">
+    <p class="cmd-line">> [L_2C]: AI_SPATIAL_FEED</p>
 
-        <section id="v-0" class="terminal-box">
-            <p class="cmd-line">> [L_2]: ENCRYPTED_VAULT</p>
-            <input type="password" id="accessKey" placeholder="Access Key" class="btn-terminal">
-            <button onclick="unlockVault()" class="btn-terminal">UNLOCK</button>
-            <div id="secretContent" style="display:none; margin-top:20px;">
-                <div id="dossier-text" style="font-size:0.8rem; line-height:1.6; color:#aaa;"></div>
-            </div>
-        </section>
+    <h3 class="section-title">AI Spatial</h3>
+    <p class="section-sub">Generative spatial systems and conceptual digital environments.</p>
 
-        <footer class="terminal-footer" style="text-align:center; padding:20px; border-top:1px solid #111;">
-            <p>© 2026 ANAMY PADILLA | 缪联睿</p>
-        </footer>
-    </main>
+    <div class="scroll-container">
+        <img src="images/WhatsApp Image 2023-06-03 at 11.45.48 PM.jpeg" alt="AI Spatial Render 1">
+        <img src="images/WhatsApp Image 2023-06-03 at 11.54.18 PM (3).jpeg" alt="AI Spatial Render 2">
+        <img src="images/WhatsApp Image 2023-06-03 at 11.54.18 PM.jpeg" alt="AI Spatial Render 3">
+    </div>
+</section>
+<!-- ⭐ END AI SPATIAL SECTION ⭐ -->
 
-    <script src="vault.js"></script>
-    <script src="contact.js"></script>
+<section id="contact-section" class="terminal-box">
+    <p class="cmd-line">> [L_3]: CONTACT_GATEWAY</p>
+    <form id="contact-form">
+        <input type="text" id="name" placeholder="IDENT_NAME" required class="btn-terminal" style="width:100%; margin-bottom:10px;">
+        <input type="email" id="email" placeholder="SECURE_EMAIL" required class="btn-terminal" style="width:100%; margin-bottom:10px;">
+        <textarea id="message" placeholder="COMMUNICATION_CONTENT" required class="btn-terminal" style="width:100%; height:80px; margin-bottom:10px;"></textarea>
+        <button type="submit" class="btn-terminal">SEND_TO_PROTON_NODE</button>
+    </form>
+    <p id="status" style="font-size:0.7rem; margin-top:10px; color:var(--terminal);"></p>
+</section>
+
+<section id="v-0" class="terminal-box">
+    <p class="cmd-line">> [L_2]: ENCRYPTED_VAULT</p>
+    <input type="password" id="accessKey" placeholder="Access Key" class="btn-terminal">
+    <button onclick="unlockVault()" class="btn-terminal">UNLOCK</button>
+    <div id="secretContent" style="display:none; margin-top:20px;">
+        <div id="dossier-text" style="font-size:0.8rem; line-height:1.6; color:#aaa;"></div>
+    </div>
+</section>
+
+<footer class="terminal-footer" style="text-align:center; padding:20px; border-top:1px solid #111;">
+    <p>© 2026 ANAMY PADILLA | 缪联睿</p>
+</footer>
+
+</main>
+
+<script src="vault.js"></script>
+<script src="contact.js"></script>
 </body>
 </html>
