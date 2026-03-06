@@ -2,157 +2,27 @@
 body { background: var(--bg-dark); color: #e0e0e0; font-family: 'Courier New', monospace; margin: 0; display: flex; overflow-x: hidden; }
 
 /* BOOT OVERLAY */
-#boot-overlay {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: #000; z-index: 9999; display: flex;
-    justify-content: center; align-items: center; transition: opacity 1s ease;
-}
+#boot-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 9999; display: flex; justify-content: center; align-items: center; transition: opacity 1s ease; }
 .boot-logo { color: var(--terminal); font-size: 3rem; text-shadow: 0 0 15px var(--terminal); }
 .progress-container { width: 300px; height: 2px; background: #111; margin: 20px auto; border: 1px solid #222; }
 .progress-bar { width: 0%; height: 100%; background: var(--terminal); animation: progress-fill 2s forwards; }
 @keyframes progress-fill { to { width: 100%; } }
 
-/* SIDEBAR FIX */
-.sidebar {
-    width: 220px; height: 100vh; border-right: 1px solid var(--terminal);
-    padding: 30px 15px; position: fixed; background: var(--bg-dark);
-    box-sizing: border-box; display: flex; flex-direction: column;
-}
-.sidebar-logo { width: 100%; max-width: 140px; height: auto; display: block; margin: 0 auto 10px auto; filter: drop-shadow(0 0 5px var(--terminal)); }
-
-/* CONTENT WRAPPER */
+/* SIDEBAR & CONTENT */
+.sidebar { width: 220px; height: 100vh; border-right: 1px solid var(--terminal); padding: 30px 15px; position: fixed; background: var(--bg-dark); box-sizing: border-box; display: flex; flex-direction: column; }
 .content-wrapper { margin-left: 220px; padding: 60px; max-width: 900px; width: 100%; box-sizing: border-box; }
 .terminal-box { border: 1px solid var(--terminal); padding: 25px; margin-bottom: 40px; background: rgba(0, 255, 65, 0.02); }
-.btn-terminal { background: transparent; border: 1px solid var(--terminal); color: var(--terminal); padding: 5px 10px; cursor: pointer; }
 
-.hero-img { width: 100%; max-width: 600px; border: 1px solid var(--terminal); margin-bottom: 20px; }
-.pulse { height: 8px; width: 8px; background-color: var(--terminal); border-radius: 50%; display: inline-block; animation: blink 1.5s infinite; }
-@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+/* ASSETS & VIDEOS */
+.hero-img { width: 100%; max-width: 800px; border: 1px solid var(--terminal); margin-top: 20px; }
+.shop-preview-container { width: 100%; border: 1px solid var(--terminal); margin: 15px 0; overflow: hidden; background: #000; }
+.shop-video { width: 100%; display: block; opacity: 0.8; }
+.btn-terminal { background: transparent; border: 1px solid var(--terminal); color: var(--terminal); padding: 8px 15px; cursor: pointer; transition: 0.3s; }
+.btn-terminal:hover { background: var(--terminal); color: #000; box-shadow: 0 0 15px var(--terminal); }
+.buy-note { display: block; margin-top: 10px; font-size: 0.65rem; color: #888; }
 
-.hero-clarity {
-    margin: 25px 0 40px 0;
-    padding-left: 5px;
-}
-
-.hero-title {
-    font-size: 1.4rem;
-    font-weight: 500;
-    color: #eaeaea;
-    margin-bottom: 5px;
-}
-
-.hero-sub {
-    font-size: 0.9rem;
-    color: #9a9a9a;
-}
-
-.section-title {
-    font-size: 1.2rem;
-    font-weight: 500;
-    color: #eaeaea;
-    margin-bottom: 5px;
-}
-
-.section-sub {
-    font-size: 0.85rem;
-    color: #9a9a9a;
-    margin-bottom: 20px;
-}
-
-.service-list p {
-    margin: 6px 0;
-    font-size: 0.85rem;
-    color: #cfcfcf;
-}
-
-.service-tag {
-    color: var(--terminal);
-    font-weight: 500;
-}
-
-.project-title {
-    color: var(--terminal);
-    font-size: 1rem;
-    margin-bottom: 3px;
-}
-
-.project-protocol {
-    font-size: 0.75rem;
-    color: #888;
-    margin-bottom: 8px;
-}
-
-.project-desc {
-    font-size: 0.85rem;
-    color: #cfcfcf;
-    margin-bottom: 12px;
-}
-
-.project-img {
-    width: 100%;
-    border: 1px solid #222;
-    border-radius: 4px;
-    margin-top: 5px;
-}
-
-/* ---------------------------------------------------
-   ⭐ AI SPATIAL — SCROLLING IMAGE FEED
---------------------------------------------------- */
-#ai-spatial {
-    padding: 40px;
-    margin-top: 30px;
-    border-top: 1px solid rgba(0,255,65,0.25);
-    border-bottom: 1px solid rgba(0,255,65,0.25);
-    background: rgba(0,255,65,0.02);
-}
-
-/* container hides overflow for clean loop */
-.scroll-container {
-    overflow: hidden;
-    white-space: nowrap;
-    position: relative;
-    padding: 20px 0;
-}
-
-/* auto-scrolling strip */
-.scroll-auto {
-    display: inline-flex;
-    animation: autoScroll 25s linear infinite;
-}
-
-/* scrolling animation */
-@keyframes autoScroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-}
-
-/* images */
-.scroll-container img {
-    height: 260px;
-    margin-right: 20px;
-    border-radius: 6px;
-    border: 1px solid var(--terminal);
-    display: inline-block;
-    box-shadow: 0 0 12px rgba(0,255,65,0.25);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* hover glow */
-.scroll-container img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 25px rgba(0,255,65,0.45);
-}
-/* STUDIO SECTION */
-.studio-img {
-    width: 100%;
-    border: 1px solid var(--terminal);
-    border-radius: 6px;
-    margin: 15px 0 20px 0;
-    box-shadow: 0 0 12px rgba(0,255,65,0.25);
-}
-
-.studio-desc {
-    font-size: 0.85rem;
-    color: #cfcfcf;
-    line-height: 1.5;
-}
+/* AI SPATIAL SCROLL */
+.scroll-container { overflow: hidden; white-space: nowrap; padding: 20px 0; }
+.scroll-auto { display: inline-flex; animation: autoScroll 30s linear infinite; }
+.scroll-container img { height: 260px; margin-right: 20px; border: 1px solid var(--terminal); border-radius: 6px; }
+@keyframes autoScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
