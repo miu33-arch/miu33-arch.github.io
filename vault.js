@@ -1,4 +1,4 @@
-// 1. BOOT SEQUENCE (KEEP THIS AT THE TOP)
+// PART 1: BOOT SEQUENCE (RIYADH_NODE)
 window.addEventListener('load', () => {
     const overlay = document.getElementById('boot-overlay');
     setTimeout(() => {
@@ -7,7 +7,7 @@ window.addEventListener('load', () => {
     }, 2500);
 });
 
-// 2. AUDIO LOG LOGIC
+// PART 2: AUDIO LOG & TRANSCRIPT CONTROLS
 const audio = document.getElementById('miu-audio');
 const playBtn = document.getElementById('play-log');
 if (playBtn) {
@@ -22,32 +22,37 @@ if (playBtn) {
     });
 }
 
-// 3. PASTE THE VAULT CODE HERE (The Badge Fix)
+function toggleTranscript() {
+    const t = document.getElementById('audio-transcript');
+    t.style.display = (t.style.display === 'none') ? 'block' : 'none';
+}
+
+// PART 3: ENCRYPTED VAULT (PREMIUM BADGE REVEAL)
 function unlockVault() {
-    const key = document.getElementById('accessKey').value.trim().toLowerCase();
+    const keyInput = document.getElementById('accessKey');
+    const key = keyInput.value.trim().toLowerCase();
     const secretContent = document.getElementById('secretContent');
     const target = document.getElementById('dossier-text');
 
     if (key === 'unlocked premium') {
-        // Trigger Purple Theme
+        // Neon Purple Shift
         document.body.style.textShadow = "0 0 15px #BC13FE";
         document.documentElement.style.setProperty('--terminal', '#BC13FE');
-        
         secretContent.style.display = 'block';
         
-        // THE CRITICAL FIX: Direct link to the root file with a timestamp to bypass cache
-        const timestamp = new Date().getTime();
-        target.innerHTML = `<img src="premium-badge.jpg?v=${timestamp}" style="width:220px; border:2px solid #BC13FE; margin-bottom:15px; box-shadow: 0 0 20px #BC13FE;"><br>`;
+        // Show the Badge from your Main GitHub folder
+        target.innerHTML = `<img src="premium-badge.jpg" style="width:220px; border:2px solid #BC13FE; margin-bottom:15px; box-shadow: 0 0 20px #BC13FE;"><br>`;
         
         startDossierTyping(`[PROTOCOL]: PREMIUM_MEMBER_ACTIVATED\nSTATUS: ACCESS_GRANTED\nNODE: RIYADH_CORE\nWELCOME, MIÙ LIÁN RUÌ.`);
     } 
     else if (key === 'archmiu2026' || key === 'miu_33') {
         secretContent.style.display = 'block';
-        target.innerHTML = ''; 
+        target.innerHTML = '';
         startDossierTyping(`IDENTITY: ANAMY PADILLA\nROLE: DIGITAL ARCHITECT\nLOCATION: RIYADH, KSA`);
     }
+}
 
-// 4. TYPING ENGINE (KEEP THIS AT THE VERY BOTTOM)
+// PART 4: TYPING ANIMATION ENGINE
 function startDossierTyping(content) {
     const target = document.getElementById('dossier-text');
     let i = 0;
