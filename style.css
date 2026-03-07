@@ -26,3 +26,23 @@ body { background: var(--bg-dark); color: #e0e0e0; font-family: 'Courier New', m
 .scroll-auto { display: inline-flex; animation: autoScroll 30s linear infinite; }
 .scroll-container img { height: 260px; margin-right: 20px; border: 1px solid var(--terminal); border-radius: 6px; }
 @keyframes autoScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+:root { --terminal: #00ff41; --accent: #BC13FE; }
+
+.video-container {
+    width: 100%;
+    margin: 15px 0;
+    border: 1px solid var(--terminal);
+    background: #000;
+}
+
+.video-asset {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.audio-module .btn-terminal {
+    margin-right: 10px;
+    font-size: 0.7rem;
+    padding: 4px 8px;
+}
