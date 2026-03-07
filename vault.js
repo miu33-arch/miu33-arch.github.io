@@ -24,27 +24,28 @@ if (playBtn) {
 
 // 3. PASTE THE VAULT CODE HERE (The Badge Fix)
 function unlockVault() {
-    const key = document.getElementById('accessKey').value;
+    const key = document.getElementById('accessKey').value.trim().toLowerCase();
     const secretContent = document.getElementById('secretContent');
     const target = document.getElementById('dossier-text');
 
-    if (key.toLowerCase() === 'unlocked premium') {
-        // Trigger Purple Theme Shift
+    if (key === 'unlocked premium') {
+        // Trigger Purple Theme
         document.body.style.textShadow = "0 0 15px #BC13FE";
         document.documentElement.style.setProperty('--terminal', '#BC13FE');
         
         secretContent.style.display = 'block';
         
-        // Path fixed to look in ROOT for premium-badge.jpg
-        target.innerHTML = `<img src="premium-badge.jpg" style="width:200px; border:1px solid #BC13FE; margin-bottom:15px; box-shadow: 0 0 20px #BC13FE;"><br>`;
+        // THE CRITICAL FIX: Direct link to the root file with a timestamp to bypass cache
+        const timestamp = new Date().getTime();
+        target.innerHTML = `<img src="premium-badge.jpg?v=${timestamp}" style="width:220px; border:2px solid #BC13FE; margin-bottom:15px; box-shadow: 0 0 20px #BC13FE;"><br>`;
         
-        startDossierTyping(`[PROTOCOL]: PREMIUM_MEMBER_ACTIVATED\nSTATUS: ACCESS_GRANTED\nLOCATION: RIYADH_NODE_LIVE`);
+        startDossierTyping(`[PROTOCOL]: PREMIUM_MEMBER_ACTIVATED\nSTATUS: ACCESS_GRANTED\nNODE: RIYADH_CORE\nWELCOME, MIÙ LIÁN RUÌ.`);
     } 
-    else if (key === 'archmiu2026' || key === 'MIU_33') {
+    else if (key === 'archmiu2026' || key === 'miu_33') {
         secretContent.style.display = 'block';
-        startDossierTyping(`IDENTITY: ANAMY PADILLA\nROLE: DIGITAL ARCHITECT\nNODE: RIYADH_STUDIO`);
+        target.innerHTML = ''; 
+        startDossierTyping(`IDENTITY: ANAMY PADILLA\nROLE: DIGITAL ARCHITECT\nLOCATION: RIYADH, KSA`);
     }
-}
 
 // 4. TYPING ENGINE (KEEP THIS AT THE VERY BOTTOM)
 function startDossierTyping(content) {
