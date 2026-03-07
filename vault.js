@@ -1,4 +1,3 @@
-// 1. BOOT SEQUENCE & INITIALIZATION
 window.addEventListener('load', () => {
     const overlay = document.getElementById('boot-overlay');
     setTimeout(() => {
@@ -7,18 +6,12 @@ window.addEventListener('load', () => {
     }, 2500);
 });
 
-// 2. AUDIO LOG CONTROLS
 const audio = document.getElementById('miu-audio');
 const playBtn = document.getElementById('play-log');
 if (playBtn) {
     playBtn.addEventListener('click', () => {
-        if (audio.paused) { 
-            audio.play(); 
-            playBtn.innerText = "PAUSE_LOG"; 
-        } else { 
-            audio.pause(); 
-            playBtn.innerText = "PLAY_LOG_01"; 
-        }
+        if (audio.paused) { audio.play(); playBtn.innerText = "PAUSE_LOG"; }
+        else { audio.pause(); playBtn.innerText = "PLAY_LOG_01"; }
     });
 }
 function toggleTranscript() {
@@ -26,7 +19,6 @@ function toggleTranscript() {
     t.style.display = (t.style.display === 'none') ? 'block' : 'none';
 }
 
-// 3. ENCRYPTED VAULT LOGIC
 function unlockVault() {
     const key = document.getElementById('accessKey').value.trim().toLowerCase();
     const secretContent = document.getElementById('secretContent');
@@ -37,8 +29,10 @@ function unlockVault() {
         document.body.style.textShadow = "0 0 15px #BC13FE";
         document.documentElement.style.setProperty('--terminal', '#BC13FE');
         secretContent.style.display = 'block';
-        // Path fixed to root for premium-badge.jpg
+        
+        // FIXED: Pointing to root since badge is OUTSIDE images folder
         target.innerHTML = `<img src="premium-badge.jpg" style="width:220px; border:2px solid #BC13FE; margin-bottom:15px; box-shadow: 0 0 20px #BC13FE;"><br>`;
+        
         startDossierTyping(`[PROTOCOL]: PREMIUM_MEMBER_ACTIVATED\nSTATUS: ACCESS_GRANTED\nWELCOME, MIÙ LIÁN RUÌ.`);
     } 
     else if (key === 'archmiu2026' || key === 'miu_33') {
@@ -48,7 +42,6 @@ function unlockVault() {
     }
 }
 
-// 4. TYPING ENGINE
 function startDossierTyping(content) {
     const target = document.getElementById('dossier-text');
     let i = 0;
