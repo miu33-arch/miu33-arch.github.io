@@ -48,29 +48,20 @@
                     <button id="play-log" class="btn-terminal">PLAY_LOG_01</button>
                     <button onclick="toggleTranscript()" class="btn-terminal">VIEW_TRANSCRIPT</button>
                     <div id="audio-transcript" style="display:none; margin-top:10px; font-size:0.7rem; color:#888;">
-                        > LOG_01: Identity: 缪联睿. Riyadh Node. Digital Architect Studio initialized.
+                        > LOG_01: Identity: 缪联睿. Riyadh Node. Studio Active.
                     </div>
                 </div>
             </div>
             <div class="hero-clarity">
                 <h1 class="hero-title">Architectural design for physical and digital spaces.</h1>
-                <img src="hero-studio.jpg" class="hero-img"> </div>
+                <img src="images/hero-studio.jpg" class="hero-img"> </div>
         </section>
 
         <section id="studio-core" class="terminal-box">
             <div class="grid-3" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
-                <div class="core-node">
-                    <h3 style="color: var(--terminal);">[01]_MISSION</h3>
-                    <p style="font-size: 0.8rem;">Redefining architectural boundaries through digital innovation and AI integration.</p>
-                </div>
-                <div class="core-node">
-                    <h3 style="color: var(--terminal);">[02]_VISION</h3>
-                    <p style="font-size: 0.8rem;">To lead the evolution of spatial design in the Riyadh tech corridor and beyond.</p>
-                </div>
-                <div class="core-node">
-                    <h3 style="color: var(--terminal);">[03]_LOGIC</h3>
-                    <p style="font-size: 0.8rem;">Functionality meets futuristic aesthetics. Logic-driven design for the next generation.</p>
-                </div>
+                <div class="core-node"><h3>[01]_MISSION</h3><p>Redefining architectural boundaries through digital innovation.</p></div>
+                <div class="core-node"><h3>[02]_VISION</h3><p>To lead spatial design in the Riyadh tech corridor.</p></div>
+                <div class="core-node"><h3>[03]_LOGIC</h3><p>Functionality meets futuristic aesthetics.</p></div>
             </div>
         </section>
 
@@ -85,9 +76,8 @@
 
         <section id="shop-node" class="terminal-box">
             <h3 class="section-title">Digital Assets</h3>
-            <div class="video-container" style="border: 1px solid var(--terminal); margin: 15px 0;">
-                <video autoplay loop muted playsinline style="width:100%; display:block;">
-                    <source src="shop-preview.mp4" type="video/mp4">
+            <div class="video-container">
+                <video autoplay loop muted playsinline style="width:100%; display:block;"> <source src="shop-preview.mp4" type="video/mp4">
                 </video>
             </div>
             <a href="https://buymeacoffee.com/miu_studio3" class="btn-terminal shop-btn" target="_blank">ACCESS_ASSET_PACK_01</a>
@@ -95,9 +85,8 @@
 
         <section id="projects-section" class="terminal-box">
             <h3 class="section-title">Project Archive</h3>
-            <div class="video-container" style="border: 1px solid var(--terminal); margin: 15px 0;">
-                <video autoplay loop muted playsinline style="width:100%; display:block;">
-                    <source src="project-riyadh.mp4" type="video/mp4">
+            <div class="video-container">
+                <video autoplay loop muted playsinline style="width:100%; display:block;"> <source src="project-riyadh.mp4" type="video/mp4">
                 </video>
             </div>
         </section>
@@ -105,27 +94,26 @@
         <section id="ai-spatial" class="terminal-box">
             <h3 class="section-title">AI Spatial Feed</h3>
             <div class="scroll-container">
-                <div class="scroll-auto" style="display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px;">
-                    <img src="ai1.jpeg" style="height: 200px; border: 1px solid var(--terminal);">
-                    <img src="ai2.jpeg" style="height: 200px; border: 1px solid var(--terminal);">
-                    <img src="ai3.jpeg" style="height: 200px; border: 1px solid var(--terminal);">
-                    <img src="ai4.jpeg" style="height: 200px; border: 1px solid var(--terminal);">
+                <div class="scroll-auto">
+                    <img src="images/ai1.jpeg"> <img src="images/ai2.jpeg">
+                    <img src="images/ai3.jpeg">
+                    <img src="images/ai4.jpeg">
                 </div>
             </div>
         </section>
 
         <section id="contact-node" class="terminal-box">
             <h3 class="section-title">Contact Studio</h3>
-            <p class="cmd-line" style="font-size: 0.8rem; color: var(--terminal); margin-bottom: 15px; border-left: 2px solid var(--terminal); padding-left: 10px;">
+            <p class="cmd-line" style="font-size: 0.9rem; color: var(--terminal); margin-bottom: 15px; border-left: 2px solid var(--terminal); padding-left: 10px;">
                 > OWNER: ANAMY PADILLA [MIÙ LIÁN RUÌ]
             </p>
             <form id="contact-form">
-                <input type="text" id="name" placeholder="IDENT_NAME" class="btn-terminal" required style="width:100%; margin-bottom:10px; background: transparent;">
-                <input type="email" id="email" placeholder="EMAIL_ADDRESS" class="btn-terminal" required style="width:100%; margin-bottom:10px; background: transparent;">
-                <textarea id="message" placeholder="MESSAGE_DATA" class="btn-terminal" required style="width:100%; height:80px; margin-bottom:10px; background: transparent;"></textarea>
+                <input type="text" id="name" placeholder="NAME" class="btn-terminal" required style="width:100%; margin-bottom:10px; background: transparent;">
+                <input type="email" id="email" placeholder="EMAIL" class="btn-terminal" required style="width:100%; margin-bottom:10px; background: transparent;">
+                <textarea id="message" placeholder="MESSAGE" class="btn-terminal" required style="width:100%; height:80px; margin-bottom:10px; background: transparent;"></textarea>
                 <button type="submit" class="btn-terminal">SEND_ENCRYPTED_PACKET</button>
             </form>
-            <p id="status" class="cmd-line" style="margin-top: 10px; font-size: 0.8rem;"></p>
+            <p id="status" class="cmd-line"></p>
         </section>
 
         <section id="v-0" class="terminal-box">
@@ -137,7 +125,6 @@
 
         <footer class="terminal-footer" style="text-align:center; padding:40px 20px; border-top:1px solid var(--terminal); margin-top:40px;">
             <p style="font-size:0.8rem; color:var(--terminal);">© 2026 ANAMY PADILLA | 缪联睿</p>
-            <p style="font-size:0.6rem; opacity:0.5;">RIYADH_NODE // DIGITAL_ARCHITECT_STUDIO</p>
         </footer>
     </main>
 
