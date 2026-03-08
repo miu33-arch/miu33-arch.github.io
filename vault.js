@@ -2,7 +2,7 @@
    MIU_33 FULL CINEMATIC BOOT SYSTEM
    ============================ */
 
-/* MATRIX INTRO */
+/* MATRIX INTRO (3 SECONDS) */
 function startMatrix() {
   const matrix = document.getElementById("matrix");
   if (!matrix) return;
@@ -42,7 +42,7 @@ function startMatrix() {
       matrix.style.display = "none";
       matrix.innerHTML = "";
     }, 600);
-  }, 1800);
+  }, 3000); // 3 seconds
 }
 
 /* RANDOM BOOT MESSAGES */
@@ -98,7 +98,18 @@ setTimeout(() => {
     if (overlay) overlay.style.display = "none";
     if (content) content.classList.add("content-visible");
   }, 600);
-}, 2600);
+}, 3400); // after matrix + small delay
+
+/* ============================
+   MOBILE VIDEO AUTOPLAY FIX
+   ============================ */
+
+document.addEventListener("touchstart", () => {
+  document.querySelectorAll("video").forEach(v => {
+    v.muted = true;
+    v.play().catch(() => {});
+  });
+}, { once: true });
 
 /* ============================
    AUDIO MODULE
@@ -130,7 +141,7 @@ if (transcriptBtn && transcriptEl) {
 }
 
 /* ============================
-   ENCRYPTED VAULT
+   ENCRYPTED VAULT (PASSKEY: archmiu33)
    ============================ */
 
 function unlockVault() {
@@ -142,7 +153,7 @@ function unlockVault() {
 
   const key = keyInput.value.trim();
 
-  if (key === "RIYADH_NODE_33") {
+  if (key === "archmiu33") {
     secretContent.style.display = "block";
     dossier.textContent = "> VAULT_OPENED: Internal dossiers unlocked for MIU_33.";
   } else {
@@ -164,6 +175,7 @@ const fullscreenImg = document.getElementById("fullscreen-img");
 
 let autoScroll;
 
+/* AUTO-SCROLL FUNCTION */
 function startAutoScroll() {
   if (!feed) return;
   autoScroll = setInterval(() => {
@@ -178,6 +190,20 @@ function stopAutoScroll() {
   clearInterval(autoScroll);
 }
 
+/* DESKTOP + MOBILE: START AUTOSCROLL WHEN VISIBLE */
+if (feed) {
+  const observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      startAutoScroll();
+    } else {
+      stopAutoScroll();
+    }
+  }, { threshold: 0.3 });
+
+  observer.observe(feed);
+}
+
+/* FULLSCREEN VIEWER */
 if (images && images.length && fullscreen && fullscreenImg) {
   images.forEach(img => {
     img.addEventListener("click", () => {
@@ -191,6 +217,4 @@ if (images && images.length && fullscreen && fullscreenImg) {
     fullscreen.style.display = "none";
     startAutoScroll();
   });
-
-  startAutoScroll();
 }
