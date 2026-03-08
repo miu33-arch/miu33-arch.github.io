@@ -5,6 +5,8 @@
 /* MATRIX INTRO */
 function startMatrix() {
   const matrix = document.getElementById("matrix");
+  if (!matrix) return;
+
   matrix.style.display = "block";
 
   const chars = "01";
@@ -36,7 +38,10 @@ function startMatrix() {
   setTimeout(() => {
     clearInterval(interval);
     matrix.style.opacity = "0";
-    setTimeout(() => matrix.remove(), 600);
+    setTimeout(() => {
+      matrix.style.display = "none";
+      matrix.innerHTML = "";
+    }, 600);
   }, 1800);
 }
 
@@ -54,6 +59,8 @@ const bootMessages = [
 /* TYPING EFFECT */
 function typeBootMessage() {
   const bootText = document.getElementById("boot-text");
+  if (!bootText) return;
+
   let msg = bootMessages[Math.floor(Math.random() * bootMessages.length)];
   let i = 0;
 
@@ -66,9 +73,11 @@ function typeBootMessage() {
 
 /* BOOT SOUND */
 function playBootSound() {
-  const audio = new Audio("audio/boot.wav"); // put boot.wav in /audio
-  audio.volume = 0.4;
-  audio.play();
+  try {
+    const audio = new Audio("audio/boot.wav");
+    audio.volume = 0.4;
+    audio.play().catch(() => {});
+  } catch (e) {}
 }
 
 /* MAIN BOOT SEQUENCE */
@@ -80,15 +89,15 @@ setTimeout(() => {
 
   const overlay = document.getElementById("boot-overlay");
   const scanlines = document.getElementById("scanlines");
+  const content = document.querySelector(".content-wrapper");
 
-  overlay.style.opacity = "0";
-  scanlines.style.opacity = "1";
+  if (overlay) overlay.style.opacity = "0";
+  if (scanlines) scanlines.style.opacity = "1";
 
   setTimeout(() => {
-    overlay.style.display = "none";
-    document.querySelector(".content-wrapper").classList.add("content-visible");
+    if (overlay) overlay.style.display = "none";
+    if (content) content.classList.add("content-visible");
   }, 600);
-
 }, 2600);
 
 /* ============================
@@ -103,7 +112,7 @@ const transcriptEl = document.getElementById("audio-transcript");
 if (playBtn && audioEl) {
   playBtn.addEventListener("click", () => {
     if (audioEl.paused) {
-      audioEl.play();
+      audioEl.play().catch(() => {});
       playBtn.textContent = "PAUSE_LOG_01";
     } else {
       audioEl.pause();
@@ -128,6 +137,8 @@ function unlockVault() {
   const keyInput = document.getElementById("accessKey");
   const secretContent = document.getElementById("secretContent");
   const dossier = document.getElementById("dossier-text");
+
+  if (!keyInput || !secretContent || !dossier) return;
 
   const key = keyInput.value.trim();
 
