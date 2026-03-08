@@ -1,149 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta name="description" content="MIU_33 Digital Architect Studio — Riyadh-based architectural design, AI spatial design, digital assets, and project archives.">
-<meta property="og:title" content="MIU_33 | Digital Architect Console">
-<meta property="og:image" content="images/hero-studio.jpg">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="MIU_33 Studio">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MIU_33 Digital Architect Studio — Riyadh-based architectural design, AI spatial design, digital assets, and project archives.">
+  <meta property="og:title" content="MIU_33 | Digital Architect Console">
+  <meta property="og:image" content="images/hero-studio.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MIU_33 Studio">
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Architect",
-  "name": "MIU_33 Digital Architect Studio",
-  "address": "Riyadh, Saudi Arabia",
-  "url": "https://miu33-arch.github.io"
-}
-</script> <title>MIU_33 | Digital Architect Console</title>
-    <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Architect",
+    "name": "MIU_33 Digital Architect Studio",
+    "address": "Riyadh, Saudi Arabia",
+    "url": "https://miu33-arch.github.io"
+  }
+  </script>
+
+  <title>MIU_33 | Digital Architect Console</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body oncontextmenu="return false;">
 
-    <div id="boot-overlay">
-        <div class="boot-content">
-            <h1 class="boot-logo">MIU_33</h1>
-            <div class="boot-status">
-                <p id="boot-text">> LOADING_RIYADH_NODE...</p>
-                <div class="progress-container"><div class="progress-bar"></div></div>
-            </div>
-            <div class="boot-id">缪联睿 | DIGITAL_ARCHITECT</div>
+  <!-- BOOT OVERLAY -->
+  <div id="boot-overlay">
+    <div class="boot-content">
+      <h1 class="boot-logo">MIU_33</h1>
+      <div class="boot-status">
+        <p id="boot-text">> LOADING_RIYADH_NODE...</p>
+        <div class="progress-container">
+          <div class="progress-bar"></div>
         </div>
+      </div>
+      <div class="boot-id">缪联睿 | DIGITAL_ARCHITECT</div>
     </div>
+  </div>
 
-    <nav class="sidebar">
-        <div class="brand-header">
-            <div class="brand-text">
-                <h2 class="brand-id">MIU_33</h2>
-                <div class="translated-id">缪联睿</div>
-            </div>
+  <!-- CRT SCANLINES + MATRIX LAYER -->
+  <div id="scanlines"></div>
+  <div id="matrix"></div>
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <div class="brand-header">
+      <div class="brand-text">
+        <h2 class="brand-id">MIU_33</h2>
+        <div class="translated-id">缪联睿</div>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="#home-hero">> HOME</a>
+      <a href="#studio-core">> CORE_LOGIC</a>
+      <a href="#social-nodes">> CHANNELS</a>
+      <a href="#shop-node">> SHOP</a>
+      <a href="#projects-section">> PROJECTS</a>
+      <a href="#ai-spatial">> AI_SPATIAL</a>
+      <a href="#contact-node">> CONTACT</a>
+      <a href="#v-0">> VAULT</a>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="content-wrapper">
+    <section id="home-hero">
+      <div class="terminal-box">
+        <p>> Booting MIU_STUDIO_v3.3...</p>
+        <p>> Location: RIYADH_NODE_ACTIVE</p>
+        <div class="audio-module" style="margin-top:15px; border-top:1px solid var(--terminal); padding-top:10px;">
+          <audio id="miu-audio" src="audio/ai_spatial.mp3"></audio>
+          <button id="play-log" class="btn-terminal">PLAY_LOG_01</button>
+          <button id="toggle-transcript" class="btn-terminal">VIEW_TRANSCRIPT</button>
+          <div id="audio-transcript" style="display:none; margin-top:10px; font-size:0.7rem; color:#888;">
+            > LOG_01: Identity: 缪联睿. Riyadh Node. Studio Active.
+          </div>
         </div>
-        <div class="nav-links">
-            <a href="#home-hero">> HOME</a>
-            <a href="#studio-core">> CORE_LOGIC</a>
-            <a href="#social-nodes">> CHANNELS</a>
-            <a href="#shop-node">> SHOP</a>
-            <a href="#projects-section">> PROJECTS</a>
-            <a href="#ai-spatial">> AI_SPATIAL</a>
-            <a href="#contact-node">> CONTACT</a>
-            <a href="#v-0">> VAULT</a>
-        </div>
-    </nav>
+      </div>
+      <div class="hero-clarity">
+        <h1 class="hero-title">Architectural design for physical and digital spaces.</h1>
+        <img src="images/hero-studio.jpg" class="hero-img">
+      </div>
+    </section>
 
-    <main class="content-wrapper">
-        <section id="home-hero">
-            <div class="terminal-box">
-                <p>> Booting MIU_STUDIO_v3.3...</p>
-                <p>> Location: RIYADH_NODE_ACTIVE</p>
-                <div class="audio-module" style="margin-top:15px; border-top:1px solid var(--terminal); padding-top:10px;">
-                    <audio id="miu-audio" src="audio/ai_spatial.mp3"></audio>
-                    <button id="play-log" class="btn-terminal">PLAY_LOG_01</button>
-                    <button onclick="toggleTranscript()" class="btn-terminal">VIEW_TRANSCRIPT</button>
-                    <div id="audio-transcript" style="display:none; margin-top:10px; font-size:0.7rem; color:#888;">
-                        > LOG_01: Identity: 缪联睿. Riyadh Node. Studio Active.
-                    </div>
-                </div>
-            </div>
-            <div class="hero-clarity">
-                <h1 class="hero-title">Architectural design for physical and digital spaces.</h1>
-                <img src="images/hero-studio.jpg" class="hero-img"> </div>
-        </section>
+    <section id="studio-core" class="terminal-box">
+      <div class="grid-3" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+        <div class="core-node"><h3>[01]_MISSION</h3><p>Redefining architectural boundaries through digital innovation.</p></div>
+        <div class="core-node"><h3>[02]_VISION</h3><p>To lead spatial design in the Riyadh tech corridor.</p></div>
+        <div class="core-node"><h3>[03]_LOGIC</h3><p>Functionality meets futuristic aesthetics.</p></div>
+      </div>
+    </section>
 
-        <section id="studio-core" class="terminal-box">
-            <div class="grid-3" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
-                <div class="core-node"><h3>[01]_MISSION</h3><p>Redefining architectural boundaries through digital innovation.</p></div>
-                <div class="core-node"><h3>[02]_VISION</h3><p>To lead spatial design in the Riyadh tech corridor.</p></div>
-                <div class="core-node"><h3>[03]_LOGIC</h3><p>Functionality meets futuristic aesthetics.</p></div>
-            </div>
-        </section>
+    <section id="social-nodes" class="terminal-box" style="text-align: center;">
+      <p class="cmd-line">> ACCESS_SOCIAL_CHANNELS</p>
+      <div class="social-grid" style="display: flex; justify-content: center; gap: 15px; margin-top: 15px;">
+        <a href="https://www.linkedin.com/company/miu-digital-architect-studio" class="btn-terminal" target="_blank">LINKEDIN</a>
+        <a href="https://www.tiktok.com/@miuproton" class="btn-terminal" target="_blank">TIKTOK</a>
+        <a href="https://www.xiaohongshu.com/user/profile/miu_Digital_Architect" class="btn-terminal" target="_blank">REDNOTE</a>
+      </div>
+    </section>
 
-        <section id="social-nodes" class="terminal-box" style="text-align: center;">
-            <p class="cmd-line">> ACCESS_SOCIAL_CHANNELS</p>
-            <div class="social-grid" style="display: flex; justify-content: center; gap: 15px; margin-top: 15px;">
-                <a href="https://www.linkedin.com/company/miu-digital-architect-studio" class="btn-terminal" target="_blank">LINKEDIN</a>
-                <a href="https://www.tiktok.com/@miuproton" class="btn-terminal" target="_blank">TIKTOK</a>
-                <a href="https://www.xiaohongshu.com/user/profile/miu_Digital_Architect" class="btn-terminal" target="_blank">REDNOTE</a>
-            </div>
-        </section>
+    <section id="shop-node" class="terminal-box">
+      <h3 class="section-title">Digital Assets</h3>
+      <div class="video-container">
+        <video autoplay loop muted playsinline style="width:100%; display:block;">
+          <source src="shop-preview.mp4" type="video/mp4">
+        </video>
+      </div>
+      <a href="https://buymeacoffee.com/miu_studio3" class="btn-terminal shop-btn" target="_blank">ACCESS_ASSET_PACK_01</a>
+    </section>
 
-        <section id="shop-node" class="terminal-box">
-            <h3 class="section-title">Digital Assets</h3>
-            <div class="video-container">
-                <video autoplay loop muted playsinline style="width:100%; display:block;"> <source src="shop-preview.mp4" type="video/mp4">
-                </video>
-            </div>
-            <a href="https://buymeacoffee.com/miu_studio3" class="btn-terminal shop-btn" target="_blank">ACCESS_ASSET_PACK_01</a>
-        </section>
+    <section id="projects-section" class="terminal-box">
+      <h3 class="section-title">Project Archive</h3>
+      <div class="video-container">
+        <video autoplay loop muted playsinline style="width:100%; display:block;">
+          <source src="project-riyadh.mp4" type="video/mp4">
+        </video>
+      </div>
+    </section>
 
-        <section id="projects-section" class="terminal-box">
-            <h3 class="section-title">Project Archive</h3>
-            <div class="video-container">
-                <video autoplay loop muted playsinline style="width:100%; display:block;"> <source src="project-riyadh.mp4" type="video/mp4">
-                </video>
-            </div>
-        </section>
+    <section id="ai-spatial" class="terminal-box">
+      <h3 class="section-title">AI Spatial Feed</h3>
+      <div class="spatial-feed">
+        <img src="images/ai1.jpeg" class="spatial-img">
+        <img src="images/ai2.jpeg" class="spatial-img">
+        <img src="images/ai3.jpeg" class="spatial-img">
+        <img src="images/ai4.jpeg" class="spatial-img">
+      </div>
+      <div id="fullscreen-view">
+        <img id="fullscreen-img">
+      </div>
+    </section>
 
-        <section id="ai-spatial" class="terminal-box">
-            <h3 class="section-title">AI Spatial Feed</h3>
-            <div class="scroll-container">
-                <div class="scroll-auto">
-                    <img src="images/ai1.jpeg"> <img src="images/ai2.jpeg">
-                    <img src="images/ai3.jpeg">
-                    <img src="images/ai4.jpeg">
-                </div>
-            </div>
-        </section>
+    <section id="contact-node" class="terminal-box">
+      <h3 class="section-title">Contact Studio</h3>
+      <p class="cmd-line" style="font-size: 0.9rem; color: var(--terminal); margin-bottom: 15px; border-left: 2px solid var(--terminal); padding-left: 10px;">
+        > OWNER: ANAMY PADILLA [MIÙ LIÁN RUÌ]
+      </p>
 
-        <section id="contact-node" class="terminal-box">
-            <h3 class="section-title">Contact Studio</h3>
-            <p class="cmd-line" style="font-size: 0.9rem; color: var(--terminal); margin-bottom: 15px; border-left: 2px solid var(--terminal); padding-left: 10px;">
-                > OWNER: ANAMY PADILLA [MIÙ LIÁN RUÌ]
-            </p>
-<form id="contact-form" action="https://formspree.io/f/mvzwzppo" method="POST">
-  <input type="email" name="email" id="email" placeholder="WWW EMAIL" class="terminal" required style="width:100%; margin-bottom:10px; background:transparent;">
-  
-  <textarea name="message" id="message" placeholder="MESSAGE" class="terminal" required style="width:100%; height:80px; margin-bottom:10px; background:transparent;"></textarea>
-  
-  <button type="submit" class="terminal">SEND ENCRYPTED PACKET</button>
-</form>
-            <p id="status" class="cmd-line"></p>
-        </section>
+      <form id="contact-form" action="https://formspree.io/f/mvzwzppo" method="POST">
+        <input type="email" name="email" id="email" placeholder="WWW EMAIL" class="terminal" required style="width:100%; margin-bottom:10px; background:transparent;">
+        <textarea name="message" id="message" placeholder="MESSAGE" class="terminal" required style="width:100%; height:80px; margin-bottom:10px; background:transparent;"></textarea>
+        <button type="submit" class="terminal">SEND ENCRYPTED PACKET</button>
+      </form>
+      <p id="status" class="cmd-line"></p>
+    </section>
 
-        <section id="v-0" class="terminal-box">
-            <p class="cmd-line">> [L_2]: ENCRYPTED_VAULT</p>
-            <input type="password" id="accessKey" placeholder="Access Key" class="btn-terminal">
-            <button type="button" onclick="unlockVault()" class="btn-terminal">UNLOCK</button>
-            <div id="secretContent" style="display:none; margin-top:20px;"><div id="dossier-text"></div></div>
-        </section>
+    <section id="v-0" class="terminal-box">
+      <p class="cmd-line">> [L_2]: ENCRYPTED_VAULT</p>
+      <input type="password" id="accessKey" placeholder="Access Key" class="btn-terminal">
+      <button type="button" onclick="unlockVault()" class="btn-terminal">UNLOCK</button>
+      <div id="secretContent" style="display:none; margin-top:20px;">
+        <div id="dossier-text"></div>
+      </div>
+    </section>
 
-        <footer class="terminal-footer" style="text-align:center; padding:40px 20px; border-top:1px solid var(--terminal); margin-top:40px;">
-            <p style="font-size:0.8rem; color:var(--terminal);">© 2026 ANAMY PADILLA | 缪联睿</p>
-        </footer>
-    </main>
+    <footer class="terminal-footer" style="text-align:center; padding:40px 20px; border-top:1px solid var(--terminal); margin-top:40px;">
+      <p style="font-size:0.8rem; color:var(--terminal);">© 2026 ANAMY PADILLA | 缪联睿</p>
+    </footer>
+  </main>
 
-    <script src="vault.js"></script>
-    <script src="contact.js"></script>
+  <script src="vault.js"></script>
+  <script src="contact.js"></script>
 </body>
 </html>
