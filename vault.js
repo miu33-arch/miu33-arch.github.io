@@ -1,22 +1,31 @@
-window.addEventListener('load', () => {
+window.addEventListener('DOMContentLoaded', () => {
     const overlay = document.getElementById('boot-overlay');
-    setTimeout(() => {
-        overlay.style.opacity = '0';
-        setTimeout(() => { overlay.style.display = 'none'; }, 1000);
-    }, 2500);
+    if (overlay) {
+        setTimeout(() => {
+            overlay.style.opacity = '0';
+            setTimeout(() => { overlay.style.display = 'none'; }, 1000);
+        }, 2500);
+    }
+
+    const audio = document.getElementById('miu-audio');
+    const playBtn = document.getElementById('play-log');
+
+    if (audio && playBtn) {
+        playBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                playBtn.innerText = "PAUSE_LOG";
+            } else {
+                audio.pause();
+                playBtn.innerText = "PLAY_LOG_01";
+            }
+        });
+    }
 });
 
-const audio = document.getElementById('miu-audio');
-const playBtn = document.getElementById('play-log');
-if (playBtn) {
-    playBtn.addEventListener('click', () => {
-        if (audio.paused) { audio.play(); playBtn.innerText = "PAUSE_LOG"; }
-        else { audio.pause(); playBtn.innerText = "PLAY_LOG_01"; }
-    });
-}
 function toggleTranscript() {
     const t = document.getElementById('audio-transcript');
-    t.style.display = (t.style.display === 'none') ? 'block' : 'none';
+    if (t) t.style.display = (t.style.display === 'none') ? 'block' : 'none';
 }
 
 function unlockVault() {
@@ -24,17 +33,16 @@ function unlockVault() {
     const secretContent = document.getElementById('secretContent');
     const target = document.getElementById('dossier-text');
 
+    if (!secretContent || !target) return;
+
     if (key === 'unlocked premium') {
-        // Switch to Premium Purple Theme
         document.body.style.textShadow = "0 0 15px #BC13FE";
         document.documentElement.style.setProperty('--terminal', '#BC13FE');
         secretContent.style.display = 'block';
-        
-        // FIXED: Pointing to root since badge is OUTSIDE images folder
-        target.innerHTML = `<img src="premium-badge.jpg" style="width:220px; border:2px solid #BC13FE; margin-bottom:15px; box-shadow: 0 0 20px #BC13FE;"><br>`;
-        
+
+        target.innerHTML = `<img src="premium-badge.jpg" style="max-width:100%; border:2px solid #BC13FE; margin-bottom:15px; box-shadow: 0 0 20px #BC13FE;"><br>`;
         startDossierTyping(`[PROTOCOL]: PREMIUM_MEMBER_ACTIVATED\nSTATUS: ACCESS_GRANTED\nWELCOME, MIÙ LIÁN RUÌ.`);
-    } 
+    }
     else if (key === 'archmiu2026' || key === 'miu_33') {
         secretContent.style.display = 'block';
         target.innerHTML = '';
