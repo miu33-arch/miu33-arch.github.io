@@ -1,27 +1,31 @@
 const form = document.getElementById("contact-form");
-const status = document.getElementById("status");
+const statusEl = document.getElementById("status");
 
-form.addEventListener("submit", (e) => {
+if (form && statusEl) {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
+    statusEl.textContent = "> SENDING_ENCRYPTED_PACKET...";
+    statusEl.style.color = "var(--terminal)";
 
-    const formData = new FormData(form);
-    status.innerHTML = "Sending...";
-
-    const xhr = new XMLHttpRequest();
+    const data = new FormData(form);
 
     try {
-        xhr.open("POST", form.action);
-        xhr.send(formData);
+      const res = await fetch(form.action, {
+        method: form.method,
+        body: data,
+        headers: { Accept: "application/json" }
+      });
 
-        xhr.onload = () => {
-            if (xhr.status === 200) {
-                status.innerHTML = "Message sent!";
-                form.reset();
-            } else {
-                status.innerHTML = "Failed to send message.";
-            }
-        };
+      if (res.ok) {
+        statusEl.textContent = "> PACKET_DELIVERED: Studio has received your message.";
+        form.reset();
+      } else {
+        statusEl.textContent = "> TRANSMISSION_ERROR: Please try again later.";
+        statusEl.style.color = "#f55";
+      }
     } catch (err) {
-        status.textContent = "Error occurred.";
+      statusEl.textContent = "> NETWORK_ERROR: Check connection and retry.";
+      statusEl.style.color = "#f55";
     }
-});
+  });
+}
