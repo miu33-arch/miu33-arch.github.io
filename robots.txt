@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://miu33-arch.github.io/sitemap.xml
