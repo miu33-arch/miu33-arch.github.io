@@ -1,31 +1,27 @@
-const BACKEND_URL = 'https://formspree.io/f/mvzwzppo';
+const form = document.getElementById("contact-form");
+const status = document.getElementById("status");
 
-window.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('contact-form');
-    if (!form) return;
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
+    const formData = new FormData(form);
+    status.innerHTML = "Sending...";
 
-        const status = document.getElementById('status');
-        status.textContent = '> INITIALIZING_SECURE_TRANSFER_TO_PROTON_NODE...';
+    const xhr = new XMLHttpRequest();
 
-        const formData = new FormData(form);
+    try {
+        xhr.open("POST", form.action);
+        xhr.send(formData);
 
-        try {
-            const response = await fetch(BACKEND_URL, {
-                method: 'POST',
-                body: formData
-            });
-
-            if (response.ok) {
-                status.textContent = '> SUCCESS: ENCRYPTED_PACKET_RECEIVED_BY_MIU_STUDIO.';
+        xhr.onload = () => {
+            if (xhr.status === 200) {
+                status.innerHTML = "Message sent!";
                 form.reset();
             } else {
-                status.textContent = '> ERROR: TRANSFER_FAILED. CHECK_FORM_CONNECTION.';
+                status.innerHTML = "Failed to send message.";
             }
-        } catch (err) {
-            status.textContent = '> ERROR: NODE_OFFLINE. SYSTEM_TIMEOUT.';
-        }
-    });
+        };
+    } catch (err) {
+        status.textContent = "Error occurred.";
+    }
 });
