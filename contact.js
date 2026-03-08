@@ -1,4 +1,4 @@
-const BACKEND_URL = 'https://formspree.io/f/xoqzzpoy';
+const BACKEND_URL = 'https://formspree.io/f/mvzwzppo';
 
 window.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('contact-form');
