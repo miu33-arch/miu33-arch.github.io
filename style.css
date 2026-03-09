@@ -440,3 +440,64 @@ html, body {
     max-width: none;
   }
 }
+.projects-section {
+  padding: 60px 0;
+}
+
+.section-title {
+  color: #33ff99;
+  font-family: "Share Tech Mono", monospace;
+  font-size: 2.2rem;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.project-card {
+  border: 1px solid #33ff99;
+  padding: 32px;
+  margin: 48px 0;
+  background: rgba(0, 0, 0, 0.55);
+  box-shadow: 0 0 18px #33ff99;
+}
+
+.project-hero {
+  width: 100%;
+  margin-bottom: 24px;
+  border: 1px solid #33ff99;
+}
+
+.project-info h2 {
+  color: #33ff99;
+  margin-bottom: 8px;
+  font-family: "Share Tech Mono", monospace;
+  font-size: 1.8rem;
+}
+
+.tagline {
+  color: #c8ffd9;
+  font-style: italic;
+  margin-bottom: 16px;
+  font-size: 1.05rem;
+}
+
+.description {
+  color: #aaffcc;
+  margin-bottom: 28px;
+  line-height: 1.55;
+}
+
+.project-support {
+  margin-top: 20px;
+}
+
+.support-image {
+  width: 100%;
+  border: 1px solid #1f7f55;
+}
+
+.support-caption {
+  color: #88ffbb;
+  margin-top: 8px;
+  font-size: 0.9rem;
+  font-family: "Share Tech Mono", monospace;
+}
