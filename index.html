@@ -6,7 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
   <!-- MATRIX INTRO -->
   <div id="matrix-intro">
     <canvas id="matrix-canvas"></canvas>
@@ -25,10 +27,13 @@
 
   <!-- MAIN LAYOUT -->
   <div class="content-wrapper">
+
+    <!-- SIDEBAR -->
     <aside class="sidebar">
       <div class="logo-block">
         <p class="cmd-line">&gt; MIU_33_CONSOLE</p>
       </div>
+
       <nav class="nav-block">
         <a href="#hero">&gt; HOME</a>
         <a href="#about">&gt; ABOUT_ME</a>
@@ -42,7 +47,9 @@
       </nav>
     </aside>
 
+    <!-- MAIN CONSOLE -->
     <main class="main-console">
+
       <!-- HERO -->
       <section id="hero" class="terminal-box hero">
         <p class="cmd-line">&gt; MIU_33 / DIGITAL ARCHITECT STUDIO</p>
@@ -50,12 +57,13 @@
         <p class="hero-sub">
           Calm, minimal architectures and AI-driven spatial explorations by 缪联睿 (Anamy Padilla).
         </p>
+
         <div class="hero-media">
           <video class="full-video" src="video/hero.mp4" autoplay muted loop playsinline></video>
         </div>
       </section>
 
-      <!-- ABOUT ME -->
+      <!-- ABOUT -->
       <section id="about" class="terminal-box">
         <p class="cmd-line">&gt; ABOUT_ME / STUDIO_PROFILE</p>
         <p>
@@ -84,6 +92,7 @@
       <!-- AI SPATIAL FEED -->
       <section id="ai-spatial" class="terminal-box">
         <p class="cmd-line">&gt; ACCESS_AI_SPATIAL_FEED</p>
+
         <div class="spatial-feed">
           <img src="images/ai1.jpeg" class="spatial-img" alt="AI Spatial 1">
           <img src="images/ai2.jpeg" class="spatial-img" alt="AI Spatial 2">
@@ -100,14 +109,21 @@
       <!-- TRADITIONAL PROJECTS -->
       <section id="projects" class="terminal-box">
         <p class="cmd-line">&gt; TRADITIONAL_PROJECTS</p>
+
         <div class="project-grid">
           <div class="project-card">
-            <img src="images/project1.jpg" alt="Project 1">
+            <img src="images/1000007351.png" alt="Project 1">
             <p>&gt; COURTYARD_RESIDENCE_STUDY</p>
           </div>
+
           <div class="project-card">
-            <img src="images/project2.jpg" alt="Project 2">
+            <img src="images/1000007352.png" alt="Project 2">
             <p>&gt; MASSING_EXPLORATION_02</p>
+          </div>
+
+          <div class="project-card">
+            <img src="images/1000007353.png" alt="Project 3">
+            <p>&gt; VOLUME_LIGHT_STUDY</p>
           </div>
         </div>
       </section>
@@ -115,10 +131,9 @@
       <!-- SHOP -->
       <section id="shop" class="terminal-box">
         <p class="cmd-line">&gt; SHOP / DIGITAL_ASSETS</p>
-        <p>
-          Packs and digital assets for architects and designers. Hosted via external platforms.
-        </p>
-        <a href="https://www.buymeacoffee.com/miu33" target="_blank" class="btn-terminal">
+        <p>Packs and digital assets for architects and designers. Hosted via external platforms.</p>
+
+        <a href="https://www.buymeacoffee.com/miu_studio3" target="_blank" class="btn-terminal">
           &gt; ACCESS_SHOP_NODE
         </a>
       </section>
@@ -126,6 +141,7 @@
       <!-- CHANNELS -->
       <section id="social-nodes" class="terminal-box social-center">
         <p class="cmd-line">&gt; ACCESS_SOCIAL_CHANNELS</p>
+
         <div class="social-grid">
           <a href="https://www.linkedin.com/company/miu-digital-architect-studio" class="btn-terminal" target="_blank">LINKEDIN</a>
           <a href="https://www.tiktok.com/@miuproton" class="btn-terminal" target="_blank">TIKTOK</a>
@@ -136,26 +152,33 @@
       <!-- AUDIO LOG -->
       <section class="terminal-box">
         <p class="cmd-line">&gt; AUDIO_LOG_01</p>
-        <button id="play-log" class="btn-terminal">PLAY_LOG_01</button>
-        <audio id="miu-audio" src="audio/log01.mp3"></audio>
-        <button id="toggle-transcript" class="btn-terminal">VIEW_TRANSCRIPT</button>
-        <div id="audio-transcript" style="display:none; margin-top:10px;">
-          <p>
-            &gt; Transcript of the studio log goes here. Reflections on process, spatial thinking, and future nodes.
-          </p>
+
+        <div class="audio-console">
+          <button id="play-log" class="btn-terminal">PLAY_LOG_01</button>
+          <audio id="miu-audio" src="audio/ai_spatial.mp3"></audio>
+
+          <button id="toggle-transcript" class="btn-terminal">VIEW_TRANSCRIPT</button>
+
+          <div id="audio-transcript" style="display:none; margin-top:10px;">
+            <p>&gt; Transcript of the studio log goes here. Reflections on process, spatial thinking, and future nodes.</p>
+          </div>
         </div>
       </section>
 
       <!-- CONTACT -->
       <section id="contact" class="terminal-box">
         <p class="cmd-line">&gt; CONTACT_NODE</p>
-        <form class="contact-form">
+
+        <form class="contact-form" action="https://formspree.io/f/mvzwzppo" method="POST">
           <label>&gt; NAME</label>
           <input type="text" name="name" required>
+
           <label>&gt; EMAIL</label>
           <input type="email" name="email" required>
+
           <label>&gt; MESSAGE</label>
           <textarea name="message" rows="4" required></textarea>
+
           <button type="submit" class="btn-terminal">SEND_SIGNAL</button>
         </form>
       </section>
@@ -163,17 +186,18 @@
       <!-- ENCRYPTED VAULT -->
       <section id="vault" class="terminal-box">
         <p class="cmd-line">&gt; ENCRYPTED_VAULT / LEVEL_01</p>
+
         <div id="v-0" class="vault-shell">
           <p id="dossier-text">&gt; ENTER_PASSKEY_TO_ACCESS_INTERNAL_DOSSIERS</p>
+
           <input type="password" id="accessKey" placeholder="ENTER_PASSKEY">
           <button class="btn-terminal" onclick="unlockVault()">&gt; UNLOCK_VAULT</button>
         </div>
 
         <div id="secretContent" style="display:none; margin-top:15px;">
-          <p>&gt; VAULT_CONTENT: Internal notes, studio profile, and legal protocols.</p>
+          <!-- CV will be injected here by vault.js -->
         </div>
 
-        <!-- LEGAL + ABOUT DOSSIER -->
         <div id="legal-dossier" class="terminal-box" style="display:none; margin-top:20px;">
           <pre id="legal-text" class="terminal-log"></pre>
         </div>
@@ -182,14 +206,16 @@
       <!-- FOOTER -->
       <footer class="terminal-footer">
         © 2026 缪联睿 (Anamy Padilla) | MIU_33<br>
-        <a href="#legal-dossier" class="footer-link">&gt; TERMS_OF_SERVICE</a>
+        <a href="terms.html" class="footer-link">&gt; TERMS_OF_SERVICE</a>
         <span style="margin: 0 6px;">|</span>
-        <a href="#legal-dossier" class="footer-link">PRIVACY_POLICY</a>
+        <a href="privacy.html" class="footer-link">PRIVACY_POLICY</a>
       </footer>
+
     </main>
   </div>
 
   <script src="effects.js"></script>
   <script src="vault.js"></script>
+
 </body>
 </html>
