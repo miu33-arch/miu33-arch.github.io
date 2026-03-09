@@ -32,11 +32,12 @@ body {
 #boot-overlay {
   position: fixed;
   inset: 0;
-  background: #000;
+  background: rgba(0,0,0,0.55); /*  matrix visible behind */
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 9999;
+  backdrop-filter: blur(1px); /* optional: adds cinematic depth */
 }
 
 .boot-content {
@@ -102,12 +103,14 @@ body {
   pointer-events: none;
   position: fixed;
   inset: 0;
-  opacity: 0.06;
+  opacity: 0.35; /* strong neon visibility */
   background-image: url('images/matrix.png');
   background-size: cover;
+  background-position: center;
   z-index: 998;
+  filter: brightness(2.2) contrast(1.6) saturate(2.4);
+  transition: opacity 1.2s ease; /* smooth fade-out */
 }
-
 /* ===========================
    SIDEBAR
 =========================== */
