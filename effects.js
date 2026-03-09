@@ -56,3 +56,10 @@ function vaultAccessDenied() {
 // Expose helpers globally so vault.js can call them
 window.vaultAccessGranted = vaultAccessGranted;
 window.vaultAccessDenied = vaultAccessDenied;
+// MATRIX FADE-OUT AFTER BOOT
+setTimeout(() => {
+  const matrix = document.getElementById('matrix');
+  if (matrix) {
+    matrix.style.opacity = '0'; // fade out
+  }
+}, 3000); // 3 seconds
