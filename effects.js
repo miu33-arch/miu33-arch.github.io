@@ -1,47 +1,135 @@
-// AI SPATIAL FULLSCREEN VIEWER
-const spatialImages = document.querySelectorAll('.spatial-img');
-const fullscreenView = document.getElementById('fullscreen-view');
-const fullscreenImg = document.getElementById('fullscreen-img');
+// MATRIX INTRO + BOOT
 
-if (spatialImages && fullscreenView && fullscreenImg) {
-  spatialImages.forEach(img => {
-    img.addEventListener('click', () => {
-      fullscreenImg.src = img.src;
-      fullscreenView.classList.add('active');
-    });
-  });
+document.addEventListener("DOMContentLoaded", () => {
+  initMatrixIntro();
+  initFullscreenViewer();
+  initAudioConsole();
+});
 
-  fullscreenView.addEventListener('click', () => {
-    fullscreenView.classList.remove('active');
-  });
-}
+function initMatrixIntro() {
+  const canvas = document.getElementById("matrix-canvas");
+  const ctx = canvas.getContext("2d");
 
-// VAULT UI ENHANCEMENTS
-function vaultAccessGranted() {
-  const vaultSection = document.getElementById('v-0');
-  if (!vaultSection) return;
-  vaultSection.classList.remove('shake');
-  vaultSection.style.boxShadow = '0 0 26px rgba(51,255,153,0.9)';
-}
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener("resize", resize);
 
-function vaultAccessDenied() {
-  const vaultSection = document.getElementById('v-0');
-  if (!vaultSection) return;
-  vaultSection.classList.add('shake');
-  setTimeout(() => vaultSection.classList.remove('shake'), 350);
-}
+  const letters = "01MIU33";
+  const fontSize = 16;
+  let columns = canvas.width / fontSize;
+  let drops = [];
 
-window.vaultAccessGranted = vaultAccessGranted;
-window.vaultAccessDenied = vaultAccessDenied;
+  for (let x = 0; x < columns; x++) {
+    drops[x] = 1;
+  }
 
-// SIMPLE AUTO-SCROLL FOR AI SPATIAL (fallback)
-const feed = document.querySelector(".spatial-feed");
+  function draw() {
+    ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-if (feed) {
-  setInterval(() => {
-    feed.scrollLeft += 2;
-    if (feed.scrollLeft >= feed.scrollWidth - feed.clientWidth) {
-      feed.scrollLeft = 0;
+    ctx.fillStyle = "#3cff9b";
+    ctx.font = fontSize + "px monospace";
+
+    for (let i = 0; i < drops.length; i++) {
+      const text = letters.charAt(Math.floor(Math.random() * letters.length));
+      ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+      if (drops[i] * fontSize > canvas.height && Math.random() > 0.95) {
+        drops[i] = 0;
+      }
+      drops[i]++;
     }
-  }, 20);
+  }
+
+  const interval = setInterval(draw, 50);
+
+  // Boot overlay timing
+  setTimeout(() => {
+    const boot = document.getElementById("boot-overlay");
+    if (boot) boot.style.opacity = "0";
+  }, 1800);
+
+  setTimeout(() => {
+    const boot = document.getElementById("boot-overlay");
+    if (boot) boot.style.display = "none";
+  }, 2300);
+
+  // Remove matrix intro after a bit
+  setTimeout(() => {
+    const intro = document.getElementById("matrix-intro");
+    if (intro) intro.style.opacity = "0";
+  }, 2600);
+
+  setTimeout(() => {
+    const intro = document.getElementById("matrix-intro");
+    if (intro) intro.style.display = "none";
+    clearInterval(interval);
+  }, 3200);
+}
+
+// FULLSCREEN VIEWER
+
+function initFullscreenViewer() {
+  const fullscreenView = document.getElementById("fullscreen-view");
+  const fullscreenImg = document.getElementById("fullscreen-img");
+
+  if (!fullscreenView || !fullscreenImg) return;
+
+  function attachClickToImages(selector) {
+    const imgs = document.querySelectorAll(selector);
+    imgs.forEach(img => {
+      img.addEventListener("click", () => {
+        fullscreenImg.src = img.src;
+        fullscreenView.style.display = "flex";
+      });
+    });
+  }
+
+  attachClickToImages(".spatial-img");
+  attachClickToImages(".project-card img");
+
+  fullscreenView.addEventListener("click", () => {
+    fullscreenView.style.display = "none";
+    fullscreenImg.src = "";
+  });
+}
+
+// AUDIO CONSOLE
+
+function initAudioConsole() {
+  const playBtn = document.getElementById("play-log");
+  const audio = document.getElementById("miu-audio");
+  const toggleTranscript = document.getElementById("toggle-transcript");
+  const transcript = document.getElementById("audio-transcript");
+
+  if (playBtn && audio) {
+    playBtn.addEventListener("click", () => {
+      if (audio.paused) {
+        audio.play();
+        playBtn.textContent = "PAUSE_LOG_01";
+      } else {
+        audio.pause();
+        playBtn.textContent = "PLAY_LOG_01";
+      }
+    });
+
+    audio.addEventListener("ended", () => {
+      playBtn.textContent = "PLAY_LOG_01";
+    });
+  }
+
+  if (toggleTranscript && transcript) {
+    toggleTranscript.addEventListener("click", () => {
+      if (transcript.style.display === "none") {
+        transcript.style.display = "block";
+        toggleTranscript.textContent = "HIDE_TRANSCRIPT";
+      } else {
+        transcript.style.display = "none";
+        toggleTranscript.textContent = "VIEW_TRANSCRIPT";
+      }
+    });
+  }
 }
