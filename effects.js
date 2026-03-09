@@ -1,25 +1,3 @@
-// BOOT OVERLAY AUTO-HIDE + TYPING EFFECT
-window.addEventListener('load', () => {
-  const boot = document.getElementById('boot-overlay');
-  const bootText = document.getElementById('boot-text');
-  const msg = '> LOADING_RIYADH_NODE...';
-  let i = 0;
-
-  const typer = setInterval(() => {
-    if (!bootText) return;
-    bootText.textContent = msg.slice(0, i) + (i % 2 === 0 ? '▌' : '');
-    i++;
-    if (i > msg.length) {
-      clearInterval(typer);
-      bootText.textContent = msg + ' ▌';
-    }
-  }, 80);
-
-  setTimeout(() => {
-    if (boot) boot.style.display = 'none';
-  }, 3200);
-});
-
 // AI SPATIAL FULLSCREEN VIEWER
 const spatialImages = document.querySelectorAll('.spatial-img');
 const fullscreenView = document.getElementById('fullscreen-view');
@@ -38,7 +16,7 @@ if (spatialImages && fullscreenView && fullscreenImg) {
   });
 }
 
-// VAULT UI ENHANCEMENTS (requires unlockVault to call these helpers)
+// VAULT UI ENHANCEMENTS
 function vaultAccessGranted() {
   const vaultSection = document.getElementById('v-0');
   if (!vaultSection) return;
@@ -53,13 +31,17 @@ function vaultAccessDenied() {
   setTimeout(() => vaultSection.classList.remove('shake'), 350);
 }
 
-// Expose helpers globally so vault.js can call them
 window.vaultAccessGranted = vaultAccessGranted;
 window.vaultAccessDenied = vaultAccessDenied;
-// MATRIX FADE-OUT AFTER BOOT
-setTimeout(() => {
-  const matrix = document.getElementById('matrix');
-  if (matrix) {
-    matrix.style.opacity = '0'; // fade out
-  }
-}, 3000); // 3 seconds
+
+// SIMPLE AUTO-SCROLL FOR AI SPATIAL (fallback)
+const feed = document.querySelector(".spatial-feed");
+
+if (feed) {
+  setInterval(() => {
+    feed.scrollLeft += 2;
+    if (feed.scrollLeft >= feed.scrollWidth - feed.clientWidth) {
+      feed.scrollLeft = 0;
+    }
+  }, 20);
+}
