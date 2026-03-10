@@ -1,5 +1,26 @@
 // MATRIX INTRO + BOOT
+window.addEventListener("load", () => {
+  const bootOverlay = document.getElementById("boot-overlay");
+  const bootText = document.getElementById("boot-text");
 
+  // Reset visibility
+  bootOverlay.style.opacity = "1";
+  bootOverlay.style.display = "flex";
+
+  // Boot typing effect
+  setTimeout(() => {
+    bootText.textContent = "> INITIALIZING_MIU_33...";
+  }, 300);
+
+  // Fade out boot overlay
+  setTimeout(() => {
+    bootOverlay.style.opacity = "0";
+  }, 2000);
+
+  setTimeout(() => {
+    bootOverlay.style.display = "none";
+  }, 2600);
+});
 document.addEventListener("DOMContentLoaded", () => {
   initMatrixIntro();
   initFullscreenViewer();
