@@ -1,35 +1,22 @@
-// MATRIX INTRO + BOOT
-window.addEventListener("load", () => {
-  const bootOverlay = document.getElementById("boot-overlay");
-  const bootText = document.getElementById("boot-text");
+// MIU_33 EFFECTS ENGINE v2.0 - MATRIX + BOOT + INTERACTIVITY
 
-  // Reset visibility
-  bootOverlay.style.opacity = "1";
-  bootOverlay.style.display = "flex";
-
-  // Boot typing effect
-  setTimeout(() => {
-    bootText.textContent = "> INITIALIZING_MIU_33...";
-  }, 300);
-
-  // Fade out boot overlay
-  setTimeout(() => {
-    bootOverlay.style.opacity = "0";
-  }, 2000);
-
-  setTimeout(() => {
-    bootOverlay.style.display = "none";
-  }, 2600);
-});
 document.addEventListener("DOMContentLoaded", () => {
   initMatrixIntro();
   initFullscreenViewer();
   initAudioConsole();
+  // Signal human presence for Undet SEO
+  console.log("miu_Node: Core logic initialized.");
 });
 
+// 1. MATRIX INTRO + BOOT SEQUENCE
 function initMatrixIntro() {
   const canvas = document.getElementById("matrix-canvas");
   const ctx = canvas.getContext("2d");
+  const bootOverlay = document.getElementById("boot-overlay");
+  const bootText = document.getElementById("boot-text");
+  const introLayer = document.getElementById("matrix-intro");
+
+  if (!canvas || !bootOverlay) return;
 
   function resize() {
     canvas.width = window.innerWidth;
@@ -38,14 +25,11 @@ function initMatrixIntro() {
   resize();
   window.addEventListener("resize", resize);
 
-  const letters = "01MIU33";
+  // Matrix Configuration
+  const letters = "01MIU33_ARCH"; // Added ARCH for variety
   const fontSize = 16;
-  let columns = canvas.width / fontSize;
-  let drops = [];
-
-  for (let x = 0; x < columns; x++) {
-    drops[x] = 1;
-  }
+  let columns = Math.floor(canvas.width / fontSize);
+  let drops = Array(columns).fill(1);
 
   function draw() {
     ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
@@ -58,7 +42,7 @@ function initMatrixIntro() {
       const text = letters.charAt(Math.floor(Math.random() * letters.length));
       ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
-      if (drops[i] * fontSize > canvas.height && Math.random() > 0.95) {
+      if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
         drops[i] = 0;
       }
       drops[i]++;
@@ -67,59 +51,52 @@ function initMatrixIntro() {
 
   const interval = setInterval(draw, 50);
 
-  // Boot overlay timing
+  // Unified Boot Timing Logic
   setTimeout(() => {
-    const boot = document.getElementById("boot-overlay");
-    if (boot) boot.style.opacity = "0";
-  }, 1800);
+    bootText.textContent = "> INITIALIZING_MIU_33_CONSOLE...";
+    bootText.style.color = "#ffffff";
+  }, 500);
 
   setTimeout(() => {
-    const boot = document.getElementById("boot-overlay");
-    if (boot) boot.style.display = "none";
-  }, 2300);
-
-  // Remove matrix intro after a bit
-  setTimeout(() => {
-    const intro = document.getElementById("matrix-intro");
-    if (intro) intro.style.opacity = "0";
-  }, 2600);
+    bootOverlay.style.opacity = "0";
+    introLayer.style.opacity = "0";
+  }, 2200);
 
   setTimeout(() => {
-    const intro = document.getElementById("matrix-intro");
-    if (intro) intro.style.display = "none";
+    bootOverlay.style.display = "none";
+    introLayer.style.display = "none";
     clearInterval(interval);
-  }, 3200);
+  }, 2800);
 }
 
-// FULLSCREEN VIEWER
-
+// 2. FULLSCREEN VIEWER (PROCESSED)
 function initFullscreenViewer() {
   const fullscreenView = document.getElementById("fullscreen-view");
   const fullscreenImg = document.getElementById("fullscreen-img");
 
   if (!fullscreenView || !fullscreenImg) return;
 
-  function attachClickToImages(selector) {
-    const imgs = document.querySelectorAll(selector);
-    imgs.forEach(img => {
-      img.addEventListener("click", () => {
-        fullscreenImg.src = img.src;
+  // Optimized click handling
+  document.addEventListener("click", (e) => {
+    if (e.target.classList.contains("spatial-img") || (e.target.parentElement && e.target.parentElement.classList.contains("project-card"))) {
+      const clickedImg = e.target.tagName === 'IMG' ? e.target : e.target.querySelector('img');
+      if (clickedImg) {
+        fullscreenImg.src = clickedImg.src;
         fullscreenView.style.display = "flex";
-      });
-    });
-  }
-
-  attachClickToImages(".spatial-img");
-  attachClickToImages(".project-card img");
+        // Prevent body scroll while viewing image
+        document.body.style.overflow = "hidden";
+      }
+    }
+  });
 
   fullscreenView.addEventListener("click", () => {
     fullscreenView.style.display = "none";
     fullscreenImg.src = "";
+    document.body.style.overflow = "auto";
   });
 }
 
-// AUDIO CONSOLE
-
+// 3. AUDIO CONSOLE
 function initAudioConsole() {
   const playBtn = document.getElementById("play-log");
   const audio = document.getElementById("miu-audio");
@@ -129,28 +106,27 @@ function initAudioConsole() {
   if (playBtn && audio) {
     playBtn.addEventListener("click", () => {
       if (audio.paused) {
-        audio.play();
-        playBtn.textContent = "PAUSE_LOG_01";
+        audio.play().catch(e => console.log("Audio play blocked until interaction."));
+        playBtn.textContent = "> PAUSE_LOG_01";
+        playBtn.classList.add("active-pulse");
       } else {
         audio.pause();
-        playBtn.textContent = "PLAY_LOG_01";
+        playBtn.textContent = "> PLAY_LOG_01";
+        playBtn.classList.remove("active-pulse");
       }
     });
 
-    audio.addEventListener("ended", () => {
-      playBtn.textContent = "PLAY_LOG_01";
-    });
+    audio.onended = () => {
+      playBtn.textContent = "> PLAY_LOG_01";
+    };
   }
 
   if (toggleTranscript && transcript) {
     toggleTranscript.addEventListener("click", () => {
-      if (transcript.style.display === "none") {
-        transcript.style.display = "block";
-        toggleTranscript.textContent = "HIDE_TRANSCRIPT";
-      } else {
-        transcript.style.display = "none";
-        toggleTranscript.textContent = "VIEW_TRANSCRIPT";
-      }
+      const isHidden = transcript.style.display === "none";
+      transcript.style.display = isHidden ? "block" : "none";
+      toggleTranscript.textContent = isHidden ? "> HIDE_TRANSCRIPT" : "> VIEW_TRANSCRIPT";
     });
   }
 }
+
