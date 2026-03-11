@@ -97,28 +97,25 @@ function initUndetEntropy() {
     document.documentElement.setAttribute('data-human-verified', 'true');
   }, Math.random() * 800 + 200);
 }
-// MIU_33 PUZZLE_ENGINE v2.0
+// MIU_33 PUZZLE_ENGINE v2.1
 function solveMiuPuzzle() {
   const challenge = prompt("SYSTEM_CHALLENGE: Identify the primary architectural element used for passive cooling in traditional Najdi design. \n\n[HINT: Starts with 'C']");
 
   if (challenge && challenge.toLowerCase().includes("courtyard")) {
-    // SUCCESS LOGIC: High-End System Feedback
-    alert(
-      "SUCCESS: LOGIC_VERIFIED. \n" +
-      "---------------------------\n" +
-      "DECRYPTION_KEY: [ MIU_33_RIYADH_NODE ] \n\n" +
-      "SIGNAL: The prompt archives are now accessible. \n" +
-      "ACTION: Navigate to the SYSTEM_VAULT and input the key to download NODE_01: RIYADH_PROMPT_PACK.\n\n" +
-      "Welcome, Architect."
-    );
-    console.log("miu_Node: External breach successful. Key issued.");
+    // 1. Alert the success
+    alert("SUCCESS: LOGIC_VERIFIED. \n\nDECRYPTION_KEY issued. Initializing Spatial Feeds and Unlocking Vault...");
+    
+    // 2. Automatically trigger the Vault's internal functions
+    // This makes the site "react" to the player's win
+    if (typeof processVaultCommand === "function") {
+        processVaultCommand("access_ai_spatial_feeds"); 
+        
+        // Optional: Scroll them down to the vault so they see it opened!
+        document.getElementById("vault").scrollIntoView({ behavior: 'smooth' });
+    }
+    
+    console.log("miu_Node: External breach successful. System permissions elevated.");
   } else {
-    // FAILURE LOGIC
-    alert(
-      "ERROR: LOGIC_MISMATCH. \n" +
-      "---------------------------\n" +
-      "HINT: Think of 'Inward-facing voids' that facilitate natural air filtration.\n" +
-      "Try again when the system stabilizes."
-    );
+    alert("ERROR: LOGIC_MISMATCH. \n\nHint: Think of 'Inward-facing voids'. Access Denied.");
   }
 }
