@@ -81,22 +81,30 @@ function initFullscreenViewer() {
   view.onclick = () => { view.style.display = "none"; document.body.style.overflow = "auto"; };
 }
 
-function initAudioConsole() {
+function initAudioLog() {
   const playBtn = document.getElementById("play-log");
   const audio = document.getElementById("miu-audio");
+  const status = document.getElementById("audio-status");
+
   if (!playBtn || !audio) return;
+
   playBtn.onclick = () => {
-    if (audio.paused) { audio.play(); playBtn.textContent = "PAUSE_LOG_01"; }
-    else { audio.pause(); playBtn.textContent = "PLAY_LOG_01"; }
+    if (audio.paused) {
+      audio.play();
+      playBtn.textContent = "[ UPLINK_ACTIVE ]";
+      playBtn.classList.add("pulse-animation");
+      if(status) status.textContent = "STATUS: DECRYPTING_VOICE_STREAM...";
+    } else {
+      audio.pause();
+      playBtn.textContent = "[ ESTABLISH_UPLINK ]";
+      playBtn.classList.remove("pulse-animation");
+      if(status) status.textContent = "STATUS: NODE_STANDBY";
+    }
   };
 }
+// Initialize the node
+document.addEventListener("DOMContentLoaded", initAudioLog);
 
-function initUndetEntropy() {
-  window.miu_signature = { origin: "Riyadh_Node", auth: "Anamy_Padilla" };
-  setTimeout(() => { 
-    document.documentElement.setAttribute('data-human-verified', 'true');
-  }, Math.random() * 800 + 200);
-}
 // MIU_33 PUZZLE_ENGINE v2.1 (Linked to Vault)
 function solveMiuPuzzle() {
   const challenge = prompt("SYSTEM_CHALLENGE: Identify the primary architectural element used for passive cooling in traditional Najdi design. \n\n[HINT: Starts with 'C']");
