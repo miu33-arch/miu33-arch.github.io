@@ -125,17 +125,19 @@ function solveMiuPuzzle() {
   }
 }
 function unlockVault() {
-  const keyInput = document.getElementById("accessKey");
+  const input = document.getElementById("vault-pass"); 
   const vaultShell = document.getElementById("v-0");
   const secret = document.getElementById("secretContent");
 
-  // Check for your signature Gold HEX
-  if (keyInput.value.toUpperCase() === "#C9A46A" || keyInput.value.toUpperCase() === "C9A46A") {
+  if (!input || !vaultShell || !secret) return;
+
+  // Checking for your signature Gold HEX
+  if (input.value.toUpperCase() === "#C9A46A" || input.value.toUpperCase() === "C9A46A") {
     
-    // Change the terminal text to show success
+    // Change the terminal text to show success in Gold
     vaultShell.innerHTML = "<p class='text-glow' style='color: #C9A46A'>> ACCESS_GRANTED. DECRYPTING_INTERNAL_DATA...</p>";
     
-    // Reveal the hidden secret content
+    // Reveal the hidden secret content after a 1 second delay
     setTimeout(() => {
       secret.style.display = "block";
       secret.innerHTML = `
@@ -146,10 +148,11 @@ function unlockVault() {
       `;
     }, 1000);
   } else {
-    // Error Feedback
-    keyInput.style.borderColor = "red";
-    keyInput.placeholder = "INVALID_KEY_TRY_AGAIN";
-    keyInput.value = "";
+    // Error Feedback: Make the box turn red for a second
+    input.style.borderColor = "#ff4d4d";
+    input.placeholder = "ACCESS_DENIED";
+    input.value = "";
+    setTimeout(() => { input.style.borderColor = "#333"; }, 1000);
   }
-}
+ }
 
