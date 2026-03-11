@@ -124,4 +124,32 @@ function solveMiuPuzzle() {
     alert("ERROR: LOGIC_MISMATCH. \n\nHint: Think of 'Inward-facing voids'. Try again.");
   }
 }
+function unlockVault() {
+  const keyInput = document.getElementById("accessKey");
+  const vaultShell = document.getElementById("v-0");
+  const secret = document.getElementById("secretContent");
+
+  // Check for your signature Gold HEX
+  if (keyInput.value.toUpperCase() === "#C9A46A" || keyInput.value.toUpperCase() === "C9A46A") {
+    
+    // Change the terminal text to show success
+    vaultShell.innerHTML = "<p class='text-glow' style='color: #C9A46A'>> ACCESS_GRANTED. DECRYPTING_INTERNAL_DATA...</p>";
+    
+    // Reveal the hidden secret content
+    setTimeout(() => {
+      secret.style.display = "block";
+      secret.innerHTML = `
+        <div class="decrypted-node" style="border: 1px solid #C9A46A; padding: 15px; background: rgba(201,164,106,0.1);">
+          <p>> [PROMPT_LEAK]: "Hyper-realistic Riyadh courtyard, Najdi geometry, cinematic golden hour, 8k resolution --ar 16:9"</p>
+          <p style="font-size: 0.7rem; color: #888;">*Use this code to see the core of the Digital Architect studio.*</p>
+        </div>
+      `;
+    }, 1000);
+  } else {
+    // Error Feedback
+    keyInput.style.borderColor = "red";
+    keyInput.placeholder = "INVALID_KEY_TRY_AGAIN";
+    keyInput.value = "";
+  }
+}
 
