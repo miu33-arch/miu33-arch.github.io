@@ -250,7 +250,10 @@
     
     <div id="audio-status" class="status-tag">STATUS: NODE_STANDBY</div>
   </div>
-</section>
+<div class="transcript-content">
+  <p>> [DECRYPTING_LOG_01]: "Architectural systems in Riyadh are shifting. My study on Volume Light focuses on how synthetic atmospheres can reduce the perceived heat of a structure. By weighting AI prompts with Najdi environmental data, we aren't just making pictures—we're simulating physics for the next Riyadh."</p>
+</div>
+      </section>
 
 
       <section id="contact" class="terminal-box">
@@ -273,12 +276,18 @@
       <section id="vault" class="terminal-box">
         <h2 class="cmd-line">&gt; ENCRYPTED_VAULT / LEVEL_01</h2>
 
-        <div id="v-0" class="vault-shell">
-          <p id="dossier-text">&gt; ENTER_PASSKEY_TO_ACCESS_INTERNAL_DOSSIERS</p>
+        <div class="vault-shell">
+  <p id="dossier-text">&gt; ENTER_PASSKEY_TO_ACCESS_INTERNAL_DOSSIERS</p>
+  
+  <div class="vault-container">
+    <p class="vault-hint">SYSTEM_KEY_HINT: The tone of the Digital Architect... (#C9A46A)</p>
+    <input type="password" id="vault-pass" placeholder="ENTER_HEX_CODE">
+    <button onclick="checkVault()" class="btn-terminal">[ ATTEMPT_DECRYPTION ]</button>
+  </div>
+  
+  <div id="secretContent" style="display:none;"></div>
+</div>
 
-          <input type="password" id="accessKey" placeholder="ENTER_PASSKEY">
-          <button class="btn-terminal" onclick="unlockVault()">&gt; UNLOCK_VAULT</button>
-        </div>
 
         <div id="secretContent" style="display:none; margin-top:15px;">
           </div>
