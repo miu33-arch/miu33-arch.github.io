@@ -97,13 +97,28 @@ function initUndetEntropy() {
     document.documentElement.setAttribute('data-human-verified', 'true');
   }, Math.random() * 800 + 200);
 }
-// MIU_33 PUZZLE_ENGINE
+// MIU_33 PUZZLE_ENGINE v2.0
 function solveMiuPuzzle() {
-  const answer = prompt("SYSTEM_CHALLENGE: What is the primary architectural element used for passive cooling in traditional Najdi design? (Hint: Starts with 'C')");
+  const challenge = prompt("SYSTEM_CHALLENGE: Identify the primary architectural element used for passive cooling in traditional Najdi design. \n\n[HINT: Starts with 'C']");
 
-  if (answer && answer.toLowerCase().includes("courtyard")) {
-    alert("ACCESS_GRANTED. \n\nDECRYPTION_KEY: [ MIU_33_RIYADH_NODE ] \n\nUse this key in the System Vault to access the prompt archives.");
+  if (challenge && challenge.toLowerCase().includes("courtyard")) {
+    // SUCCESS LOGIC: High-End System Feedback
+    alert(
+      "SUCCESS: LOGIC_VERIFIED. \n" +
+      "---------------------------\n" +
+      "DECRYPTION_KEY: [ MIU_33_RIYADH_NODE ] \n\n" +
+      "SIGNAL: The prompt archives are now accessible. \n" +
+      "ACTION: Navigate to the SYSTEM_VAULT and input the key to download NODE_01: RIYADH_PROMPT_PACK.\n\n" +
+      "Welcome, Architect."
+    );
+    console.log("miu_Node: External breach successful. Key issued.");
   } else {
-    alert("ACCESS_DENIED. Invalid logic parameters. Hint: Think of 'Inward-facing voids'.");
+    // FAILURE LOGIC
+    alert(
+      "ERROR: LOGIC_MISMATCH. \n" +
+      "---------------------------\n" +
+      "HINT: Think of 'Inward-facing voids' that facilitate natural air filtration.\n" +
+      "Try again when the system stabilizes."
+    );
   }
 }
