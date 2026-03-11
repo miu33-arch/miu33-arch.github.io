@@ -229,19 +229,21 @@
       </section>
 
       <section class="terminal-box">
-        <h2 class="cmd-line">&gt; AUDIO_LOG_01</h2>
+  <h2 class="cmd-line">&gt; SYSTEM_LOG_01</h2>
 
-        <div class="audio-console">
-          <button id="play-log" class="btn-terminal">PLAY_LOG_01</button>
-          <audio id="miu-audio" src="audio/ai_spatial.mp3"></audio>
+  <div class="audio-console">
+    <audio id="miu-audio" preload="auto">
+      <source src="miu-log-01.mp3" type="audio/mpeg">
+    </audio>
 
-          <button id="toggle-transcript" class="btn-terminal">VIEW_TRANSCRIPT</button>
+    <button id="play-log" class="btn-terminal">
+      [ INITIALIZE_TRANSMISSION ]
+    </button>
+    
+    <div id="audio-status" class="status-tag">STATUS: IDLE_NODE</div>
+  </div>
+</section>
 
-          <div id="audio-transcript" style="display:none; margin-top:10px;">
-            <p>&gt; Transcript of the studio log goes here. Reflections on process, spatial thinking, and future nodes.</p>
-          </div>
-        </div>
-      </section>
 
       <section id="contact" class="terminal-box">
         <h2 class="cmd-line">&gt; CONTACT_NODE</h2>
