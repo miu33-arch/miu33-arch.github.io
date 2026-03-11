@@ -1,13 +1,12 @@
-// MIU_33 EFFECTS ENGINE v2.0 - REFINED BUILD + UNDET_SEO
+// MIU_33 EFFECTS ENGINE v2.0 - 5_SECOND_MATRIX_SEQUENCE
 
 document.addEventListener("DOMContentLoaded", () => {
   initMatrixIntro();
   initFullscreenViewer();
   initAudioConsole();
-  initUndetEntropy(); // Initializing your SEO Human-Signal
+  initUndetEntropy(); 
 });
 
-// 1. MATRIX INTRO + BOOT SEQUENCE
 function initMatrixIntro() {
   const canvas = document.getElementById("matrix-canvas");
   const ctx = canvas.getContext("2d");
@@ -44,24 +43,33 @@ function initMatrixIntro() {
 
   const interval = setInterval(draw, 50);
 
-  // Synchronized Boot Exit
+  // --- THE CINEMATIC TIMING ---
+
+  // STEP 1: Fade the Boot Text after 2 seconds
   setTimeout(() => {
-    if(bootOverlay) bootOverlay.style.opacity = "0";
-    introLayer.style.opacity = "0";
+    if(bootOverlay) {
+      bootOverlay.style.opacity = "0";
+      setTimeout(() => { bootOverlay.style.display = "none"; }, 800);
+    }
+    console.log("miu_Node: Boot sequence complete. Starting Matrix stream...");
+  }, 2000);
+
+  // STEP 2: Let the Matrix rain for 5 more seconds (Total 7 seconds from start)
+  setTimeout(() => {
+    introLayer.style.opacity = "0"; // Fade out the Matrix
     
     setTimeout(() => {
-      if(bootOverlay) bootOverlay.style.display = "none";
       introLayer.style.display = "none";
-      clearInterval(interval);
-    }, 1000); 
-  }, 2500); 
+      clearInterval(interval); // Stop the animation to save CPU
+      console.log("miu_Node: System Decrypted. Welcome, Architect.");
+    }, 1000); // 1s fade-out duration
+  }, 7000); 
 }
 
-// 2. FULLSCREEN VIEWER
+// FULLSCREEN + AUDIO + SEO (Keep these the same)
 function initFullscreenViewer() {
   const view = document.getElementById("fullscreen-view");
   const img = document.getElementById("fullscreen-img");
-  
   document.addEventListener("click", (e) => {
     if (e.target.classList.contains("spatial-img") || e.target.closest(".project-card img")) {
       const targetImg = e.target.tagName === 'IMG' ? e.target : e.target.querySelector('img');
@@ -70,41 +78,22 @@ function initFullscreenViewer() {
       document.body.style.overflow = "hidden";
     }
   });
-
-  view.onclick = () => {
-    view.style.display = "none";
-    document.body.style.overflow = "auto";
-  };
+  view.onclick = () => { view.style.display = "none"; document.body.style.overflow = "auto"; };
 }
 
-// 3. AUDIO CONSOLE
 function initAudioConsole() {
   const playBtn = document.getElementById("play-log");
   const audio = document.getElementById("miu-audio");
   if (!playBtn || !audio) return;
-
   playBtn.onclick = () => {
-    if (audio.paused) {
-      audio.play();
-      playBtn.textContent = "PAUSE_LOG_01";
-    } else {
-      audio.pause();
-      playBtn.textContent = "PLAY_LOG_01";
-    }
+    if (audio.paused) { audio.play(); playBtn.textContent = "PAUSE_LOG_01"; }
+    else { audio.pause(); playBtn.textContent = "PLAY_LOG_01"; }
   };
 }
 
-// 4. UNDET_SEO: ENTROPY_LAYER (THE HUMAN SIGNATURE)
 function initUndetEntropy() {
-  /* Mimics human browser patterns to satisfy 2026 AI crawlers */
-  window.miu_signature = { 
-    origin: "Riyadh_Node", 
-    auth: "Anamy_Padilla", 
-    timestamp: new Date().toISOString() 
-  };
-  
+  window.miu_signature = { origin: "Riyadh_Node", auth: "Anamy_Padilla" };
   setTimeout(() => { 
     document.documentElement.setAttribute('data-human-verified', 'true');
-    console.log("miu_Node: Human integrity check passed.");
   }, Math.random() * 800 + 200);
 }
