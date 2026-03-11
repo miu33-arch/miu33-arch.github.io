@@ -365,3 +365,39 @@ body {
     transform: scale(1);
   }
 }
+/* --- TRADITIONAL_PROJECT_OVERHAUL --- */
+.project-card {
+  border: 1px solid rgba(60, 255, 155, 0.1);
+  background: #0a0a0a;
+  transition: border 0.3s ease;
+}
+
+.project-card:hover {
+  border-color: #3cff9b;
+  box-shadow: 0 0 15px rgba(60, 255, 155, 0.2);
+}
+
+.project-card img {
+  filter: grayscale(0.4) brightness(0.8);
+  transition: filter 0.5s ease;
+}
+
+.project-card:hover img {
+  filter: grayscale(0) brightness(1);
+}
+
+.meta-tag {
+  display: block;
+  color: #3cff9b;
+  font-family: 'Courier New', monospace;
+  font-size: 0.65rem;
+  margin-bottom: 5px;
+}
+
+.specs span {
+  font-size: 0.6rem;
+  color: #888;
+  border: 1px solid #333;
+  padding: 2px 5px;
+  margin-right: 4px;
+}
