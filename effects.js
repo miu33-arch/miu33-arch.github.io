@@ -97,3 +97,13 @@ function initUndetEntropy() {
     document.documentElement.setAttribute('data-human-verified', 'true');
   }, Math.random() * 800 + 200);
 }
+// MIU_33 PUZZLE_ENGINE
+function solveMiuPuzzle() {
+  const answer = prompt("SYSTEM_CHALLENGE: What is the primary architectural element used for passive cooling in traditional Najdi design? (Hint: Starts with 'C')");
+
+  if (answer && answer.toLowerCase().includes("courtyard")) {
+    alert("ACCESS_GRANTED. \n\nDECRYPTION_KEY: [ MIU_33_RIYADH_NODE ] \n\nUse this key in the System Vault to access the prompt archives.");
+  } else {
+    alert("ACCESS_DENIED. Invalid logic parameters. Hint: Think of 'Inward-facing voids'.");
+  }
+}
