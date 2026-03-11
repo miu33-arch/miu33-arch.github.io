@@ -86,11 +86,12 @@ function initAudioLog() {
   const audio = document.getElementById("miu-audio");
   const status = document.getElementById("audio-status");
 
+  // Check if elements exist before adding click event
   if (!playBtn || !audio) return;
 
   playBtn.onclick = () => {
     if (audio.paused) {
-      audio.play();
+      audio.play().catch(e => console.error("Playback error:", e));
       playBtn.textContent = "[ UPLINK_ACTIVE ]";
       playBtn.classList.add("pulse-animation");
       if(status) status.textContent = "STATUS: DECRYPTING_VOICE_STREAM...";
@@ -102,7 +103,8 @@ function initAudioLog() {
     }
   };
 }
-// Initialize the node
+
+// VERY IMPORTANT: This line makes the function run
 document.addEventListener("DOMContentLoaded", initAudioLog);
 
 // MIU_33 PUZZLE_ENGINE v2.1 (Linked to Vault)
