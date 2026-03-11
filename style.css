@@ -342,3 +342,26 @@ body {
   pointer-events: none;
   z-index: 2;
 }
+/* --- SYSTEM_UPLINK_ANIMATION --- */
+
+.pulse-animation {
+  animation: pulse-green 1.5s infinite;
+  color: #3cff9b !important;
+  border-color: #3cff9b !important;
+  text-shadow: 0 0 8px #3cff9b;
+}
+
+@keyframes pulse-green {
+  0% {
+    box-shadow: 0 0 0 0 rgba(60, 255, 155, 0.4);
+    transform: scale(1);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(60, 255, 155, 0);
+    transform: scale(1.02);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(60, 255, 155, 0);
+    transform: scale(1);
+  }
+}
