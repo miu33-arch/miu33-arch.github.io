@@ -1,33 +1,35 @@
 // VAULT LOGIC: CV + CINEMATIC DOSSIER (MIU_33 v2.0)
 alert("VAULT_JS_IS_ALIVE");
 function checkVault() {
-    alert("SYSTEM_SIGNAL: Button received!"); // <-- If you don't see this, the file isn't linked!
+    // This looks for the input box even if the ID is slightly off
+    const keyInput = document.querySelector('input[type="password"]') || document.getElementById("vault-pass");
+    const secretContent = document.getElementById("secretContent");
+    const shell = document.querySelector(".vault-shell") || document.getElementById("v-0");
 
-    const input = document.getElementById("vault-pass");
-    const secret = document.getElementById("secretContent");
-    const shell = document.querySelector(".vault-shell");
-
-    if (!input || !secret) {
-        alert("CRITICAL_ERROR: HTML elements not found!");
+    if (!keyInput) {
+        alert("ERROR: Cannot find password input field.");
         return;
     }
 
-    const val = input.value.trim().toUpperCase();
+    const pass = keyInput.value.trim().toUpperCase();
 
-    if (val === "#C9A46A" || val === "C9A46A") {
-        alert("ACCESS_GRANTED: Preparing Dossier...");
-        if(shell) shell.style.display = "none";
-        secret.style.display = "block";
-        secret.innerHTML = "<h1>DECRYPTED_SUCCESS: " + val + "</h1>";
+    if (pass === "#C9A46A" || pass === "C9A46A") {
+        alert("SUCCESS: Accessing Dossier...");
         
-        // This triggers your typewriter CV
-        if (typeof startCinematicDossier === "function") {
-            startCinematicDossier(document.getElementById("legal-text"));
+        // Hide the vault and show the secret
+        if (shell) shell.style.display = "none";
+        if (secretContent) {
+            secretContent.style.display = "block";
+            // Start the typewriter
+            if (typeof startCinematicDossier === "function") {
+                startCinematicDossier(document.getElementById("legal-text"));
+            }
         }
     } else {
-        alert("ACCESS_DENIED: Invalid Key.");
+        alert("DENIED: Invalid Hex.");
     }
 }
+
 
 
             // Inject CV Content
