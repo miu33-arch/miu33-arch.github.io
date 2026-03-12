@@ -124,22 +124,30 @@ function solveMiuPuzzle() {
     alert("ERROR: LOGIC_MISMATCH. \n\nHint: Think of 'Inward-facing voids'. Try again.");
   }
 }
-function checkVault() {
-  alert("UPLINK_STABLISHED: Button is working!"); // <--- This is the test
-  
-  const input = document.getElementById("vault-pass");
-  const secret = document.getElementById("secretContent");
-  
-  if (!input || !secret) {
-    alert("ERROR: Missing HTML elements!");
-    return;
-  }
+/* --- MIU_STUDIO_ATMOSPHERE (effects.js) --- */
 
-  const val = input.value.toUpperCase().trim();
-  if (val === "#C9A46A" || val === "C9A46A") {
-    secret.style.display = "block";
-    secret.innerHTML = "<h3>ACCESS_GRANTED: [PROMPT_LEAK_BETA]</h3>";
-  } else {
-    alert("INVALID_PASSKEY");
-  }
-}
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Matilda Voice Uplink
+    const uplinkBtn = document.getElementById('uplink-btn');
+    const matildaVoice = document.getElementById('matilda-voice');
+
+    if (uplinkBtn && matildaVoice) {
+        uplinkBtn.addEventListener('click', () => {
+            matildaVoice.play();
+            uplinkBtn.classList.add('pulse-active');
+            console.log("Uplink Established: Matilda Online.");
+        });
+    }
+
+    // 2. Scroll-Triggered Typewriter Effect
+    const observerOptions = { threshold: 0.1 };
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('typing-active');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.cmd-line').forEach(el => observer.observe(el));
+});
