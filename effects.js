@@ -3,17 +3,17 @@
 document.addEventListener("DOMContentLoaded", () => {
   initMatrixIntro();
   initFullscreenViewer();
-  initAudioConsole();
-  initUndetEntropy(); 
+  initAudioLog(); // Corrected the name from initAudioConsole
+  // initUndetEntropy(); // REMOVED: This was causing the crash!
 });
 
 function initMatrixIntro() {
   const canvas = document.getElementById("matrix-canvas");
-  const ctx = canvas.getContext("2d");
+  const ctx = canvas?.getContext("2d");
   const introLayer = document.getElementById("matrix-intro");
   const bootOverlay = document.getElementById("boot-overlay");
 
-  if (!canvas || !introLayer) return;
+  if (!canvas || !introLayer || !ctx) return;
 
   function resize() {
     canvas.width = window.innerWidth;
@@ -28,9 +28,9 @@ function initMatrixIntro() {
   let drops = Array(columns).fill(1);
 
   function draw() {
-    ctx.fillStyle = "rgba(0, 0, 0, 0.05)"; 
+    ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = "#3cff9b"; 
+    ctx.fillStyle = "#3cff9b";
     ctx.font = fontSize + "px monospace";
 
     for (let i = 0; i < drops.length; i++) {
@@ -43,33 +43,27 @@ function initMatrixIntro() {
 
   const interval = setInterval(draw, 50);
 
-  // --- THE CINEMATIC TIMING ---
-
-  // STEP 1: Fade the Boot Text after 2 seconds
   setTimeout(() => {
     if(bootOverlay) {
       bootOverlay.style.opacity = "0";
       setTimeout(() => { bootOverlay.style.display = "none"; }, 800);
     }
-    console.log("miu_Node: Boot sequence complete. Starting Matrix stream...");
   }, 2000);
 
-  // STEP 2: Let the Matrix rain for 5 more seconds (Total 7 seconds from start)
   setTimeout(() => {
-    introLayer.style.opacity = "0"; // Fade out the Matrix
-    
+    introLayer.style.opacity = "0";
     setTimeout(() => {
       introLayer.style.display = "none";
-      clearInterval(interval); // Stop the animation to save CPU
-      console.log("miu_Node: System Decrypted. Welcome, Architect.");
-    }, 1000); // 1s fade-out duration
-  }, 7000); 
+      clearInterval(interval);
+    }, 1000);
+  }, 7000);
 }
 
-// FULLSCREEN + AUDIO + SEO (Keep these the same)
 function initFullscreenViewer() {
   const view = document.getElementById("fullscreen-view");
   const img = document.getElementById("fullscreen-img");
+  if(!view || !img) return;
+
   document.addEventListener("click", (e) => {
     if (e.target.classList.contains("spatial-img") || e.target.closest(".project-card img")) {
       const targetImg = e.target.tagName === 'IMG' ? e.target : e.target.querySelector('img');
@@ -86,7 +80,6 @@ function initAudioLog() {
   const audio = document.getElementById("miu-audio");
   const status = document.getElementById("audio-status");
 
-  // Check if elements exist before adding click event
   if (!playBtn || !audio) return;
 
   playBtn.onclick = () => {
@@ -104,50 +97,25 @@ function initAudioLog() {
   };
 }
 
-// VERY IMPORTANT: This line makes the function run
-document.addEventListener("DOMContentLoaded", initAudioLog);
-
-// MIU_33 PUZZLE_ENGINE v2.1 (Linked to Vault)
 function solveMiuPuzzle() {
   const challenge = prompt("SYSTEM_CHALLENGE: Identify the primary architectural element used for passive cooling in traditional Najdi design. \n\n[HINT: Starts with 'C']");
-
   if (challenge && challenge.toLowerCase().includes("courtyard")) {
-    alert("SUCCESS: LOGIC_VERIFIED. \n\nDECRYPTION_KEY: [ MIU_33_RIYADH_NODE ] \n\nSIGNAL: Vault access protocols initiated. Navigate to the System Vault below.");
-    
-    // This part makes the site feel "Alive"
+    alert("SUCCESS: LOGIC_VERIFIED. \n\nDECRYPTION_KEY: [ MIU_33_RIYADH_NODE ] \n\nSIGNAL: Vault access protocols initiated.");
     const vaultSection = document.getElementById("vault");
-    if(vaultSection) {
-      vaultSection.scrollIntoView({ behavior: 'smooth' });
-      console.log("miu_Node: Redirecting user to Secure Vault.");
-    }
+    if(vaultSection) vaultSection.scrollIntoView({ behavior: 'smooth' });
   } else {
-    alert("ERROR: LOGIC_MISMATCH. \n\nHint: Think of 'Inward-facing voids'. Try again.");
+    alert("ERROR: LOGIC_MISMATCH.");
   }
 }
-/* --- MIU_STUDIO_ATMOSPHERE (effects.js) --- */
 
-document.addEventListener('DOMContentLoaded', () => {
-    // 1. Matilda Voice Uplink
-    const uplinkBtn = document.getElementById('uplink-btn');
-    const matildaVoice = document.getElementById('matilda-voice');
+// Intersection Observer for Typewriter
+const observerOptions = { threshold: 0.1 };
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('typing-active');
+        }
+    });
+}, observerOptions);
 
-    if (uplinkBtn && matildaVoice) {
-        uplinkBtn.addEventListener('click', () => {
-            matildaVoice.play();
-            uplinkBtn.classList.add('pulse-active');
-            console.log("Uplink Established: Matilda Online.");
-        });
-    }
-
-    // 2. Scroll-Triggered Typewriter Effect
-    const observerOptions = { threshold: 0.1 };
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('typing-active');
-            }
-        });
-    }, observerOptions);
-
-    document.querySelectorAll('.cmd-line').forEach(el => observer.observe(el));
-});
+document.querySelectorAll('.cmd-line').forEach(el => observer.observe(el));
