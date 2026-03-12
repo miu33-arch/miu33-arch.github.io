@@ -1,7 +1,7 @@
 // VAULT LOGIC: CV + CINEMATIC DOSSIER (MIU_33 v2.0)
 
 function checkVault() {
-    // 1. Updated IDs to match your index.html
+    // These names MUST match your index.html exactly
     const keyInput = document.getElementById("vault-pass"); 
     const shell = document.getElementById("v-0");
     const secretContent = document.getElementById("secretContent");
@@ -9,26 +9,48 @@ function checkVault() {
     const legalText = document.getElementById("legal-text");
     const dossierHint = document.getElementById("dossier-text");
 
+    // Safety check: stops the script if an ID is missing
     if (!keyInput || !shell || !secretContent) return;
 
     const pass = keyInput.value.trim().toUpperCase();
 
-    // 2. Passkey Check (Using your Signature Gold)
-    if (pass === "" ) {
-        dossierHint.textContent = "> ERROR: PASSKEY_REQUIRED";
-        dossierHint.style.color = "#ff4d4d";
+    // 1. Passkey Check
+    if (pass === "") {
+        if(dossierHint) dossierHint.textContent = "> ERROR: PASSKEY_REQUIRED";
         return;
     }
 
     if (pass === "#C9A46A" || pass === "C9A46A") {
-        
-        // Visual Decryption Sequence
-        dossierHint.textContent = "> DECRYPTING_DOSSIER_NODES...";
-        dossierHint.style.color = "#3cff9b";
+        // 2. Success Sequence
+        if(dossierHint) {
+            dossierHint.textContent = "> ACCESS_GRANTED. DECRYPTING...";
+            dossierHint.style.color = "#C9A46A";
+        }
 
         setTimeout(() => {
-            // Hide Input Shell
+            // This hides the input box so the CV can take over the space
             shell.style.display = "none";
+            
+            // This makes the secret container visible
+            secretContent.style.display = "block";
+            
+            // This triggers your typewriter effect below
+            if (legalBox) {
+                legalBox.style.display = "block";
+                startCinematicDossier(legalText);
+            }
+        }, 1000);
+
+    } else {
+        if(dossierHint) {
+            dossierHint.textContent = "> ERROR: INVALID_HEX_CODE";
+            dossierHint.style.color = "#ff4d4d";
+        }
+        keyInput.value = "";
+    }
+}
+
+// DO NOT DELETE THE CODES BELOW (Line 99+)
 
             // Inject CV Content
             secretContent.style.display = "block";
