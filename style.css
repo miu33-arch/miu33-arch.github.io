@@ -1,502 +1,70 @@
-/* GLOBAL */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+/* --- VAULT REINFORCEMENT --- */
+#vault {
+  border: 1px solid #C9A46A; /* Gold border for the Vault section */
+  box-shadow: 0 0 25px rgba(201, 164, 106, 0.15);
 }
 
-html, body {
-  height: 100%;
-}
-
-body {
-  background: #020403;
-  color: #c5f7c5;
-  font-family: "Courier New", monospace;
-  overflow-x: hidden;
-  /* Fixed height issues for some mobile browsers */
-  min-height: -webkit-fill-available;
-}
-
-/* CRT + MATRIX LAYERS */
-#scanlines {
-  pointer-events: none;
-  position: fixed;
-  inset: 0;
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.15),
-    rgba(0, 0, 0, 0.15) 1px,
-    transparent 1px,
-    transparent 3px
-  );
-  mix-blend-mode: soft-light;
-  z-index: 5;
-}
-
-#matrix {
-  pointer-events: none;
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(circle at top, rgba(0, 255, 120, 0.15), transparent 60%);
-  opacity: 0.4;
-  z-index: 4;
-}
-
-/* INTRO + BOOT */
-#matrix-intro {
-  position: fixed;
-  inset: 0;
-  background: #000; /* Pure black background for the rain */
-  z-index: 9999; /* Must be higher than everything else */
-  transition: opacity 1s ease;
-  display: block; /* Ensure it's not hidden by default */
-}
-
-#matrix-canvas {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-#boot-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.8); /* Semi-transparent so you see rain behind text */
-  z-index: 10000; /* Sits ON TOP of the matrix */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  pointer-events: none; /* Allows clicks to pass through if needed */
-}
-.boot-inner {
-  border: 1px solid #3cff9b;
-  padding: 20px 30px;
-  background: rgba(0, 0, 0, 0.85);
-  box-shadow: 0 0 20px rgba(60, 255, 155, 0.4);
-}
-
-#boot-text {
-  color: #3cff9b;
-  font-size: 14px;
-}
-
-/* LAYOUT */
-.content-wrapper {
-  display: flex;
-  min-height: 100vh;
-  position: relative;
-  z-index: 10;
-  padding: 20px;
-  gap: 20px;
-}
-
-/* SIDEBAR */
-.sidebar {
-  width: 220px;
-  border: 1px solid #3cff9b;
-  padding: 16px;
-  background: rgba(0, 0, 0, 0.85);
-  box-shadow: 0 0 15px rgba(60, 255, 155, 0.25);
-  height: fit-content;
-  position: sticky;
-  top: 20px;
-}
-
-.logo-block {
-  margin-bottom: 20px;
-}
-
-.cmd-line {
-  color: #3cff9b;
-  font-size: 13px;
-  margin-bottom: 8px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.nav-block a {
-  display: block;
-  color: #c5f7c5;
-  text-decoration: none;
-  font-size: 13px;
-  margin: 8px 0;
-  transition: color 0.2s, transform 0.2s;
-}
-
-.nav-block a:hover {
-  color: #ffffff;
-  transform: translateX(5px);
-}
-
-/* MAIN CONSOLE */
-.main-console {
-  flex: 1;
+.vault-shell {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-}
-
-/* TERMINAL BOX */
-.terminal-box {
-  border: 1px solid #3cff9b;
-  padding: 18px 20px;
-  background: rgba(0, 0, 0, 0.85);
-  box-shadow: 0 0 18px rgba(60, 255, 155, 0.20);
-  font-size: 13px;
-  line-height: 1.6;
-}
-
-.hero-media {
-  position: relative;
-  width: 100%;
-  min-height: 350px;
-  overflow: hidden;
-  opacity: 0;
-  animation: heroFade 1.2s ease-out forwards;
-  border: 1px solid rgba(60, 255, 155, 0.3);
-}
-
-@keyframes heroFade {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.full-video,
-.hero-media img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* SPATIAL FEED */
-.spatial-feed {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 12px;
-  margin-top: 15px;
-}
-
-.spatial-img {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  display: block;
-  cursor: pointer;
-  border: 1px solid #3cff9b;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.spatial-img:hover {
-  transform: scale(1.03);
-  box-shadow: 0 0 15px rgba(60, 255, 155, 0.5);
-}
-
-/* BUTTONS */
-.btn-terminal {
-  display: inline-block;
-  border: 1px solid #3cff9b;
-  padding: 8px 14px;
-  color: #c5f7c5;
-  background: transparent;
-  font-family: "Courier New", monospace;
-  font-size: 12px;
-  text-decoration: none;
-  cursor: pointer;
-  margin-top: 10px;
-  transition: all 0.3s ease;
-}
-
-.btn-terminal:hover {
-  background: #3cff9b;
-  color: #000;
-  box-shadow: 0 0 15px rgba(60, 255, 155, 0.6);
-}
-
-/* NEW UPGRADE: GOLD TERMINAL BUTTON (FOR SHOP/CONTACT) */
-.btn-terminal-gold {
-  border: 1px solid #ffd700;
-  color: #ffd700;
-  display: inline-block;
-  padding: 8px 14px;
-  background: transparent;
-  font-family: "Courier New", monospace;
-  font-size: 12px;
-  text-decoration: none;
-  cursor: pointer;
-  margin-top: 10px;
-  transition: all 0.3s ease;
-}
-
-.btn-terminal-gold:hover {
-  background: #ffd700;
-  color: #000;
-  box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
-}
-
-/* SHOP PREVIEW VIDEO */
-.shop-video {
-  width: 100%;
-  border: 1px solid #3cff9b;
-  margin: 10px 0;
-}
-
-/* CONTACT FORM */
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: 15px;
-}
-
-.contact-form input,
-.contact-form textarea {
-  background: rgba(0, 0, 0, 0.5);
-  border: 1px solid #3cff9b;
-  color: #c5f7c5;
-  padding: 10px;
-  font-family: "Courier New", monospace;
-}
-
-/* FOOTER */
-.terminal-footer {
-  margin-top: 40px;
-  padding: 20px 0;
-  font-size: 11px;
-  border-top: 1px solid rgba(60, 255, 155, 0.2);
-  color: #7ddf9a;
-}
-
-/* RESPONSIVE POLISH */
-@media (max-width: 900px) {
-  .content-wrapper {
-    flex-direction: column;
-    padding: 10px;
-  }
-
-  .sidebar {
-    width: 100%;
-    position: static;
-    margin-bottom: 10px;
-  }
-
-  .nav-block {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5px;
-  }
-
-  .terminal-box {
-    padding: 15px;
-  }
-}
-.project-title {
-  margin-top: 12px;
-  font-weight: bold;
-  color: #3cff9b;
-  font-size: 13px;
-  letter-spacing: 1px;
-}
-
-.project-desc {
-  font-size: 10px;
-  color: #7ddf9a;
-  line-height: 1.6;
-  margin-top: 6px;
-  border-left: 1px solid rgba(60, 255, 155, 0.3);
-  padding-left: 10px;
-  text-transform: uppercase;
-}
-/* --- REFINED SHOP_NODE STYLES --- */
-.video-feed-container {
-  position: relative;
-  width: 100%;
-  max-width: 400px; 
-  margin: 15px auto;
-  border: 1px solid #3cff9b; /* The System Border */
-  overflow: hidden;
-  background: #000;
-  box-shadow: 0 0 15px rgba(60, 255, 155, 0.2);
-}
-
-.shop-video {
-  width: 100%;
-  display: block;
-  opacity: 0.9;
-  filter: grayscale(0.1) contrast(1.2) brightness(0.8);
-}
-
-/* This is the part that adds the "Depth" Qwen talked about */
-.scanline-overlay {
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: linear-gradient(
-    rgba(18, 16, 16, 0) 50%, 
-    rgba(0, 0, 0, 0.15) 50%
-  );
-  background-size: 100% 4px;
-  pointer-events: none;
-  z-index: 2;
-}
-/* --- SYSTEM_UPLINK_ANIMATION --- */
-
-.pulse-animation {
-  animation: pulse-green 1.5s infinite;
-  color: #3cff9b !important;
-  border-color: #3cff9b !important;
-  text-shadow: 0 0 8px #3cff9b;
-}
-
-@keyframes pulse-green {
-  0% {
-    box-shadow: 0 0 0 0 rgba(60, 255, 155, 0.4);
-    transform: scale(1);
-  }
-  70% {
-    box-shadow: 0 0 0 10px rgba(60, 255, 155, 0);
-    transform: scale(1.02);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(60, 255, 155, 0);
-    transform: scale(1);
-  }
-}
-/* --- TRADITIONAL_PROJECT_OVERHAUL --- */
-.project-card {
-  border: 1px solid rgba(60, 255, 155, 0.1);
-  background: #0a0a0a;
-  transition: border 0.3s ease;
-}
-
-.project-card:hover {
-  border-color: #3cff9b;
-  box-shadow: 0 0 15px rgba(60, 255, 155, 0.2);
-}
-
-.project-card img {
-  filter: grayscale(0.4) brightness(0.8);
-  transition: filter 0.5s ease;
-}
-
-.project-card:hover img {
-  filter: grayscale(0) brightness(1);
-}
-
-.meta-tag {
-  display: block;
-  color: #3cff9b;
-  font-family: 'Courier New', monospace;
-  font-size: 0.65rem;
-  margin-bottom: 5px;
-}
-
-.specs span {
-  font-size: 0.6rem;
-  color: #888;
-  border: 1px solid #333;
-  padding: 2px 5px;
-  margin-right: 4px;
-}
-/* --- MIU_STUDIO_TERMINAL_REFINEMENT --- */
-
-/* 1. The Transcript (Matilda's Voice Log) */
-.transcript-content {
-    margin-top: 20px;
-    padding: 15px;
-    background: rgba(0, 255, 100, 0.02);
-    border-left: 2px solid #3cff9b;
-    font-family: 'Courier New', monospace;
-    opacity: 0.8; /* Slightly dimmed to look like a background log */
-    transition: all 0.5s ease;
-}
-
-.decrypt-text {
-    font-size: 0.85rem;
-    line-height: 1.6;
-    color: #a0a0a0;
-    margin: 0;
-}
-
-/* 2. The Vault & Hint System */
-.vault-container {
-    margin-top: 30px;
-    padding: 20px;
-    border: 1px solid rgba(201, 164, 106, 0.1); /* Subtle Gold border */
-    background: #050505;
-}
-
-.vault-hint {
-    font-family: 'Courier New', monospace;
-    font-size: 0.7rem;
-    color: #C9A46A; /* Signature Gold */
-    opacity: 0.6;
-    margin-bottom: 12px;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
+  gap: 15px;
 }
 
 #vault-pass {
-    background: transparent;
-    border: 1px solid #333;
-    color: #3cff9b; /* System Green typing */
-    padding: 10px;
-    margin-bottom: 15px;
-    width: 100%;
-    font-family: 'Courier New', monospace;
-    transition: border-color 0.3s ease;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid #C9A46A; /* Match the gold theme */
+  color: #C9A46A;
+  font-size: 1.1rem;
+  text-align: center;
+  letter-spacing: 3px;
+  padding: 15px;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
 }
 
-#vault-pass:focus {
-    outline: none;
-    border-color: #3cff9b;
-    box-shadow: 0 0 10px rgba(60, 255, 155, 0.1);
+#vault-pass::placeholder {
+  color: rgba(201, 164, 106, 0.3);
+  font-size: 0.8rem;
+  letter-spacing: 1px;
 }
 
-/* 3. The Refined Project Cards (Archive Nodes) */
-.project-card {
-    position: relative;
-    background: #000;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    overflow: hidden;
+/* --- THE SECRET CONTENT REVEAL --- */
+#secret-content {
+  border-top: 1px dashed #3cff9b;
+  padding-top: 20px;
+  animation: scanReveal 1.5s ease-out;
 }
 
-.project-card:hover {
-    border-color: #C9A46A; /* Lights up in Gold on hover */
-    transform: translateY(-5px);
+@keyframes scanReveal {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
-.project-card img {
-    filter: grayscale(0.6) contrast(1.1);
-    transition: all 0.6s ease;
+/* --- MOBILE OPTIMIZATION --- */
+@media (max-width: 600px) {
+  .hero-media {
+    min-height: 250px; /* Shorter for mobile screens */
+  }
+  
+  .cmd-line {
+    font-size: 11px; /* Prevents text wrapping on small screens */
+  }
+  
+  .nav-block a {
+    font-size: 11px;
+    padding: 10px 0; /* Easier to tap with fingers */
+  }
 }
 
-.project-card:hover img {
-    filter: grayscale(0) contrast(1.2);
+/* --- SYSTEM ALIVE: BUTTON PULSE --- */
+/* Add this class to your Shop button in the HTML to make it stand out */
+.pulse-gold {
+  animation: gold-glow 2s infinite;
 }
 
-.meta-tag {
-    color: #C9A46A;
-    font-size: 0.65rem;
-    font-weight: bold;
-    letter-spacing: 2px;
+@keyframes gold-glow {
+  0% { box-shadow: 0 0 0 0 rgba(201, 164, 106, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(201, 164, 106, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(201, 164, 106, 0); }
 }
-
-/* 4. Typewriter Animation for Headers */
-.cmd-line {
-    overflow: hidden;
-    white-space: nowrap;
-    border-right: 2px solid #3cff9b;
-    width: 0;
-}
-
-.typing-active {
-    animation: typing 2.5s steps(40, end) forwards, blink 0.7s infinite;
-}
-
-@keyframes typing { from { width: 0 } to { width: 100% } }
-@keyframes blink { from, to { border-color: transparent } 50% { border-color: #3cff9b } }
