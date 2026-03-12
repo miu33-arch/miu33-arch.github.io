@@ -1,5 +1,5 @@
 // VAULT LOGIC: CV + CINEMATIC DOSSIER (MIU_33 v2.0)
-
+alert("VAULT_JS_IS_ALIVE");
 function checkVault() {
     alert("SYSTEM_SIGNAL: Button received!"); // <-- If you don't see this, the file isn't linked!
 
