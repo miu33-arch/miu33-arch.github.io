@@ -124,31 +124,34 @@ function solveMiuPuzzle() {
     alert("ERROR: LOGIC_MISMATCH. \n\nHint: Think of 'Inward-facing voids'. Try again.");
   }
 }
-function unlockVault() {
+function checkVault() {
   const input = document.getElementById("vault-pass");
   const vaultShell = document.getElementById("v-0");
   const secret = document.getElementById("secretContent");
 
-  if (!input || !vaultShell || !secret) return;
+  // Safety check to make sure the elements exist
+  if (!input || !vaultShell || !secret) {
+    console.error("System Error: Vault elements missing.");
+    return;
+  }
 
-  // This checks for the hex code with or without the '#'
   const val = input.value.toUpperCase().trim();
-  
+
+  // Logic: Checking for the Gold Hex code
   if (val === "#C9A46A" || val === "C9A46A") {
     
-    // 1. Update the shell text
+    // 1. Visual confirmation in the terminal
     vaultShell.innerHTML = "<p class='text-glow' style='color: #C9A46A'>> ACCESS_GRANTED. DECRYPTING_INTERNAL_DATA...</p>";
     
-    // 2. Reveal the secret after 1 second
+    // 2. Reveal the secret data after a brief delay
     setTimeout(() => {
       secret.style.display = "block";
       secret.innerHTML = `
-        <div class="decrypted-node" style="border: 1px solid #C9A46A; padding: 15px; background: rgba(201,164,106,0.1); margin-top: 20px;">
-          <p style="color: #3cff9b;">> [PROMPT_LEAK]: "Hyper-realistic Riyadh courtyard, Najdi geometry, cinematic golden hour, 8k resolution --ar 16:9"</p>
-          <p style="font-size: 0.7rem; color: #888;">*Use this code to see the core of the Digital Architect studio.*</p>
+        <div class="decrypted-node" style="border: 1px solid #C9A46A; padding: 15px; background: rgba(201,164,106,0.1); margin-top: 20px; font-family: 'Courier New', monospace;">
+          <p style="color: #3cff9b; margin: 0;">> [PROMPT_LEAK]: "Hyper-realistic Riyadh courtyard, Najdi geometry, cinematic golden hour, 8k resolution --ar 16:9"</p>
+          <p style="font-size: 0.7rem; color: #888; margin-top: 10px;">*Use this code to see the core of the Digital Architect studio.*</p>
         </div>
       `;
-      // Optional: scroll the new content into view
       secret.scrollIntoView({ behavior: 'smooth' });
     }, 1000);
 
