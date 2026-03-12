@@ -1,11 +1,8 @@
 // VAULT LOGIC: CV + CINEMATIC DOSSIER (MIU_33 v2.0)
 function checkVault() {
-    console.log("Vault Check Triggered");
     const keyInput = document.getElementById("vault-pass"); 
     const secretContent = document.getElementById("secretContent");
     const dossierHint = document.getElementById("dossier-text");
-    const legalBox = document.getElementById("legal-dossier");
-    const legalText = document.getElementById("legal-text");
 
     if (!keyInput || !secretContent) return;
 
@@ -14,25 +11,14 @@ function checkVault() {
     if (pass === "#C9A46A" || pass === "C9A46A") {
         dossierHint.textContent = "> ACCESS_GRANTED. DECRYPTING...";
         dossierHint.style.color = "#C9A46A";
-
         setTimeout(() => {
-            // Reveal the secret content
             secretContent.style.display = "block";
-            secretContent.innerHTML = `
-                <div class="decrypted-node" style="border: 1px solid #C9A46A; padding: 15px; background: rgba(201,164,106,0.1); font-family: 'Courier New', monospace;">
-                    <p style="color: #3cff9b;">> [PROMPT_LEAK]: "Hyper-realistic Riyadh courtyard, Najdi geometry, cinematic golden hour, 8k --ar 16:9"</p>
-                </div>
-            `;
-
-            // Start your cinematic dossier typewriter
-            if (legalBox && typeof startCinematicDossier === "function") {
-                legalBox.style.display = "block";
-                startCinematicDossier(legalText);
-            }
+            secretContent.innerHTML = `<div style="border: 1px solid #C9A46A; padding: 15px;">
+                <p>> [PROMPT_LEAK]: "Hyper-realistic Riyadh courtyard, Najdi geometry, cinematic golden hour"</p>
+            </div>`;
         }, 1000);
     } else {
         dossierHint.textContent = "> ERROR: INVALID_HEX_CODE";
-        dossierHint.style.color = "#ff4d4d";
         keyInput.value = "";
     }
 }
