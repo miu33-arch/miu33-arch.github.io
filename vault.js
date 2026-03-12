@@ -1,36 +1,41 @@
 // VAULT LOGIC: CV + CINEMATIC DOSSIER (MIU_33 v2.0)
-alert("VAULT_JS_IS_ALIVE");
 function checkVault() {
-    // This looks for the input box even if the ID is slightly off
-    const keyInput = document.querySelector('input[type="password"]') || document.getElementById("vault-pass");
+    console.log("Vault Check Triggered");
+    const keyInput = document.getElementById("vault-pass"); 
     const secretContent = document.getElementById("secretContent");
-    const shell = document.querySelector(".vault-shell") || document.getElementById("v-0");
+    const dossierHint = document.getElementById("dossier-text");
+    const legalBox = document.getElementById("legal-dossier");
+    const legalText = document.getElementById("legal-text");
 
-    if (!keyInput) {
-        alert("ERROR: Cannot find password input field.");
-        return;
-    }
+    if (!keyInput || !secretContent) return;
 
     const pass = keyInput.value.trim().toUpperCase();
 
     if (pass === "#C9A46A" || pass === "C9A46A") {
-        alert("SUCCESS: Accessing Dossier...");
-        
-        // Hide the vault and show the secret
-        if (shell) shell.style.display = "none";
-        if (secretContent) {
+        dossierHint.textContent = "> ACCESS_GRANTED. DECRYPTING...";
+        dossierHint.style.color = "#C9A46A";
+
+        setTimeout(() => {
+            // Reveal the secret content
             secretContent.style.display = "block";
-            // Start the typewriter
-            if (typeof startCinematicDossier === "function") {
-                startCinematicDossier(document.getElementById("legal-text"));
+            secretContent.innerHTML = `
+                <div class="decrypted-node" style="border: 1px solid #C9A46A; padding: 15px; background: rgba(201,164,106,0.1); font-family: 'Courier New', monospace;">
+                    <p style="color: #3cff9b;">> [PROMPT_LEAK]: "Hyper-realistic Riyadh courtyard, Najdi geometry, cinematic golden hour, 8k --ar 16:9"</p>
+                </div>
+            `;
+
+            // Start your cinematic dossier typewriter
+            if (legalBox && typeof startCinematicDossier === "function") {
+                legalBox.style.display = "block";
+                startCinematicDossier(legalText);
             }
-        }
+        }, 1000);
     } else {
-        alert("DENIED: Invalid Hex.");
+        dossierHint.textContent = "> ERROR: INVALID_HEX_CODE";
+        dossierHint.style.color = "#ff4d4d";
+        keyInput.value = "";
     }
 }
-
-
 
             // Inject CV Content
             secretContent.style.display = "block";
