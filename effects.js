@@ -125,34 +125,38 @@ function solveMiuPuzzle() {
   }
 }
 function unlockVault() {
-  const input = document.getElementById("vault-pass"); 
+  const input = document.getElementById("vault-pass");
   const vaultShell = document.getElementById("v-0");
   const secret = document.getElementById("secretContent");
 
   if (!input || !vaultShell || !secret) return;
 
-  // Checking for your signature Gold HEX
-  if (input.value.toUpperCase() === "#C9A46A" || input.value.toUpperCase() === "C9A46A") {
+  // This checks for the hex code with or without the '#'
+  const val = input.value.toUpperCase().trim();
+  
+  if (val === "#C9A46A" || val === "C9A46A") {
     
-    // Change the terminal text to show success in Gold
+    // 1. Update the shell text
     vaultShell.innerHTML = "<p class='text-glow' style='color: #C9A46A'>> ACCESS_GRANTED. DECRYPTING_INTERNAL_DATA...</p>";
     
-    // Reveal the hidden secret content after a 1 second delay
+    // 2. Reveal the secret after 1 second
     setTimeout(() => {
       secret.style.display = "block";
       secret.innerHTML = `
-        <div class="decrypted-node" style="border: 1px solid #C9A46A; padding: 15px; background: rgba(201,164,106,0.1);">
-          <p>> [PROMPT_LEAK]: "Hyper-realistic Riyadh courtyard, Najdi geometry, cinematic golden hour, 8k resolution --ar 16:9"</p>
+        <div class="decrypted-node" style="border: 1px solid #C9A46A; padding: 15px; background: rgba(201,164,106,0.1); margin-top: 20px;">
+          <p style="color: #3cff9b;">> [PROMPT_LEAK]: "Hyper-realistic Riyadh courtyard, Najdi geometry, cinematic golden hour, 8k resolution --ar 16:9"</p>
           <p style="font-size: 0.7rem; color: #888;">*Use this code to see the core of the Digital Architect studio.*</p>
         </div>
       `;
+      // Optional: scroll the new content into view
+      secret.scrollIntoView({ behavior: 'smooth' });
     }, 1000);
+
   } else {
-    // Error Feedback: Make the box turn red for a second
+    // Error Feedback
     input.style.borderColor = "#ff4d4d";
-    input.placeholder = "ACCESS_DENIED";
+    input.placeholder = "INVALID_HEX_CODE";
     input.value = "";
     setTimeout(() => { input.style.borderColor = "#333"; }, 1000);
   }
- }
-
+}
