@@ -1,32 +1,64 @@
 // VAULT LOGIC: CV + CINEMATIC DOSSIER (MIU_33 v2.0)
 
-function unlockVault() {
-  const keyInput = document.getElementById("accessKey");
-  const shell = document.getElementById("v-0");
-  const secretContent = document.getElementById("secretContent");
-  const legalBox = document.getElementById("legal-dossier");
-  const legalText = document.getElementById("legal-text");
-  const dossierHint = document.getElementById("dossier-text");
+function checkVault() {
+    // 1. Updated IDs to match your index.html
+    const keyInput = document.getElementById("vault-pass"); 
+    const shell = document.getElementById("v-0");
+    const secretContent = document.getElementById("secretContent");
+    const legalBox = document.getElementById("legal-dossier");
+    const legalText = document.getElementById("legal-text");
+    const dossierHint = document.getElementById("dossier-text");
 
-  if (!keyInput || !shell || !secretContent || !legalBox || !legalText) return;
+    if (!keyInput || !shell || !secretContent) return;
 
-  const pass = keyInput.value.trim();
+    const pass = keyInput.value.trim().toUpperCase();
 
-  // 1. Passkey Check
-  if (pass === "") {
-    dossierHint.textContent = "> ERROR: PASSKEY_REQUIRED";
-    dossierHint.style.color = "#ff4d4d"; // Temporary red for error
-    return;
-  }
+    // 2. Passkey Check (Using your Signature Gold)
+    if (pass === "" ) {
+        dossierHint.textContent = "> ERROR: PASSKEY_REQUIRED";
+        dossierHint.style.color = "#ff4d4d";
+        return;
+    }
 
-  // 2. Decryption Sequence (Visual Only)
-  dossierHint.textContent = "> DECRYPTING_DOSSIER_NODES...";
-  dossierHint.style.color = "#3cff9b";
+    if (pass === "#C9A46A" || pass === "C9A46A") {
+        
+        // Visual Decryption Sequence
+        dossierHint.textContent = "> DECRYPTING_DOSSIER_NODES...";
+        dossierHint.style.color = "#3cff9b";
 
-  setTimeout(() => {
-    // Hide input shell
-    shell.style.display = "none";
-    
+        setTimeout(() => {
+            // Hide Input Shell
+            shell.style.display = "none";
+
+            // Inject CV Content
+            secretContent.style.display = "block";
+            secretContent.innerHTML = `
+                <p class="cmd-line" style="color:#ff4700;">&gt; &gt; INTERNAL_DOSSIER_CV_MIU_33_v2.0</p>
+                <strong>Anamy Padilla (缪联睿)</strong><br>
+                <strong>MIU_33 - Digital Architect Studio</strong><br>
+                Riyadh / @miu33_arch<br><br>
+                <strong>PROFESSIONAL_SUMMARY:</strong><br>
+                A digital architect in early formation, transitioning from a clinical background into computational thinking and AI-assisted worldbuilding...
+            `;
+
+            // Reveal and Start Cinematic Dossier (Lines 101+ in your file)
+            if (legalBox) {
+                legalBox.style.display = "block";
+                startCinematicDossier(legalText);
+            }
+
+            secretContent.scrollIntoView({ behavior: "smooth", block: "start" });
+
+        }, 1000);
+
+    } else {
+        // Error handling for wrong passkey
+        dossierHint.textContent = "> ERROR: INVALID_ACCESS_KEY";
+        dossierHint.style.color = "#ff4d4d";
+        keyInput.value = "";
+    }
+}
+
     // 3. Inject CV content (Kept your exact concept/text)
     secretContent.innerHTML = `
       <p class="cmd-line" style="color:#ffd700;">&gt; INTERNAL_DOSSIER: CV_MIU_33_VERIFIED</p>
