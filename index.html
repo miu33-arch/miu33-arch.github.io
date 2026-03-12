@@ -200,30 +200,38 @@
   <p>Packs and digital assets for architects and designers. Hosted via external platforms.</p>
 
   <div class="shop-card terminal-box">
-  <h3>&gt; NODE_01: RIYADH_PROMPT_PACK</h3>
-  
-<div class="shop-card terminal-box">
-  <h3>&gt; NODE_01: RIYADH_PROMPT_PACK</h3>
-  
-  <div class="video-feed-container">
-    <video autoplay muted loop playsinline class="shop-video">
-      <source src="shop-preview.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-    <div class="scanline-overlay"></div> 
-  </div>
-
-  <p class="status-tag">[ENCRYPTED_FILES_DETECTED]</p>
-  
-  <button onclick="solveMiuPuzzle()" class="btn-terminal-gold">
-    &gt; DECRYPT_ACCESS_KEY
-  </button>
-</div>
-
-
-  <a href="https://www.buymeacoffee.com/miu_studio3" target="_blank" class="btn-terminal">
+    <h3>&gt; NODE_01: RIYADH_PROMPT_PACK</h3>
+    <div class="video-feed-container">
+      <video autoplay muted loop playsinline class="shop-video">
+        <source src="shop-preview.mp4" type="video/mp4">
+      </video>
+      <div class="scanline-overlay"></div>
+    </div>
+    <p class="status-tag">[ENCRYPTED_FILES_DETECTED]</p>
+    <button onclick="solveMiuPuzzle()" class="btn-terminal-gold">&gt; DECRYPT_ACCESS_KEY</button>
+  </div> <a href="https://www.buymeacoffee.com/miu_studio3" target="_blank" class="btn-terminal">
     &gt; ACCESS_SHOP_NODE
   </a>
+</section>
+
+<section id="vault" class="terminal-box">
+  <h2 class="cmd-line">&gt; ENCRYPTED_VAULT / LEVEL_01</h2>
+
+  <div class="vault-shell" id="v-0">
+    <p id="dossier-text">&gt; ENTER_PASSKEY_TO_ACCESS_INTERNAL_DOSSIERS</p>
+   
+    <div class="vault-container">
+      <p class="vault-hint">SYSTEM_KEY_HINT: The tone of the Digital Architect... (#C9A46A)</p>
+      <input type="password" id="vault-pass" placeholder="ENTER_HEX_CODE">
+      <button onclick="checkVault()" class="btn-terminal">[ ATTEMPT_DECRYPTION ]</button>
+    </div>
+
+    <div id="secretContent" style="display:none; color: #3cff9b; margin-top: 20px;"></div>
+  </div>
+
+  <div id="legal-dossier" class="terminal-box" style="display:none; margin-top:20px;">
+    <pre id="legal-text" class="terminal-log"></pre>
+  </div>
 </section>
 
       <section id="social-nodes" class="terminal-box social-center">
