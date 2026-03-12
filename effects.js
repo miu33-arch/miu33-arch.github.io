@@ -125,41 +125,21 @@ function solveMiuPuzzle() {
   }
 }
 function checkVault() {
+  alert("UPLINK_STABLISHED: Button is working!"); // <--- This is the test
+  
   const input = document.getElementById("vault-pass");
-  const vaultShell = document.getElementById("v-0");
   const secret = document.getElementById("secretContent");
-
-  // Safety check to make sure the elements exist
-  if (!input || !vaultShell || !secret) {
-    console.error("System Error: Vault elements missing.");
+  
+  if (!input || !secret) {
+    alert("ERROR: Missing HTML elements!");
     return;
   }
 
   const val = input.value.toUpperCase().trim();
-
-  // Logic: Checking for the Gold Hex code
   if (val === "#C9A46A" || val === "C9A46A") {
-    
-    // 1. Visual confirmation in the terminal
-    vaultShell.innerHTML = "<p class='text-glow' style='color: #C9A46A'>> ACCESS_GRANTED. DECRYPTING_INTERNAL_DATA...</p>";
-    
-    // 2. Reveal the secret data after a brief delay
-    setTimeout(() => {
-      secret.style.display = "block";
-      secret.innerHTML = `
-        <div class="decrypted-node" style="border: 1px solid #C9A46A; padding: 15px; background: rgba(201,164,106,0.1); margin-top: 20px; font-family: 'Courier New', monospace;">
-          <p style="color: #3cff9b; margin: 0;">> [PROMPT_LEAK]: "Hyper-realistic Riyadh courtyard, Najdi geometry, cinematic golden hour, 8k resolution --ar 16:9"</p>
-          <p style="font-size: 0.7rem; color: #888; margin-top: 10px;">*Use this code to see the core of the Digital Architect studio.*</p>
-        </div>
-      `;
-      secret.scrollIntoView({ behavior: 'smooth' });
-    }, 1000);
-
+    secret.style.display = "block";
+    secret.innerHTML = "<h3>ACCESS_GRANTED: [PROMPT_LEAK_BETA]</h3>";
   } else {
-    // Error Feedback
-    input.style.borderColor = "#ff4d4d";
-    input.placeholder = "INVALID_HEX_CODE";
-    input.value = "";
-    setTimeout(() => { input.style.borderColor = "#333"; }, 1000);
+    alert("INVALID_PASSKEY");
   }
 }
