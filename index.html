@@ -194,49 +194,27 @@
 
 </section>
 
+      <section id="shop" class="terminal-box">
+        <h2 class="cmd-line">&gt; SHOP / DIGITAL_ASSETS</h2>
+        <p>Packs and digital assets for architects and designers. Hosted via external platforms.</p>
 
-<section id="shop" class="terminal-box">
-  <h2 class="cmd-line">&gt; SHOP / DIGITAL_ASSETS</h2>
-  <p>Packs and digital assets for architects and designers. Hosted via external platforms.</p>
+        <div class="shop-card terminal-box">
+          <h3>&gt; NODE_01: RIYADH_PROMPT_PACK</h3>
+          <div class="video-feed-container">
+            <video autoplay muted loop playsinline class="shop-video">
+              <source src="shop-preview.mp4" type="video/mp4">
+            </video>
+            <div class="scanline-overlay"></div>
+          </div>
+          <p class="status-tag">[ENCRYPTED_FILES_DETECTED]</p>
+          <button onclick="solveMiuPuzzle()" class="btn-terminal-gold">&gt; DECRYPT_ACCESS_KEY</button>
+        </div>
 
-  <div class="shop-card terminal-box">
-    <h3>&gt; NODE_01: RIYADH_PROMPT_PACK</h3>
-    <div class="video-feed-container">
-      <video autoplay muted loop playsinline class="shop-video">
-        <source src="shop-preview.mp4" type="video/mp4">
-      </video>
-      <div class="scanline-overlay"></div>
-    </div>
-    <p class="status-tag">[ENCRYPTED_FILES_DETECTED]</p>
-    <button onclick="solveMiuPuzzle()" class="btn-terminal-gold">&gt; DECRYPT_ACCESS_KEY</button>
-  </div> <a href="https://www.buymeacoffee.com/miu_studio3" target="_blank" class="btn-terminal">
-    &gt; ACCESS_SHOP_NODE
-  </a>
-</section>
-
-<section id="vault" class="terminal-box">
-  <h2 class="cmd-line">&gt; ENCRYPTED_VAULT / LEVEL_01</h2>
-
-  <div class="vault-shell" id="v-0">
-    <p id="dossier-text">&gt; ENTER_PASSKEY_TO_ACCESS_INTERNAL_DOSSIERS</p>
-   
-    <div class="vault-container">
-      <p class="vault-hint">SYSTEM_KEY_HINT: The tone of the Digital Architect... (#C9A46A)</p>
-      <input type="password" id="vault-pass" placeholder="ENTER_HEX_CODE">
-      <button onclick="checkVault()" class="btn-terminal">[ ATTEMPT_DECRYPTION ]</button>
-    </div>
-
-    <div id="secretContent" style="display:none; color: #3cff9b; margin-top: 20px;"></div>
-  </div>
-
-  <div id="legal-dossier" class="terminal-box" style="display:none; margin-top:20px;">
-    <pre id="legal-text" class="terminal-log"></pre>
-  </div>
-</section>
+        <a href="https://www.buymeacoffee.com/miu_studio3" target="_blank" class="btn-terminal">&gt; ACCESS_SHOP_NODE</a>
+      </section>
 
       <section id="social-nodes" class="terminal-box social-center">
         <h2 class="cmd-line">&gt; ACCESS_SOCIAL_CHANNELS</h2>
-
         <div class="social-grid">
           <a href="https://www.linkedin.com/company/miu-digital-architect-studio" class="btn-terminal" target="_blank">LINKEDIN</a>
           <a href="https://www.tiktok.com/@miuproton" class="btn-terminal" target="_blank">TIKTOK</a>
@@ -245,66 +223,48 @@
       </section>
 
       <section class="terminal-box">
-  <h2 class="cmd-line">&gt; SYSTEM_LOG_01</h2>
-
-  <div class="audio-console">
-    <audio id="miu-audio" preload="auto">
-      <source src="audio/miu-log-01.mp3" type="audio/mpeg">
-    </audio>
-
-    <button id="play-log" class="btn-terminal">
-      [ ESTABLISH_UPLINK ]
-    </button>
-    
-    <div id="audio-status" class="status-tag">STATUS: NODE_STANDBY</div>
-  </div>
-<div class="transcript-content">
-  <p>> [DECRYPTING_LOG_01]: "Architectural systems in Riyadh are shifting. My study on Volume Light focuses on how synthetic atmospheres can reduce the perceived heat of a structure. By weighting AI prompts with Najdi environmental data, we aren't just making pictures—we're simulating physics for the next Riyadh."</p>
-</div>
+        <h2 class="cmd-line">&gt; SYSTEM_LOG_01</h2>
+        <div class="audio-console">
+          <audio id="miu-audio" preload="auto">
+            <source src="audio/miu-log-01.mp3" type="audio/mpeg">
+          </audio>
+          <button id="play-log" class="btn-terminal">[ ESTABLISH_UPLINK ]</button>
+          <div id="audio-status" class="status-tag">STATUS: NODE_STANDBY</div>
+        </div>
+        <div class="transcript-content">
+          <p>> [DECRYPTING_LOG_01]: "Architectural systems in Riyadh are shifting..."</p>
+        </div>
       </section>
-
 
       <section id="contact" class="terminal-box">
         <h2 class="cmd-line">&gt; CONTACT_NODE</h2>
-
         <form class="contact-form" action="https://formspree.io/f/mvzwzppo" method="POST">
-          <label>&gt; NAME</label>
-          <input type="text" name="name" required>
-
-          <label>&gt; EMAIL</label>
-          <input type="email" name="email" required>
-
-          <label>&gt; MESSAGE</label>
-          <textarea name="message" rows="4" required></textarea>
-
+          <label>&gt; NAME</label><input type="text" name="name" required>
+          <label>&gt; EMAIL</label><input type="email" name="email" required>
+          <label>&gt; MESSAGE</label><textarea name="message" rows="4" required></textarea>
           <button type="submit" class="btn-terminal">SEND_SIGNAL</button>
         </form>
       </section>
 
       <section id="vault" class="terminal-box">
         <h2 class="cmd-line">&gt; ENCRYPTED_VAULT / LEVEL_01</h2>
-
         <div class="vault-shell">
-  <p id="dossier-text">&gt; ENTER_PASSKEY_TO_ACCESS_INTERNAL_DOSSIERS</p>
-  
-  <div class="vault-container">
-    <p class="vault-hint">SYSTEM_KEY_HINT: The tone of the Digital Architect... (#C9A46A)</p>
-    <input type="password" id="vault-pass" placeholder="ENTER_HEX_CODE">
-<button onclick="console.log('Button clicked!'); checkVault();" class="btn-terminal">[ ATTEMPT_DECRYPTION ]</button>
-  
-<div id="secretContent" style="display:none; color: #3cff9b; margin-top: 20px;"></div>
-
-
-
-        <div id="legal-dossier" class="terminal-box" style="display:none; margin-top:20px;">
-          <pre id="legal-text" class="terminal-log"></pre>
+          <p id="dossier-text">&gt; ENTER_PASSKEY_TO_ACCESS_INTERNAL_DOSSIERS</p>
+          <div class="vault-container">
+            <p class="vault-hint">SYSTEM_KEY_HINT: The tone of the Digital Architect... (#C9A46A)</p>
+            <input type="password" id="vault-pass" placeholder="ENTER_HEX_CODE">
+            <button onclick="checkVault()" class="btn-terminal">[ ATTEMPT_DECRYPTION ]</button>
+          </div>
+          <div id="secretContent" style="display:none; color: #3cff9b; margin-top: 20px;"></div>
+          <div id="legal-dossier" class="terminal-box" style="display:none; margin-top:20px;">
+            <pre id="legal-text" class="terminal-log"></pre>
+          </div>
         </div>
       </section>
 
       <footer class="terminal-footer">
         © 2026 缪联睿 (Anamy Padilla) | MIU_33<br>
-        <a href="terms.html" class="footer-link">&gt; TERMS_OF_SERVICE</a>
-        <span style="margin: 0 6px;">|</span>
+        <a href="terms.html" class="footer-link">&gt; TERMS_OF_SERVICE</a> | 
         <a href="privacy.html" class="footer-link">PRIVACY_POLICY</a>
       </footer>
 
@@ -313,7 +273,6 @@
 
   <script src="effects.js"></script>
   <script src="vault.js"></script>
-
 </body>
 </html>
 
