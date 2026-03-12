@@ -1,56 +1,34 @@
 // VAULT LOGIC: CV + CINEMATIC DOSSIER (MIU_33 v2.0)
 
 function checkVault() {
-    // These names MUST match your index.html exactly
-    const keyInput = document.getElementById("vault-pass"); 
-    const shell = document.getElementById("v-0");
-    const secretContent = document.getElementById("secretContent");
-    const legalBox = document.getElementById("legal-dossier");
-    const legalText = document.getElementById("legal-text");
-    const dossierHint = document.getElementById("dossier-text");
+    alert("SYSTEM_SIGNAL: Button received!"); // <-- If you don't see this, the file isn't linked!
 
-    // Safety check: stops the script if an ID is missing
-    if (!keyInput || !shell || !secretContent) return;
+    const input = document.getElementById("vault-pass");
+    const secret = document.getElementById("secretContent");
+    const shell = document.querySelector(".vault-shell");
 
-    const pass = keyInput.value.trim().toUpperCase();
-
-    // 1. Passkey Check
-    if (pass === "") {
-        if(dossierHint) dossierHint.textContent = "> ERROR: PASSKEY_REQUIRED";
+    if (!input || !secret) {
+        alert("CRITICAL_ERROR: HTML elements not found!");
         return;
     }
 
-    if (pass === "#C9A46A" || pass === "C9A46A") {
-        // 2. Success Sequence
-        if(dossierHint) {
-            dossierHint.textContent = "> ACCESS_GRANTED. DECRYPTING...";
-            dossierHint.style.color = "#C9A46A";
+    const val = input.value.trim().toUpperCase();
+
+    if (val === "#C9A46A" || val === "C9A46A") {
+        alert("ACCESS_GRANTED: Preparing Dossier...");
+        if(shell) shell.style.display = "none";
+        secret.style.display = "block";
+        secret.innerHTML = "<h1>DECRYPTED_SUCCESS: " + val + "</h1>";
+        
+        // This triggers your typewriter CV
+        if (typeof startCinematicDossier === "function") {
+            startCinematicDossier(document.getElementById("legal-text"));
         }
-
-        setTimeout(() => {
-            // This hides the input box so the CV can take over the space
-            shell.style.display = "none";
-            
-            // This makes the secret container visible
-            secretContent.style.display = "block";
-            
-            // This triggers your typewriter effect below
-            if (legalBox) {
-                legalBox.style.display = "block";
-                startCinematicDossier(legalText);
-            }
-        }, 1000);
-
     } else {
-        if(dossierHint) {
-            dossierHint.textContent = "> ERROR: INVALID_HEX_CODE";
-            dossierHint.style.color = "#ff4d4d";
-        }
-        keyInput.value = "";
+        alert("ACCESS_DENIED: Invalid Key.");
     }
 }
 
-// DO NOT DELETE THE CODES BELOW (Line 99+)
 
             // Inject CV Content
             secretContent.style.display = "block";
