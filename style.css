@@ -1,70 +1,43 @@
-/* --- VAULT REINFORCEMENT --- */
-#vault {
-  border: 1px solid #C9A46A; /* Gold border for the Vault section */
-  box-shadow: 0 0 25px rgba(201, 164, 106, 0.15);
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #020403; color: #c5f7c5; font-family: "Courier New", monospace; overflow-x: hidden; line-height: 1.6; }
 
-.vault-shell {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
+/* Overlays */
+#scanlines { pointer-events: none; position: fixed; inset: 0; background: repeating-linear-gradient(to bottom, rgba(0,0,0,0.1), transparent 2px); z-index: 5; }
+#matrix { pointer-events: none; position: fixed; inset: 0; background: radial-gradient(circle at top, rgba(0,255,120,0.05), transparent 70%); z-index: 4; }
+#matrix-intro { position: fixed; inset: 0; background: #000; z-index: 9999; transition: opacity 1s ease; }
+#boot-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 10000; display: flex; justify-content: center; align-items: center; transition: opacity 0.8s; }
+.boot-inner { border: 1px solid #3cff9b; padding: 20px; background: #000; box-shadow: 0 0 15px #3cff9b33; }
 
-#vault-pass {
-  background: rgba(0, 0, 0, 0.7);
-  border: 1px solid #C9A46A; /* Match the gold theme */
-  color: #C9A46A;
-  font-size: 1.1rem;
-  text-align: center;
-  letter-spacing: 3px;
-  padding: 15px;
-  width: 100%;
-  max-width: 400px;
-  margin: 0 auto;
-}
+/* Layout */
+.content-wrapper { display: flex; min-height: 100vh; position: relative; z-index: 10; padding: 20px; gap: 20px; }
+.sidebar { width: 220px; border: 1px solid #3cff9b; padding: 16px; background: rgba(0,0,0,0.9); height: fit-content; position: sticky; top: 20px; }
+.main-console { flex: 1; display: flex; flex-direction: column; gap: 20px; max-width: 1200px; }
+.terminal-box { border: 1px solid #3cff9b; padding: 20px; background: rgba(0,0,0,0.85); box-shadow: inset 0 0 10px rgba(60, 255, 155, 0.1); }
 
-#vault-pass::placeholder {
-  color: rgba(201, 164, 106, 0.3);
-  font-size: 0.8rem;
-  letter-spacing: 1px;
-}
+/* Typography & Links */
+.cmd-line { color: #3cff9b; font-size: 13px; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+.hero-sub { opacity: 0.9; font-size: 1.1rem; }
+.nav-block a { display: block; color: #3cff9b; text-decoration: none; font-size: 12px; margin-bottom: 10px; transition: 0.3s; }
+.nav-block a:hover { color: #fff; text-shadow: 0 0 8px #3cff9b; transform: translateX(5px); }
 
-/* --- THE SECRET CONTENT REVEAL --- */
-#secret-content {
-  border-top: 1px dashed #3cff9b;
-  padding-top: 20px;
-  animation: scanReveal 1.5s ease-out;
-}
+/* Interactive Elements */
+.btn-terminal, .btn-terminal-gold { background: transparent; padding: 8px 15px; cursor: pointer; font-family: inherit; font-size: 12px; transition: 0.3s; border: 1px solid; }
+.btn-terminal { border-color: #3cff9b; color: #3cff9b; text-decoration: none; }
+.btn-terminal:hover { background: #3cff9b; color: #000; box-shadow: 0 0 15px #3cff9b; }
+.btn-terminal-gold { border-color: #C9A46A; color: #C9A46A; }
+.btn-terminal-gold:hover { background: #C9A46A; color: #000; box-shadow: 0 0 15px #C9A46A; }
 
-@keyframes scanReveal {
-  0% { opacity: 0; transform: translateY(10px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
+/* Media Grids */
+.full-video { width: 100%; border: 1px solid #333; }
+.spatial-grid, .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 15px; }
+.spatial-grid img, .project-card img { width: 100%; border: 1px solid #333; filter: grayscale(100%); transition: 0.5s; }
+.spatial-grid img:hover, .project-card img:hover { filter: grayscale(0%); border-color: #3cff9b; }
+.project-card p { font-size: 10px; color: #C9A46A; margin-top: 8px; text-align: center; }
 
-/* --- MOBILE OPTIMIZATION --- */
-@media (max-width: 600px) {
-  .hero-media {
-    min-height: 250px; /* Shorter for mobile screens */
-  }
-  
-  .cmd-line {
-    font-size: 11px; /* Prevents text wrapping on small screens */
-  }
-  
-  .nav-block a {
-    font-size: 11px;
-    padding: 10px 0; /* Easier to tap with fingers */
-  }
-}
+/* Social */
+.social-grid { display: flex; gap: 10px; flex-wrap: wrap; }
 
-/* --- SYSTEM ALIVE: BUTTON PULSE --- */
-/* Add this class to your Shop button in the HTML to make it stand out */
-.pulse-gold {
-  animation: gold-glow 2s infinite;
-}
-
-@keyframes gold-glow {
-  0% { box-shadow: 0 0 0 0 rgba(201, 164, 106, 0.4); }
-  70% { box-shadow: 0 0 0 10px rgba(201, 164, 106, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(201, 164, 106, 0); }
+@media (max-width: 900px) { 
+  .content-wrapper { flex-direction: column; } 
+  .sidebar { width: 100%; position: static; } 
 }
