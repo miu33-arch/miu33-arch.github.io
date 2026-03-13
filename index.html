@@ -39,58 +39,50 @@
     <main class="main-console">
       <section id="hero" class="terminal-box">
         <div style="display: flex; align-items: center; gap: 20px;">
-          <img src="images/avatar-professional.jpg" alt="Anamy Padilla" style="width: 80px; height: 80px; border-radius: 50%; border: 2px solid #3cff9b; object-fit: cover;">
+          <img src="images/avatar-professional.jpg" alt="Anamy Padilla" style="width: 100px; height: 100px; border-radius: 50%; border: 2px solid #3cff9b; object-fit: cover;">
           <div>
             <h1 class="cmd-line">&gt; MIU_33 / DIGITAL ARCHITECT</h1>
             <p class="hero-sub">Calm, minimal architectures by 缪联睿 (Anamy Padilla).</p>
           </div>
         </div>
-        <div class="hero-media" style="margin-top: 20px;">
-          <video class="full-video" src="shop-preview.mp4" autoplay muted loop playsinline></video>
-        </div>
       </section>
 
       <section id="about" class="terminal-box">
         <h2 class="cmd-line">&gt; ABOUT_ME / STUDIO_PROFILE</h2>
-        <p>I’m <strong>缪联睿 (Anamy Padilla)</strong> — architect, digital designer, and founder of MIU_33. I merge traditional architectural discipline with AI-driven spatial design, exploring calm environments shaped by light and logic.</p>
+        <p>Architect, digital designer, and founder of MIU_33. Merging traditional architectural discipline with AI-driven spatial design.</p>
       </section>
 
       <section id="ai-spatial" class="terminal-box">
         <h2 class="cmd-line">&gt; ACCESS_AI_SPATIAL_FEED</h2>
         <div class="spatial-grid">
-          <img src="images/ai1.jpeg" alt="AI Spatial 1">
-          <img src="images/ai2.jpeg" alt="AI Spatial 2">
-          <img src="images/ai3.jpeg" alt="AI Spatial 3">
-          <img src="images/ai4.jpeg" alt="AI Spatial 4">
+          <img src="images/ai1.jpeg" class="spatial-img" alt="AI Spatial 1">
+          <img src="images/ai2.jpeg" class="spatial-img" alt="AI Spatial 2">
+          <img src="images/ai3.jpeg" class="spatial-img" alt="AI Spatial 3">
+          <img src="images/ai4.jpeg" class="spatial-img" alt="AI Spatial 4">
         </div>
       </section>
 
       <section id="projects" class="terminal-box">
         <h2 class="cmd-line">&gt; TRADITIONAL_PROJECTS / ARCHIVE</h2>
         <div class="project-grid">
-          <div class="project-card">
-            <img src="images/1000007351.png" alt="Archive 01">
-            <p>[ ARCHIVE_01 ] Courtyard Residence</p>
-          </div>
-          <div class="project-card">
-            <img src="images/1000007352.png" alt="Archive 02">
-            <p>[ ARCHIVE_02 ] Massing Study</p>
-          </div>
-          <div class="project-card">
-            <img src="images/1000007353.png" alt="Archive 03">
-            <p>[ ARCHIVE_03 ] Volume Light Study</p>
-          </div>
+          <div class="project-card"><img src="images/1000007351.png" alt="Archive 01"><p>[ ARCHIVE_01 ] Courtyard Residence</p></div>
+          <div class="project-card"><img src="images/1000007352.png" alt="Archive 02"><p>[ ARCHIVE_02 ] Massing Study</p></div>
+          <div class="project-card"><img src="images/1000007353.png" alt="Archive 03"><p>[ ARCHIVE_03 ] Volume Light Study</p></div>
         </div>
       </section>
 
       <section id="shop" class="terminal-box">
         <h2 class="cmd-line">&gt; SHOP / DIGITAL_ASSETS</h2>
-        <div class="shop-card terminal-box" style="border-color: #C9A46A;">
-          <h3>&gt; NODE_01: RIYADH_PROMPT_PACK</h3>
-          <p style="font-size:11px; margin: 10px 0;">[ENCRYPTED_FILES_DETECTED]</p>
-          <button onclick="solveMiuPuzzle()" class="btn-terminal-gold">&gt; DECRYPT_ACCESS_KEY</button>
+        <div class="shop-card terminal-box" style="border-color: #C9A46A; padding: 0; overflow: hidden;">
+          <video class="full-video" src="shop-preview.mp4" autoplay muted loop playsinline style="width: 100%; display: block;"></video>
+          <div style="padding: 20px;">
+            <h3>&gt; NODE_01: RIYADH_PROMPT_PACK</h3>
+            <p style="font-size:11px; margin: 10px 0; color: #C9A46A;">[ ENCRYPTED_FILES_DETECTED ]</p>
+            <button onclick="solveMiuPuzzle()" class="btn-terminal-gold" style="margin-bottom: 10px;">&gt; DECRYPT_ACCESS_KEY</button>
+            <br>
+            <a href="https://www.buymeacoffee.com/miu_studio3" target="_blank" class="btn-terminal" style="margin-top:5px;">&gt; VISIT_BUY_ME_A_COFFEE</a>
+          </div>
         </div>
-        <a href="https://www.buymeacoffee.com/miu_studio3" target="_blank" class="btn-terminal" style="margin-top:15px; display:inline-block;">&gt; ACCESS_SHOP_NODE</a>
       </section>
 
       <section id="social-nodes" class="terminal-box">
@@ -112,6 +104,7 @@
 
       <section id="vault" class="terminal-box">
         <h2 class="cmd-line">&gt; ENCRYPTED_VAULT / LEVEL_01</h2>
+        <p id="dossier-text" style="font-size: 11px; margin-bottom: 10px;">&gt; ENTER_PASSKEY_TO_PROCEED</p>
         <input type="password" id="vault-pass" placeholder="ENTER_HEX_CODE" style="background:#000; border:1px solid #333; color:#3cff9b; padding:10px; width:100%;">
         <button onclick="checkVault()" class="btn-terminal" style="margin-top:10px;">[ ATTEMPT_DECRYPTION ]</button>
         <div id="secret-content" style="display:none; margin-top:20px;"><div id="vault-results"></div></div>
@@ -128,12 +121,11 @@
 
       <footer class="terminal-footer">
         <p>© 2026 缪联睿 (Anamy Padilla) | MIU_33</p>
-        <div class="footer-links" style="margin-top:10px;">
-          <a href="privacy.html" style="color:#3cff9b; text-decoration:none;">PRIVACY</a> | <a href="terms.html" style="color:#3cff9b; text-decoration:none;">TERMS</a>
-        </div>
       </footer>
     </main>
   </div>
+
+  <div id="fullscreen-view"><img id="fullscreen-img" src="" alt=""></div>
 
   <script src="effects.js"></script>
   <script src="vault.js"></script>
