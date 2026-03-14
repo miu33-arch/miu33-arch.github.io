@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     // Note: Boot sequence is triggered by effects.js after Matrix finishes
 });
-
 const validKeys = ["vault-pass", "Vault-Pass", "VAULT-PASS", "#C9A46A", "C9A46A"];
 
 function checkVault() {
@@ -15,13 +14,12 @@ function checkVault() {
 const cvSections = [
     { title: "> NODE_01: CONTACT", body: "Email: miu.digital.studio@proton.me\nAlt: anamy5334@gmail.com" },
     { title: "> NODE_02: EDUCATION", body: "• BSBA Finance (2019)\n• Registered Nursing (Clinical)\n• AI Spatial Design (ACTIVE 2026)" },
-    { title: "> NODE_03: EXPERIENCE", body: "• MIU_33 Founder (Jan 2026)\n• Operations Director (Franchise)\n• Registered Nurse (Healthcare)" }
+    { title: "> NODE_03: EXPERIENCE", body: "• MIU_33 Studio Founder (Jan 2026)\n• Operations Director (Franchise)\n• Registered Nurse (Healthcare)" }
 ];
 
 async function revealCV() {
     const res = document.getElementById("vault-results");
     res.innerHTML = `<img src="images/avatar-vault.jpg" style="width:150px; border:1px solid #3cff9b; margin-bottom:20px; filter: grayscale(100%);">`;
-
     for (let s of cvSections) {
         const pre = document.createElement("pre");
         pre.style.color = "#3cff9b"; pre.style.whiteSpace = "pre-wrap";
@@ -38,8 +36,7 @@ async function revealCV() {
 
 async function runBootSequence() {
     const textEl = document.getElementById("boot-text");
-    const logs = ["> LOADING_CORE...", "> IDENTITY: 缪联睿_VERIFIED", "> STATUS: RIYADH_NODE_ACTIVE_2026"];
-    
+    const logs = ["> LOADING_CORE...", "> IDENTITY_VERIFIED: 缪联睿", "> STATUS: RIYADH_NODE_ACTIVE_2026"];
     for (let log of logs) {
         textEl.textContent = "";
         for (let i = 0; i < log.length; i++) {
@@ -51,3 +48,4 @@ async function runBootSequence() {
     document.getElementById("boot-overlay").style.opacity = "0";
     setTimeout(() => document.getElementById("boot-overlay").style.display = "none", 800);
 }
+
