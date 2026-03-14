@@ -1,76 +1,15 @@
-// MIU_33 VAULT LOGIC v2.1 - REINFORCED FOR ANAMY PADILLA
-function checkVault() {
-    const keyInput = document.getElementById("vault-pass");
-    const secretContent = document.getElementById("secret-content");
-    const dossierHint = document.getElementById("dossier-text");
-    const vaultResults = document.getElementById("vault-results");
-
-    if (!keyInput || !secretContent) return;
-    const pass = keyInput.value.trim().toUpperCase();
-
-    if (pass === "#C9A46A" || pass === "C9A46A") {
-        dossierHint.textContent = "> ACCESS_GRANTED. DECRYPTING_INTERNAL_FILES...";
-        dossierHint.style.color = "#C9A46A";
-        keyInput.disabled = true;
-
-        setTimeout(() => {
-            secretContent.style.display = "block";
-            vaultResults.innerHTML = `
-                <div style="display: flex; gap: 20px; border-left: 2px solid #C9A46A; padding-left: 20px; margin-bottom: 30px;">
-                    <img src="images/avatar-vault.jpg" style="width: 100px; height: 125px; border: 1px solid #C9A46A; object-fit: cover;">
-                    <div>
-                        <p class="cmd-line" style="color:#C9A46A;">&gt; INTERNAL_DOSSIER: CV_MIU_33_VERIFIED</p>
-                        <strong>缪联睿 (Anamy Padilla)</strong><br>
-                        Digital Architect & Founder of MIU_33<br>
-                        Riyadh / KSA<br><br>
-                        <strong>[ PROFESSIONAL_SUMMARY ]</strong><br>
-                        Transitioning from clinical precision to computational thinking. My work explores calm minimal environments and narrative-driven design logic.
-                    </div>
-                </div>
-                <div id="cinematic-dossier" style="white-space: pre-wrap; color: #3cff9b; font-size: 0.85rem;"></div>
-            `;
-            secretContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            startCinematicDossier(document.getElementById("cinematic-dossier"));
-        }, 1200);
-    } else {
-        dossierHint.textContent = "> ERROR: INVALID_ACCESS_KEY. RETRY.";
-        dossierHint.style.color = "#ff4d4d";
-        keyInput.value = "";
-        keyInput.style.borderColor = "#ff4d4d";
-        setTimeout(() => { keyInput.style.borderColor = "#333"; }, 500);
-    }
-}
-
-function startCinematicDossier(target) {
-    const lines = [
-        "> MIU_33_INTERNAL_PROTOCOL / LEVEL_01",
-        "> CLASSIFICATION: STUDIO_CORE_LOGIC",
-        "",
-        "> NODE_00: ORIGIN",
-        " - Operating between physical architecture and AI spatial design.",
-        "",
-        "> NODE_01: METHOD",
-        " - Each project is treated as a system, not a single image.",
-        " - AI tools used as collaborators for design thinking.",
-        "",
-        "> NODE_02: ETHICS",
-        " - Human experience remains primary in all environments.",
-        "",
-        "> NODE_03: WORKFLOW",
-        " - INPUT: Prompts, sketches, spatial narratives.",
-        " - PROCESS: Iteration across PromeAI, Runway, and Veo.",
-        "",
-        "> END_OF_DOSSIER / MIU_33_INTERNAL"
-    ];
-    const fullText = lines.join("\n");
-    let index = 0;
-    target.textContent = "";
-    function typeChar() {
-        if (index < fullText.length) {
-            target.textContent += fullText.charAt(index);
-            index++;
-            setTimeout(typeChar, 20);
-        }
-    }
-    typeChar();
-}
+document.addEventListener("DOMContentLoaded",()=>{const e=document.getElementById("boot-overlay"),t=document.getElementById("boot-text"),n=["> LOADING_MIU_33...","> IDENTITY_CONFIRMED: 缪联睿","> WELCOME, ARCHITECT."];function o(e,n,o=30){return new Promise(r=>{let i=0;n.textContent="";const a=setInterval(()=>{n.textContent+=e.charAt(i),i++,i>=e.length&&(clearInterval(a),r())},o)})}async function r(){await new Promise(e=>setTimeout(e,1200));for(let e of n)await o(e,t,30),await new Promise(e=>setTimeout(e,400));await new Promise(e=>setTimeout(e,600)),e.style.opacity="0",setTimeout(()=>{e.style.display="none"},800)}r()});const validKeys=["vault-pass","Vault-Pass","VAULT-PASS","#C9A46A","C9A46A"];function checkVault(){const e=document.getElementById("vault-pass").value.trim(),t=document.getElementById("dossier-text"),n=document.getElementById("secret-content"),o=document.getElementById("vault-results");if(!validKeys.includes(e))return t.textContent="> ACCESS_DENIED / INVALID_KEY",void(t.style.color="#ff3c3c");t.textContent="> ACCESS_GRANTED / DECRYPTING...",t.style.color="#3cff9b",n.style.display="block",o.innerHTML="",revealCV()}function typeBlock(e,t,n=20){return new Promise(o=>{let r=0;t.innerHTML="";const i=setInterval(()=>{t.innerHTML+=e.charAt(r),r++,r>=e.length&&(clearInterval(i),o())},n)})}const cvSections=[{title:"> NODE_01: CONTACT_INFORMATION",body:`Email: anamy@miu33.studio
+Location: Riyadh, Saudi Arabia
+Website: miu33-arch.github.io`},{title:"> NODE_02: SKILLS_MATRIX",body:`• AI Spatial Design
+• Architectural Visualization
+• Prompt Engineering
+• Minimalist Architecture
+• Digital Concept Development`},{title:"> NODE_03: CERTIFICATIONS",body:`• Autodesk Certified Professional
+• Adobe Creative Suite Expert
+• AI Spatial Design Specialist`},{title:"> NODE_04: EDUCATION",body:`• Bachelor of Architecture — 2019
+• Advanced Spatial Computing — 2024`},{title:"> NODE_05: EXPERIENCE",body:`• MIU_33 — Founder & Digital Architect
+• AI Spatial Consultant — Independent
+• Architectural Designer — Studio Projects`},{title:"> NODE_06: PROJECTS",body:`• Riyadh Prompt Pack
+• Courtyard Residence Study
+• Volume Light Experiments
+• AI Spatial Feed Series`}];async function revealCV(){const e=document.getElementById("vault-results");e.innerHTML="";for(let t of cvSections){const n=document.createElement("pre");n.style.color="#3cff9b",n.style.marginBottom="20px",n.style.whiteSpace="pre-wrap",e.appendChild(n),await typeBlock(t.title+"\n"+t.body,n,20),await new Promise(e=>setTimeout(e,500))}}
