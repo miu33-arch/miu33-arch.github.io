@@ -67,3 +67,19 @@ body { background: #020403; color: #c5f7c5; font-family: "Courier New", "Microso
   border-left: 2px solid #3cff9b;
   padding-left: 10px;
 }
+/* Ensure the Decrypted Box handles different font sizes gracefully */
+#decrypted-content {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+#decrypted-content div {
+    /* Use 'auto-fit' so it automatically stacks if the font is too big */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); 
+    gap: 15px;
+}
+
+#decrypted-content p {
+    font-size: clamp(9px, 2.5vw, 11px); /* Responsive font scaling */
+}
