@@ -48,4 +48,20 @@ async function runBootSequence() {
     document.getElementById("boot-overlay").style.opacity = "0";
     setTimeout(() => document.getElementById("boot-overlay").style.display = "none", 800);
 }
+function startRiyadhClock() {
+    setInterval(() => {
+        const now = new Date();
+        const riyadhTime = new Intl.DateTimeFormat('en-GB', {
+            timeZone: 'Asia/Riyadh',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            hour12: false
+        }).format(now);
+        
+        const clockEl = document.getElementById('riyadh-clock');
+        if (clockEl) clockEl.textContent = riyadhTime;
+    }, 1000);
+}
+startRiyadhClock(); // This starts the timer immediately
 
