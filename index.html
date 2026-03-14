@@ -4,33 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MIU_33 — Digital Architect Studio</title>
-
-  <meta property="og:title" content="MIU_33 // Digital Architect Studio">
-  <meta property="og:description" content="AI Spatial Design & Minimalist Architecture by Anamy Padilla (缪联睿).">
-  <meta property="og:image" content="https://miu33-arch.github.io/images/miu-logo-neon.jpg">
-  <meta property="og:url" content="https://miu33-arch.github.io/">
-  <meta property="og:type" content="website">
-
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="images/miu-logo-neon.jpg" type="image/x-icon">
 </head>
 <body>
 
-  <!-- MATRIX + BOOT OVERLAY -->
   <div id="matrix-intro"><canvas id="matrix-canvas"></canvas></div>
-
-  <!-- Boot overlay (clean version) -->
   <div id="boot-overlay">
-    <div class="boot-inner">
-      <pre id="boot-text">
-> INITIALIZING_MIU_33...
-      </pre>
-    </div>
+    <div class="boot-inner"><pre id="boot-text">> INITIALIZING_SYSTEM...</pre></div>
   </div>
 
   <div id="scanlines"></div>
-  <div id="matrix"></div>
-
   <div class="content-wrapper">
     <aside class="sidebar">
       <div class="logo-block"><p class="cmd-line">&gt; MIU_33_CONSOLE</p></div>
@@ -48,11 +32,9 @@
     </aside>
 
     <main class="main-console">
-
-      <!-- HERO -->
       <section id="hero" class="terminal-box">
-        <div style="display: flex; align-items: center; gap: 20px;">
-          <img src="images/avatar-professional.jpg" alt="Anamy Padilla" style="width: 100px; height: 100px; border-radius: 50%; border: 2px solid #3cff9b; object-fit: cover;">
+        <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+          <img src="images/avatar-professional.jpg" alt="Miu" style="width: 110px; height: 110px; border: 1px solid #3cff9b; object-fit: cover;">
           <div>
             <h1 class="cmd-line">&gt; MIU_33 / DIGITAL ARCHITECT</h1>
             <p class="hero-sub">Calm, minimal architectures by 缪联睿 (Anamy Padilla).</p>
@@ -60,51 +42,38 @@
         </div>
       </section>
 
-      <!-- ABOUT -->
       <section id="about" class="terminal-box">
         <h2 class="cmd-line">&gt; ABOUT_ME / STUDIO_PROFILE</h2>
-        <p>Architect, digital designer, and founder of MIU_33. Merging traditional architectural discipline with AI-driven spatial design.</p>
+        <p>Merging clinical precision and financial logic into AI-driven spatial design. Est. Jan 2026.</p>
+        <p style="color: #C9A46A; font-size: 12px; margin-top: 5px;">&gt; 缪联睿：立足利雅得的数字建筑师。医疗精密与金融逻辑的结合。</p>
       </section>
 
-      <!-- AI SPATIAL FEED -->
       <section id="ai-spatial" class="terminal-box">
-        <h2 class="cmd-line">&gt; ACCESS_AI_SPATIAL_FEED</h2>
+        <h2 class="cmd-line">&gt; AI_SPATIAL_FEED</h2>
         <div class="spatial-grid">
-          <img src="images/ai1.jpeg" class="spatial-img" alt="AI Spatial 1">
-          <img src="images/ai2.jpeg" class="spatial-img" alt="AI Spatial 2">
-          <img src="images/ai3.jpeg" class="spatial-img" alt="AI Spatial 3">
-          <img src="images/ai4.jpeg" class="spatial-img" alt="AI Spatial 4">
+          <img src="images/ai1.jpeg" class="spatial-img">
+          <img src="images/ai2.jpeg" class="spatial-img">
+          <img src="images/ai3.jpeg" class="spatial-img">
+          <img src="images/ai4.jpeg" class="spatial-img">
         </div>
       </section>
 
-      <!-- PROJECTS -->
       <section id="projects" class="terminal-box">
-        <h2 class="cmd-line">&gt; TRADITIONAL_PROJECTS / ARCHIVE</h2>
+        <h2 class="cmd-line">&gt; PROJECT_ARCHIVE</h2>
         <div class="project-grid">
-          <div class="project-card"><img src="images/1000007351.png" alt="Archive 01"><p>[ ARCHIVE_01 ] Courtyard Residence</p></div>
-          <div class="project-card"><img src="images/1000007352.png" alt="Archive 02"><p>[ ARCHIVE_02 ] Massing Study</p></div>
-          <div class="project-card"><img src="images/1000007353.png" alt="Archive 03"><p>[ ARCHIVE_03 ] Volume Light Study</p></div>
+          <div class="project-card"><img src="images/1000007351.png"><p>[ ARCHIVE_01 ] Courtyard Study</p></div>
+          <div class="project-card"><img src="images/1000007352.png"><p>[ ARCHIVE_02 ] Massing Logic</p></div>
+          <div class="project-card"><img src="images/1000007353.png"><p>[ ARCHIVE_03 ] Volume Light</p></div>
         </div>
       </section>
 
-      <!-- SHOP -->
       <section id="shop" class="terminal-box">
-        <h2 class="cmd-line">&gt; SHOP / DIGITAL_ASSETS</h2>
-        <div class="shop-card terminal-box" style="border-color: #C9A46A; padding: 0; overflow: hidden;">
-          <video class="full-video" src="shop-preview.mp4" autoplay muted loop playsinline style="width: 100%; display: block;"></video>
-          <div style="padding: 20px;">
-            <h3>&gt; NODE_01: RIYADH_PROMPT_PACK</h3>
-            <p style="font-size:11px; margin: 10px 0; color: #C9A46A;">[ ENCRYPTED_FILES_DETECTED ]</p>
-            <button onclick="solveMiuPuzzle()" class="btn-terminal-gold" style="margin-bottom: 10px;">&gt; DECRYPT_ACCESS_KEY</button>
-            <br>
-            <a href="https://www.buymeacoffee.com/miu_studio3" target="_blank" class="btn-terminal" style="margin-top:5px;">&gt; VISIT_BUY_ME_A_COFFEE</a>
-          </div>
-        </div>
+        <h2 class="cmd-line">&gt; SHOP / ASSETS</h2>
+        <a href="https://www.buymeacoffee.com/miu_studio3" target="_blank" class="btn-terminal-gold">&gt; ACCESS_MARKETPLACE</a>
       </section>
 
-      <!-- SOCIAL -->
       <section id="social-nodes" class="terminal-box">
-        <h2 class="cmd-line">&gt; ACCESS_SOCIAL_CHANNELS</h2>
+        <h2 class="cmd-line">&gt; SOCIAL_CHANNELS</h2>
         <div class="social-grid">
           <a href="https://www.linkedin.com/company/miu-digital-architect-studio" class="btn-terminal" target="_blank">LINKEDIN</a>
           <a href="https://www.tiktok.com/@miuproton" class="btn-terminal" target="_blank">TIKTOK</a>
@@ -112,77 +81,39 @@
         </div>
       </section>
 
-      <!-- AUDIO -->
-      <section class="terminal-box">
-        <h2 class="cmd-line">&gt; SYSTEM_LOG_01 / AUDIO_UPLINK</h2>
-        <div class="audio-console">
-          <audio id="miu-audio"><source src="audio/miu-log-01.mp3" type="audio/mpeg"></audio>
-          <button id="play-log" class="btn-terminal" onclick="toggleAudio()">[ ESTABLISH_UPLINK ]</button>
-        </div>
+      <section id="audio-logs" class="terminal-box">
+        <h2 class="cmd-line">&gt; SYSTEM_LOG / AUDIO_UPLINK</h2>
+        <audio id="miu-audio"><source src="audio/miu-log-01.mp3" type="audio/mpeg"></audio>
+        <button id="play-log" class="btn-terminal" onclick="toggleAudio()">[ ESTABLISH_UPLINK ]</button>
       </section>
 
-      <!-- VAULT -->
       <section id="vault" class="terminal-box">
-        <h2 class="cmd-line">&gt; ENCRYPTED_VAULT / LEVEL_01</h2>
-        <p id="dossier-text" style="font-size: 11px; margin-bottom: 10px;">&gt; ENTER_PASSKEY_TO_PROCEED</p>
+        <h2 class="cmd-line">&gt; ENCRYPTED_VAULT</h2>
         <input type="password" id="vault-pass" placeholder="ENTER_HEX_CODE" style="background:#000; border:1px solid #333; color:#3cff9b; padding:10px; width:100%;">
         <button onclick="checkVault()" class="btn-terminal" style="margin-top:10px;">[ ATTEMPT_DECRYPTION ]</button>
         <div id="secret-content" style="display:none; margin-top:20px;"><div id="vault-results"></div></div>
       </section>
 
-      <!-- CONTACT -->
       <section id="contact" class="terminal-box">
         <h2 class="cmd-line">&gt; CONTACT_NODE</h2>
-        <form class="contact-form" action="https://formspree.io/f/mvzwzppo" method="POST">
+        <p style="font-size: 11px; color: #C9A46A; margin-bottom: 10px;">DIRECT: miu.digital.studio@proton.me</p>
+        <form action="https://formspree.io/f/mvzwzppo" method="POST">
           <input type="email" name="email" placeholder="> EMAIL" required style="width:100%; background:#000; border:1px solid #333; color:#3cff9b; padding:10px; margin-bottom:10px;">
           <textarea name="message" placeholder="> MESSAGE" required style="width:100%; background:#000; border:1px solid #333; color:#3cff9b; padding:10px;"></textarea>
           <button type="submit" class="btn-terminal" style="margin-top:10px;">SEND_SIGNAL</button>
         </form>
       </section>
 
-      <!-- FOOTER -->
-      <footer class="terminal-footer">
-        <p>© 2026 缪联睿 (Anamy Padilla) | MIU_33</p>
-      </footer>
-
-      <!-- LEGAL SECTION -->
-      <section id="legal" class="terminal-box" style="margin-top: 20px;">
-        <h2 class="cmd-line">&gt; LEGAL_NODE / PRIVACY_AND_TERMS</h2>
-
-        <div style="font-size: 12px; color: #3cff9b; line-height: 1.6;">
-          <p><strong>&gt; PRIVACY_POLICY</strong></p>
-          <p>
-            MIU_33 does not collect personal data beyond what you voluntarily submit through the contact form.
-            Messages are processed securely through Formspree and are not stored on this website.
-            No tracking cookies, analytics scripts, or third‑party data collectors are used.
-          </p>
-
-          <br>
-
-          <p><strong>&gt; TERMS_OF_USE</strong></p>
-          <p>
-            All visual content, AI‑generated works, text, and system logic within MIU_33 are the intellectual
-            property of Anamy Padilla (缪联睿). Redistribution, replication, or commercial use without explicit
-            permission is prohibited. This website is provided for creative and informational purposes only.
-          </p>
-
-          <br>
-
-          <p><strong>&gt; CONTACT_FOR_INQUIRIES</strong></p>
-          <p>
-            For legal or licensing questions, contact:
-            <span style="color:#C9A46A;">legal@miu33.studio</span>
-          </p>
-        </div>
+      <section id="legal" class="terminal-box">
+        <h2 class="cmd-line">&gt; LEGAL_NODE</h2>
+        <p style="font-size: 10px; opacity: 0.6;">© 2026 缪联睿 (Anamy Padilla) | MIU_33 | Riyadh, KSA</p>
       </section>
-
     </main>
   </div>
 
-  <div id="fullscreen-view"><img id="fullscreen-img" src="" alt=""></div>
+  <div id="fullscreen-view" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.9); z-index:20000; justify-content:center; align-items:center;"><img id="fullscreen-img" style="max-width:90%; max-height:90%; border:1px solid #3cff9b;"></div>
 
   <script src="effects.js"></script>
   <script src="vault.js"></script>
-  <script src="contact.js"></script>
 </body>
 </html>
