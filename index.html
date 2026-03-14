@@ -49,35 +49,43 @@
       </section>
 
       <section id="ai-spatial" class="terminal-box">
-        <h2 class="cmd-line">&gt; AI_SPATIAL_FEED</h2>
+        <h2 class="cmd-line">&gt; AI_SPATIAL_FEED / COMPUTATIONAL_OUTPUT</h2>
         <div class="spatial-grid">
-          <img src="images/ai1.jpeg" class="spatial-img">
-          <img src="images/ai2.jpeg" class="spatial-img">
-          <img src="images/ai3.jpeg" class="spatial-img">
-          <img src="images/ai4.jpeg" class="spatial-img">
+          <div class="spatial-item"><img src="images/ai1.jpeg" class="spatial-img"><span class="ai-tag">AI_ENGINEERED</span></div>
+          <div class="spatial-item"><img src="images/ai2.jpeg" class="spatial-img"><span class="ai-tag">AI_ENGINEERED</span></div>
+          <div class="spatial-item"><img src="images/ai3.jpeg" class="spatial-img"><span class="ai-tag">AI_ENGINEERED</span></div>
+          <div class="spatial-item"><img src="images/ai4.jpeg" class="spatial-img"><span class="ai-tag">AI_ENGINEERED</span></div>
         </div>
       </section>
 
       <section id="projects" class="terminal-box">
-        <h2 class="cmd-line">&gt; PROJECT_ARCHIVE</h2>
+        <h2 class="cmd-line">&gt; PROJECT_ARCHIVE / TECHNICAL_STUDIES</h2>
         <div class="project-grid">
-          <div class="project-card"><img src="images/1000007351.png"><p>[ ARCHIVE_01 ] Courtyard Study</p></div>
-          <div class="project-card"><img src="images/1000007352.png"><p>[ ARCHIVE_02 ] Massing Logic</p></div>
-          <div class="project-card"><img src="images/1000007353.png"><p>[ ARCHIVE_03 ] Volume Light</p></div>
+          <div class="project-card">
+            <div class="img-container"><img src="images/1000007351.png"><div class="img-overlay">TECHNICAL_DATA</div></div>
+            <p class="project-meta">[ ARCHIVE_01 ] COURTYARD_RESIDENCE<br>Passive Cooling Logic</p>
+          </div>
+          <div class="project-card">
+            <div class="img-container"><img src="images/1000007352.png"><div class="img-overlay">MASSING_LOGIC</div></div>
+            <p class="project-meta">[ ARCHIVE_02 ] MASSING_STUDY<br>Minimalist Form</p>
+          </div>
+          <div class="project-card">
+            <div class="img-container"><img src="images/1000007353.png"><div class="img-overlay">LIGHT_DYNAMICS</div></div>
+            <p class="project-meta">[ ARCHIVE_03 ] VOLUME_LIGHT<br>AI Spatial Lighting</p>
+          </div>
         </div>
       </section>
 
       <section id="shop" class="terminal-box">
         <h2 class="cmd-line">&gt; SHOP / ASSETS</h2>
-        <a href="https://www.buymeacoffee.com/miu_studio3" target="_blank" class="btn-terminal-gold">&gt; ACCESS_MARKETPLACE</a>
-      </section>
-
-      <section id="social-nodes" class="terminal-box">
-        <h2 class="cmd-line">&gt; SOCIAL_CHANNELS</h2>
-        <div class="social-grid">
-          <a href="https://www.linkedin.com/company/miu-digital-architect-studio" class="btn-terminal" target="_blank">LINKEDIN</a>
-          <a href="https://www.tiktok.com/@miuproton" class="btn-terminal" target="_blank">TIKTOK</a>
-          <a href="https://www.xiaohongshu.com/user/profile/miu_Digital" class="btn-terminal" target="_blank">REDNOTE</a>
+        <div class="shop-card terminal-box" style="border-color: #C9A46A; padding: 0; overflow: hidden;">
+          <video class="full-video" src="shop-preview.mp4" autoplay muted loop playsinline></video>
+          <div style="padding: 20px;">
+            <h3>&gt; RIYADH_PROMPT_PACK</h3>
+            <button onclick="solveMiuPuzzle()" class="btn-terminal-gold" style="margin: 10px 0;">&gt; DECRYPT_ACCESS_KEY</button>
+            <br>
+            <a href="https://www.buymeacoffee.com/miu_studio3" target="_blank" class="btn-terminal">&gt; VISIT_SHOP</a>
+          </div>
         </div>
       </section>
 
@@ -103,17 +111,12 @@
           <button type="submit" class="btn-terminal" style="margin-top:10px;">SEND_SIGNAL</button>
         </form>
       </section>
-
-      <section id="legal" class="terminal-box">
-        <h2 class="cmd-line">&gt; LEGAL_NODE</h2>
-        <p style="font-size: 10px; opacity: 0.6;">© 2026 缪联睿 (Anamy Padilla) | MIU_33 | Riyadh, KSA</p>
-      </section>
     </main>
   </div>
 
-  <div id="fullscreen-view" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.9); z-index:20000; justify-content:center; align-items:center;"><img id="fullscreen-img" style="max-width:90%; max-height:90%; border:1px solid #3cff9b;"></div>
+  <div id="fullscreen-view" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.9); z-index:20000; justify-content:center; align-items:center;"><img id="fullscreen-img" style="max-width:90%; border:1px solid #3cff9b;"></div>
 
-  <script src="effects.js"></script>
   <script src="vault.js"></script>
+  <script src="effects.js"></script>
 </body>
 </html>
