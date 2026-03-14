@@ -1,35 +1,39 @@
+/* Final MIU_33 Master Styling */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { background: #020403; color: #c5f7c5; font-family: "Courier New", "Microsoft YaHei", monospace; overflow-x: hidden; line-height: 1.6; }
 
+#matrix-intro { position: fixed; inset: 0; background: #000; z-index: 10001; transition: opacity 1s; }
+#matrix-canvas { display: block; width: 100vw; height: 100vh; }
 #boot-overlay { position: fixed; inset: 0; background: #000; z-index: 10000; display: flex; justify-content: center; align-items: center; transition: opacity 0.8s; }
-.boot-inner { border: 1px solid #3cff9b; padding: 20px; background: #000; width: 340px; }
-#boot-text { color: #3cff9b; text-align: left; white-space: pre; } /* LOCKED WIDTH PREVENTS WIGGLE */
+.boot-inner { border: 1px solid #3cff9b; padding: 20px; background: #000; width: 350px; min-height: 80px; display: flex; align-items: center; }
+#boot-text { color: #3cff9b; text-align: left; white-space: pre; }
 
-#matrix-intro { position: fixed; inset: 0; background: #000; z-index: 9999; transition: opacity 1s; }
 #scanlines { pointer-events: none; position: fixed; inset: 0; background: repeating-linear-gradient(to bottom, rgba(0,0,0,0.05), transparent 2px); z-index: 5; }
 
 .content-wrapper { display: flex; min-height: 100vh; padding: 20px; gap: 20px; position: relative; z-index: 10; }
 .sidebar { width: 220px; border: 1px solid #3cff9b; padding: 16px; background: rgba(0,0,0,0.95); height: fit-content; position: sticky; top: 20px; }
 .main-console { flex: 1; display: flex; flex-direction: column; gap: 20px; max-width: 1200px; }
-.terminal-box { border: 1px solid #3cff9b; padding: 20px; background: rgba(0,0,0,0.85); }
+.terminal-box { border: 1px solid #3cff9b; padding: 20px; background: rgba(0,0,0,0.85); margin-bottom: 10px; }
 
-.cmd-line { color: #3cff9b; font-size: 13px; margin-bottom: 10px; text-transform: uppercase; }
+/* Captions & Overlays */
+.project-meta { font-size: 10px; color: #C9A46A; margin-top: 10px; border-left: 1px solid #C9A46A; padding-left: 10px; line-height: 1.4; }
+.img-container { position: relative; overflow: hidden; cursor: crosshair; }
+.img-overlay { position: absolute; bottom: -100%; left: 0; width: 100%; background: rgba(60, 255, 155, 0.9); color: #000; font-size: 10px; font-weight: bold; text-align: center; padding: 5px 0; transition: 0.3s; }
+.img-container:hover .img-overlay { bottom: 0; }
+
+.spatial-item { position: relative; }
+.ai-tag { position: absolute; top: 5px; right: 5px; background: #000; color: #3cff9b; font-size: 8px; padding: 2px 5px; border: 1px solid #3cff9b; opacity: 0.7; }
+
+.full-video { width: 100%; height: auto; display: block; }
 .nav-block a { display: block; color: #3cff9b; text-decoration: none; font-size: 12px; margin-bottom: 10px; }
-.nav-block a:hover { text-shadow: 0 0 8px #3cff9b; color: #fff; }
+.nav-block a:hover { transform: translateX(5px); color: #fff; text-shadow: 0 0 8px #3cff9b; }
 
-.btn-terminal, .btn-terminal-gold { background: transparent; padding: 8px 15px; cursor: pointer; font-family: inherit; font-size: 11px; border: 1px solid; }
+.btn-terminal, .btn-terminal-gold { background: transparent; padding: 8px 15px; cursor: pointer; font-family: inherit; font-size: 11px; border: 1px solid; display: inline-block; text-decoration: none; }
 .btn-terminal { border-color: #3cff9b; color: #3cff9b; }
 .btn-terminal-gold { border-color: #C9A46A; color: #C9A46A; }
 
-.spatial-grid img, .project-card img { width: 100%; border: 1px solid #333; filter: grayscale(100%); transition: 0.5s; cursor: crosshair; }
+.spatial-grid, .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+.spatial-grid img, .project-card img { width: 100%; border: 1px solid #333; filter: grayscale(100%); transition: 0.5s; }
 .spatial-grid img:hover, .project-card img:hover { filter: grayscale(0%); border-color: #3cff9b; }
-#matrix-canvas {
-  display: block;
-  width: 100vw;
-  height: 100vh;
-}
 
-@media (max-width: 900px) {
-  .content-wrapper { flex-direction: column; }
-  .sidebar { width: 100%; position: static; }
-}
+@media (max-width: 900px) { .content-wrapper { flex-direction: column; } .sidebar { width: 100%; position: static; } }
