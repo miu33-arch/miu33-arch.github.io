@@ -1,85 +1,120 @@
-// MIU_33 EFFECTS ENGINE v2.1 - OPTIMIZED FOR RIYADH_NODE
-document.addEventListener("DOMContentLoaded", () => {
-  initMatrixIntro();
-  initFullscreenViewer();
-  initTypewriter();
-});
+// MIU_33 EFFECTS ENGINE v2.1 - OPTIMIZED FOR RIYADH_NOD
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MIU_33 — Digital Architect Studio</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="images/miu-logo-neon.jpg" type="image/x-icon">
+</head>
+<body>
 
-function initMatrixIntro() {
-  const canvas = document.getElementById("matrix-canvas");
-  const ctx = canvas?.getContext("2d");
-  const introLayer = document.getElementById("matrix-intro");
-  const bootOverlay = document.getElementById("boot-overlay");
-  if (!canvas || !introLayer || !ctx) return;
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  const letters = "01MIU33_ARCH_缪联睿"; 
-  const fontSize = 16;
-  let columns = Math.floor(canvas.width / fontSize);
-  let drops = Array(columns).fill(1);
-  function draw() {
-    ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = "#3cff9b";
-    ctx.font = fontSize + "px monospace";
-    for (let i = 0; i < drops.length; i++) {
-      const text = letters.charAt(Math.floor(Math.random() * letters.length));
-      ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-      if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
-      drops[i]++;
-    }
-  }
-  const interval = setInterval(draw, 50);
-  setTimeout(() => {
-    if(bootOverlay) {
-      bootOverlay.style.opacity = "0";
-      setTimeout(() => { bootOverlay.style.display = "none"; }, 800);
-    }
-  }, 2500);
-  setTimeout(() => {
-    if(introLayer) {
-      introLayer.style.opacity = "0";
-      setTimeout(() => { introLayer.style.display = "none"; clearInterval(interval); }, 1000);
-    }
-  }, 5000);
-}
+  <div id="matrix-intro"><canvas id="matrix-canvas"></canvas></div>
+  <div id="boot-overlay">
+    <div class="boot-inner"><pre id="boot-text">> INITIALIZING_SYSTEM...</pre></div>
+  </div>
 
-function solveMiuPuzzle() {
-  const challenge = prompt("Passive cooling element? (Hint: C...)");
-  if (challenge?.toLowerCase().includes("courtyard")) {
-    alert("LOGIC_VERIFIED. ACCESSING_VAULT...");
-    document.getElementById("vault").scrollIntoView({ behavior: 'smooth' });
-    setTimeout(() => { document.getElementById("vault-pass").focus(); }, 1000);
-  }
-}
+  <div id="scanlines"></div>
+  <div class="content-wrapper">
+    <aside class="sidebar">
+      <div class="logo-block"><p class="cmd-line">&gt; MIU_33_CONSOLE</p></div>
+      <nav class="nav-block">
+        <a href="#hero">&gt; HOME</a>
+        <a href="#about">&gt; ABOUT</a>
+        <a href="#ai-spatial">&gt; AI_FEED</a>
+        <a href="#projects">&gt; PROJECTS</a>
+        <a href="#shop">&gt; SHOP</a>
+        <a href="#social-nodes">&gt; CHANNELS</a>
+        <a href="#vault">&gt; VAULT</a>
+        <a href="#contact">&gt; CONTACT</a>
+        <a href="#legal">&gt; LEGAL</a>
+      </nav>
+    </aside>
 
-function initTypewriter() {
-  const heroText = document.querySelector('.hero-sub');
-  if (heroText) {
-    heroText.style.borderRight = "2px solid #3cff9b";
-    heroText.style.whiteSpace = "nowrap";
-    heroText.style.overflow = "hidden";
-    heroText.style.width = "0";
-    heroText.style.animation = "typing 3.5s steps(40, end) forwards";
-  }
-}
+    <main class="main-console">
+      <section id="hero" class="terminal-box">
+        <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+          <img src="images/avatar-professional.jpg" alt="Miu" style="width: 110px; height: 110px; border: 1px solid #3cff9b; object-fit: cover;">
+          <div>
+            <h1 class="cmd-line">&gt; MIU_33 / DIGITAL ARCHITECT</h1>
+            <p class="hero-sub">Calm, minimal architectures by 缪联睿 (Anamy Padilla).</p>
+          </div>
+        </div>
+      </section>
 
-function initFullscreenViewer() {
-  const view = document.getElementById("fullscreen-view");
-  const img = document.getElementById("fullscreen-img");
-  if(!view || !img) return;
-  document.addEventListener("click", (e) => {
-    if (e.target.classList.contains("spatial-img") || e.target.closest(".project-card img")) {
-      img.src = e.target.src;
-      view.style.display = "flex";
-    }
-  });
-  view.onclick = () => { view.style.display = "none"; };
-}
+      <section id="about" class="terminal-box">
+        <h2 class="cmd-line">&gt; ABOUT_ME / STUDIO_PROFILE</h2>
+        <p>Merging clinical precision and financial logic into AI-driven spatial design. Est. Jan 2026.</p>
+        <p style="color: #C9A46A; font-size: 12px; margin-top: 5px;">&gt; 缪联睿：立足利雅得的数字建筑师。医疗精密与金融逻辑的结合。</p>
+      </section>
 
-function toggleAudio() {
-  const audio = document.getElementById("miu-audio");
-  const btn = document.getElementById("play-log");
-  if (audio.paused) { audio.play(); btn.textContent = "[ UPLINK_ACTIVE ]"; } 
-  else { audio.pause(); btn.textContent = "[ ESTABLISH_UPLINK ]"; }
-}
+      <section id="ai-spatial" class="terminal-box">
+        <h2 class="cmd-line">&gt; AI_SPATIAL_FEED</h2>
+        <div class="spatial-grid">
+          <img src="images/ai1.jpeg" class="spatial-img">
+          <img src="images/ai2.jpeg" class="spatial-img">
+          <img src="images/ai3.jpeg" class="spatial-img">
+          <img src="images/ai4.jpeg" class="spatial-img">
+        </div>
+      </section>
+
+      <section id="projects" class="terminal-box">
+        <h2 class="cmd-line">&gt; PROJECT_ARCHIVE</h2>
+        <div class="project-grid">
+          <div class="project-card"><img src="images/1000007351.png"><p>[ ARCHIVE_01 ] Courtyard Study</p></div>
+          <div class="project-card"><img src="images/1000007352.png"><p>[ ARCHIVE_02 ] Massing Logic</p></div>
+          <div class="project-card"><img src="images/1000007353.png"><p>[ ARCHIVE_03 ] Volume Light</p></div>
+        </div>
+      </section>
+
+      <section id="shop" class="terminal-box">
+        <h2 class="cmd-line">&gt; SHOP / ASSETS</h2>
+        <a href="https://www.buymeacoffee.com/miu_studio3" target="_blank" class="btn-terminal-gold">&gt; ACCESS_MARKETPLACE</a>
+      </section>
+
+      <section id="social-nodes" class="terminal-box">
+        <h2 class="cmd-line">&gt; SOCIAL_CHANNELS</h2>
+        <div class="social-grid">
+          <a href="https://www.linkedin.com/company/miu-digital-architect-studio" class="btn-terminal" target="_blank">LINKEDIN</a>
+          <a href="https://www.tiktok.com/@miuproton" class="btn-terminal" target="_blank">TIKTOK</a>
+          <a href="https://www.xiaohongshu.com/user/profile/miu_Digital" class="btn-terminal" target="_blank">REDNOTE</a>
+        </div>
+      </section>
+
+      <section id="audio-logs" class="terminal-box">
+        <h2 class="cmd-line">&gt; SYSTEM_LOG / AUDIO_UPLINK</h2>
+        <audio id="miu-audio"><source src="audio/miu-log-01.mp3" type="audio/mpeg"></audio>
+        <button id="play-log" class="btn-terminal" onclick="toggleAudio()">[ ESTABLISH_UPLINK ]</button>
+      </section>
+
+      <section id="vault" class="terminal-box">
+        <h2 class="cmd-line">&gt; ENCRYPTED_VAULT</h2>
+        <input type="password" id="vault-pass" placeholder="ENTER_HEX_CODE" style="background:#000; border:1px solid #333; color:#3cff9b; padding:10px; width:100%;">
+        <button onclick="checkVault()" class="btn-terminal" style="margin-top:10px;">[ ATTEMPT_DECRYPTION ]</button>
+        <div id="secret-content" style="display:none; margin-top:20px;"><div id="vault-results"></div></div>
+      </section>
+
+      <section id="contact" class="terminal-box">
+        <h2 class="cmd-line">&gt; CONTACT_NODE</h2>
+        <p style="font-size: 11px; color: #C9A46A; margin-bottom: 10px;">DIRECT: miu.digital.studio@proton.me</p>
+        <form action="https://formspree.io/f/mvzwzppo" method="POST">
+          <input type="email" name="email" placeholder="> EMAIL" required style="width:100%; background:#000; border:1px solid #333; color:#3cff9b; padding:10px; margin-bottom:10px;">
+          <textarea name="message" placeholder="> MESSAGE" required style="width:100%; background:#000; border:1px solid #333; color:#3cff9b; padding:10px;"></textarea>
+          <button type="submit" class="btn-terminal" style="margin-top:10px;">SEND_SIGNAL</button>
+        </form>
+      </section>
+
+      <section id="legal" class="terminal-box">
+        <h2 class="cmd-line">&gt; LEGAL_NODE</h2>
+        <p style="font-size: 10px; opacity: 0.6;">© 2026 缪联睿 (Anamy Padilla) | MIU_33 | Riyadh, KSA</p>
+      </section>
+    </main>
+  </div>
+
+  <div id="fullscreen-view" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.9); z-index:20000; justify-content:center; align-items:center;"><img id="fullscreen-img" style="max-width:90%; max-height:90%; border:1px solid #3cff9b;"></div>
+
+  <script src="effects.js"></script>
+  <script src="vault.js"></script>
+</body>
+</html>
