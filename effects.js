@@ -1,25 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // 1. Start Matrix
   initMatrixIntro();
-  // 2. Setup Fullscreen
   initFullscreenViewer();
 });
 
 function initMatrixIntro() {
   const canvas = document.getElementById("matrix-canvas");
   const introLayer = document.getElementById("matrix-intro");
-  const bootOverlay = document.getElementById("boot-overlay");
-  
-  // If no matrix canvas is found, jump straight to boot
-  if (!canvas || !introLayer) {
-    if (typeof runBootSequence === "function") runBootSequence();
-    return;
-  }
+  if (!canvas || !introLayer) return;
 
   const ctx = canvas.getContext("2d");
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
-
   const letters = "01MIU33_ARCH_缪联睿";
   const fontSize = 16;
   let columns = Math.floor(canvas.width / fontSize);
@@ -40,22 +31,25 @@ function initMatrixIntro() {
 
   const interval = setInterval(draw, 50);
 
-  // After 3 seconds of Matrix, fade out and start the Boot Text
   setTimeout(() => {
     introLayer.style.opacity = "0";
     setTimeout(() => { 
       introLayer.style.display = "none"; 
       clearInterval(interval);
-      
-      // TRIGGER BOOT TEXT
-      if (typeof runBootSequence === "function") {
-          runBootSequence();
-      } else {
-          // Emergency Hide if vault.js is missing
-          if(bootOverlay) bootOverlay.style.display = "none";
-      }
+      if (typeof runBootSequence === "function") runBootSequence();
     }, 1000);
-  }, 3000);
+  }, 3500);
+}
+
+function solveMiuPuzzle() {
+  const challenge = prompt("Passive cooling element? (Hint: C...)");
+  if (challenge?.toLowerCase().includes("courtyard")) {
+    alert("LOGIC_VERIFIED. ACCESSING_VAULT...");
+    document.getElementById("vault").scrollIntoView({ behavior: 'smooth' });
+    setTimeout(() => { document.getElementById("vault-pass").focus(); }, 1000);
+  } else {
+    alert("LOGIC_ERROR. HINT: Check the Projects section for Riyadh climate solutions.");
+  }
 }
 
 function initFullscreenViewer() {
@@ -63,10 +57,8 @@ function initFullscreenViewer() {
   const img = document.getElementById("fullscreen-img");
   document.addEventListener("click", (e) => {
     if (e.target.classList.contains("spatial-img") || e.target.closest(".project-card img")) {
-      if(img && view) {
-        img.src = e.target.src;
-        view.style.display = "flex";
-      }
+      img.src = e.target.src;
+      view.style.display = "flex";
     }
   });
   if(view) view.onclick = () => view.style.display = "none";
@@ -75,14 +67,6 @@ function initFullscreenViewer() {
 function toggleAudio() {
   const audio = document.getElementById("miu-audio");
   const btn = document.getElementById("play-log");
-  if (audio.paused) { 
-    audio.play(); 
-    btn.textContent = "[ UPLINK_ACTIVE ]"; 
-    btn.style.color="#ff3c3c"; 
-  } else { 
-    audio.pause(); 
-    btn.textContent = "[ ESTABLISH_UPLINK ]"; 
-    btn.style.color="#3cff9b"; 
-  }
+  if (audio.paused) { audio.play(); btn.textContent = "[ UPLINK_ACTIVE ]"; btn.style.color="#ff3c3c"; }
+  else { audio.pause(); btn.textContent = "[ ESTABLISH_UPLINK ]"; btn.style.color="#3cff9b"; }
 }
-
