@@ -100,3 +100,16 @@ body { background: #020403; color: #c5f7c5; font-family: "Courier New", "Microso
 #decrypted-content p {
     font-size: clamp(9px, 2.5vw, 11px); /* Responsive font scaling */
 }
+.btn-terminal-gold {
+    transition: all 0.3s ease;
+    border: 1px solid #C9A46A;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.btn-terminal-gold:hover {
+    background: #C9A46A !important;
+    color: #000 !important;
+    box-shadow: 0 0 20px rgba(201, 164, 106, 0.6);
+    transform: translateY(-2px);
+}
