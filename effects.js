@@ -1,17 +1,25 @@
-// MIU_33 EFFECTS ENGINE v2.1 - OPTIMIZED FOR RIYADH_NOD
 document.addEventListener("DOMContentLoaded", () => {
+  // 1. Start Matrix
   initMatrixIntro();
+  // 2. Setup Fullscreen
   initFullscreenViewer();
 });
 
 function initMatrixIntro() {
   const canvas = document.getElementById("matrix-canvas");
-  const ctx = canvas?.getContext("2d");
   const introLayer = document.getElementById("matrix-intro");
-  if (!canvas || !introLayer) return;
+  const bootOverlay = document.getElementById("boot-overlay");
+  
+  // If no matrix canvas is found, jump straight to boot
+  if (!canvas || !introLayer) {
+    if (typeof runBootSequence === "function") runBootSequence();
+    return;
+  }
 
+  const ctx = canvas.getContext("2d");
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
+
   const letters = "01MIU33_ARCH_缪联睿";
   const fontSize = 16;
   let columns = Math.floor(canvas.width / fontSize);
@@ -32,14 +40,22 @@ function initMatrixIntro() {
 
   const interval = setInterval(draw, 50);
 
+  // After 3 seconds of Matrix, fade out and start the Boot Text
   setTimeout(() => {
     introLayer.style.opacity = "0";
     setTimeout(() => { 
       introLayer.style.display = "none"; 
       clearInterval(interval);
-      if (typeof runBootSequence === "function") runBootSequence();
+      
+      // TRIGGER BOOT TEXT
+      if (typeof runBootSequence === "function") {
+          runBootSequence();
+      } else {
+          // Emergency Hide if vault.js is missing
+          if(bootOverlay) bootOverlay.style.display = "none";
+      }
     }, 1000);
-  }, 3500);
+  }, 3000);
 }
 
 function initFullscreenViewer() {
@@ -47,16 +63,26 @@ function initFullscreenViewer() {
   const img = document.getElementById("fullscreen-img");
   document.addEventListener("click", (e) => {
     if (e.target.classList.contains("spatial-img") || e.target.closest(".project-card img")) {
-      img.src = e.target.src;
-      view.style.display = "flex";
+      if(img && view) {
+        img.src = e.target.src;
+        view.style.display = "flex";
+      }
     }
   });
-  view.onclick = () => view.style.display = "none";
+  if(view) view.onclick = () => view.style.display = "none";
 }
 
 function toggleAudio() {
   const audio = document.getElementById("miu-audio");
   const btn = document.getElementById("play-log");
-  if (audio.paused) { audio.play(); btn.textContent = "[ UPLINK_ACTIVE ]"; btn.style.color="#ff3c3c"; }
-  else { audio.pause(); btn.textContent = "[ ESTABLISH_UPLINK ]"; btn.style.color="#3cff9b"; }
+  if (audio.paused) { 
+    audio.play(); 
+    btn.textContent = "[ UPLINK_ACTIVE ]"; 
+    btn.style.color="#ff3c3c"; 
+  } else { 
+    audio.pause(); 
+    btn.textContent = "[ ESTABLISH_UPLINK ]"; 
+    btn.style.color="#3cff9b"; 
+  }
 }
+
