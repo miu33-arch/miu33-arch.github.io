@@ -23,6 +23,11 @@ body { background: #020403; color: #c5f7c5; font-family: "Courier New", "Microso
 
 .spatial-grid img, .project-card img { width: 100%; border: 1px solid #333; filter: grayscale(100%); transition: 0.5s; cursor: crosshair; }
 .spatial-grid img:hover, .project-card img:hover { filter: grayscale(0%); border-color: #3cff9b; }
+#matrix-canvas {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
 
 @media (max-width: 900px) {
   .content-wrapper { flex-direction: column; }
