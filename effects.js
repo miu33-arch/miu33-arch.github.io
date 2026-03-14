@@ -44,13 +44,19 @@ function initMatrixIntro() {
 function solveMiuPuzzle() {
   const challenge = prompt("Passive cooling element? (Hint: C...)");
   if (challenge?.toLowerCase().includes("courtyard")) {
-    alert("LOGIC_VERIFIED. ACCESSING_VAULT...");
-    document.getElementById("vault").scrollIntoView({ behavior: 'smooth' });
-    setTimeout(() => { document.getElementById("vault-pass").focus(); }, 1000);
+    alert("LOGIC_VERIFIED. DECRYPTING_RIYADH_V1_PACK...");
+    
+    // This finds the hidden box and makes it visible
+    const secretBox = document.getElementById("decrypted-content");
+    if(secretBox) {
+        secretBox.style.display = "block";
+        secretBox.scrollIntoView({ behavior: 'smooth' });
+    }
   } else {
-    alert("LOGIC_ERROR. HINT: Check the Projects section for Riyadh climate solutions.");
+    alert("LOGIC_ERROR: Verification failed. Hint: Check the Project Archive.");
   }
 }
+
 
 function initFullscreenViewer() {
   const view = document.getElementById("fullscreen-view");
