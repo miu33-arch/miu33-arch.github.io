@@ -113,3 +113,19 @@ body { background: #020403; color: #c5f7c5; font-family: "Courier New", "Microso
     box-shadow: 0 0 20px rgba(201, 164, 106, 0.6);
     transform: translateY(-2px);
 }
+/* This is the shield that stops right-clicking */
+.img-protect {
+  position: relative;
+  display: inline-block;
+}
+
+.img-protect::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0); /* Completely invisible */
+  z-index: 999;
+}
