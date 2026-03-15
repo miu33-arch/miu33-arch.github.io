@@ -1,131 +1,110 @@
-/* Final MIU_33 Master Styling */
-/* TERMINAL CROSSHAIR CURSOR & SCANNING EFFECT */
+/* ============================================================
+   MIU_33 MASTER STYLING - VERSION 2026.03.15
+   ============================================================ */
+
+/* TERMINAL CROSSHAIR CURSOR */
 body {
     cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="4" fill="%233cff9b" fill-opacity="0.5"/><line x1="16" y1="0" x2="16" y2="32" stroke="%233cff9b" stroke-width="0.5"/><line x1="0" y1="16" x2="32" y2="16" stroke="%233cff9b" stroke-width="0.5"/></svg>') 16 16, crosshair;
 }
 
-/* Ensure links still look clickable */
-a, button, .btn-terminal, .btn-terminal-gold {
-    cursor: pointer;
+/* GLOBAL RESET & BASE */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { 
+    background: #020403; 
+    color: #c5f7c5; 
+    font-family: "Courier New", "Microsoft YaHei", monospace; 
+    overflow-x: hidden; 
+    line-height: 1.6; 
 }
 
-/* Rest of your existing CSS starts here... */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { background: #020403; color: #c5f7c5; font-family: "Courier New", "Microsoft YaHei", monospace; overflow-x: hidden; line-height: 1.6; }
-
+/* SYSTEM OVERLAYS (Matrix, Boot, Scanlines) */
 #matrix-intro { position: fixed; inset: 0; background: #000; z-index: 10001; transition: opacity 1s; }
 #matrix-canvas { display: block; width: 100vw; height: 100vh; }
 #boot-overlay { position: fixed; inset: 0; background: #000; z-index: 10000; display: flex; justify-content: center; align-items: center; transition: opacity 0.8s; }
 .boot-inner { border: 1px solid #3cff9b; padding: 20px; background: #000; width: 350px; min-height: 80px; display: flex; align-items: center; }
 #boot-text { color: #3cff9b; text-align: left; white-space: pre; }
-
 #scanlines { pointer-events: none; position: fixed; inset: 0; background: repeating-linear-gradient(to bottom, rgba(0,0,0,0.05), transparent 2px); z-index: 5; }
 
+/* LAYOUT STRUCTURE */
 .content-wrapper { display: flex; min-height: 100vh; padding: 20px; gap: 20px; position: relative; z-index: 10; }
 .sidebar { width: 220px; border: 1px solid #3cff9b; padding: 16px; background: rgba(0,0,0,0.95); height: fit-content; position: sticky; top: 20px; }
 .main-console { flex: 1; display: flex; flex-direction: column; gap: 20px; max-width: 1200px; }
 .terminal-box { border: 1px solid #3cff9b; padding: 20px; background: rgba(0,0,0,0.85); margin-bottom: 10px; }
 
-/* Captions & Overlays */
-.project-meta { font-size: 10px; color: #C9A46A; margin-top: 10px; border-left: 1px solid #C9A46A; padding-left: 10px; line-height: 1.4; }
-.img-container { position: relative; overflow: hidden; cursor: crosshair; }
-.img-overlay { position: absolute; bottom: -100%; left: 0; width: 100%; background: rgba(60, 255, 155, 0.9); color: #000; font-size: 10px; font-weight: bold; text-align: center; padding: 5px 0; transition: 0.3s; }
-.img-container:hover .img-overlay { bottom: 0; }
-
-.spatial-item { position: relative; }
-.ai-tag { position: absolute; top: 5px; right: 5px; background: #000; color: #3cff9b; font-size: 8px; padding: 2px 5px; border: 1px solid #3cff9b; opacity: 0.7; }
-
-.full-video { width: 100%; height: auto; display: block; }
-.nav-block a { display: block; color: #3cff9b; text-decoration: none; font-size: 12px; margin-bottom: 10px; }
+/* NAVIGATION & BUTTONS */
+.nav-block a { display: block; color: #3cff9b; text-decoration: none; font-size: 12px; margin-bottom: 10px; cursor: pointer; }
 .nav-block a:hover { transform: translateX(5px); color: #fff; text-shadow: 0 0 8px #3cff9b; }
-
-.btn-terminal, .btn-terminal-gold { background: transparent; padding: 8px 15px; cursor: pointer; font-family: inherit; font-size: 11px; border: 1px solid; display: inline-block; text-decoration: none; }
+.btn-terminal, .btn-terminal-gold { background: transparent; padding: 8px 15px; cursor: pointer; font-family: inherit; font-size: 11px; border: 1px solid; display: inline-block; text-decoration: none; transition: all 0.3s ease; }
 .btn-terminal { border-color: #3cff9b; color: #3cff9b; }
-.btn-terminal-gold { border-color: #C9A46A; color: #C9A46A; }
+.btn-terminal-gold { border-color: #C9A46A; color: #C9A46A; text-transform: uppercase; letter-spacing: 2px; }
+.btn-terminal-gold:hover { background: #C9A46A !important; color: #000 !important; box-shadow: 0 0 20px rgba(201, 164, 106, 0.6); transform: translateY(-2px); }
 
+/* GRID SYSTEMS */
 .spatial-grid, .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
-.spatial-grid img, .project-card img { width: 100%; border: 1px solid #333; filter: grayscale(100%); transition: 0.5s; }
-.spatial-grid img:hover, .project-card img:hover { filter: grayscale(0%); border-color: #3cff9b; }
 
-@media (max-width: 900px) { .content-wrapper { flex-direction: column; } .sidebar { width: 100%; position: static; } }
-.spatial-item { position: relative; overflow: hidden; }
-
-.prompt-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.85); /* Dark background */
-  color: #3cff9b;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 15px;
-  opacity: 0; /* Hidden by default */
-  transition: opacity 0.4s ease;
-  pointer-events: none;
-}
-
-.spatial-item:hover .prompt-overlay {
-  opacity: 1; /* Shows on hover */
-}
-
-.prompt-text {
-  font-size: 10px;
-  font-family: 'Courier New', monospace;
-  line-height: 1.4;
-  border-left: 2px solid #3cff9b;
-  padding-left: 10px;
-}
-/* Ensure the Decrypted Box handles different font sizes gracefully */
-#decrypted-content {
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-}
-
-#decrypted-content div {
-    /* Use 'auto-fit' so it automatically stacks if the font is too big */
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); 
-    gap: 15px;
-}
-
-#decrypted-content p {
-    font-size: clamp(9px, 2.5vw, 11px); /* Responsive font scaling */
-}
-.btn-terminal-gold {
-    transition: all 0.3s ease;
-    border: 1px solid #C9A46A;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-.btn-terminal-gold:hover {
-    background: #C9A46A !important;
-    color: #000 !important;
-    box-shadow: 0 0 20px rgba(201, 164, 106, 0.6);
-    transform: translateY(-2px);
-}
-/* This is the shield that stops right-clicking */
+/* IMAGE & CONTENT PROTECTION */
 .img-protect {
-  position: relative;
-  display: inline-block;
+    position: relative;
+    display: inline-block;
+    line-height: 0; /* Prevents alignment gaps */
 }
 
+/* The Invisible Shield - Higher z-index to block right-click */
 .img-protect::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0); /* Completely invisible */
-  z-index: 999;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0);
+    z-index: 999;
+}
+
+/* IMAGE STYLING */
+.spatial-grid img, .project-card img, .spatial-img { 
+    width: 100%; 
+    border: 1px solid #333; 
+    filter: grayscale(100%); 
+    transition: 0.5s; 
+}
+
+/* grayscale to color on hover - still works through the shield */
+.img-protect:hover img { 
+    filter: grayscale(0%); 
+    border-color: #3cff9b; 
+}
+
+/* OVERLAYS (Prompt logs / Technical Data) */
+.prompt-overlay, .img-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    color: #3cff9b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 1000; /* Stays ABOVE the shield for visibility */
+    pointer-events: none; /* Allows hover state to trigger shield alert if clicked */
+}
+
+.img-protect:hover .prompt-overlay, 
+.img-container:hover .img-overlay { opacity: 1; }
+
+/* META TEXT */
+.project-meta { font-size: 10px; color: #C9A46A; margin-top: 10px; border-left: 1px solid #C9A46A; padding-left: 10px; line-height: 1.4; }
+.prompt-text { font-size: 10px; font-family: 'Courier New', monospace; line-height: 1.4; border-left: 2px solid #3cff9b; padding-left: 10px; }
+
+/* RESPONSIVE & SHOP */
+#decrypted-content { word-wrap: break-word; overflow-wrap: break-word; }
+#decrypted-content div { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px; }
+#decrypted-content p { font-size: clamp(9px, 2.5vw, 11px); }
+.full-video { width: 100%; height: auto; display: block; }
+
+@media (max-width: 900px) { 
+    .content-wrapper { flex-direction: column; } 
+    .sidebar { width: 100%; position: static; } 
 }
