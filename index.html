@@ -19,6 +19,28 @@
 
 </head>
 <body>
+<div id="promo-banner" style="background: #C9A46A; color: #000; text-align: center; padding: 10px; font-size: 10px; font-weight: bold; letter-spacing: 1px; font-family: 'Courier New', monospace; border-bottom: 2px solid #3cff9b;">
+    [ SYSTEM_EVENT ]: EASTER_UPGRADE_PROMO — <span id="countdown">CALCULATING...</span> REMAINING FOR $25 COMMISSIONS
+</div>
+
+<script>
+function updateEasterCountdown() {
+    const targetDate = new Date("April 5, 2026 00:00:00").getTime();
+    const now = new Date().getTime();
+    const gap = targetDate - now;
+
+    const days = Math.floor(gap / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((gap % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+    if (gap > 0) {
+        document.getElementById("countdown").innerText = days + "D " + hours + "H";
+    } else {
+        document.getElementById("promo-banner").innerText = "[ SYSTEM_STATUS ]: PROMO_EXPIRED - RESERVATIONS ONLY";
+    }
+}
+setInterval(updateEasterCountdown, 1000);
+updateEasterCountdown();
+</script>
 
   <div id="matrix-intro"><canvas id="matrix-canvas"></canvas></div>
   <div id="boot-overlay">
@@ -124,37 +146,45 @@
       </section>
 
       <section id="shop" class="terminal-box">
-        <h2 class="cmd-line">&gt; SHOP / ASSETS</h2>
-        <div class="shop-card terminal-box" style="border-color: #C9A46A; padding: 0; overflow: hidden;">
-          <video class="full-video" src="shop-preview.mp4" autoplay muted loop playsinline></video>
-          <div style="padding: 20px;">
-            <h3>&gt; RIYADH_PROMPT_PACK_V1</h3>
-            <p style="font-size: 11px; color: #C9A46A; margin-bottom: 15px;">[ ENCRYPTED_FILES_DETECTED ]</p>
-            <button onclick="solveMiuPuzzle()" class="btn-terminal-gold">&gt; DECRYPT_ACCESS_KEY</button>
-            <a href="https://www.buymeacoffee.com/miu_studio3" target="_blank" class="btn-terminal" style="margin-left: 10px;">&gt; VISIT_SHOP</a>
-         <div id="decrypted-content" style="display:none; margin-top:15px; border:1px solid #C9A46A; padding:15px; background: rgba(10,10,10,0.95); box-shadow: 0 0 20px rgba(201, 164, 106, 0.2);">
-  <p style="color: #C9A46A; font-size: 11px; font-weight: bold;">[ ACCESS_GRANTED: DUAL_LANGUAGE_PROMPT_KEY ]</p>
-  <div style="margin-top: 15px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding-right: 10px;">
+<h2 class="cmd-line">&gt; SHOP / ASSETS</h2>
 
-  <div style="margin-top: 15px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-    <div style="font-size: 10px; color: #3cff9b; border-right: 1px solid #333; padding-right: 10px;">
-      <p style="color: #fff; margin-bottom: 5px;">&gt; EN_CORE_LOGIC</p>
-      <p>"Riyadh limestone texture, mashrabiya shadows, 4pm desert light, volumetric minimalism."</p>
-    </div>
+<div class="shop-card terminal-box" style="border-color: #C9A46A; margin-bottom: 20px; overflow: hidden;">
+    <video class="full-video" src="shop-preview.mp4" autoplay muted loop playsinline style="width: 100%; border-bottom: 1px solid #C9A46A; opacity: 0.8;"></video>
+    
+    <div style="padding: 20px;">
+        <h3>&gt; RIYADH_PROMPT_PACK_V1</h3>
+        <p style="font-size: 11px; color: #C9A46A; margin-bottom: 15px;">[ ENCRYPTED_DATA_PREVIEW ]</p>
+        
+        <button onclick="solveMiuPuzzle()" class="btn-terminal-gold" style="width: 100%; padding: 10px;">
+            &gt; DECRYPT_ACCESS_KEY
+        </button>
 
-    <div style="font-size: 10px; color: #C9A46A;">
-      <p style="color: #fff; margin-bottom: 5px;">&gt; CN_TRANSLATION_NODE [翻译]</p>
-      <p>“利雅得石灰岩质感，阿拉伯花格窗投影，下午四点的沙漠光影，体积主义极简风。”</p>
-    </div>
-  </div>
-
-  <div style="margin-top: 15px; border-top: 1px solid #333; padding-top: 10px;">
-    <p style="font-size: 9px; color: #888;">[ SYSTEM_ADVICE ]: Use these parameters in Midjourney or Stable Diffusion for localized Riyadh aesthetics.</p>
-  </div>
-</div>
- </div>
+        <div id="decrypted-content" style="display:none; margin-top:15px; border-top: 1px dashed #C9A46A; padding-top: 15px;">
+             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <div style="font-size: 9px; color: #3cff9b; border-right: 1px solid #333; padding-right: 5px;">
+                    <p style="color: #fff; margin-bottom: 4px;">&gt; EN_CORE</p>
+                    <p>"Riyadh limestone texture, mashrabiya shadows..."</p>
+                </div>
+                <div style="font-size: 9px; color: #C9A46A;">
+                    <p style="color: #fff; margin-bottom: 4px;">&gt; CN_NODE</p>
+                    <p>“利雅得石灰岩质感，阿拉伯花格窗投影...”</p>
+                </div>
+            </div>
         </div>
-      </section>
+    </div>
+</div>
+
+<div style="border: 1px solid #C9A46A; padding: 20px; background: rgba(10,10,10,0.95); box-shadow: 0 0 15px rgba(201, 164, 106, 0.3);">
+    <h3 style="color: #C9A46A; font-size: 13px;">&gt; UPLINK: CUSTOM_COMMISSION</h3>
+    <p style="color: #3cff9b; font-size: 10px; margin: 10px 0; line-height: 1.5;">
+        Need specific Riyadh-node logic? I architect custom AI prompts tailored to your requirements. 
+    </p>
+    <a href="https://www.buymeacoffee.com/miu_studio3" target="_blank" class="btn-terminal-gold" style="display: block; text-align: center; text-decoration: none; padding: 12px; font-weight: bold; background: #C9A46A; color: #000;">
+        &gt; INITIALIZE_ORDER ($25)
+    </a>
+    <p style="color: #555; font-size: 8px; text-align: center; margin-top: 10px;">[ 24H_TURNAROUND_EXPECTED ]</p>
+</div>
+
 
       <section id="social-nodes" class="terminal-box">
         <h2 class="cmd-line">&gt; SOCIAL_CHANNELS</h2>
