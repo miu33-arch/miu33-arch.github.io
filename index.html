@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>MIU_33 | Digital Architect Studio | Riyadh</title>
-    <meta name="description" content="MIU_33 Digital Architect Studio - 缪联睿 (Anamy Padilla). AI-driven spatial design, clinical precision, and brutalist architecture in Riyadh.">
-    <meta name="keywords" content="Digital Architect, AI Architecture Riyadh, 缪联睿, Anamy Padilla, MIU_33, Saudi Arabia, Gemini Veo, Qwen 3.5, Kimi K2.5">
+    <meta name="description" content="MIU_33 Digital Architect Studio - 缪联睿 (Anamy Padilla). AI-driven spatial design and brutalist architecture.">
+    <meta name="keywords" content="Digital Architect, Riyadh, 缪联睿, Anamy Padilla, MIU_33, Gemini Veo, Qwen 3.5">
     <meta name="author" content="Anamy Padilla">
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -19,8 +19,11 @@
                         concrete: { 950: '#0d0d0d', 900: '#1a1a1a', 800: '#383838' }
                     },
                     fontFamily: { mono: ['JetBrains Mono', 'monospace'] },
-                    animation: { 'scan': 'scan 3s linear infinite' },
-                    keyframes: { scan: { '0%': { transform: 'translateY(-100%)' }, '100%': { transform: 'translateY(100%)' } } }
+                    animation: { 'scan': 'scan 3s linear infinite', 'blink': 'blink 1s step-end infinite' },
+                    keyframes: { 
+                        scan: { '0%': { transform: 'translateY(-100%)' }, '100%': { transform: 'translateY(100%)' } },
+                        blink: { 'from, to': { opacity: '1' }, '50%': { opacity: '0' } }
+                    }
                 }
             }
         }
@@ -28,13 +31,11 @@
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
     
     <style>
-        body { font-family: 'Space Grotesk', sans-serif; background-color: #0d0d0d; color: #f3f4f6; overflow-x: hidden; }
-        .grid-lines { background-size: 40px 40px; background-image: linear-gradient(to right, rgba(60, 255, 155, 0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(60, 255, 155, 0.03) 1px, transparent 1px); }
+        body { font-family: 'Space Grotesk', sans-serif; background-color: #000; color: #f3f4f6; overflow-x: hidden; }
+        .grid-lines { background-size: 40px 40px; background-image: linear-gradient(to right, rgba(60, 255, 155, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(60, 255, 155, 0.05) 1px, transparent 1px); }
         #matrix-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.15; }
         #scanlines { position: fixed; inset: 0; background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02)); background-size: 100% 4px, 3px 100%; pointer-events: none; z-index: 100; }
-        .neon-border { box-shadow: 0 0 20px rgba(60, 255, 155, 0.1); }
         [data-cn] { display: none; }
-        input::placeholder, textarea::placeholder { color: #444; }
     </style>
 </head>
 <body class="grid-lines min-h-screen" oncontextmenu="return false;">
@@ -47,14 +48,13 @@
         <span data-cn="[ 系统事件 ]: 复活节升级 — ">[ 系统事件 ]: 复活节升级 — </span>
         <span id="countdown">CALCULATING...</span>
         <span data-en=" REMAINING FOR $25 COMMISSIONS"> REMAINING FOR $25 COMMISSIONS</span>
-        <span data-cn=" 剩余时间享受 $25 优惠"> 剩余时间享受 $25 优惠</span>
     </div>
 
     <div class="max-w-7xl mx-auto p-4 md:p-8 relative z-10">
         
         <header class="mb-12 flex justify-between items-center">
             <div class="flex items-center gap-4">
-                <img src="images/avatar-professional.jpg" alt="Anamy Padilla" class="w-14 h-14 border border-emerald-neon object-cover rounded-sm grayscale hover:grayscale-0 transition-all duration-500">
+                <img src="images/avatar-professional.jpg" alt="Anamy Padilla" class="w-14 h-14 border border-emerald-neon object-cover rounded-sm grayscale">
                 <div>
                     <h1 class="text-xl font-bold tracking-tighter uppercase">MIU_33 <span class="text-emerald-neon">/ DIGITAL ARCHITECT</span></h1>
                     <p class="text-[10px] font-mono text-gray-500 uppercase tracking-widest">Anamy Padilla // 缪联睿</p>
@@ -67,22 +67,20 @@
 
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[200px]">
 
-            <div class="md:col-span-2 md:row-span-2 relative overflow-hidden border border-emerald-neon/30 bg-concrete-900/80 neon-border group">
-                <div class="absolute inset-0 overflow-hidden pointer-events-none">
-                    <div class="absolute w-full h-1 bg-emerald-neon/20 animate-scan"></div>
-                </div>
+            <div class="md:col-span-2 md:row-span-2 relative overflow-hidden border border-emerald-neon/30 bg-concrete-900/80 group">
+                <div class="absolute inset-0 border border-emerald-neon/10 animate-scan pointer-events-none"></div>
                 <div id="video-uplink" class="absolute inset-0 flex items-center justify-center font-mono text-[9px] text-emerald-neon/30 uppercase">[ VIDEO_UPLINK_PENDING ]</div>
-                <div class="relative h-full p-8 flex flex-col justify-between">
-                    <span class="font-mono text-[10px] text-gray-500 border border-gray-800 px-2 py-1 w-fit uppercase tracking-widest">Neural_Spatial_v1.0</span>
+                <div class="relative h-full p-8 flex flex-col justify-between items-center text-center">
+                    <span class="font-mono text-[10px] text-gray-500 border border-gray-800 px-2 py-1 w-fit uppercase">System.Online</span>
                     <div>
-                        <h2 class="text-4xl font-bold leading-tight group-hover:text-emerald-neon transition-colors">
-                            <span data-en="Neural Architecture">Neural Architecture</span>
-                            <span data-cn="神经建筑学">神经建筑学</span>
-                        </h2>
-                        <p class="text-gray-400 text-sm mt-2 font-mono italic">
-                            <span data-en='"Clinical precision."'>"Clinical precision."</span>
-                            <span data-cn="“临床严谨”">“临床严谨”</span>
+                        <h2 class="text-6xl font-bold tracking-tighter text-emerald-neon mb-2">MIU_33</h2>
+                        <p class="font-mono text-[10px] tracking-[0.3em] text-gray-400 uppercase">
+                            <span data-en="Spatial Logic Initialized">Spatial Logic Initialized</span>
+                            <span data-cn="空间逻辑已初始化">空间逻辑已初始化</span>
                         </p>
+                    </div>
+                    <div class="font-mono text-emerald-neon text-xs">
+                        <span id="typewriter"></span><span class="inline-block w-2 h-4 bg-emerald-neon animate-blink ml-1"></span>
                     </div>
                 </div>
             </div>
@@ -97,25 +95,28 @@
                 </ul>
             </div>
 
-            <div class="border border-concrete-800 bg-concrete-900/50 p-6 flex flex-col justify-between">
-                <span class="font-mono text-[10px] text-gray-600 uppercase" data-en="Delivered">Delivered</span>
-                <span class="font-mono text-[10px] text-gray-600 uppercase" data-cn="已交付">已交付</span>
-                <div class="text-5xl font-bold font-mono tracking-tighter">847</div>
-                <span class="text-[10px] text-emerald-neon/50 uppercase">System_Logs</span>
-            </div>
-
-            <div class="border border-concrete-800 bg-concrete-900/80 p-6 flex flex-col justify-between">
-                <span class="font-mono text-[10px] text-gray-600 uppercase">> <span data-en="Vault">Vault</span><span data-cn="加密库">加密库</span></span>
-                <input type="password" id="vault-pass" placeholder="HEX_CODE" class="bg-black border border-gray-800 text-emerald-neon text-xs p-2 mt-2 font-mono outline-none">
-                <button onclick="checkVault()" class="text-[9px] text-emerald-neon border border-emerald-neon/30 p-1 mt-2 hover:bg-emerald-neon/10 font-mono transition-all uppercase">
+            <div class="border border-concrete-800 bg-concrete-900/90 p-6 flex flex-col justify-between relative group">
+                <div class="flex justify-between items-start">
+                    <span class="font-mono text-[10px] text-gray-600 uppercase">> <span data-en="Vault">Vault</span><span data-cn="加密库">加密库</span></span>
+                    <img src="images/avatar-vault.jpg" alt="Vault Asset" class="w-8 h-8 border border-emerald-neon/30 grayscale">
+                </div>
+                <input type="password" id="vault-pass" placeholder="HEX_CODE" class="bg-black border border-gray-800 text-emerald-neon text-xs p-2 w-full font-mono outline-none">
+                <button onclick="checkVault()" class="text-[9px] text-emerald-neon border border-emerald-neon/30 p-2 mt-2 hover:bg-emerald-neon/20 font-mono transition-all uppercase">
                     [ <span data-en="Decrypt CV">Decrypt CV</span><span data-cn="解密简历">解密简历</span> ]
                 </button>
             </div>
 
+            <div class="border border-concrete-800 bg-concrete-900/50 p-6 flex flex-col justify-between">
+                <span class="font-mono text-[10px] text-gray-600 uppercase" data-en="Delivered">Delivered</span>
+                <span class="font-mono text-[10px] text-gray-600 uppercase" data-cn="已交付">已交付</span>
+                <div class="text-5xl font-bold font-mono tracking-tighter" id="metric-counter">0</div>
+                <span class="text-[10px] text-emerald-neon/50 uppercase">System_Logs</span>
+            </div>
+
             <div class="md:col-span-2 border border-concrete-800 bg-concrete-900/50 p-6">
-                <h3 class="font-mono text-emerald-neon font-bold text-[10px] mb-2 uppercase">> <span data-en="Contact_Signal">Contact_Signal</span><span data-cn="建立联络">建立联络</span></h3>
+                <h3 class="font-mono text-emerald-neon font-bold text-[10px] mb-2 uppercase">> <span data-en="Establish_Uplink">Establish_Uplink</span><span data-cn="建立联络">建立联络</span></h3>
                 <form action="https://formspree.io/f/mvzwzppo" method="POST" class="grid grid-cols-2 gap-2">
-                    <input type="email" name="email" placeholder="EMAIL" required class="bg-black border border-gray-800 text-emerald-neon text-[10px] p-2 font-mono outline-none">
+                    <input type="email" name="email" placeholder="anamy5334@gmail.com" required class="bg-black border border-gray-800 text-emerald-neon text-[10px] p-2 font-mono outline-none">
                     <button type="submit" class="bg-emerald-neon/10 border border-emerald-neon/30 text-emerald-neon text-[10px] p-2 font-mono hover:bg-emerald-neon/20 transition-all uppercase"><span data-en="Send">Send</span><span data-cn="发送">发送</span></button>
                     <textarea name="message" placeholder="MESSAGE_LOG" required class="bg-black border border-gray-800 text-emerald-neon text-[10px] p-2 font-mono outline-none col-span-2 h-12"></textarea>
                 </form>
@@ -125,50 +126,57 @@
                 <div class="w-1.5 h-1.5 bg-emerald-neon rounded-full animate-pulse shadow-[0_0_10px_#3CFF9B]"></div>
                 <div>
                     <div class="text-xl font-bold font-mono" id="riyadh-clock">00:00:00</div>
-                    <div class="text-[10px] text-gray-600 font-mono mt-1 uppercase">Riyadh_Node</div>
+                    <div class="text-[9px] text-gray-600 font-mono mt-1 uppercase">Node: Riyadh // KSA</div>
                 </div>
             </div>
 
         </div>
 
-        <footer class="mt-16 pt-8 border-t border-concrete-800 flex flex-col gap-6">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-                <div class="font-mono text-[10px] text-gray-600 uppercase text-center md:text-left">
-                    <div data-en>© 2026 MIU_33 STUDIO // FOUNDER: ANAMY PADILLA // ALL RIGHTS RESERVED</div>
-                    <div data-cn>© 2026 MIU_33 工作室 // 创始人: ANAMY PADILLA (缪联睿) // 版权所有</div>
-                </div>
-                <div class="flex gap-6 font-mono text-[10px]">
-                    <a href="https://www.linkedin.com/company/miu-digital-architect-studio" target="_blank" class="hover:text-emerald-neon text-gray-500">LINKEDIN</a>
-                    <a href="https://www.tiktok.com/@miuproton" target="_blank" class="hover:text-emerald-neon text-gray-500">TIKTOK</a>
-                    <a href="https://www.xiaohongshu.com/user/profile/miu_Digital" target="_blank" class="hover:text-emerald-neon text-gray-500">REDNOTE</a>
-                </div>
+        <footer class="mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="font-mono text-[10px] text-gray-600 uppercase text-center md:text-left tracking-tighter">
+                <div data-en>© 2026 MIU_33 STUDIO // FOUNDER: ANAMY PADILLA // ALL RIGHTS RESERVED</div>
+                <div data-cn>© 2026 MIU_33 工作室 // 创始人: ANAMY PADILLA (缪联睿) // 版权所有</div>
             </div>
-            <div class="border border-concrete-800 p-4 bg-concrete-950/30 font-mono text-[9px] text-gray-700 uppercase leading-relaxed">
-                <span data-en="[ IP_PROTOCOL ]: Unauthorized reproduction is prohibited. Assets encoded via SynthID."> [ IP_PROTOCOL ]: Unauthorized reproduction is prohibited. Assets encoded via SynthID.</span>
-                <span data-cn="[ 知识产权协议 ]: 未经授权严禁复制。资产已通过 SynthID 编码。"> [ 知识产权协议 ]: 未经授权严禁复制。资产已通过 SynthID 编码。</span>
+            <div class="flex gap-6 font-mono text-[10px]">
+                <a href="https://www.linkedin.com/company/miu-digital-architect-studio" target="_blank" class="hover:text-emerald-neon text-gray-500">LINKEDIN</a>
+                <a href="https://www.tiktok.com/@miuproton" target="_blank" class="hover:text-emerald-neon text-gray-500">TIKTOK</a>
+                <a href="https://www.xiaohongshu.com/user/profile/miu_Digital" target="_blank" class="hover:text-emerald-neon text-gray-500">REDNOTE</a>
             </div>
         </footer>
     </div>
 
     <script>
+        // TYPEWRITER
+        const lines = { en: "Identity_Verified: Anamy Padilla", cn: "身份验证成功: 缪联睿" };
+        let charIndex = 0; let currentText = lines.en;
+        function type() {
+            if (charIndex < currentText.length) {
+                document.getElementById('typewriter').textContent += currentText.charAt(charIndex);
+                charIndex++; setTimeout(type, 100);
+            }
+        }
+
         // LANG TOGGLE
         let currentLang = 'en';
         function toggleLang() {
             currentLang = currentLang === 'en' ? 'cn' : 'en';
+            charIndex = 0; currentText = lines[currentLang];
+            document.getElementById('typewriter').textContent = "";
             document.getElementById('lang-label').innerText = `LANG: ${currentLang.toUpperCase()}`;
             document.querySelectorAll('[data-en]').forEach(el => el.style.display = currentLang === 'en' ? 'inline-block' : 'none');
             document.querySelectorAll('[data-cn]').forEach(el => el.style.display = currentLang === 'cn' ? 'inline-block' : 'none');
+            type();
         }
 
         // MATRIX (缪联睿 included)
         const canvas = document.getElementById('matrix-canvas');
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-        const letters = "MIU33_DIGITAL_ARCHITECT_缪联睿_010101";
+        const letters = "MIU33_缪联睿_010101";
         const fontSize = 14; const columns = canvas.width / fontSize;
         const drops = Array(Math.floor(columns)).fill(1);
         function drawMatrix() {
-            ctx.fillStyle = "rgba(13, 13, 13, 0.05)"; ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)"; ctx.fillRect(0, 0, canvas.width, canvas.height);
             ctx.fillStyle = "#3CFF9B"; ctx.font = fontSize + "px monospace";
             drops.forEach((y, i) => {
                 const text = letters.charAt(Math.floor(Math.random() * letters.length));
@@ -179,6 +187,17 @@
         }
         setInterval(drawMatrix, 50);
 
+        // COUNTER (847)
+        let count = 0;
+        const target = 847;
+        function updateCounter() {
+            if(count < target) {
+                count += 7;
+                document.getElementById('metric-counter').innerText = count;
+                setTimeout(updateCounter, 20);
+            } else { document.getElementById('metric-counter').innerText = target; }
+        }
+
         // CLOCK
         function updateClock() {
             const now = new Date();
@@ -187,25 +206,15 @@
         }
         setInterval(updateClock, 1000); updateClock();
 
-        // COUNTDOWN
-        function updateEasterCountdown() {
-            const target = new Date("April 5, 2026 00:00:00").getTime();
-            const now = new Date().getTime();
-            const gap = target - now;
-            const days = Math.floor(gap / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((gap % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            document.getElementById("countdown").innerText = gap > 0 ? days + "D " + hours + "H" : "EXPIRED";
-        }
-        setInterval(updateEasterCountdown, 1000); updateEasterCountdown();
-
-        // VAULT (CV ACCESS)
+        // VAULT
         function checkVault() {
-            const pass = document.getElementById('vault-pass').value;
-            if(pass === "HEX33") {
-                alert("DECRYPTION_SUCCESS: Downloading Anamy_Padilla_CV.pdf");
+            if(document.getElementById('vault-pass').value === "HEX33") {
+                alert("DECRYPTION_SUCCESS: Downloading CV...");
                 window.open('images/Anamy_Padilla_CV.pdf');
             } else { alert("ACCESS_DENIED"); }
         }
+
+        window.onload = () => { type(); updateCounter(); };
         document.addEventListener('contextmenu', e => e.preventDefault());
     </script>
 </body>
