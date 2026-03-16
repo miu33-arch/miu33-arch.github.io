@@ -1,265 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
- 
-  <title>MIU_33 | Digital Architect Studio | Riyadh</title>
-  <meta name="description" content="MIU_33 Digital Architect Studio - 缪联睿 (Anamy Padilla). AI-driven spatial design and minimal architecture in Riyadh. Est. 2026.">
-  <meta name="keywords" content="Digital Architect, AI Architecture Riyadh, 缪联睿, Anamy Padilla, MIU_33, Saudi Arabia Architecture 2026, Spatial Design">
-  <meta name="author" content="Anamy Padilla">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>MIU_33 | Digital Architect Studio | Riyadh</title>
+    <meta name="description" content="MIU_33 Digital Architect Studio - 缪联睿 (Anamy Padilla). AI-driven spatial design, clinical precision, and brutalist architecture in Riyadh. Est. 2026.">
+    <meta name="keywords" content="Digital Architect, AI Architecture Riyadh, 缪联睿, Anamy Padilla, MIU_33, Saudi Arabia Architecture 2026, Spatial Design, Gemini Veo, Qwen 3.5">
+    <meta name="author" content="Anamy Padilla">
 
-  <meta property="og:title" content="MIU_33 — Digital Architect Studio">
-  <meta property="og:description" content="Merging clinical precision and financial logic into AI-driven spatial design.">
-  <meta property="og:image" content="images/avatar-professional.jpg">
- 
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/jpeg" href="images/miu-logo-neon.jpg">
-  <link rel="apple-touch-icon" href="images/miu-logo-neon.jpg">
+    <meta property="og:title" content="MIU_33 — Digital Architect Studio">
+    <meta property="og:description" content="Merging clinical precision and financial logic into AI-driven spatial design.">
+    <meta property="og:image" content="images/avatar-professional.jpg">
 
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: { neon: '#3CFF9B', dark: '#0A1F16', glow: 'rgba(60, 255, 155, 0.3)' },
+                        concrete: { 950: '#0d0d0d', 900: '#1a1a1a', 800: '#383838', 700: '#434343' }
+                    },
+                    fontFamily: { mono: ['JetBrains Mono', 'monospace'] },
+                    animation: { 'scan': 'scan 3s linear infinite' },
+                    keyframes: { scan: { '0%': { transform: 'translateY(-100%)' }, '100%': { transform: 'translateY(100%)' } } }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Space Grotesk', sans-serif; background-color: #0d0d0d; color: #f3f4f6; overflow-x: hidden; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        .neon-border { box-shadow: 0 0 20px rgba(60, 255, 155, 0.1); }
+        .grid-lines { background-size: 40px 40px; background-image: linear-gradient(to right, rgba(60, 255, 155, 0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(60, 255, 155, 0.03) 1px, transparent 1px); }
+        #matrix-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.15; }
+        .terminal-box { border: 1px solid #383838; background: rgba(26, 26, 26, 0.8); backdrop-filter: blur(10px); padding: 20px; }
+        
+        /* PROTECTION OVERLAY: DISABLE SELECTION */
+        .img-protect { -webkit-user-select: none; -ms-user-select: none; user-select: none; pointer-events: none; }
+    </style>
 </head>
-<body>
-<div id="promo-banner" style="background: #C9A46A; color: #000; text-align: center; padding: 10px; font-size: 10px; font-weight: bold; letter-spacing: 1px; font-family: 'Courier New', monospace; border-bottom: 2px solid #3cff9b;">
-    [ SYSTEM_EVENT ]: EASTER_UPGRADE_PROMO — <span id="countdown">CALCULATING...</span> REMAINING FOR $25 COMMISSIONS
-</div>
+<body class="grid-lines min-h-screen" oncontextmenu="return false;">
 
-<script>
-function updateEasterCountdown() {
-    const targetDate = new Date("April 5, 2026 00:00:00").getTime();
-    const now = new Date().getTime();
-    const gap = targetDate - now;
+    <canvas id="matrix-canvas"></canvas>
 
-    const days = Math.floor(gap / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((gap % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-
-    if (gap > 0) {
-        document.getElementById("countdown").innerText = days + "D " + hours + "H";
-    } else {
-        document.getElementById("promo-banner").innerText = "[ SYSTEM_STATUS ]: PROMO_EXPIRED - RESERVATIONS ONLY";
-    }
-}
-setInterval(updateEasterCountdown, 1000);
-updateEasterCountdown();
-</script>
-
-  <div id="matrix-intro"><canvas id="matrix-canvas"></canvas></div>
-  <div id="boot-overlay">
-    <div class="boot-inner"><pre id="boot-text">> INITIALIZING_SYSTEM...</pre></div>
-  </div>
-
-  <div id="scanlines"></div>
-
-  <div class="content-wrapper">
-    <aside class="sidebar">
-      <div class="logo-block"><p class="cmd-line">&gt; MIU_33_CONSOLE</p></div>
-      <nav class="nav-block">
-        <a href="#hero">&gt; HOME</a>
-        <a href="#about">&gt; ABOUT</a>
-        <a href="#ai-spatial">&gt; AI_FEED</a>
-        <a href="#projects">&gt; PROJECTS</a>
-        <a href="#shop">&gt; SHOP</a>
-        <a href="#social-nodes">&gt; CHANNELS</a>
-        <a href="#vault">&gt; VAULT</a>
-        <a href="#contact">&gt; CONTACT</a>
-        <a href="#legal">&gt; LEGAL</a>
-      </nav>
-    </aside>
-
-    <main class="main-console">
-     
-      <section id="hero" class="terminal-box">
-        <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
-          <div class="img-protect">
-            <img src="images/avatar-professional.jpg" alt="Miu Anamy Padilla" style="width: 110px; height: 110px; border: 1px solid #3cff9b; object-fit: cover;">
-          </div>
-          <div>
-            <h1 class="cmd-line">&gt; MIU_33 / DIGITAL ARCHITECT</h1>
-            <p class="hero-sub">Calm, minimal architectures by 缪联睿 (Anamy Padilla).</p>
-          </div>
-        </div>
-      </section>
-
-      <section id="about" class="terminal-box">
-        <h2 class="cmd-line">&gt; ABOUT_ME / STUDIO_PROFILE</h2>
-        <p>Merging clinical precision and financial logic into AI-driven spatial design. Est. Jan 2026.</p>
-        <p style="color: #C9A46A; font-size: 12px; margin-top: 5px;">&gt; 缪联睿：立足利雅得的数字建筑师。医疗精密与金融逻辑的结合。</p>
-      </section>
-
-      <section id="ai-spatial" class="terminal-box">
-  <h2 class="cmd-line">&gt; AI_SPATIAL_FEED / PROMPT_LOGS_2026</h2>
-  <div class="spatial-grid">
-
-    <div class="spatial-item img-protect">
-      <img src="images/ai1.jpeg" class="spatial-img">
-      <div class="prompt-overlay">
-        <p class="prompt-text">LOG_01: "Minimalist courtyard, Brutalist concrete, soft Riyadh dawn light, volumetric shadows, cinematic 8k."</p>
-      </div>
+    <div id="promo-banner" style="background: #C9A46A; color: #000; text-align: center; padding: 10px; font-size: 10px; font-weight: bold; letter-spacing: 1px; font-family: 'JetBrains Mono'; border-bottom: 2px solid #3cff9b;">
+        [ SYSTEM_EVENT ]: EASTER_UPGRADE_PROMO — <span id="countdown">CALCULATING...</span> REMAINING FOR $25 COMMISSIONS
     </div>
 
-    <div class="spatial-item img-protect">
-      <img src="images/ai2.jpeg" class="spatial-img">
-      <div class="prompt-overlay">
-        <p class="prompt-text">LOG_02: "Parametric facade, sand-filtration logic, hyper-realistic, 35mm lens, desert-modernism aesthetic."</p>
-      </div>
-    </div>
-
-    <div class="spatial-item img-protect">
-      <img src="images/ai3.jpeg" class="spatial-img">
-      <div class="prompt-overlay">
-        <p class="prompt-text">LOG_03: "Atrium light study, Ray-tracing, clinical precision, limestone textures, sustainable cooling voids."</p>
-      </div>
-    </div>
-
-    <div class="spatial-item img-protect">
-      <img src="images/ai4.jpeg" class="spatial-img">
-      <div class="prompt-overlay">
-        <p class="prompt-text">LOG_04: "Digital twin of Riyadh villa, AI-optimized thermal massing, Zen-minimalism, high-contrast."</p>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-      <section id="projects" class="terminal-box">
-        <h2 class="cmd-line">&gt; PROJECT_ARCHIVE / TECHNICAL_STUDIES</h2>
-        <div class="project-grid">
-          <div class="project-card">
-            <div class="img-container img-protect">
-                <img src="images/1000007351.png" alt="Courtyard Residence Study">
-                <div class="img-overlay">TECHNICAL_DATA</div>
+    <div class="max-w-7xl mx-auto p-4 md:p-8">
+        
+        <header class="mb-12 flex justify-between items-center">
+            <div>
+                <h1 class="text-2xl font-bold tracking-tighter uppercase">MIU_33 <span class="text-emerald-neon">/ DIGITAL ARCHITECT</span></h1>
+                <p class="text-xs font-mono text-gray-500 uppercase tracking-widest mt-1">Founding Director: Anamy Padilla</p>
             </div>
-            <p class="project-meta">[ ARCHIVE_01 ] COURTYARD_RESIDENCE<br>Focus: Passive Cooling & Riyadh Climate Logic</p>
-          </div>
-          <div class="project-card">
-            <div class="img-container img-protect">
-                <img src="images/1000007352.png" alt="Massing Logic Study">
-                <div class="img-overlay">MASSING_LOGIC</div>
+            <div class="text-right font-mono text-[10px]">
+                STATUS: <span class="text-emerald-neon animate-pulse">ONLINE</span><br>
+                NODE: <span class="text-gray-400">RIYADH_CENTRAL</span>
             </div>
-            <p class="project-meta">[ ARCHIVE_02 ] MASSING_STUDY<br>Focus: Computational Volume & Minimalist Form</p>
-          </div>
-          <div class="project-card">
-            <div class="img-container img-protect">
-                <img src="images/1000007353.png" alt="Volume Light Study">
-                <div class="img-overlay">LIGHT_DYNAMICS</div>
-            </div>
-            <p class="project-meta">[ ARCHIVE_03 ] VOLUME_LIGHT_LOG<br>Focus: AI Spatial Lighting Dynamics</p>
-          </div>
-        </div>
-      </section>
+        </header>
 
-      <section id="shop" class="terminal-box">
-<h2 class="cmd-line">&gt; SHOP / ASSETS</h2>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[200px]">
 
-<div class="shop-card terminal-box" style="border-color: #C9A46A; margin-bottom: 20px; overflow: hidden;">
-    <video class="full-video" src="shop-preview.mp4" autoplay muted loop playsinline disablePictureInPicture controlsList="nodownload" style="width: 100%; border-bottom: 1px solid #C9A46A; opacity: 0.8;"></video>
-   
-    <div style="padding: 20px;">
-        <h3>&gt; RIYADH_PROMPT_PACK_V1</h3>
-        <p style="font-size: 11px; color: #C9A46A; margin-bottom: 15px;">[ ENCRYPTED_DATA_PREVIEW ]</p>
-       
-        <button onclick="solveMiuPuzzle()" class="btn-terminal-gold" style="width: 100%; padding: 10px;">
-            &gt; DECRYPT_ACCESS_KEY
-        </button>
-
-        <div id="decrypted-content" style="display:none; margin-top:15px; border-top: 1px dashed #C9A46A; padding-top: 15px;">
-             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                <div style="font-size: 9px; color: #3cff9b; border-right: 1px solid #333; padding-right: 5px;">
-                    <p style="color: #fff; margin-bottom: 4px;">&gt; EN_CORE</p>
-                    <p>"Riyadh limestone texture, mashrabiya shadows..."</p>
+            <div class="md:col-span-2 md:row-span-2 relative overflow-hidden border border-emerald-neon/30 bg-concrete-900/80 neon-border group">
+                <div class="absolute inset-0 overflow-hidden pointer-events-none">
+                    <div class="absolute w-full h-1 bg-emerald-neon/20 animate-scan"></div>
                 </div>
-                <div style="font-size: 9px; color: #C9A46A;">
-                    <p style="color: #fff; margin-bottom: 4px;">&gt; CN_NODE</p>
-                    <p>“利雅得石灰岩质感，阿拉伯花格窗投影...”</p>
+                <div id="video-uplink" class="absolute inset-0 flex items-center justify-center font-mono text-[10px] text-emerald-neon/40">
+                    [ VIDEO_UPLINK_PENDING_EDIT ]
+                </div>
+                <div class="relative h-full p-8 flex flex-col justify-between">
+                    <span class="font-mono text-[10px] text-gray-500 border border-gray-800 px-2 py-1 w-fit">NEURAL_ARCH_v1.0</span>
+                    <div>
+                        <h2 class="text-4xl font-bold leading-tight group-hover:text-emerald-neon transition-colors">Neural<br>Architecture</h2>
+                        <p class="text-gray-400 text-sm mt-2">Identity Verified: Anamy Padilla</p>
+                    </div>
                 </div>
             </div>
+
+            <div class="border border-concrete-800 bg-concrete-900/50 p-6 flex flex-col justify-between">
+                <span class="font-mono text-[10px] text-gray-600 uppercase">Global_Stack</span>
+                <ul class="font-mono text-[11px] text-emerald-neon space-y-1">
+                    <li>> QWEN_3.5</li>
+                    <li>> KIMI_K2.5</li>
+                    <li>> GEMINI_VEO</li>
+                    <li>> TAILWIND_CSS</li>
+                </ul>
+            </div>
+
+            <div class="border border-concrete-800 bg-concrete-900/50 p-6 flex flex-col justify-between">
+                <span class="font-mono text-[10px] text-gray-600 uppercase">Delivered</span>
+                <div class="text-5xl font-bold font-mono tracking-tighter">847</div>
+                <span class="text-[10px] text-emerald-neon/50 uppercase">System_Logs</span>
+            </div>
+
+            <div class="md:col-span-2 border border-concrete-800 bg-concrete-900/50 p-6 relative overflow-hidden group">
+                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-100 transition-opacity">
+                    <span class="font-mono text-[40px] text-emerald-neon">缪</span>
+                </div>
+                <h3 class="font-mono text-emerald-neon font-bold mb-3">> ABOUT_STUDIO</h3>
+                <p class="text-xs leading-relaxed text-gray-400 max-w-md">
+                    Merging clinical precision and financial logic into AI-driven spatial design. Specialized in Brutalist aesthetics and Riyadh-node climate logic. Building the digital twin of the future.
+                </p>
+            </div>
+
+            <div class="border border-concrete-800 bg-concrete-900/50 p-6 flex flex-col justify-between items-center text-center">
+                <div class="w-2 h-2 bg-emerald-neon rounded-full animate-pulse shadow-[0_0_10px_#3CFF9B]"></div>
+                <div>
+                    <div class="text-xl font-bold font-mono" id="riyadh-clock">00:00:00</div>
+                    <div class="text-[10px] text-gray-600 font-mono mt-1">UTC+03:00 RIYADH</div>
+                </div>
+            </div>
+
+            <div class="border border-concrete-800 bg-emerald-neon/5 p-6 hover:bg-emerald-neon/10 transition-all cursor-pointer group">
+                <a href="https://www.buymeacoffee.com/miu_studio3" target="_blank" class="h-full flex flex-col justify-between">
+                    <span class="font-mono text-[10px] text-emerald-neon">UPLINK_COMMISSION</span>
+                    <div class="text-sm font-bold group-hover:underline uppercase tracking-tight">Initialize_Order</div>
+                    <span class="text-[10px] text-gray-600">$25 // 24H_TURNAROUND</span>
+                </a>
+            </div>
+
         </div>
+
+        <footer class="mt-16 pt-8 border-t border-concrete-800 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="font-mono text-[10px] text-gray-600 uppercase">
+                © 2026 MIU_33 Studio // Riyadh, KSA // ALL_RIGHTS_RESERVED
+            </div>
+            <div class="flex gap-6 font-mono text-[10px]">
+                <a href="https://www.linkedin.com/company/miu-digital-architect-studio" target="_blank" class="hover:text-emerald-neon text-gray-500">LINKEDIN</a>
+                <a href="https://www.tiktok.com/@miuproton" target="_blank" class="hover:text-emerald-neon text-gray-500">TIKTOK</a>
+                <a href="https://www.xiaohongshu.com/user/profile/miu_Digital" target="_blank" class="hover:text-emerald-neon text-gray-500">REDNOTE</a>
+            </div>
+        </footer>
     </div>
-</div>
 
-<div style="border: 1px solid #C9A46A; padding: 20px; background: rgba(10,10,10,0.95); box-shadow: 0 0 15px rgba(201, 164, 106, 0.3);">
-    <h3 style="color: #C9A46A; font-size: 13px;">&gt; UPLINK: CUSTOM_COMMISSION</h3>
-    <p style="color: #3cff9b; font-size: 10px; margin: 10px 0; line-height: 1.5;">
-        Need specific Riyadh-node logic? I architect custom AI prompts tailored to your requirements.
-    </p>
-    <a href="https://www.buymeacoffee.com/miu_studio3" target="_blank" class="btn-terminal-gold" style="display: block; text-align: center; text-decoration: none; padding: 12px; font-weight: bold; background: #C9A46A; color: #000;">
-        &gt; INITIALIZE_ORDER ($25)
-    </a>
-    <p style="color: #555; font-size: 8px; text-align: center; margin-top: 10px;">[ 24H_TURNAROUND_EXPECTED ]</p>
-</div>
+    <script>
+        // PROTECTION: DISABLE RIGHT CLICK & F12
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        document.onkeydown = function(e) {
+            if(event.keyCode == 123) return false; // F12
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) return false; // Ctrl+Shift+I
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) return false; // Ctrl+Shift+J
+            if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false; // Ctrl+U
+        };
 
+        // MATRIX BACKGROUND EFFECT
+        const canvas = document.getElementById('matrix-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        const letters = "MIU33_DIGITAL_ARCHITECT_010101";
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+        const drops = [];
+        for (let i = 0; i < columns; i++) drops[i] = 1;
 
-      <section id="social-nodes" class="terminal-box">
-        <h2 class="cmd-line">&gt; SOCIAL_CHANNELS</h2>
-        <div class="social-grid">
-          <a href="https://www.linkedin.com/company/miu-digital-architect-studio" class="btn-terminal" target="_blank">LINKEDIN</a>
-          <a href="https://www.tiktok.com/@miuproton" class="btn-terminal" target="_blank">TIKTOK</a>
-          <a href="https://www.xiaohongshu.com/user/profile/miu_Digital" class="btn-terminal" target="_blank">REDNOTE</a>
-        </div>
-      </section>
+        function drawMatrix() {
+            ctx.fillStyle = "rgba(13, 13, 13, 0.05)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#3CFF9B";
+            ctx.font = fontSize + "px monospace";
+            for (let i = 0; i < drops.length; i++) {
+                const text = letters.charAt(Math.floor(Math.random() * letters.length));
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+                drops[i]++;
+            }
+        }
+        setInterval(drawMatrix, 50);
 
-      <section id="audio-logs" class="terminal-box">
-        <h2 class="cmd-line">&gt; SYSTEM_LOG / AUDIO_UPLINK</h2>
-        <audio id="miu-audio"><source src="audio/miu-log-01.mp3" type="audio/mpeg"></audio>
-        <button id="play-log" class="btn-terminal" onclick="toggleAudio()">[ ESTABLISH_UPLINK ]</button>
-      </section>
+        // RIYADH CLOCK
+        function updateClock() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('en-US', { 
+                hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit', timeZone: 'Asia/Riyadh' 
+            });
+            document.getElementById('riyadh-clock').textContent = timeString;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
 
-      <section id="vault" class="terminal-box">
-        <h2 class="cmd-line">&gt; ENCRYPTED_VAULT</h2>
-        <input type="password" id="vault-pass" placeholder="ENTER_HEX_CODE" style="background:#000; border:1px solid #333; color:#3cff9b; padding:10px; width:100%;">
-        <button onclick="checkVault()" class="btn-terminal" style="margin-top:10px;">[ ATTEMPT_DECRYPTION ]</button>
-        <div id="secret-content" style="display:none; margin-top:20px;"><div id="vault-results"></div></div>
-      </section>
-
-      <section id="contact" class="terminal-box">
-        <h2 class="cmd-line">&gt; CONTACT_NODE</h2>
-        <p style="font-size: 11px; color: #C9A46A; margin-bottom: 10px;">DIRECT: miu.digital.studio@proton.me</p>
-        <form action="https://formspree.io/f/mvzwzppo" method="POST">
-          <input type="email" name="email" placeholder="> EMAIL" required style="width:100%; background:#000; border:1px solid #333; color:#3cff9b; padding:10px; margin-bottom:10px;">
-          <textarea name="message" placeholder="> MESSAGE" required style="width:100%; background:#000; border:1px solid #333; color:#3cff9b; padding:10px;"></textarea>
-          <button type="submit" class="btn-terminal" style="margin-top:10px;">SEND_SIGNAL</button>
-        </form>
-      </section>
-
-      <section id="legal" class="terminal-box">
-        <h2 class="cmd-line">&gt; LEGAL_PROTOCOL / IP_PROTECTION</h2>
-        <div style="font-size: 10px; line-height: 1.6; opacity: 0.8;">
-          <p>[ OWNER ]: 缪联睿 (ANAMY PADILLA)</p>
-          <p>[ STATUS ]: ALL_RIGHTS_RESERVED</p>
-          <br>
-          <p>&gt; All architectural renders, AI prompt logs, and digital assets on this node are the exclusive Intellectual Property (IP) of MIU_33 Digital Architect Studio.</p>
-          <p>&gt; Unauthorized reproduction, distribution, or commercial use of these assets without an official license key is strictly prohibited under KSA and International Copyright Law.</p>
-          <p>&gt; For licensing inquiries or custom commissions, initialize contact via the [ CONTACT_NODE ].</p>
-        </div>
-        <p style="font-size: 9px; opacity: 0.5; margin-top: 15px;">© 2026 | MIU_33 Studio | Riyadh, KSA</p>
-      </section>
-    </main>
-  </div>
-
-  <footer class="terminal-footer" style="border-top: 1px solid #3cff9b; margin-top: 40px; padding: 30px 20px; text-align: center; background: rgba(0,0,0,0.95);">
-    <div style="font-family: 'Courier New', 'Microsoft YaHei', monospace; font-size: 11px; color: #3cff9b; opacity: 0.9;">
-      <p>&gt; SYSTEM_OWNER: 缪联睿 (ANAMY PADILLA)</p>
-      <p>&gt; STUDIO: MIU_33 DIGITAL ARCHITECT STUDIO</p>
-      <div style="margin: 15px 0; padding: 10px; border: 1px dashed #3cff9b; display: inline-block;">
-        <p>&gt; RIYADH_LOCAL_TIME: <span id="riyadh-clock" style="color: #fff; text-shadow: 0 0 5px #3cff9b;">00:00:00</span></p>
-        <p>&gt; STATUS: [ NODE_STABLE_CONNECTED ]</p>
-      </div>
-      <p style="margin-top: 10px; color: #C9A46A; font-size: 9px;">[ ALL_RIGHTS_RESERVED_BY_ARCHITECT ]</p>
-    </div>
-  </footer>
-
-  <div id="fullscreen-view" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.9); z-index:20000; justify-content:center; align-items:center;"><img id="fullscreen-img" style="max-width:90%; border:1px solid #3cff9b;" alt="Fullscreen View"></div>
-
-  <script>
-    document.querySelectorAll('.img-protect').forEach(element => {
-      // Disable Right-Click + Security Alert
-      element.addEventListener('contextmenu', function(e) {
-        e.preventDefault();
-        alert("[ SYSTEM_SECURITY_NOTICE ]: UNAUTHORIZED_REPRODUCTION_PROHIBITED. \n\nAll digital assets are the property of miu_Digital Architect Studio.");
-      });
-    });
-  </script>
-
-  <script src="vault.js"></script>
-  <script src="effects.js"></script>
+        // EASTER COUNTDOWN
+        function updateEasterCountdown() {
+            const target = new Date("April 5, 2026 00:00:00").getTime();
+            const now = new Date().getTime();
+            const gap = target - now;
+            const days = Math.floor(gap / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((gap % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            document.getElementById("countdown").innerText = gap > 0 ? days + "D " + hours + "H" : "PROMO_EXPIRED";
+        }
+        setInterval(updateEasterCountdown, 1000);
+        updateEasterCountdown();
+    </script>
 </body>
 </html>
