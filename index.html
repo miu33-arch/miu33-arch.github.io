@@ -1,233 +1,191 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>MIU_33 | Digital Architect Studio | Riyadh</title>
-    <meta name="description" content="MIU_33 (缪联睿) - Professional Digital Architect based in Riyadh. Specializing in Neural Architecture, Spatial Logic, and AI-driven design.">
-    <meta name="keywords" content="Anamy Padilla, 缪联睿, Digital Architect Riyadh, Neural Architecture, Spatial Logic, miu_Digital Architect Studio">
-    <meta name="author" content="Anamy Padilla">
+    <title>MIU_33 | Cyber-Brutalist AI Architecture | 赛博粗野主义</title>
+    <meta name="description" content="AI-generated futuristic architecture blending raw concrete, Matrix aesthetics, and luxury gold. Bilingual (EN/中文) digital design studio by Anamy Padilla. Privacy-first.">
+    <meta property="og:title" content="MIU_33 | Cyber-Brutalist AI Architecture">
+    <meta property="og:description" content="AI-generated futuristic architecture blending raw concrete, Matrix aesthetics, and luxury gold.">
+    <meta property="og:image" content="https://miu33-arch.github.io/og-image.jpg">
     <meta name="robots" content="index, follow">
-    
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://miu33-arch.github.io/">
-    <meta property="og:title" content="MIU_33 | Digital Architect Studio">
-    <meta property="og:description" content="Clinical precision in digital spatial design. Merging medical logic with architectural form.">
-    <meta property="og:image" content="images/avatar-professional.jpg">
 
+    <link rel="alternate" hreflang="en" href="https://miu33-arch.github.io/" />
+    <link rel="alternate" hreflang="zh" href="https://miu33-arch.github.io/" />
+    <link rel="alternate" hreflang="x-default" href="https://miu33-arch.github.io/" />
+    <link rel="canonical" href="https://miu33-arch.github.io/" />
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23080808'/><text y='.75em' x='5' font-family='sans-serif' font-weight='bold' font-size='70' fill='%23C9A46A'>M</text></svg>">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Anamy Padilla",
+      "alternateName": "缪联睿",
+      "jobTitle": "AI Architect & Digital Designer",
+      "url": "https://miu33-arch.github.io/",
+      "sameAs": ["https://miu33-arch.github.io"]
+    }
+    </script>
+
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: { emerald: { neon: '#3CFF9B' } },
-                    fontFamily: { mono: ['JetBrains Mono', 'monospace'], sans: ['Space Grotesk', 'sans-serif'] },
+                    colors: {
+                        emerald: { neon: '#3CFF9B' },
+                        luxury: { gold: '#C9A46A' },
+                        concrete: { 800: '#1a1a1a', 900: '#111111', 950: '#080808' }
+                    },
+                    fontFamily: { sans: ['Space Grotesk', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] }
                 }
             }
         }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@300;600&display=swap" rel="stylesheet">
     
     <style>
-        body { background: #000; color: #fff; overflow-x: hidden; scroll-behavior: smooth; }
-        #matrix-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.12; }
-        #boot-overlay { position: fixed; inset: 0; background: #000; z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #3CFF9B; }
-        .module-card { border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); transition: all 0.4s ease; background: rgba(0,0,0,0.4); backdrop-filter: blur(8px); }
-        .module-card:hover { border-color: #3CFF9B; background: rgba(60, 255, 155, 0.05); }
-        [data-cn] { display: none; }
-        .cursor { display: inline-block; width: 8px; height: 15px; background: #3CFF9B; margin-left: 4px; animation: blink 1s infinite; }
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-        .no-select { -webkit-user-select: none; user-select: none; }
+        body { background-color: #080808; color: #a4a4a4; overflow-x: hidden; }
+        canvas#matrix { position: fixed; inset: 0; z-index: 0; opacity: 0.1; pointer-events: none; }
+        
+        /* Monolithic Animations */
+        @keyframes gold-pulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(201, 164, 106, 0.05); }
+            50% { box-shadow: 0 0 35px rgba(201, 164, 106, 0.2); }
+        }
+        @keyframes stream { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+        @keyframes scan { 0% { top: -10%; } 100% { top: 110%; } }
+
+        .monolith { 
+            background: linear-gradient(145deg, #111111, #080808); 
+            border: 1px solid rgba(201, 164, 106, 0.1); 
+            position: relative; overflow: hidden;
+            animation: gold-pulse 4s ease-in-out infinite;
+        }
+        .monolith::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+            background: linear-gradient(90deg, transparent, #C9A46A, transparent);
+            animation: stream 3s linear infinite;
+        }
+        .scanline { width: 100%; height: 2px; background: rgba(60, 255, 155, 0.05); position: absolute; animation: scan 6s linear infinite; z-index: 10; }
+        .hidden-lang { display: none; }
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
     </style>
 </head>
-<body class="min-h-screen no-select">
+<body class="font-sans selection:bg-luxury-gold selection:text-black">
 
-    <canvas id="matrix-canvas"></canvas>
+    <a href="#main-content" class="sr-only focus:not-sr-only bg-luxury-gold text-black p-4 z-[200]">Skip to content</a>
+    <canvas id="matrix"></canvas>
 
-    <div id="boot-overlay">
-        <div class="font-mono text-xs tracking-widest mb-4 uppercase">
-            <span id="boot-loader">> INITIALIZING_MIU_SYSTEM...</span>
-        </div>
-        <div class="w-48 h-[2px] bg-gray-900 overflow-hidden">
-            <div id="boot-bar" class="h-full bg-emerald-neon w-0 transition-all duration-300"></div>
+    <div id="privacy-toast" class="fixed bottom-6 right-6 z-[100] monolith p-4 border-emerald-neon/30 text-[10px] font-mono w-72 transform translate-y-20 opacity-0 transition-all duration-500">
+        <div class="flex items-start gap-3">
+            <i data-lucide="shield-check" class="text-emerald-neon w-4 h-4"></i>
+            <div>
+                <p class="text-white lang-en">PRIVACY_FIRST: Zero trackers. Identity secured.</p>
+                <p class="text-white lang-zh hidden-lang">隐私优先：零追踪器。身份已加密。</p>
+                <button onclick="closePrivacy()" class="mt-2 text-emerald-neon hover:text-white" aria-label="Acknowledge">[ ACKNOWLEDGE ]</button>
+            </div>
         </div>
     </div>
 
-    <nav class="fixed top-0 w-full p-6 flex justify-between items-center z-50 bg-black/40 backdrop-blur-md border-b border-white/5">
-        <div class="flex items-center gap-2">
-            <div class="w-1.5 h-1.5 bg-emerald-neon rounded-full animate-pulse shadow-[0_0_8px_#3CFF9B]"></div>
-            <span class="font-mono text-[10px] tracking-[0.4em] font-bold">MIU_33</span>
+    <nav class="fixed top-0 w-full z-50 bg-concrete-950/90 border-b border-luxury-gold/10 backdrop-blur-xl">
+        <div class="max-w-7xl mx-auto px-8 py-5 flex justify-between items-center">
+            <div class="flex flex-col">
+                <span class="text-white font-bold tracking-tighter text-2xl uppercase">MIU_33</span>
+                <span class="font-mono text-[9px] tracking-[0.4em] text-luxury-gold uppercase">Anamy Padilla // 缪联睿</span>
+            </div>
+            <div class="flex gap-6 font-mono text-[10px] items-center">
+                <button onclick="toggleLang()" aria-label="Toggle Language" class="border border-luxury-gold/50 text-luxury-gold px-3 py-1 hover:bg-luxury-gold hover:text-black transition-all">EN / 中文</button>
+            </div>
         </div>
-        <button onclick="toggleLang()" class="font-mono text-[9px] text-gray-500 hover:text-emerald-neon uppercase transition-colors border border-white/10 px-3 py-1">
-            [ <span id="lang-label">LANG: EN</span> ]
-        </button>
     </nav>
 
-    <section class="min-h-screen flex flex-col items-center justify-center text-center px-6">
-        <div class="px-12 py-20 relative">
-            <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black px-4 border border-emerald-neon/20">
-                <span class="font-mono text-[9px] text-emerald-neon tracking-widest uppercase">System.Online</span>
+    <main id="main-content">
+        <section class="relative min-h-screen flex flex-col justify-center items-center pt-20">
+            <div class="absolute inset-0 overflow-hidden pointer-events-none"><div class="scanline"></div></div>
+            <div class="z-10 text-center">
+                <h1 class="text-7xl md:text-9xl font-bold text-white tracking-tighter opacity-90 mb-4">SPATIAL <span class="text-luxury-gold">LOGIC</span></h1>
+                <div class="h-8"><p id="hero-typewriter" class="font-mono text-emerald-neon text-xs tracking-[0.5em] uppercase"></p></div>
             </div>
-            <h1 class="text-7xl md:text-[11rem] font-bold tracking-tighter mb-4 text-white uppercase">MIU_33</h1>
-            <p class="font-mono text-sm md:text-xl tracking-[0.4em] text-gray-400 uppercase">
-                <span data-en="Spatial Logic">Spatial Logic</span><span data-cn="空间逻辑">空间逻辑</span> 
-                <span class="text-emerald-neon font-bold ml-2 italic">INITIALIZED</span>
-            </p>
-            <div class="mt-8 font-mono text-[11px] text-emerald-neon/80">
-                > <span id="typewriter"></span><span class="cursor"></span>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="max-w-4xl mx-auto py-32 px-6">
-        <h2 class="font-mono text-[10px] text-gray-600 uppercase tracking-[0.6em] mb-16 text-center">Modules // Core Functions</h2>
-        <div class="module-card p-12 group mb-12">
-            <div class="flex justify-between items-center mb-10">
-                <span class="font-mono text-2xl text-gray-800 font-bold group-hover:text-emerald-neon transition-colors">01</span>
-                <span class="font-mono text-[9px] text-gray-600 uppercase tracking-widest">Neural_Arch_v1.0</span>
-            </div>
-            <h3 class="text-4xl font-bold mb-4 uppercase">
-                <span data-en="Neural Architecture">Neural Architecture</span><span data-cn="神经建筑学">神经建筑学</span>
-            </h3>
-            <p class="text-gray-400 text-sm leading-relaxed max-w-lg italic">
-                <span data-en="Clinical precision in digital spatial design.">Clinical precision in digital spatial design.</span>
-                <span data-cn="数字空间设计中的临床精度。">数字空间设计中的临床精度。</span>
-            </p>
-        </div>
-    </section>
-
-    <section class="max-w-4xl mx-auto py-32 px-6 border-t border-white/5">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div class="space-y-12">
-                <div>
-                    <span class="font-mono text-[10px] text-gray-600 uppercase mb-4 block">> RIYADH_NODE_STATUS</span>
-                    <div class="text-3xl font-bold font-mono text-emerald-neon tracking-widest" id="riyadh-clock">00:00:00</div>
-                    <span class="font-mono text-[8px] text-gray-700 uppercase">TimeZone: Asia/Riyadh</span>
+        <section class="py-24 relative z-10 bg-concrete-950">
+            <div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-12 gap-8">
+                <div class="md:col-span-7 monolith p-10">
+                    <h2 class="text-3xl font-bold text-white mb-6 lang-en">Raw Power, <span class="text-emerald-neon">Digital Soul.</span></h2>
+                    <h2 class="text-3xl font-bold text-white mb-6 lang-zh hidden-lang">粗野之力，<span class="text-emerald-neon">数字之魂。</span></h2>
+                    <p class="text-sm leading-relaxed lang-en">Architecting the future through cyber-brutalist aesthetics. Bridging Eastern heritage with Western digital luxury.</p>
+                    <p class="text-sm leading-relaxed lang-zh hidden-lang">通过赛博粗野主义美学架构未来。架起东方遗产与西方数字奢华的桥梁。</p>
                 </div>
-                <div>
-                    <span class="font-mono text-[10px] text-gray-600 uppercase mb-4 block">> Secure Vault</span>
-                    <div class="flex gap-2">
-                        <input type="password" id="vault-pass" placeholder="HEX33" class="bg-transparent border-b border-gray-800 text-emerald-neon font-mono text-sm outline-none focus:border-emerald-neon w-full pb-2">
-                        <button onclick="checkVault()" class="font-mono text-[10px] text-emerald-neon uppercase underline underline-offset-8">Decrypt</button>
-                    </div>
-                </div>
-                <div>
-                    <span class="font-mono text-[10px] text-gray-600 uppercase mb-2 block">System Logs</span>
-                    <div class="text-6xl font-bold tracking-tighter" id="counter">0</div>
+                <div class="md:col-span-5 monolith p-10 border-emerald-neon/20">
+                    <i data-lucide="lock" class="text-emerald-neon mb-6"></i>
+                    <h3 class="text-xl font-bold text-white mb-2">THE_VAULT</h3>
+                    <p class="text-[10px] font-mono text-emerald-neon/60 mb-8 uppercase tracking-widest lang-en">Access Restricted</p>
+                    <p class="text-[10px] font-mono text-emerald-neon/60 mb-8 uppercase tracking-widest lang-zh hidden-lang">访问受限</p>
+                    <button class="w-full py-3 bg-emerald-neon/10 border border-emerald-neon text-emerald-neon hover:bg-emerald-neon hover:text-black transition-all font-mono text-[10px]">DECRYPT_KEY</button>
                 </div>
             </div>
+        </section>
+    </main>
 
-            <div>
-                <span class="font-mono text-[10px] text-gray-600 uppercase mb-6 block">> <span data-en="Establish Connection">Establish Connection</span><span data-cn="建立联络">建立联络</span></span>
-                <form action="https://formspree.io/f/mvzwzppo" method="POST" class="space-y-4">
-                    <input type="email" name="email" placeholder="anamy5334@gmail.com" required class="bg-transparent border-b border-gray-800 text-emerald-neon font-mono text-xs w-full outline-none pb-2">
-                    <textarea name="message" placeholder="MESSAGE_LOG" required class="bg-transparent border-b border-gray-800 text-emerald-neon font-mono text-xs w-full outline-none h-20"></textarea>
-                    <button type="submit" class="bg-emerald-neon text-black px-8 py-3 font-mono text-[10px] font-bold uppercase hover:bg-white transition-all w-full">Send Signal</button>
-                </form>
-            </div>
+    <footer class="py-12 border-t border-white/5 text-center font-mono text-[9px] tracking-[0.3em]">
+        <div class="flex justify-center gap-6 mb-4">
+            <span class="text-emerald-neon">🔒 PRIVACY_FIRST</span>
+            <a href="privacy.html" class="hover:text-luxury-gold transition-colors">
+                <span class="lang-en">PRIVACY POLICY</span><span class="lang-zh hidden-lang">隐私政策</span>
+            </a>
         </div>
-    </section>
-
-    <section class="max-w-4xl mx-auto py-20 px-6 border-t border-white/5 opacity-30">
-        <div class="font-mono text-[8px] text-gray-500 leading-relaxed uppercase space-y-2">
-            <p>© 2026 MIU_33 STUDIO // ALL INTELLECTUAL PROPERTY RESERVED // RIYADH NODE ACTIVE.</p>
-        </div>
-    </section>
-
-    <footer class="p-12 border-t border-white/5 text-center">
-        <div class="flex justify-center gap-10 font-mono text-[10px] font-bold text-gray-500">
-            <a href="https://www.linkedin.com/company/miu-digital-architect-studio" target="_blank" class="hover:text-emerald-neon uppercase transition-colors">LinkedIn</a>
-            <a href="https://www.tiktok.com/@miuproton" target="_blank" class="hover:text-emerald-neon uppercase transition-colors">TikTok</a>
-            <a href="https://www.xiaohongshu.com/user/profile/miu_Digital" target="_blank" class="hover:text-emerald-neon uppercase transition-colors">RedNote</a>
-        </div>
+        <p class="opacity-40">© 2026 MIU_33 | ANAMY PADILLA | ALL_SYSTEMS_NOMINAL</p>
     </footer>
 
     <script>
-        // PROTECTION
-        document.addEventListener('contextmenu', e => e.preventDefault());
-        document.onkeydown = e => { if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 67)) || (e.ctrlKey && e.keyCode == 85)) return false; };
-
-        // MATRIX
-        const canvas = document.getElementById('matrix-canvas');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-        const letters = "MIU33_缪联睿_010101";
-        const fontSize = 14; const columns = canvas.width / fontSize;
-        const drops = Array(Math.floor(columns)).fill(1);
-        function drawMatrix() {
-            ctx.fillStyle = "rgba(0, 0, 0, 0.05)"; ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = "#3CFF9B"; ctx.font = fontSize + "px monospace";
-            drops.forEach((y, i) => {
-                const text = letters.charAt(Math.floor(Math.random() * letters.length));
-                ctx.fillText(text, i * fontSize, y * fontSize);
-                if (y * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
-                drops[i]++;
-            });
-        }
-        setInterval(drawMatrix, 50);
-
-        // RIYADH CLOCK
-        function updateClock() {
-            const now = new Date();
-            const timeString = now.toLocaleTimeString('en-GB', { hour12: false, timeZone: 'Asia/Riyadh' });
-            document.getElementById('riyadh-clock').textContent = timeString;
-        }
-        setInterval(updateClock, 1000);
-
-        // BOOT & TYPEWRITER
-        const lines = { en: "Identity_Verified: Anamy Padilla", cn: "身份验证成功: 缪联睿" };
-        let charIndex = 0; let currentText = lines.en;
-        function type() {
-            if (charIndex < currentText.length) {
-                document.getElementById('typewriter').textContent += currentText.charAt(charIndex);
-                charIndex++; setTimeout(type, 100);
+        window.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            
+            // Matrix Logic
+            const canvas = document.getElementById('matrix');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+            const chars = "MIU33缪联睿0101";
+            const drops = Array(Math.floor(canvas.width/20)).fill(1);
+            function drawMatrix() {
+                ctx.fillStyle = 'rgba(8, 8, 8, 0.1)'; ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = '#3CFF9B'; ctx.font = '12px monospace';
+                drops.forEach((y, i) => {
+                    ctx.fillText(chars[Math.floor(Math.random()*chars.length)], i*20, y*20);
+                    if(y*20 > canvas.height && Math.random() > 0.98) drops[i] = 0;
+                    drops[i]++;
+                });
             }
-        }
-        function startBoot() {
-            const bar = document.getElementById('boot-bar');
-            let progress = 0;
-            const interval = setInterval(() => {
-                progress += Math.random() * 5;
-                bar.style.width = progress + '%';
-                if (progress >= 100) {
-                    clearInterval(interval);
-                    setTimeout(() => {
-                        document.getElementById('boot-overlay').style.display = 'none';
-                        type(); updateCounter(); updateClock();
-                    }, 400);
-                }
-            }, 40);
-        }
+            setInterval(drawMatrix, 60);
 
-        // BILINGUAL
-        function toggleLang() {
-            const isEn = document.getElementById("lang-label").innerText === "LANG: EN";
-            document.getElementById("lang-label").innerText = isEn ? "LANG: CN" : "LANG: EN";
-            charIndex = 0; currentText = isEn ? lines.cn : lines.en;
-            document.getElementById('typewriter').textContent = "";
-            document.querySelectorAll('[data-en]').forEach(el => el.style.display = isEn ? 'none' : 'inline-block');
-            document.querySelectorAll('[data-cn]').forEach(el => el.style.display = isEn ? 'inline-block' : 'none');
-            type();
-        }
-
-        // COUNTER
-        function updateCounter() {
-            let count = 0; const target = 847;
-            const cInterval = setInterval(() => {
-                count += 11;
-                if(count >= target) { clearInterval(cInterval); document.getElementById('counter').innerText = target; }
-                else { document.getElementById('counter').innerText = count; }
-            }, 30);
-        }
-
-        function checkVault() {
-            if(document.getElementById('vault-pass').value === "HEX33") {
-                alert("ACCESS GRANTED.");
-                window.open('images/Anamy_Padilla_CV.pdf');
-            } else alert("DENIED.");
-        }
-        window.onload = startBoot;
+            // Lang Logic
+            let currentLang = 'en';
+            const phrases = { en: "Merging raw concrete with digital soul...", zh: "原始混凝土与数字之魂的融合..." };
+            window.toggleLang = function() {
+                currentLang = currentLang === 'en' ? 'zh' : 'en';
+                document.querySelectorAll('.lang-en').forEach(el => el.classList.toggle('hidden-lang', currentLang === 'zh'));
+                document.querySelectorAll('.lang-zh').forEach(el => el.classList.toggle('hidden-lang', currentLang === 'en'));
+                typeWriter();
+            };
+            function typeWriter() {
+                const target = document.getElementById('hero-typewriter');
+                target.innerHTML = ""; let i = 0; const txt = phrases[currentLang];
+                function type() { if (i < txt.length) { target.innerHTML += txt.charAt(i); i++; setTimeout(type, 50); } }
+                type();
+            }
+            setTimeout(typeWriter, 1000);
+            setTimeout(() => { gsap.to("#privacy-toast", { opacity: 1, y: 0, duration: 1 }); }, 3000);
+        });
+        function closePrivacy() { gsap.to("#privacy-toast", { opacity: 0, y: 20, duration: 0.5 }); }
     </script>
 </body>
 </html>
+
