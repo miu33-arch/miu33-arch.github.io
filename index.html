@@ -32,18 +32,13 @@
     <style>
         body { background: #000; color: #fff; overflow-x: hidden; scroll-behavior: smooth; }
         #matrix-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.12; }
-        
         #boot-overlay { position: fixed; inset: 0; background: #000; z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #3CFF9B; }
-        
         .module-card { border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); transition: all 0.4s ease; background: rgba(0,0,0,0.4); backdrop-filter: blur(8px); }
         .module-card:hover { border-color: #3CFF9B; background: rgba(60, 255, 155, 0.05); }
-        
         [data-cn] { display: none; }
         .cursor { display: inline-block; width: 8px; height: 15px; background: #3CFF9B; margin-left: 4px; animation: blink 1s infinite; }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-
-        /* Protection against text selection */
-        .no-select { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+        .no-select { -webkit-user-select: none; user-select: none; }
     </style>
 </head>
 <body class="min-h-screen no-select">
@@ -74,15 +69,11 @@
             <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black px-4 border border-emerald-neon/20">
                 <span class="font-mono text-[9px] text-emerald-neon tracking-widest uppercase">System.Online</span>
             </div>
-
-            <h1 class="text-7xl md:text-[11rem] font-bold tracking-tighter mb-4 text-white">MIU_33</h1>
-            
+            <h1 class="text-7xl md:text-[11rem] font-bold tracking-tighter mb-4 text-white uppercase">MIU_33</h1>
             <p class="font-mono text-sm md:text-xl tracking-[0.4em] text-gray-400 uppercase">
-                <span data-en="Spatial Logic">Spatial Logic</span>
-                <span data-cn="空间逻辑">空间逻辑</span> 
-                <span class="text-emerald-neon font-bold ml-2">INITIALIZED</span>
+                <span data-en="Spatial Logic">Spatial Logic</span><span data-cn="空间逻辑">空间逻辑</span> 
+                <span class="text-emerald-neon font-bold ml-2 italic">INITIALIZED</span>
             </p>
-
             <div class="mt-8 font-mono text-[11px] text-emerald-neon/80">
                 > <span id="typewriter"></span><span class="cursor"></span>
             </div>
@@ -91,32 +82,18 @@
 
     <section class="max-w-4xl mx-auto py-32 px-6">
         <h2 class="font-mono text-[10px] text-gray-600 uppercase tracking-[0.6em] mb-16 text-center">Modules // Core Functions</h2>
-        
         <div class="module-card p-12 group mb-12">
             <div class="flex justify-between items-center mb-10">
                 <span class="font-mono text-2xl text-gray-800 font-bold group-hover:text-emerald-neon transition-colors">01</span>
                 <span class="font-mono text-[9px] text-gray-600 uppercase tracking-widest">Neural_Arch_v1.0</span>
             </div>
-            <h3 class="text-4xl font-bold mb-4">
-                <span data-en="Neural Architecture">Neural Architecture</span>
-                <span data-cn="神经建筑学">神经建筑学</span>
+            <h3 class="text-4xl font-bold mb-4 uppercase">
+                <span data-en="Neural Architecture">Neural Architecture</span><span data-cn="神经建筑学">神经建筑学</span>
             </h3>
-            <p class="text-gray-400 text-sm leading-relaxed mb-10 max-w-lg italic">
-                <span data-en="Clinical precision in digital spatial design. Merging medical logic with architectural form.">Clinical precision in digital spatial design. Merging medical logic with architectural form.</span>
-                <span data-cn="数字空间设计中的临床精度。将医疗逻辑与建筑形式相结合。">数字空间设计中的临床精度。将医疗逻辑与建筑形式相结合。</span>
+            <p class="text-gray-400 text-sm leading-relaxed max-w-lg italic">
+                <span data-en="Clinical precision in digital spatial design.">Clinical precision in digital spatial design.</span>
+                <span data-cn="数字空间设计中的临床精度。">数字空间设计中的临床精度。</span>
             </p>
-        </div>
-
-        <div class="module-card p-12 group">
-            <div class="flex justify-between items-center mb-10">
-                <span class="font-mono text-2xl text-gray-800 font-bold group-hover:text-emerald-neon transition-colors">02</span>
-                <span class="font-mono text-[9px] text-gray-600 uppercase tracking-widest">Identity_Node_v1.0</span>
-            </div>
-            <h3 class="text-4xl font-bold mb-4">
-                <span data-en="Branding & Logic">Branding & Logic</span>
-                <span data-cn="品牌与逻辑">品牌与逻辑</span>
-            </h3>
-            <p class="text-gray-400 text-sm leading-relaxed max-w-lg italic">Establishing the digital footprint of the next generation of designers.</p>
         </div>
     </section>
 
@@ -124,7 +101,12 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div class="space-y-12">
                 <div>
-                    <span class="font-mono text-[10px] text-gray-600 uppercase mb-4 block">> <span data-en="Secure Vault">Secure Vault</span><span data-cn="加密库">加密库</span></span>
+                    <span class="font-mono text-[10px] text-gray-600 uppercase mb-4 block">> RIYADH_NODE_STATUS</span>
+                    <div class="text-3xl font-bold font-mono text-emerald-neon tracking-widest" id="riyadh-clock">00:00:00</div>
+                    <span class="font-mono text-[8px] text-gray-700 uppercase">TimeZone: Asia/Riyadh</span>
+                </div>
+                <div>
+                    <span class="font-mono text-[10px] text-gray-600 uppercase mb-4 block">> Secure Vault</span>
                     <div class="flex gap-2">
                         <input type="password" id="vault-pass" placeholder="HEX33" class="bg-transparent border-b border-gray-800 text-emerald-neon font-mono text-sm outline-none focus:border-emerald-neon w-full pb-2">
                         <button onclick="checkVault()" class="font-mono text-[10px] text-emerald-neon uppercase underline underline-offset-8">Decrypt</button>
@@ -139,7 +121,7 @@
             <div>
                 <span class="font-mono text-[10px] text-gray-600 uppercase mb-6 block">> <span data-en="Establish Connection">Establish Connection</span><span data-cn="建立联络">建立联络</span></span>
                 <form action="https://formspree.io/f/mvzwzppo" method="POST" class="space-y-4">
-                    <input type="email" name="email" placeholder="EMAIL_LOG" required class="bg-transparent border-b border-gray-800 text-emerald-neon font-mono text-xs w-full outline-none pb-2">
+                    <input type="email" name="email" placeholder="anamy5334@gmail.com" required class="bg-transparent border-b border-gray-800 text-emerald-neon font-mono text-xs w-full outline-none pb-2">
                     <textarea name="message" placeholder="MESSAGE_LOG" required class="bg-transparent border-b border-gray-800 text-emerald-neon font-mono text-xs w-full outline-none h-20"></textarea>
                     <button type="submit" class="bg-emerald-neon text-black px-8 py-3 font-mono text-[10px] font-bold uppercase hover:bg-white transition-all w-full">Send Signal</button>
                 </form>
@@ -147,38 +129,26 @@
         </div>
     </section>
 
-    <section class="max-w-4xl mx-auto py-20 px-6 border-t border-white/5 opacity-40 hover:opacity-100 transition-opacity">
-        <h3 class="font-mono text-[9px] text-gray-600 uppercase mb-4 tracking-widest">Legal_Protocol_v1.0</h3>
+    <section class="max-w-4xl mx-auto py-20 px-6 border-t border-white/5 opacity-30">
         <div class="font-mono text-[8px] text-gray-500 leading-relaxed uppercase space-y-2">
-            <p>[ TERMS ]: ALL DESIGN LOGIC, RENDERS, AND NEURAL MODELS ARE THE INTELLECTUAL PROPERTY OF MIU_33 STUDIO.</p>
-            <p>[ PRIVACY ]: DATA COLLECTED VIA UPLINK IS ENCRYPTED AND NEVER SHARED WITH THIRD-PARTY NODES.</p>
-            <p>[ LIABILITY ]: MIU_33 IS A DIGITAL ARCHITECTURE CONSULTANCY. FINAL PHYSICAL IMPLEMENTATION REQUIRES LOCAL ENGINEERING SIGN-OFF.</p>
+            <p>© 2026 MIU_33 STUDIO // ALL INTELLECTUAL PROPERTY RESERVED // RIYADH NODE ACTIVE.</p>
         </div>
     </section>
 
     <footer class="p-12 border-t border-white/5 text-center">
-        <div class="font-mono text-[9px] text-gray-600 uppercase tracking-[0.4em] leading-loose mb-8">
-            © 2026 MIU_33 // FOUNDER: ANAMY PADILLA // RIYADH_NODE
-        </div>
         <div class="flex justify-center gap-10 font-mono text-[10px] font-bold text-gray-500">
-            <a href="https://www.linkedin.com/company/miu-digital-architect-studio" target="_blank" class="hover:text-emerald-neon transition-colors uppercase">LinkedIn</a>
-            <a href="https://www.tiktok.com/@miuproton" target="_blank" class="hover:text-emerald-neon transition-colors uppercase">TikTok</a>
-            <a href="https://www.xiaohongshu.com/user/profile/miu_Digital" target="_blank" class="hover:text-emerald-neon transition-colors uppercase">RedNote</a>
+            <a href="https://www.linkedin.com/company/miu-digital-architect-studio" target="_blank" class="hover:text-emerald-neon uppercase transition-colors">LinkedIn</a>
+            <a href="https://www.tiktok.com/@miuproton" target="_blank" class="hover:text-emerald-neon uppercase transition-colors">TikTok</a>
+            <a href="https://www.xiaohongshu.com/user/profile/miu_Digital" target="_blank" class="hover:text-emerald-neon uppercase transition-colors">RedNote</a>
         </div>
     </footer>
 
     <script>
-        // SYSTEM_PROTECTION_PROTOCOL
-        document.addEventListener('contextmenu', event => event.preventDefault());
-        document.onkeydown = function(e) {
-            if(e.keyCode == 123) { return false; }
-            if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) { return false; }
-            if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) { return false; }
-            if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) { return false; }
-            if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) { return false; }
-        };
+        // PROTECTION
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.onkeydown = e => { if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 67)) || (e.ctrlKey && e.keyCode == 85)) return false; };
 
-        // MATRIX ENGINE
+        // MATRIX
         const canvas = document.getElementById('matrix-canvas');
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth; canvas.height = window.innerHeight;
@@ -197,28 +167,15 @@
         }
         setInterval(drawMatrix, 50);
 
-        // BOOT LOGIC
-        function startBoot() {
-            const bar = document.getElementById('boot-bar');
-            const loader = document.getElementById('boot-loader');
-            const overlay = document.getElementById('boot-overlay');
-            let progress = 0;
-            const interval = setInterval(() => {
-                progress += Math.random() * 5;
-                bar.style.width = progress + '%';
-                if (progress >= 100) {
-                    clearInterval(interval);
-                    setTimeout(() => {
-                        overlay.style.opacity = '0';
-                        document.body.style.overflow = 'auto';
-                        setTimeout(() => overlay.style.display = 'none', 500);
-                        type(); updateCounter();
-                    }, 400);
-                }
-            }, 40);
+        // RIYADH CLOCK
+        function updateClock() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('en-GB', { hour12: false, timeZone: 'Asia/Riyadh' });
+            document.getElementById('riyadh-clock').textContent = timeString;
         }
+        setInterval(updateClock, 1000);
 
-        // BILINGUAL TYPEWRITER
+        // BOOT & TYPEWRITER
         const lines = { en: "Identity_Verified: Anamy Padilla", cn: "身份验证成功: 缪联睿" };
         let charIndex = 0; let currentText = lines.en;
         function type() {
@@ -227,7 +184,23 @@
                 charIndex++; setTimeout(type, 100);
             }
         }
+        function startBoot() {
+            const bar = document.getElementById('boot-bar');
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += Math.random() * 5;
+                bar.style.width = progress + '%';
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        document.getElementById('boot-overlay').style.display = 'none';
+                        type(); updateCounter(); updateClock();
+                    }, 400);
+                }
+            }, 40);
+        }
 
+        // BILINGUAL
         function toggleLang() {
             const isEn = document.getElementById("lang-label").innerText === "LANG: EN";
             document.getElementById("lang-label").innerText = isEn ? "LANG: CN" : "LANG: EN";
@@ -238,7 +211,7 @@
             type();
         }
 
-        // COUNTER (847)
+        // COUNTER
         function updateCounter() {
             let count = 0; const target = 847;
             const cInterval = setInterval(() => {
@@ -250,11 +223,10 @@
 
         function checkVault() {
             if(document.getElementById('vault-pass').value === "HEX33") {
-                alert("ACCESS GRANTED: Opening Archive...");
+                alert("ACCESS GRANTED.");
                 window.open('images/Anamy_Padilla_CV.pdf');
-            } else { alert("ACCESS DENIED"); }
+            } else alert("DENIED.");
         }
-
         window.onload = startBoot;
     </script>
 </body>
