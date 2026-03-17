@@ -11,214 +11,176 @@
             theme: {
                 extend: {
                     colors: {
-                        emerald: { neon: '#3CFF9B', dark: '#0A1F16' },
-                        concrete: { 950: '#0d0d0d', 900: '#1a1a1a' }
+                        emerald: { neon: '#3CFF9B', dark: '#000' },
                     },
-                    fontFamily: { mono: ['JetBrains Mono', 'monospace'] },
-                    animation: { 
-                        'scan': 'scan 4s linear infinite', 
-                        'blink': 'blink 1s step-end infinite',
-                        'pulse-fast': 'pulse 0.5s cubic-bezier(0.4, 0, 0.6, 1) infinite'
-                    },
-                    keyframes: { 
-                        scan: { '0%': { transform: 'translateY(-100%)' }, '100%': { transform: 'translateY(100%)' } },
-                        blink: { 'from, to': { opacity: '1' }, '50%': { opacity: '0' } }
-                    }
+                    fontFamily: { mono: ['JetBrains Mono', 'monospace'], sans: ['Space Grotesk', 'sans-serif'] },
+                    animation: { 'scan': 'scan 4s linear infinite', 'blink': 'blink 1s step-end infinite' }
                 }
             }
         }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@300;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@300;600&display=swap" rel="stylesheet">
     
     <style>
-        body { font-family: 'Space Grotesk', sans-serif; background: #000; color: #fff; overflow: hidden; }
-        .grid-lines { background-size: 50px 50px; background-image: linear-gradient(rgba(60, 255, 155, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(60, 255, 155, 0.05) 1px, transparent 1px); }
-        #matrix-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.1; }
-        
-        /* BOOT OVERLAY STYLES */
-        #boot-overlay {
-            position: fixed;
-            inset: 0;
-            background: #000;
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            font-family: 'JetBrains Mono', monospace;
-            color: #3CFF9B;
-        }
-        
+        body { background: #000; color: #fff; overflow: hidden; }
+        .grid-bg { background-image: linear-gradient(rgba(60, 255, 155, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(60, 255, 155, 0.03) 1px, transparent 1px); background-size: 60px 60px; }
+        #boot-overlay { position: fixed; inset: 0; background: #000; z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #3CFF9B; }
+        .module-card { border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); transition: all 0.4s ease; }
+        .module-card:hover { border-color: #3CFF9B; background: rgba(60, 255, 155, 0.02); }
         [data-cn] { display: none; }
     </style>
 </head>
-<body class="grid-lines min-h-screen flex flex-col items-center p-6 md:p-12" oncontextmenu="return false;">
+<body class="grid-bg min-h-screen">
 
     <div id="boot-overlay">
-        <div class="text-xs md:text-sm tracking-widest mb-4">
+        <div class="font-mono text-xs tracking-widest mb-4">
             <span id="boot-loader">> INITIALIZING_MIU_SYSTEM...</span>
         </div>
-        <div class="w-48 h-1 bg-gray-900 overflow-hidden">
+        <div class="w-48 h-[2px] bg-gray-900 overflow-hidden">
             <div id="boot-bar" class="h-full bg-emerald-neon w-0"></div>
         </div>
-        <div class="mt-4 text-[10px] text-emerald-neon/50 uppercase tracking-[0.3em]">Neural Spatial Engine v1.0.33</div>
     </div>
 
-    <canvas id="matrix-canvas"></canvas>
-
-    <header class="w-full flex justify-between items-center mb-12 z-50">
-        <img src="images/avatar-professional.jpg" alt="Founder" class="w-12 h-12 border border-emerald-neon grayscale rounded-sm">
-        <button onclick="toggleLang()" class="border border-emerald-neon/30 px-4 py-1 font-mono text-[10px] text-emerald-neon hover:bg-emerald-neon/10 transition-all uppercase">
+    <nav class="fixed top-0 w-full p-6 flex justify-between items-center z-50 bg-black/80 backdrop-blur-md">
+        <div class="flex items-center gap-2">
+            <div class="w-1.5 h-1.5 bg-emerald-neon rounded-full animate-pulse"></div>
+            <span class="font-mono text-[10px] tracking-[0.4em] font-bold">MIU_33</span>
+        </div>
+        <button onclick="toggleLang()" class="font-mono text-[9px] text-gray-500 hover:text-emerald-neon uppercase transition-colors">
             [ <span id="lang-label">LANG: EN</span> ]
         </button>
-    </header>
+    </nav>
 
-    <main class="text-center mb-16 relative">
-        <div class="inline-block border border-emerald-neon/40 px-4 py-1 mb-6">
-            <span class="font-mono text-[10px] text-emerald-neon tracking-[0.4em] uppercase animate-pulse">System.Online</span>
-        </div>
-        
-        <h1 class="text-7xl md:text-9xl font-bold tracking-tighter mb-4 text-white">MIU_33</h1>
-        
-        <div class="font-mono text-sm md:text-xl tracking-[0.3em] text-gray-400 uppercase">
-            <span data-en="Spatial Logic">Spatial Logic</span>
-            <span data-cn="空间逻辑">空间逻辑</span> 
-            <span class="text-emerald-neon">INITIALIZED</span>
-        </div>
+    <section class="min-h-screen flex flex-col items-center justify-center text-center px-6">
+        <div class="border-x border-white/5 px-12 py-20 relative">
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black px-4">
+                <span class="font-mono text-[9px] text-emerald-neon/60 tracking-widest uppercase">System.Online</span>
+            </div>
 
-        <div class="mt-8 font-mono text-xs text-emerald-neon/80">
-            <span id="typewriter"></span><span class="inline-block w-2 h-4 bg-emerald-neon animate-blink ml-1"></span>
-        </div>
-    </main>
+            <h1 class="text-7xl md:text-[10rem] font-bold tracking-tighter mb-4">MIU_33</h1>
+            
+            <p class="font-mono text-sm md:text-xl tracking-[0.4em] text-gray-400 uppercase">
+                <span data-en="Spatial Logic">Spatial Logic</span>
+                <span data-cn="空间逻辑">空间逻辑</span> 
+                <span class="text-emerald-neon font-bold ml-2">INITIALIZED</span>
+            </p>
 
-    <section class="grid grid-cols-1 md:grid-cols-4 gap-4 w-full max-w-6xl auto-rows-[180px] pb-20">
-        
-        <div class="md:col-span-2 md:row-span-2 border border-emerald-neon/20 bg-concrete-900/60 p-8 flex flex-col justify-between relative overflow-hidden group">
-             <div class="absolute inset-0 pointer-events-none border border-emerald-neon/10 animate-scan"></div>
-             <div id="video-uplink" class="absolute inset-0 flex items-center justify-center font-mono text-[9px] text-emerald-neon/20 uppercase">[ NEURAL_RENDER_UPLINK ]</div>
-             <span class="font-mono text-[10px] text-gray-600 uppercase">Neural_Architecture</span>
-             <div>
-                <h3 class="text-2xl font-bold tracking-tighter uppercase mb-2">
-                    <span data-en="Neural Portfolio">Neural Portfolio</span>
-                    <span data-cn="神经作品集">神经作品集</span>
-                </h3>
-                <p class="text-xs text-gray-500 font-mono italic">Clinical Precision in Design.</p>
-             </div>
+            <div class="mt-8 font-mono text-[11px] text-emerald-neon/80">
+                > <span id="typewriter"></span><span class="inline-block w-2 h-3 bg-emerald-neon ml-1 animate-blink"></span>
+            </div>
         </div>
-
-        <div class="border border-white/10 bg-black/40 p-6 flex flex-col justify-between group relative">
-            <img src="images/avatar-vault.jpg" alt="" class="absolute inset-0 w-full h-full object-cover opacity-5 grayscale group-hover:opacity-10 transition-opacity">
-            <span class="font-mono text-[10px] text-gray-500 uppercase z-10">> Vault</span>
-            <input type="password" id="vault-pass" placeholder="HEX33" class="bg-transparent border-b border-gray-800 text-emerald-neon text-xs font-mono outline-none mb-2 z-10">
-            <button onclick="checkVault()" class="text-[9px] text-emerald-neon underline tracking-widest uppercase z-10">Decrypt Access</button>
-        </div>
-
-        <div class="border border-white/10 bg-black/40 p-6 flex flex-col justify-between">
-            <span class="font-mono text-[10px] text-gray-500 uppercase" data-en="System Logs">System Logs</span>
-            <span class="font-mono text-[10px] text-gray-500 uppercase" data-cn="系统日志">系统日志</span>
-            <div class="text-5xl font-bold font-mono text-white" id="counter">0</div>
-        </div>
-
-        <div class="md:col-span-2 border border-white/10 bg-black/40 p-6">
-            <span class="font-mono text-[10px] text-gray-500 block mb-4 uppercase">> Direct Signal</span>
-            <form action="https://formspree.io/f/mvzwzppo" method="POST" class="flex flex-col gap-3">
-                <input type="email" name="email" placeholder="anamy5334@gmail.com" class="bg-transparent border-b border-gray-800 text-emerald-neon text-xs font-mono outline-none py-1">
-                <button type="submit" class="text-[10px] text-emerald-neon underline text-left uppercase">Establish Uplink</button>
-            </form>
-        </div>
-
-        <div class="border border-white/10 bg-black/40 p-6 flex flex-col items-center justify-center text-center">
-            <div class="text-xl font-bold font-mono tracking-widest text-emerald-neon" id="clock">00:00:00</div>
-            <span class="text-[9px] text-gray-600 uppercase font-mono mt-2">Riyadh_Node</span>
-        </div>
-
     </section>
 
-    <footer class="mt-20 w-full border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 pb-12">
-        <div class="font-mono text-[9px] text-gray-600 uppercase tracking-widest leading-loose text-center md:text-left">
-            <div data-en>© 2026 MIU_33 // FOUNDER: ANAMY PADILLA // ALL RIGHTS RESERVED</div>
-            <div data-cn>© 2026 MIU_33 // 创始人: ANAMY PADILLA (缪联睿) // 版权所有</div>
+    <section class="max-w-4xl mx-auto py-32 px-6">
+        <h2 class="font-mono text-[10px] text-gray-600 uppercase tracking-[0.6em] mb-16 text-center">Modules // Core Functions</h2>
+        
+        <div class="module-card p-12 group mb-12">
+            <div class="flex justify-between items-center mb-10">
+                <span class="font-mono text-2xl text-gray-800 font-bold group-hover:text-emerald-neon transition-colors">01</span>
+                <span class="font-mono text-[9px] text-gray-600 uppercase tracking-widest">Neural_Arch_v1.0</span>
+            </div>
+            <h3 class="text-4xl font-bold mb-4">Neural Architecture</h3>
+            <p class="text-gray-500 text-sm leading-relaxed mb-10 max-w-lg italic">"Clinical precision in digital spatial design. Merging medical logic with architectural form."</p>
+            <div class="w-full h-40 bg-gray-950 border border-white/5 flex items-center justify-center font-mono text-[9px] text-gray-800 uppercase">
+                [ Dynamic_Render_Space ]
+            </div>
         </div>
-        <div class="flex gap-8 text-[10px] font-bold">
-            <a href="https://www.linkedin.com/company/miu-digital-architect-studio" target="_blank" class="hover:text-emerald-neon transition-colors">LINKEDIN</a>
-            <a href="https://www.tiktok.com/@miuproton" target="_blank" class="hover:text-emerald-neon transition-colors">TIKTOK</a>
-            <a href="https://www.xiaohongshu.com/user/profile/miu_Digital" target="_blank" class="hover:text-emerald-neon transition-colors">REDNOTE</a>
+
+        <div class="module-card p-12 group">
+            <div class="flex justify-between items-center mb-10">
+                <span class="font-mono text-2xl text-gray-800 font-bold group-hover:text-emerald-neon transition-colors">02</span>
+                <span class="font-mono text-[9px] text-gray-600 uppercase tracking-widest">Identity_System_v1.0</span>
+            </div>
+            <h3 class="text-4xl font-bold mb-4">Branding & Logic</h3>
+            <p class="text-gray-500 text-sm leading-relaxed mb-10 max-w-lg italic">Establishing the digital footprint of the next generation of designers.</p>
+            <div class="flex gap-4">
+                 <button class="font-mono text-[10px] text-emerald-neon border border-emerald-neon/20 px-6 py-2 hover:bg-emerald-neon hover:text-black transition-all uppercase">Initiate Protocol</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-4xl mx-auto py-32 px-6 border-t border-white/5">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            
+            <div class="space-y-12">
+                <div>
+                    <span class="font-mono text-[10px] text-gray-600 uppercase mb-4 block">> Secure Vault</span>
+                    <div class="flex gap-2">
+                        <input type="password" id="vault-pass" placeholder="HEX33" class="bg-transparent border-b border-gray-800 text-emerald-neon font-mono text-sm outline-none focus:border-emerald-neon w-full pb-2">
+                        <button onclick="checkVault()" class="font-mono text-[10px] text-emerald-neon uppercase underline underline-offset-8">Decrypt</button>
+                    </div>
+                </div>
+                <div>
+                    <span class="font-mono text-[10px] text-gray-600 uppercase mb-2 block">System Logs</span>
+                    <div class="text-6xl font-bold tracking-tighter" id="counter">0</div>
+                </div>
+            </div>
+
+            <div>
+                <span class="font-mono text-[10px] text-gray-600 uppercase mb-6 block">> Establish Connection</span>
+                <form action="https://formspree.io/f/mvzwzppo" method="POST" class="space-y-4">
+                    <input type="email" name="email" placeholder="EMAIL_LOG" class="bg-transparent border-b border-gray-800 text-emerald-neon font-mono text-xs w-full outline-none pb-2">
+                    <textarea name="message" placeholder="MESSAGE_LOG" class="bg-transparent border-b border-gray-800 text-emerald-neon font-mono text-xs w-full outline-none h-20"></textarea>
+                    <button type="submit" class="bg-emerald-neon text-black px-8 py-3 font-mono text-[10px] font-bold uppercase hover:bg-white transition-all w-full">Send Transmission</button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="p-12 border-t border-white/5 text-center">
+        <div class="font-mono text-[9px] text-gray-600 uppercase tracking-[0.4em] leading-loose mb-8">
+            © 2026 MIU_33 // FOUNDER: ANAMY PADILLA // RIYADH_NODE
+        </div>
+        <div class="flex justify-center gap-10 font-mono text-[10px] font-bold">
+            <a href="https://www.linkedin.com/company/miu-digital-architect-studio" target="_blank" class="hover:text-emerald-neon transition-colors tracking-widest">LINKEDIN</a>
+            <a href="https://www.tiktok.com/@miuproton" target="_blank" class="hover:text-emerald-neon transition-colors tracking-widest">TIKTOK</a>
+            <a href="https://www.xiaohongshu.com/user/profile/miu_Digital" target="_blank" class="hover:text-emerald-neon transition-colors tracking-widest">REDNOTE</a>
         </div>
     </footer>
 
     <script>
-        // BOOT SEQUENCE LOGIC
-        const bootLoader = document.getElementById('boot-loader');
-        const bootBar = document.getElementById('boot-bar');
-        const bootOverlay = document.getElementById('boot-overlay');
-        const messages = ["> ANALYZING_SPATIAL_LOGIC...", "> LOADING_NEURAL_MODELS...", "> DECRYPTING_RIYADH_NODE...", "> SYSTEM_READY"];
-        
-        let msgIndex = 0;
-        let progress = 0;
-
+        // BOOT LOGIC
         function startBoot() {
+            const bar = document.getElementById('boot-bar');
+            const loader = document.getElementById('boot-loader');
+            const overlay = document.getElementById('boot-overlay');
+            let progress = 0;
             const interval = setInterval(() => {
                 progress += Math.random() * 5;
-                bootBar.style.width = progress + '%';
-                
-                if (progress > msgIndex * 25) {
-                    bootLoader.innerText = messages[msgIndex];
-                    msgIndex++;
-                }
-
+                bar.style.width = progress + '%';
                 if (progress >= 100) {
                     clearInterval(interval);
                     setTimeout(() => {
-                        bootOverlay.style.opacity = '0';
+                        overlay.style.opacity = '0';
                         document.body.style.overflow = 'auto';
-                        setTimeout(() => bootOverlay.style.display = 'none', 500);
-                        type();
-                        updateCounter();
-                    }, 500);
+                        setTimeout(() => overlay.style.display = 'none', 500);
+                        type(); updateCounter();
+                    }, 400);
                 }
-            }, 50);
+            }, 40);
         }
 
         // TYPEWRITER
-        const lines = { en: "> Identity Verified: Anamy Padilla", cn: "> 身份验证成功: 缪联睿" };
+        const lines = { en: "Identity_Verified: Anamy Padilla", cn: "身份验证成功: 缪联睿" };
         let charIndex = 0; let currentText = lines.en;
         function type() {
             if (charIndex < currentText.length) {
                 document.getElementById('typewriter').textContent += currentText.charAt(charIndex);
-                charIndex++; setTimeout(type, 80);
+                charIndex++; setTimeout(type, 100);
             }
         }
 
         // BILINGUAL
         function toggleLang() {
-            const label = document.getElementById("lang-label");
-            const isEn = label.innerText === "LANG: EN";
-            label.innerText = isEn ? "LANG: CN" : "LANG: EN";
+            const isEn = document.getElementById("lang-label").innerText === "LANG: EN";
+            document.getElementById("lang-label").innerText = isEn ? "LANG: CN" : "LANG: EN";
             charIndex = 0; currentText = isEn ? lines.cn : lines.en;
             document.getElementById('typewriter').textContent = "";
             document.querySelectorAll('[data-en]').forEach(el => el.style.display = isEn ? 'none' : 'inline-block');
             document.querySelectorAll('[data-cn]').forEach(el => el.style.display = isEn ? 'inline-block' : 'none');
             type();
         }
-
-        // MATRIX
-        const canvas = document.getElementById('matrix-canvas');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-        const letters = "MIU33_缪联睿_010101";
-        const fontSize = 14; const columns = canvas.width / fontSize;
-        const drops = Array(Math.floor(columns)).fill(1);
-        function drawMatrix() {
-            ctx.fillStyle = "rgba(0, 0, 0, 0.05)"; ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = "#3CFF9B"; ctx.font = fontSize + "px monospace";
-            drops.forEach((y, i) => {
-                const text = letters.charAt(Math.floor(Math.random() * letters.length));
-                ctx.fillText(text, i * fontSize, y * fontSize);
-                if (y * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
-                drops[i]++;
-            });
-        }
-        setInterval(drawMatrix, 50);
 
         // COUNTER
         function updateCounter() {
@@ -227,21 +189,14 @@
                 count += 11;
                 if(count >= target) { clearInterval(cInterval); document.getElementById('counter').innerText = target; }
                 else { document.getElementById('counter').innerText = count; }
-            }, 20);
+            }, 30);
         }
-
-        // CLOCK
-        function updateClock() {
-            const now = new Date();
-            document.getElementById('clock').textContent = now.toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit', timeZone: 'Asia/Riyadh' });
-        }
-        setInterval(updateClock, 1000);
 
         function checkVault() {
             if(document.getElementById('vault-pass').value === "HEX33") {
-                alert("DECRYPTION_SUCCESS: Downloading CV...");
+                alert("ACCESS GRANTED: Opening Archive...");
                 window.open('images/Anamy_Padilla_CV.pdf');
-            } else { alert("ACCESS_DENIED"); }
+            } else { alert("ACCESS DENIED"); }
         }
 
         window.onload = startBoot;
