@@ -3,18 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MIU_33 | Digital Architect</title>
     
+    <title>MIU_33 | Digital Architect Studio | Riyadh</title>
+    <meta name="description" content="MIU_33 (缪联睿) - Professional Digital Architect based in Riyadh. Specializing in Neural Architecture, Spatial Logic, and AI-driven design.">
+    <meta name="keywords" content="Anamy Padilla, 缪联睿, Digital Architect Riyadh, Neural Architecture, Spatial Logic, miu_Digital Architect Studio">
+    <meta name="author" content="Anamy Padilla">
+    <meta name="robots" content="index, follow">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://miu33-arch.github.io/">
+    <meta property="og:title" content="MIU_33 | Digital Architect Studio">
+    <meta property="og:description" content="Clinical precision in digital spatial design. Merging medical logic with architectural form.">
+    <meta property="og:image" content="images/avatar-professional.jpg">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: {
-                        emerald: { neon: '#3CFF9B', dark: '#000' },
-                    },
+                    colors: { emerald: { neon: '#3CFF9B' } },
                     fontFamily: { mono: ['JetBrains Mono', 'monospace'], sans: ['Space Grotesk', 'sans-serif'] },
-                    animation: { 'scan': 'scan 4s linear infinite', 'blink': 'blink 1s step-end infinite' }
                 }
             }
         }
@@ -22,42 +30,52 @@
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@300;600&display=swap" rel="stylesheet">
     
     <style>
-        body { background: #000; color: #fff; overflow: hidden; }
-        .grid-bg { background-image: linear-gradient(rgba(60, 255, 155, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(60, 255, 155, 0.03) 1px, transparent 1px); background-size: 60px 60px; }
+        body { background: #000; color: #fff; overflow-x: hidden; scroll-behavior: smooth; }
+        #matrix-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.12; }
+        
         #boot-overlay { position: fixed; inset: 0; background: #000; z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #3CFF9B; }
-        .module-card { border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); transition: all 0.4s ease; }
-        .module-card:hover { border-color: #3CFF9B; background: rgba(60, 255, 155, 0.02); }
+        
+        .module-card { border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); transition: all 0.4s ease; background: rgba(0,0,0,0.4); backdrop-filter: blur(8px); }
+        .module-card:hover { border-color: #3CFF9B; background: rgba(60, 255, 155, 0.05); }
+        
         [data-cn] { display: none; }
+        .cursor { display: inline-block; width: 8px; height: 15px; background: #3CFF9B; margin-left: 4px; animation: blink 1s infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+        /* Protection against text selection */
+        .no-select { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
     </style>
 </head>
-<body class="grid-bg min-h-screen">
+<body class="min-h-screen no-select">
+
+    <canvas id="matrix-canvas"></canvas>
 
     <div id="boot-overlay">
-        <div class="font-mono text-xs tracking-widest mb-4">
+        <div class="font-mono text-xs tracking-widest mb-4 uppercase">
             <span id="boot-loader">> INITIALIZING_MIU_SYSTEM...</span>
         </div>
         <div class="w-48 h-[2px] bg-gray-900 overflow-hidden">
-            <div id="boot-bar" class="h-full bg-emerald-neon w-0"></div>
+            <div id="boot-bar" class="h-full bg-emerald-neon w-0 transition-all duration-300"></div>
         </div>
     </div>
 
-    <nav class="fixed top-0 w-full p-6 flex justify-between items-center z-50 bg-black/80 backdrop-blur-md">
+    <nav class="fixed top-0 w-full p-6 flex justify-between items-center z-50 bg-black/40 backdrop-blur-md border-b border-white/5">
         <div class="flex items-center gap-2">
-            <div class="w-1.5 h-1.5 bg-emerald-neon rounded-full animate-pulse"></div>
+            <div class="w-1.5 h-1.5 bg-emerald-neon rounded-full animate-pulse shadow-[0_0_8px_#3CFF9B]"></div>
             <span class="font-mono text-[10px] tracking-[0.4em] font-bold">MIU_33</span>
         </div>
-        <button onclick="toggleLang()" class="font-mono text-[9px] text-gray-500 hover:text-emerald-neon uppercase transition-colors">
+        <button onclick="toggleLang()" class="font-mono text-[9px] text-gray-500 hover:text-emerald-neon uppercase transition-colors border border-white/10 px-3 py-1">
             [ <span id="lang-label">LANG: EN</span> ]
         </button>
     </nav>
 
     <section class="min-h-screen flex flex-col items-center justify-center text-center px-6">
-        <div class="border-x border-white/5 px-12 py-20 relative">
-            <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black px-4">
-                <span class="font-mono text-[9px] text-emerald-neon/60 tracking-widest uppercase">System.Online</span>
+        <div class="px-12 py-20 relative">
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black px-4 border border-emerald-neon/20">
+                <span class="font-mono text-[9px] text-emerald-neon tracking-widest uppercase">System.Online</span>
             </div>
 
-            <h1 class="text-7xl md:text-[10rem] font-bold tracking-tighter mb-4">MIU_33</h1>
+            <h1 class="text-7xl md:text-[11rem] font-bold tracking-tighter mb-4 text-white">MIU_33</h1>
             
             <p class="font-mono text-sm md:text-xl tracking-[0.4em] text-gray-400 uppercase">
                 <span data-en="Spatial Logic">Spatial Logic</span>
@@ -66,7 +84,7 @@
             </p>
 
             <div class="mt-8 font-mono text-[11px] text-emerald-neon/80">
-                > <span id="typewriter"></span><span class="inline-block w-2 h-3 bg-emerald-neon ml-1 animate-blink"></span>
+                > <span id="typewriter"></span><span class="cursor"></span>
             </div>
         </div>
     </section>
@@ -79,32 +97,34 @@
                 <span class="font-mono text-2xl text-gray-800 font-bold group-hover:text-emerald-neon transition-colors">01</span>
                 <span class="font-mono text-[9px] text-gray-600 uppercase tracking-widest">Neural_Arch_v1.0</span>
             </div>
-            <h3 class="text-4xl font-bold mb-4">Neural Architecture</h3>
-            <p class="text-gray-500 text-sm leading-relaxed mb-10 max-w-lg italic">"Clinical precision in digital spatial design. Merging medical logic with architectural form."</p>
-            <div class="w-full h-40 bg-gray-950 border border-white/5 flex items-center justify-center font-mono text-[9px] text-gray-800 uppercase">
-                [ Dynamic_Render_Space ]
-            </div>
+            <h3 class="text-4xl font-bold mb-4">
+                <span data-en="Neural Architecture">Neural Architecture</span>
+                <span data-cn="神经建筑学">神经建筑学</span>
+            </h3>
+            <p class="text-gray-400 text-sm leading-relaxed mb-10 max-w-lg italic">
+                <span data-en="Clinical precision in digital spatial design. Merging medical logic with architectural form.">Clinical precision in digital spatial design. Merging medical logic with architectural form.</span>
+                <span data-cn="数字空间设计中的临床精度。将医疗逻辑与建筑形式相结合。">数字空间设计中的临床精度。将医疗逻辑与建筑形式相结合。</span>
+            </p>
         </div>
 
         <div class="module-card p-12 group">
             <div class="flex justify-between items-center mb-10">
                 <span class="font-mono text-2xl text-gray-800 font-bold group-hover:text-emerald-neon transition-colors">02</span>
-                <span class="font-mono text-[9px] text-gray-600 uppercase tracking-widest">Identity_System_v1.0</span>
+                <span class="font-mono text-[9px] text-gray-600 uppercase tracking-widest">Identity_Node_v1.0</span>
             </div>
-            <h3 class="text-4xl font-bold mb-4">Branding & Logic</h3>
-            <p class="text-gray-500 text-sm leading-relaxed mb-10 max-w-lg italic">Establishing the digital footprint of the next generation of designers.</p>
-            <div class="flex gap-4">
-                 <button class="font-mono text-[10px] text-emerald-neon border border-emerald-neon/20 px-6 py-2 hover:bg-emerald-neon hover:text-black transition-all uppercase">Initiate Protocol</button>
-            </div>
+            <h3 class="text-4xl font-bold mb-4">
+                <span data-en="Branding & Logic">Branding & Logic</span>
+                <span data-cn="品牌与逻辑">品牌与逻辑</span>
+            </h3>
+            <p class="text-gray-400 text-sm leading-relaxed max-w-lg italic">Establishing the digital footprint of the next generation of designers.</p>
         </div>
     </section>
 
     <section class="max-w-4xl mx-auto py-32 px-6 border-t border-white/5">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-            
             <div class="space-y-12">
                 <div>
-                    <span class="font-mono text-[10px] text-gray-600 uppercase mb-4 block">> Secure Vault</span>
+                    <span class="font-mono text-[10px] text-gray-600 uppercase mb-4 block">> <span data-en="Secure Vault">Secure Vault</span><span data-cn="加密库">加密库</span></span>
                     <div class="flex gap-2">
                         <input type="password" id="vault-pass" placeholder="HEX33" class="bg-transparent border-b border-gray-800 text-emerald-neon font-mono text-sm outline-none focus:border-emerald-neon w-full pb-2">
                         <button onclick="checkVault()" class="font-mono text-[10px] text-emerald-neon uppercase underline underline-offset-8">Decrypt</button>
@@ -117,14 +137,22 @@
             </div>
 
             <div>
-                <span class="font-mono text-[10px] text-gray-600 uppercase mb-6 block">> Establish Connection</span>
+                <span class="font-mono text-[10px] text-gray-600 uppercase mb-6 block">> <span data-en="Establish Connection">Establish Connection</span><span data-cn="建立联络">建立联络</span></span>
                 <form action="https://formspree.io/f/mvzwzppo" method="POST" class="space-y-4">
-                    <input type="email" name="email" placeholder="EMAIL_LOG" class="bg-transparent border-b border-gray-800 text-emerald-neon font-mono text-xs w-full outline-none pb-2">
-                    <textarea name="message" placeholder="MESSAGE_LOG" class="bg-transparent border-b border-gray-800 text-emerald-neon font-mono text-xs w-full outline-none h-20"></textarea>
-                    <button type="submit" class="bg-emerald-neon text-black px-8 py-3 font-mono text-[10px] font-bold uppercase hover:bg-white transition-all w-full">Send Transmission</button>
+                    <input type="email" name="email" placeholder="EMAIL_LOG" required class="bg-transparent border-b border-gray-800 text-emerald-neon font-mono text-xs w-full outline-none pb-2">
+                    <textarea name="message" placeholder="MESSAGE_LOG" required class="bg-transparent border-b border-gray-800 text-emerald-neon font-mono text-xs w-full outline-none h-20"></textarea>
+                    <button type="submit" class="bg-emerald-neon text-black px-8 py-3 font-mono text-[10px] font-bold uppercase hover:bg-white transition-all w-full">Send Signal</button>
                 </form>
             </div>
+        </div>
+    </section>
 
+    <section class="max-w-4xl mx-auto py-20 px-6 border-t border-white/5 opacity-40 hover:opacity-100 transition-opacity">
+        <h3 class="font-mono text-[9px] text-gray-600 uppercase mb-4 tracking-widest">Legal_Protocol_v1.0</h3>
+        <div class="font-mono text-[8px] text-gray-500 leading-relaxed uppercase space-y-2">
+            <p>[ TERMS ]: ALL DESIGN LOGIC, RENDERS, AND NEURAL MODELS ARE THE INTELLECTUAL PROPERTY OF MIU_33 STUDIO.</p>
+            <p>[ PRIVACY ]: DATA COLLECTED VIA UPLINK IS ENCRYPTED AND NEVER SHARED WITH THIRD-PARTY NODES.</p>
+            <p>[ LIABILITY ]: MIU_33 IS A DIGITAL ARCHITECTURE CONSULTANCY. FINAL PHYSICAL IMPLEMENTATION REQUIRES LOCAL ENGINEERING SIGN-OFF.</p>
         </div>
     </section>
 
@@ -132,14 +160,43 @@
         <div class="font-mono text-[9px] text-gray-600 uppercase tracking-[0.4em] leading-loose mb-8">
             © 2026 MIU_33 // FOUNDER: ANAMY PADILLA // RIYADH_NODE
         </div>
-        <div class="flex justify-center gap-10 font-mono text-[10px] font-bold">
-            <a href="https://www.linkedin.com/company/miu-digital-architect-studio" target="_blank" class="hover:text-emerald-neon transition-colors tracking-widest">LINKEDIN</a>
-            <a href="https://www.tiktok.com/@miuproton" target="_blank" class="hover:text-emerald-neon transition-colors tracking-widest">TIKTOK</a>
-            <a href="https://www.xiaohongshu.com/user/profile/miu_Digital" target="_blank" class="hover:text-emerald-neon transition-colors tracking-widest">REDNOTE</a>
+        <div class="flex justify-center gap-10 font-mono text-[10px] font-bold text-gray-500">
+            <a href="https://www.linkedin.com/company/miu-digital-architect-studio" target="_blank" class="hover:text-emerald-neon transition-colors uppercase">LinkedIn</a>
+            <a href="https://www.tiktok.com/@miuproton" target="_blank" class="hover:text-emerald-neon transition-colors uppercase">TikTok</a>
+            <a href="https://www.xiaohongshu.com/user/profile/miu_Digital" target="_blank" class="hover:text-emerald-neon transition-colors uppercase">RedNote</a>
         </div>
     </footer>
 
     <script>
+        // SYSTEM_PROTECTION_PROTOCOL
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        document.onkeydown = function(e) {
+            if(e.keyCode == 123) { return false; }
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) { return false; }
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) { return false; }
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) { return false; }
+            if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) { return false; }
+        };
+
+        // MATRIX ENGINE
+        const canvas = document.getElementById('matrix-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+        const letters = "MIU33_缪联睿_010101";
+        const fontSize = 14; const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
+        function drawMatrix() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)"; ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#3CFF9B"; ctx.font = fontSize + "px monospace";
+            drops.forEach((y, i) => {
+                const text = letters.charAt(Math.floor(Math.random() * letters.length));
+                ctx.fillText(text, i * fontSize, y * fontSize);
+                if (y * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+                drops[i]++;
+            });
+        }
+        setInterval(drawMatrix, 50);
+
         // BOOT LOGIC
         function startBoot() {
             const bar = document.getElementById('boot-bar');
@@ -161,7 +218,7 @@
             }, 40);
         }
 
-        // TYPEWRITER
+        // BILINGUAL TYPEWRITER
         const lines = { en: "Identity_Verified: Anamy Padilla", cn: "身份验证成功: 缪联睿" };
         let charIndex = 0; let currentText = lines.en;
         function type() {
@@ -171,7 +228,6 @@
             }
         }
 
-        // BILINGUAL
         function toggleLang() {
             const isEn = document.getElementById("lang-label").innerText === "LANG: EN";
             document.getElementById("lang-label").innerText = isEn ? "LANG: CN" : "LANG: EN";
@@ -182,7 +238,7 @@
             type();
         }
 
-        // COUNTER
+        // COUNTER (847)
         function updateCounter() {
             let count = 0; const target = 847;
             const cInterval = setInterval(() => {
