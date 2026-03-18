@@ -155,16 +155,13 @@
 window.bootSystem = function() {
     const audio = document.getElementById('startup-sound');
     
-    // 1. Force the source again just in case (match your folder name 'videos')
-    audio.src = "videos/startup.mp3"; 
+    // Using the absolute URL forces the browser to find it
+    audio.src = "https://miu33-arch.github.io/videos/startup.mp3";
     
-    // 2. Load and Play with a "Promise" check
-    audio.load();
     audio.play().then(() => {
         alert("SYSTEM_INITIALIZED: Welcome.");
-    }).catch(error => {
-        console.log("Playback failed:", error);
-        alert("SYSTEM_ERROR: Please turn off Silent Mode on your phone.");
+    }).catch(e => {
+        alert("SOUND_ERROR: Check your system volume or folder path.");
     });
 };
 
