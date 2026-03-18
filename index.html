@@ -152,10 +152,22 @@
             }
             setInterval(drawMatrix, 60);
 
-            window.bootSystem = function() {
-                const audio = document.getElementById('startup-sound');
-                if (audio.paused) { audio.play(); alert("SYSTEM_INITIALIZED: Welcome."); }
-            };
+window.bootSystem = function() {
+    const audio = document.getElementById('startup-sound');
+    
+    // 1. Force the source again just in case (match your folder name 'videos')
+    audio.src = "videos/startup.mp3"; 
+    
+    // 2. Load and Play with a "Promise" check
+    audio.load();
+    audio.play().then(() => {
+        alert("SYSTEM_INITIALIZED: Welcome.");
+    }).catch(error => {
+        console.log("Playback failed:", error);
+        alert("SYSTEM_ERROR: Please turn off Silent Mode on your phone.");
+    });
+};
+
 
             let currentLang = 'en';
             const phrases = { en: "Architecting the future through spatial logic...", zh: "通过空间逻辑构建未来..." };
