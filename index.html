@@ -183,6 +183,25 @@
 </button>
         </div>
     </section>
+    <div id="inner-sanctum" class="hidden opacity-0 transition-opacity duration-1000 mt-20 grid grid-cols-1 md:grid-cols-2 gap-8 p-6">
+    
+    <div class="monolith p-4 border-emerald- neon/20">
+        <h3 class="gold-glow font-mono text-xs mb-2">[ASSET_01: SYNAPSE_PROTO]</h3>
+        <div class="h-48 bg-black/50 overflow-hidden flex items-center justify-center">
+             <span class="text-xs font-mono opacity-30 italic">LIDAR_SCAN_PENDING...</span>
+        </div>
+        <p class="text-[10px] mt-4 font-mono leading-relaxed">Surgical Carbon-Titanium Exoskeleton. Reaction Latency: 0.02s. Optimized for Riyadh Urban Infiltration.</p>
+    </div>
+
+    <div class="monolith p-4 border-luxury-gold/20">
+        <h3 class="gold-glow font-mono text-xs mb-2">[ASSET_02: SPATIAL_INTEL]</h3>
+        <div class="h-48 bg-black/50 overflow-hidden flex items-center justify-center">
+             <span class="text-xs font-mono opacity-30 italic">SIGNAL_ENCRYPTED...</span>
+        </div>
+        <p class="text-[10px] mt-4 font-mono leading-relaxed">Neural Mapping of Urban Environments. High-Velocity ROI Logic for Volatile Markets.</p>
+    </div>
+
+</div>
 <footer class="py-20 bg-concrete-950 border-t border-white/5 text-center">
         <div class="max-w-7xl mx-auto px-8">
             <div class="mb-6">
@@ -257,72 +276,83 @@ window.bootSystem = function() {
             setTimeout(typeWriter, 1000);
        // Register the ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
+<script>
+        // 1. GSAP: Animate monolith cards on scroll
+        gsap.utils.toArray('.monolith').forEach((el) => {
+            gsap.from(el, {
+                scrollTrigger: {
+                    trigger: el,
+                    start: "top 85%",
+                    toggleActions: "play none none none"
+                },
+                y: 50,
+                opacity: 0,
+                duration: 1.2,
+                ease: "power4.out"
+            });
+        });
 
-// Animate each 'monolith' card
-gsap.utils.toArray('.monolith').forEach((el) => {
-  gsap.from(el, {
-    scrollTrigger: {
-      trigger: el,
-      start: "top 85%", // Starts when the top of the card hits 85% of the screen
-      toggleActions: "play none none none"
-    },
-    y: 50,
-    opacity: 0,
-    duration: 1.2,
-    ease: "power4.out"
-  });
-});
-
-        // Anti-Theft Logic
+        // 2. Anti-Theft Logic (Block F12, Ctrl+U, etc.)
         document.onkeydown = function(e) {
             if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) || (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0))) return false;
+        };
+
+        // 3. THE NEURAL HANDSHAKE & VAULT REVEAL
+        // This function matches the 'onclick="bootSystem()"' on your button
+        function bootSystem() {
+            const terminalLines = [
+                "[SYSTEM]: miu_Digital_Neural_Link_Established...",
+                "[DECRYPT]: Bypass_Family_Protocol_Success...",
+                "[STATUS]: Vault_Integrity_100_Percent_Secure.",
+                "[ACCESS]: Welcome, Architect. The Synapse is Online."
+            ];
+
+            // Create Terminal Overlay
+            const overlay = document.createElement('div');
+            overlay.style = "position:fixed; inset:0; background:#080808; z-index:10000; color:#3CFF9B; font-family:monospace; padding:40px; font-size:1.2rem; line-height:2; transition: opacity 1s ease;";
+            document.body.appendChild(overlay);
+
+            let lineIndex = 0;
+            
+            function typeLine() {
+                if (lineIndex < terminalLines.length) {
+                    let charIndex = 0;
+                    const lineElement = document.createElement('div');
+                    overlay.appendChild(lineElement);
+                    
+                    const interval = setInterval(() => {
+                        lineElement.textContent += terminalLines[lineIndex][charIndex];
+                        charIndex++;
+                        if (charIndex === terminalLines[lineIndex].length) {
+                            clearInterval(interval);
+                            lineIndex++;
+                            setTimeout(typeLine, 500);
+                        }
+                    }, 30);
+                } else {
+                    // THE MAGIC REVEAL
+                    setTimeout(() => { 
+                        overlay.style.opacity = '0';
+                        setTimeout(() => {
+                            overlay.remove();
+                            
+                            // Reveal the Inner Sanctum
+                            const sanctum = document.getElementById('inner-sanctum');
+                            if (sanctum) {
+                                sanctum.classList.remove('hidden');
+                                // Force a small delay so the browser sees the 'opacity-0' first
+                                setTimeout(() => {
+                                    sanctum.classList.add('opacity-100');
+                                }, 50);
+                            }
+                        }, 1000);
+                    }, 1500);
+                }
+            }
+            typeLine();
         }
     </script>
-    <script>
-const vaultButton = document.querySelector('.monolith button'); // Target your button
-const terminalLines = [
-    "[SYSTEM]: miu_Digital_Neural_Link_Established...",
-    "[DECRYPT]: Bypass_Family_Protocol_Success...",
-    "[STATUS]: Vault_Integrity_100_Percent_Secure.",
-    "[ACCESS]: Welcome, Architect. The Synapse is Online."
-];
-
-vaultButton.addEventListener('click', () => {
-    // 1. Create a Full-Screen Terminal Overlay
-    const overlay = document.createElement('div');
-    overlay.style = "position:fixed; inset:0; background:#080808; z-index:10000; color:#3CFF9B; font-family:monospace; padding:40px; font-size:1.2rem; line-height:2;";
-    document.body.appendChild(overlay);
-
-    let lineIndex = 0;
-    
-    function typeLine() {
-        if (lineIndex < terminalLines.length) {
-            let charIndex = 0;
-            const lineElement = document.createElement('div');
-            overlay.appendChild(lineElement);
-            
-            const interval = setInterval(() => {
-                lineElement.textContent += terminalLines[lineIndex][charIndex];
-                charIndex++;
-                if (charIndex === terminalLines[lineIndex].length) {
-                    clearInterval(interval);
-                    lineIndex++;
-                    setTimeout(typeLine, 500); // Wait before next line
-                }
-            }, 30); // Speed of typing
-        } else {
-            // After finishing, hide the terminal and enter the real Vault
-            setTimeout(() => { 
-                overlay.style.opacity = '0';
-                setTimeout(() => overlay.remove(), 1000);
-                // ADD YOUR REDIRECT OR VAULT REVEAL LOGIC HERE
-            }, 1500);
-        }
-    }
-    
-    typeLine();
-});
-</script>
-
 </body>
 </html>
+
+
