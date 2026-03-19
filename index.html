@@ -39,10 +39,16 @@
         body { background-color: #080808; color: #a4a4a4; overflow-x: hidden; user-select: none; }
         canvas#matrix { position: fixed; inset: 0; z-index: 0; opacity: 0.1; pointer-events: none; }
         
-        .monolith { 
+.monolith { 
             background: linear-gradient(145deg, #111111, #080808); 
             border: 1px solid rgba(201, 164, 106, 0.1); 
-            position: relative; overflow: hidden;
+            position: relative; 
+            overflow: hidden;
+            /* MIU_DIGITAL FIX: Lift the Vault above the Scanlines */
+            z-index: 50 !important; 
+            pointer-events: auto !important;
+        }
+
         }
         .monolith::before {
             content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
@@ -60,7 +66,7 @@
 
         .hidden-lang { display: none; }
         .gold-glow { text-shadow: 0 0 20px rgba(201, 164, 106, 0.3); }
-        img, video { pointer-events: none; -webkit-user-drag: none; }
+        img, video { pointer-events: auto;z-index: 10; position: relative;  }
   #matrix {
     position: fixed;
     top: 0;
