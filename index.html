@@ -278,5 +278,51 @@ gsap.utils.toArray('.monolith').forEach((el) => {
             if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) || (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0))) return false;
         }
     </script>
+    <script>
+const vaultButton = document.querySelector('.monolith button'); // Target your button
+const terminalLines = [
+    "[SYSTEM]: miu_Digital_Neural_Link_Established...",
+    "[DECRYPT]: Bypass_Family_Protocol_Success...",
+    "[STATUS]: Vault_Integrity_100_Percent_Secure.",
+    "[ACCESS]: Welcome, Architect. The Synapse is Online."
+];
+
+vaultButton.addEventListener('click', () => {
+    // 1. Create a Full-Screen Terminal Overlay
+    const overlay = document.createElement('div');
+    overlay.style = "position:fixed; inset:0; background:#080808; z-index:10000; color:#3CFF9B; font-family:monospace; padding:40px; font-size:1.2rem; line-height:2;";
+    document.body.appendChild(overlay);
+
+    let lineIndex = 0;
+    
+    function typeLine() {
+        if (lineIndex < terminalLines.length) {
+            let charIndex = 0;
+            const lineElement = document.createElement('div');
+            overlay.appendChild(lineElement);
+            
+            const interval = setInterval(() => {
+                lineElement.textContent += terminalLines[lineIndex][charIndex];
+                charIndex++;
+                if (charIndex === terminalLines[lineIndex].length) {
+                    clearInterval(interval);
+                    lineIndex++;
+                    setTimeout(typeLine, 500); // Wait before next line
+                }
+            }, 30); // Speed of typing
+        } else {
+            // After finishing, hide the terminal and enter the real Vault
+            setTimeout(() => { 
+                overlay.style.opacity = '0';
+                setTimeout(() => overlay.remove(), 1000);
+                // ADD YOUR REDIRECT OR VAULT REVEAL LOGIC HERE
+            }, 1500);
+        }
+    }
+    
+    typeLine();
+});
+</script>
+
 </body>
 </html>
