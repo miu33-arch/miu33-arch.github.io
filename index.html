@@ -286,63 +286,49 @@ window.bootSystem = function() {
        // Register the ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 <script>
-// THIS IS THE BRAIN
 function bootSystem() {
-    console.log("System Booting..."); // This helps us debug on the Vostro
-    
-    const terminalLines = [
-        "[SYSTEM]: miu_Digital_Neural_Link_Established...",
-        "[DECRYPT]: Bypass_Family_Protocol_Success...",
-        "[STATUS]: Vault_Integrity_100_Percent_Secure.",
-        "[ACCESS]: Welcome, Architect. The Synapse is Online."
-    ];
-
-    // Create Terminal Overlay
+    // 1. Terminal Overlay (The Matrix Effect)
     const overlay = document.createElement('div');
-    overlay.style = "position:fixed; inset:0; background:#080808; z-index:10000; color:#3CFF9B; font-family:monospace; padding:40px; font-size:1.2rem; line-height:2; transition: opacity 1s ease;";
+    overlay.style = "position:fixed; inset:0; background:#080808; z-index:10000; color:#3CFF9B; font-family:monospace; padding:40px; font-size:1.2rem; line-height:2; transition: opacity 1s ease; pointer-events: none;";
     document.body.appendChild(overlay);
 
+    const terminalLines = [
+        "[SYSTEM]: Neural_Link_Established...",
+        "[DECRYPT]: Infiltration_Success...",
+        "[ACCESS]: Welcome, Architect."
+    ];
+
     let lineIndex = 0;
-    
-    function typeLine() {
+    function type() {
         if (lineIndex < terminalLines.length) {
-            let charIndex = 0;
-            const lineElement = document.createElement('div');
-            overlay.appendChild(lineElement);
-            
-            const interval = setInterval(() => {
-                lineElement.textContent += terminalLines[lineIndex][charIndex];
-                charIndex++;
-                if (charIndex === terminalLines[lineIndex].length) {
-                    clearInterval(interval);
-                    lineIndex++;
-                    setTimeout(typeLine, 500);
-                }
-            }, 30);
- } else {
-            // THE AGGRESSIVE REVEAL
-            setTimeout(() => { 
+            const line = document.createElement('div');
+            overlay.appendChild(line);
+            line.textContent = terminalLines[lineIndex];
+            lineIndex++;
+            setTimeout(type, 600);
+        } else {
+            // THE REVEAL
+            setTimeout(() => {
                 overlay.style.opacity = '0';
                 setTimeout(() => {
                     overlay.remove();
-                    
-const sanctum = document.getElementById('inner-sanctum');
-if (sanctum) {
-    sanctum.classList.remove('hidden'); // 1. Bring it back to the layout
-    setTimeout(() => {
-        sanctum.classList.add('opacity-100'); // 2. Fade it in
-        sanctum.classList.remove('opacity-0'); // 3. Remove the darkness
-    }, 50);
+                    // THIS IS THE LINE THAT WAKES UP THE BIKES:
+                    const sanctum = document.getElementById('inner-sanctum');
+                    if (sanctum) {
+                        sanctum.classList.remove('hidden');
+                        setTimeout(() => {
+                            sanctum.classList.add('opacity-100');
+                            sanctum.classList.remove('opacity-0');
+                        }, 50);
+                    }
+                }, 1000);
+            }, 1000);
+        }
+    }
+    type();
 }
-
-    typeLine();
-}
-
-// Keep your GSAP and Anti-Theft below this
-document.onkeydown = function(e) {
-    if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) || (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0))) return false;
-};
 </script>
+
 
 </body>
 </html>
