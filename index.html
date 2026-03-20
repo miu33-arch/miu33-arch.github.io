@@ -178,7 +178,7 @@
                 </p>
             </div>
 
-            <button onclick="bootSystem()" id="vault-btn" class="relative z-50 bg-emerald-neon/10 border border-emerald-neon/30 px-8 py-3 font-mono text-xs tracking-widest text-emerald-neon hover:bg-emerald-neon hover:text-black transition-all duration-300">
+            <button onclick="console.log('CLICK_DETECTED'); bootSystem();" id="vault-btn" class="relative z-50 bg-emerald-neon/10 border border-emerald-neon/30 px-8 py-3 font-mono text-xs tracking-widest text-emerald-neon hover:bg-emerald-neon hover:text-black transition-all duration-300">
     INITIALIZE_ACCESS
 </button>
 
@@ -286,63 +286,30 @@ window.bootSystem = function() {
        // Register the ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 <script>
-// THE ARCHITECT'S BOOT PROTOCOL
+// MASTER VAULT PROTOCOL
 function bootSystem() {
-    console.log("Vault Infiltration Started...");
+    console.log("Vault Protocol: INITIATED.");
     const sanctum = document.getElementById('inner-sanctum');
     
     if (!sanctum) {
-        console.error("Critical Error: 'inner-sanctum' ID not found.");
+        console.error("ARCHITECT_ERROR: Vault ID not found.");
         return;
     }
 
-    // Create Terminal Overlay
-    const overlay = document.createElement('div');
-    overlay.style = "position:fixed; inset:0; background:#080808; z-index:99999; color:#3CFF9B; font-family:monospace; padding:40px; font-size:1.2rem; line-height:2; transition: opacity 0.8s ease; pointer-events: none;";
-    document.body.appendChild(overlay);
+    // 1. Force the Reveal
+    sanctum.classList.remove('hidden');
+    sanctum.style.display = 'grid'; // Force Layout
+    
+    // 2. Trigger the Fade
+    setTimeout(() => {
+        sanctum.classList.remove('opacity-0');
+        sanctum.classList.add('opacity-100');
+        console.log("Vault Status: UNLOCKED.");
+    }, 100);
 
-    const terminalLines = [
-        "[SYSTEM]: NEURAL_LINK_SYNCING...",
-        "[DECRYPT]: BYPASSING_SECURITY...",
-        "[ACCESS]: WELCOME_ARCHITECT."
-    ];
-
-    let lineIndex = 0;
-    function type() {
-        if (lineIndex < terminalLines.length) {
-            const line = document.createElement('div');
-            overlay.appendChild(line);
-            line.textContent = terminalLines[lineIndex];
-            lineIndex++;
-            setTimeout(type, 500);
-        } else {
-            setTimeout(() => {
-                overlay.style.opacity = '0';
-                setTimeout(() => {
-                    overlay.remove();
-                    sanctum.classList.remove('hidden');
-                    sanctum.style.display = 'grid';
-                    setTimeout(() => {
-                        sanctum.classList.add('opacity-100');
-                        sanctum.classList.remove('opacity-0');
-                    }, 50);
-                }, 800);
-            }, 800);
-        }
-    }
-    type();
+    // 3. Scroll to assets smoothly
+    sanctum.scrollIntoView({ behavior: 'smooth' });
 }
-
-// THE FAIL-SAFE: This forces the button to work even if 'onclick' fails
-document.addEventListener('DOMContentLoaded', () => {
-    const btn = document.getElementById('vault-btn');
-    if (btn) {
-        btn.addEventListener('click', bootSystem);
-        console.log("Button Handshake: SUCCESS.");
-    } else {
-        console.log("Button Handshake: FAILED - ID NOT FOUND.");
-    }
-});
 </script>
 
 </body>
