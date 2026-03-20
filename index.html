@@ -325,17 +325,14 @@ function bootSystem() {
                 setTimeout(() => {
                     overlay.remove();
                     
-                    const sanctum = document.getElementById('inner-sanctum');
-                    if (sanctum) {
-                        // We force it to show up manually to bypass any CSS drama
-                        sanctum.style.display = 'grid'; 
-                        sanctum.style.opacity = '1';
-                        sanctum.classList.remove('hidden');
-                        console.log("Sanctum Infiltrated."); // Check your browser console for this!
-                    }
-                }, 1000);
-            }, 1500);
-        }
+const sanctum = document.getElementById('inner-sanctum');
+if (sanctum) {
+    sanctum.classList.remove('hidden'); // 1. Bring it back to the layout
+    setTimeout(() => {
+        sanctum.classList.add('opacity-100'); // 2. Fade it in
+        sanctum.classList.remove('opacity-0'); // 3. Remove the darkness
+    }, 50);
+}
 
     typeLine();
 }
