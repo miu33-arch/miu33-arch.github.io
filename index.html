@@ -284,33 +284,35 @@ window.bootSystem = function() {
             }
             setTimeout(typeWriter, 1000);
        // Register the ScrollTrigger plugin
-gsap.registerPlugin(ScrollTrigger);
-<script>
-// MASTER VAULT PROTOCOL
-function bootSystem() {
-    console.log("Vault Protocol: INITIATED.");
-    const sanctum = document.getElementById('inner-sanctum');
-    
-    if (!sanctum) {
-        console.error("ARCHITECT_ERROR: Vault ID not found.");
-        return;
+    // ... your existing GSAP code ...
+    gsap.registerPlugin(ScrollTrigger);
+
+    // MASTER VAULT PROTOCOL (Cleanly Merged)
+    function bootSystem() {
+        console.log("Vault Protocol: INITIATED.");
+        const sanctum = document.getElementById('inner-sanctum');
+        
+        if (!sanctum) {
+            console.error("ARCHITECT_ERROR: Vault ID not found.");
+            return;
+        }
+
+        // 1. Force the Reveal
+        sanctum.classList.remove('hidden');
+        sanctum.style.display = 'grid'; 
+        
+        // 2. Trigger the Fade
+        setTimeout(() => {
+            sanctum.classList.remove('opacity-0');
+            sanctum.classList.add('opacity-100');
+            console.log("Vault Status: UNLOCKED.");
+        }, 100);
+
+        // 3. Auto-Scroll to assets
+        sanctum.scrollIntoView({ behavior: 'smooth' });
     }
-
-    // 1. Force the Reveal
-    sanctum.classList.remove('hidden');
-    sanctum.style.display = 'grid'; // Force Layout
-    
-    // 2. Trigger the Fade
-    setTimeout(() => {
-        sanctum.classList.remove('opacity-0');
-        sanctum.classList.add('opacity-100');
-        console.log("Vault Status: UNLOCKED.");
-    }, 100);
-
-    // 3. Scroll to assets smoothly
-    sanctum.scrollIntoView({ behavior: 'smooth' });
-}
 </script>
+
 
 </body>
 </html>
