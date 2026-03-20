@@ -214,22 +214,42 @@
         });
 
         // REPAIRED MASTER VAULT FUNCTION
-        window.bootSystem = function() {
-            const audio = document.getElementById('startup-sound');
-            if (audio) { audio.src = "https://miu33-arch.github.io/videos/startup.mp3"; audio.play().catch(() => {}); }
+window.bootSystem = function() {
+    console.log("Initializing Access Protocol...");
 
-            const sanctum = document.getElementById('inner-sanctum');
-            if (sanctum) {
-                sanctum.classList.remove('hidden');
-                setTimeout(() => {
-                    sanctum.classList.remove('opacity-0');
-                    sanctum.classList.add('opacity-100');
-                    sanctum.scrollIntoView({ behavior: 'smooth' });
-                }, 100);
-            }
-        };
+    // 1. Establish the Neural Link to n8n Cloud
+    fetch('https://miu-33.app.n8n.cloud/webhook/miu_Digital_Vault_Agent', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+            user: "Anamy", 
+            action: "vault_access_protocol",
+            timestamp: new Date().toISOString()
+        })
+    })
+    .then(response => {
+        if (response.ok) console.log("Neural Link: Active");
+    })
+    .catch(err => console.error("Neural Link: Offline", err));
 
-        // Typewriter & Lang Logic (Restored)
+    // 2. Trigger the Visual Reveal of the Inner Sanctum
+    const sanctum = document.getElementById('inner-sanctum');
+    if (sanctum) {
+        // Remove 'hidden' class to allow visibility
+        sanctum.classList.remove('hidden');
+        
+        // Trigger opacity fade-in
+        setTimeout(() => {
+            sanctum.classList.add('opacity-100');
+        }, 50);
+        
+        // Optional: Play your startup sound
+        const audio = document.getElementById('startup-sound');
+        if (audio) {
+            audio.play().catch(e => console.log("Audio requires user interaction first."));
+        }
+    }
+};        // Typewriter & Lang Logic (Restored)
         let currentLang = 'en';
         const phrases = { en: "Architecting the future through spatial logic...", zh: "通过空间逻辑构建未来..." };
         window.toggleLang = function() {
