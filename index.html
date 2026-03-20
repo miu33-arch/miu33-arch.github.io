@@ -277,81 +277,63 @@ window.bootSystem = function() {
        // Register the ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 <script>
-        // 1. GSAP: Animate monolith cards on scroll
-        gsap.utils.toArray('.monolith').forEach((el) => {
-            gsap.from(el, {
-                scrollTrigger: {
-                    trigger: el,
-                    start: "top 85%",
-                    toggleActions: "play none none none"
-                },
-                y: 50,
-                opacity: 0,
-                duration: 1.2,
-                ease: "power4.out"
-            });
-        });
+// THIS IS THE BRAIN
+function bootSystem() {
+    console.log("System Booting..."); // This helps us debug on the Vostro
+    
+    const terminalLines = [
+        "[SYSTEM]: miu_Digital_Neural_Link_Established...",
+        "[DECRYPT]: Bypass_Family_Protocol_Success...",
+        "[STATUS]: Vault_Integrity_100_Percent_Secure.",
+        "[ACCESS]: Welcome, Architect. The Synapse is Online."
+    ];
 
-        // 2. Anti-Theft Logic (Block F12, Ctrl+U, etc.)
-        document.onkeydown = function(e) {
-            if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) || (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0))) return false;
-        };
+    // Create Terminal Overlay
+    const overlay = document.createElement('div');
+    overlay.style = "position:fixed; inset:0; background:#080808; z-index:10000; color:#3CFF9B; font-family:monospace; padding:40px; font-size:1.2rem; line-height:2; transition: opacity 1s ease;";
+    document.body.appendChild(overlay);
 
-        // 3. THE NEURAL HANDSHAKE & VAULT REVEAL
-        // This function matches the 'onclick="bootSystem()"' on your button
-        function bootSystem() {
-            const terminalLines = [
-                "[SYSTEM]: miu_Digital_Neural_Link_Established...",
-                "[DECRYPT]: Bypass_Family_Protocol_Success...",
-                "[STATUS]: Vault_Integrity_100_Percent_Secure.",
-                "[ACCESS]: Welcome, Architect. The Synapse is Online."
-            ];
-
-            // Create Terminal Overlay
-            const overlay = document.createElement('div');
-            overlay.style = "position:fixed; inset:0; background:#080808; z-index:10000; color:#3CFF9B; font-family:monospace; padding:40px; font-size:1.2rem; line-height:2; transition: opacity 1s ease;";
-            document.body.appendChild(overlay);
-
-            let lineIndex = 0;
+    let lineIndex = 0;
+    
+    function typeLine() {
+        if (lineIndex < terminalLines.length) {
+            let charIndex = 0;
+            const lineElement = document.createElement('div');
+            overlay.appendChild(lineElement);
             
-            function typeLine() {
-                if (lineIndex < terminalLines.length) {
-                    let charIndex = 0;
-                    const lineElement = document.createElement('div');
-                    overlay.appendChild(lineElement);
-                    
-                    const interval = setInterval(() => {
-                        lineElement.textContent += terminalLines[lineIndex][charIndex];
-                        charIndex++;
-                        if (charIndex === terminalLines[lineIndex].length) {
-                            clearInterval(interval);
-                            lineIndex++;
-                            setTimeout(typeLine, 500);
-                        }
-                    }, 30);
-                } else {
-                    // THE MAGIC REVEAL
-                    setTimeout(() => { 
-                        overlay.style.opacity = '0';
-                        setTimeout(() => {
-                            overlay.remove();
-                            
-                            // Reveal the Inner Sanctum
-                            const sanctum = document.getElementById('inner-sanctum');
-                            if (sanctum) {
-                                sanctum.classList.remove('hidden');
-                                // Force a small delay so the browser sees the 'opacity-0' first
-                                setTimeout(() => {
-                                    sanctum.classList.add('opacity-100');
-                                }, 50);
-                            }
-                        }, 1000);
-                    }, 1500);
+            const interval = setInterval(() => {
+                lineElement.textContent += terminalLines[lineIndex][charIndex];
+                charIndex++;
+                if (charIndex === terminalLines[lineIndex].length) {
+                    clearInterval(interval);
+                    lineIndex++;
+                    setTimeout(typeLine, 500);
                 }
-            }
-            typeLine();
+            }, 30);
+        } else {
+            // THE REVEAL
+            setTimeout(() => { 
+                overlay.style.opacity = '0';
+                setTimeout(() => {
+                    overlay.remove();
+                    const sanctum = document.getElementById('inner-sanctum');
+                    if (sanctum) {
+                        sanctum.classList.remove('hidden');
+                        setTimeout(() => sanctum.classList.add('opacity-100'), 50);
+                    }
+                }, 1000);
+            }, 1500);
         }
-    </script>
+    }
+    typeLine();
+}
+
+// Keep your GSAP and Anti-Theft below this
+document.onkeydown = function(e) {
+    if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) || (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0))) return false;
+};
+</script>
+
 </body>
 </html>
 
