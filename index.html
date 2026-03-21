@@ -1,30 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>miu_Digital Vault</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>miu_Digital Architect Studio</title>
     <style>
-        body { background: #000; color: #0f0; font-family: monospace; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        #initialize { padding: 20px; border: 2px solid #0f0; cursor: pointer; background: transparent; color: #0f0; font-size: 1.2rem; }
-        .hidden { display: none; }
+        body { background-color: #050505; color: #00ff41; font-family: 'Courier New', monospace; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; overflow: hidden; }
+        .studio-vault { border: 2px solid #00ff41; padding: 50px; text-align: center; box-shadow: 0 0 30px #00ff41; border-radius: 15px; background: rgba(0, 255, 65, 0.05); max-width: 450px; width: 90%; }
+        h1 { font-size: 1.4rem; letter-spacing: 4px; margin-bottom: 30px; text-transform: uppercase; }
+        .status-line { font-size: 0.8rem; margin-bottom: 20px; color: #888; }
+        button { background: transparent; color: #00ff41; border: 1px solid #00ff41; padding: 20px 40px; font-size: 1.1rem; cursor: pointer; transition: 0.4s; width: 100%; letter-spacing: 2px; }
+        button:hover { background: #00ff41; color: #000; box-shadow: 0 0 20px #00ff41; }
+        .footer { margin-top: 25px; font-size: 0.7rem; opacity: 0.5; }
     </style>
 </head>
 <body>
-    <button id="initialize" onclick="triggerLink()">INITIALIZE_ACCESS</button>
-    <div id="inner-sanctum" class="hidden">VAULT_OPEN: SECURE_CONNECTION_ESTABLISHED</div>
+    <div class="studio-vault">
+        <div class="status-line">LOC_RIYADH // PROTOCOL_V3.0</div>
+        <h1 id="header">STUDIO_OFFLINE</h1>
+        <button id="main-btn" onclick="activateStudio()">INITIALIZE_ACCESS</button>
+        <div class="footer">DESIGNED BY MIU_DIGITAL ARCHITECT</div>
+    </div>
 
     <script>
-    function triggerLink() {
-        // Your Neural Link Code Here
+    function activateStudio() {
+        const btn = document.getElementById('main-btn');
+        const header = document.getElementById('header');
+        btn.innerText = "SYNCING...";
+
         fetch('https://miu-33.app.n8n.cloud/webhook/miu_Digital_Vault_Agent', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ user: "Anamy", action: "vault_access_protocol" })
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ architect: "Anamy", action: "full_studio_launch" })
         })
-        .then(response => {
-            if (response.ok) {
-                document.getElementById('inner-sanctum').classList.remove('hidden');
-                document.getElementById('initialize').innerText = "ACCESS_GRANTED";
-            }
+        .then(() => {
+            btn.innerText = "ACCESS_GRANTED";
+            btn.style.background = "#00ff41";
+            btn.style.color = "#000";
+            header.innerText = "STUDIO_ONLINE";
+            header.style.textShadow = "0 0 10px #00ff41";
+        })
+        .catch(() => {
+            header.innerText = "LINK_ACTIVE";
+            btn.innerText = "PROCEED_TO_VAULT";
         });
     }
     </script>
