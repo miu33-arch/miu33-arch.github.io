@@ -1,25 +1,32 @@
-    // 1. Establish the Neural Link to n8n Cloud
-    fetch('https://miu-33.app.n8n.cloud/webhook/miu_Digital_Vault_Agent', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
-            user: "Anamy", 
-            action: "vault_access_protocol",
-            timestamp: new Date().toISOString()
-        })
-    })
-    .then(response => {
-        if (response.ok) console.log("Neural Link: Active");
-    })
-    .catch(err => console.error("Neural Link: Offline", err));
+<!DOCTYPE html>
+<html>
+<head>
+    <title>miu_Digital Vault</title>
+    <style>
+        body { background: #000; color: #0f0; font-family: monospace; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        #initialize { padding: 20px; border: 2px solid #0f0; cursor: pointer; background: transparent; color: #0f0; font-size: 1.2rem; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+    <button id="initialize" onclick="triggerLink()">INITIALIZE_ACCESS</button>
+    <div id="inner-sanctum" class="hidden">VAULT_OPEN: SECURE_CONNECTION_ESTABLISHED</div>
 
-    // 2. Trigger the Visual Reveal of the Inner Sanctum
-    const sanctum = document.getElementById('inner-sanctum');
-    if (sanctum) {
-        // Remove 'hidden' class to allow visibility
-        sanctum.classList.remove('hidden');
-        
-        // Trigger opacity fade-in
-        setTimeout(() => {
-            sanctum.classList.add('opacity-100');
-        }, 50);
+    <script>
+    function triggerLink() {
+        // Your Neural Link Code Here
+        fetch('https://miu-33.app.n8n.cloud/webhook/miu_Digital_Vault_Agent', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ user: "Anamy", action: "vault_access_protocol" })
+        })
+        .then(response => {
+            if (response.ok) {
+                document.getElementById('inner-sanctum').classList.remove('hidden');
+                document.getElementById('initialize').innerText = "ACCESS_GRANTED";
+            }
+        });
+    }
+    </script>
+</body>
+</html>
