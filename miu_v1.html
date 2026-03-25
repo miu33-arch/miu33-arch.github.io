@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>miu_33 | Digital Architect Studio</title>
+    <style>
+        body { margin: 0; background: #000; color: #fff; font-family: sans-serif; overflow-x: hidden; }
+        .hero { height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; }
+        
+        /* The Gold Heading */
+        h1 { font-size: 4rem; letter-spacing: 12px; color: #D4AF37; z-index: 10; text-shadow: 0 0 20px rgba(212, 175, 55, 0.5); }
+        
+        /* Background Video Container */
+        .video-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.4; z-index: 1; }
+        
+        /* Spline Viewer Container */
+        spline-viewer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 5; }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <video autoplay muted loop class="video-bg">
+            <source src="videos/prod_vital.mp4" type="video/mp4">
+        </video>
+        
+        <h1>MIU_33</h1>
+
+        <script type="module" src="https://unpkg.com/@splinetool/viewer@1.0.94/build/spline-viewer.js"></script>
+        <spline-viewer url="https://prod.spline.design/your-unique-url-here/scene.splinecode"></spline-viewer>
+    </section>
+
+</body>
+</html>
+s
