@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>MIU_33 | Digital Architect | 缪联睿</title>
-    <meta name="description" content="MIU_33 Labs: AI-Augmented Spatial Logic. Fusing Finance ROI, Clinical Nursing Wellness, and Cyber-Brutalist Architecture for Saudi Vision 2030.">
-    <meta name="keywords" content="Riyadh Architecture, NEOM Design, Biophilic Brutalism, Digital Architect Saudi, Anamy Padilla">
+    <meta name="description" content="AI-Augmented Spatial Logic. Fusing Finance ROI and Saudi Vision 2030. Digital assets by Anamy Padilla.">
     <link rel="canonical" href="https://miu-digital-studio.pages.dev/" />
 
     <meta property="og:type" content="website">
@@ -14,32 +13,58 @@
     <meta property="og:title" content="MIU_33 | The Five-Pillar Framework">
     <meta property="og:description" content="Access the Vault: Neural Spatial Assets for the Kingdom's Future.">
     <meta property="og:image" content="images/og-image.jpg">
-
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="MIU_33 | Digital Architect">
     <meta name="twitter:image" content="images/og-image.jpg">
 
-    <link rel="stylesheet" href="style.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest" defer></script>
-</head>
-<body class="bg-black text-white font-sans">
+    <script src="https://tally.so/widgets/embed.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
     
-    <nav class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex flex-col">
-                <span class="text-xl font-bold tracking-tighter uppercase">MIU_33</span>
-                <span class="font-mono text-[9px] tracking-[0.4em] text-luxury-gold uppercase">Anamy Padilla // 缪联睿</span>
-            </div>
-            <a href="studio.html" class="text-xs font-mono uppercase border border-white/20 px-4 py-1 hover:bg-white hover:text-black transition">Enter_Studio</a>
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { emerald: { neon: '#3CFF9B' }, luxury: { gold: '#C9A46A' }, concrete: { 950: '#080808' } }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-concrete-950 text-white selection:bg-luxury-gold">
+
+    <canvas id="matrix"></canvas>
+
+    <nav class="fixed top-0 w-full z-50 bg-concrete-950/90 border-b border-white/10 backdrop-blur-xl py-5 px-8 flex justify-between items-center">
+        <div class="flex flex-col">
+            <span class="font-bold italic text-xl">MIU_33</span>
+            <span class="font-mono text-[8px] text-luxury-gold uppercase tracking-[0.3em]">Anamy Padilla // 缪联睿</span>
         </div>
+        <button data-tally-open="gDLdXN" class="text-[10px] border border-emerald-neon px-4 py-1 text-emerald-neon uppercase hover:bg-emerald-neon hover:text-black transition-all">INQUIRY_VAULT</button>
     </nav>
 
-    <main class="h-screen flex flex-col justify-center items-center text-center px-4">
-        <h1 class="text-6xl md:text-8xl font-bold italic tracking-tighter mb-4">SPATIAL LOGIC</h1>
-        <p class="font-mono text-emerald-400 text-xs tracking-[0.4em] uppercase">Digital Architect // Saudi Vision 2030</p>
+    <main class="h-screen flex flex-col justify-center items-center text-center">
+        <h1 class="text-7xl md:text-9xl font-bold italic gold-glow uppercase tracking-tighter">Spatial Logic</h1>
+        <p class="font-mono text-[10px] tracking-[0.5em] text-emerald-neon mt-4" id="hero-typewriter"></p>
     </main>
 
+    <footer class="py-20 bg-black border-t border-white/5 text-center px-6">
+        <p class="text-[9px] font-mono text-white/40 uppercase mb-6 tracking-widest leading-relaxed max-w-2xl mx-auto">
+            DISCLAIMER: miu_Digital Architect Studio specializes in digital spatial visualization. 
+            Anamy Padilla is a Digital Architect/Consultant and is NOT a licensed structural architect.
+        </p>
+        <div class="font-mono text-[8px] opacity-20 uppercase tracking-[0.5em]">
+            © 2026 // Sync: Tally + n8n + NocoDB // Cloudflare Verified
+        </div>
+    </footer>
+
     <script src="vault.LEGACY.js"></script>
+    <script>
+        const lenis = new Lenis();
+        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+        requestAnimationFrame(raf);
+    </script>
 </body>
 </html>
