@@ -1,56 +1,40 @@
-/* 1. The Foundation */
-:root {
-    --obsidian: #050505;
-    --saudi-gold: #D4AF37;
-    --emerald-glow: rgba(0, 255, 132, 0.3);
-}
+body { background-color: #080808; color: #a4a4a4; overflow-x: hidden; user-select: none; }
 
-body {
-    margin: 0;
-    background-color: var(--obsidian);
-    color: #ffffff;
-    font-family: 'Inter', -apple-system, sans-serif;
-    overflow-x: hidden;
-}
-
-/* 2. Typography */
-h1 {
-    font-size: clamp(3rem, 8vw, 6rem);
-    text-transform: uppercase;
-    letter-spacing: 0.3em;
-    color: var(--saudi-gold);
-    text-align: center;
-    pointer-events: none; /* Let clicks pass through to the 3D model */
-}
-
-/* 3. The 3D Canvas */
-spline-viewer {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: 1;
-}
-
-/* 4. Luxury Scroll Section */
-section {
+.monolith {
+    background: linear-gradient(145deg, #111111, #080808);
+    border: 1px solid rgba(201, 164, 106, 0.1);
     position: relative;
-    z-index: 10;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: transparent; /* Keep the 3D model visible behind */
+    overflow: hidden;
+    z-index: 40 !important;
+    pointer-events: auto !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.monolith:hover { border-color: #3CFF9B; transform: translateY(-2px); }
+
+.monolith::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #C9A46A, transparent);
+    animation: stream 3s linear infinite;
 }
 
-/* 5. The Glass Morphism Card (For project details) */
-.project-card {
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(212, 175, 55, 0.2);
-    padding: 2rem;
-    border-radius: 15px;
-    max-width: 500px;
+@keyframes stream {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.hidden-lang { display: none; }
+.gold-glow { text-shadow: 0 0 20px rgba(201, 164, 106, 0.3); }
+
+img, video { pointer-events: auto; z-index: 10; position: relative; }
+
+#matrix {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.15;
 }
