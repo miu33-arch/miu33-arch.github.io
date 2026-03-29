@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | MIU_33 Digital Architect</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { emerald: { neon: '#3CFF9B' }, luxury: { gold: '#C9A46A' }, concrete: { 950: '#080808' } }
+                }
+            }
+        }
+    </script>
+    <style>.hidden-lang { display: none !important; }</style>
+</head>
+<body class="bg-concrete-950 text-white selection:bg-luxury-gold">
+
+    <canvas id="matrix"></canvas>
+
+    <nav class="fixed top-0 w-full z-50 bg-concrete-950/90 border-b border-white/10 backdrop-blur-xl py-5 px-8 flex justify-between items-center">
+        <a href="index.html" class="font-bold italic text-xl uppercase tracking-tighter">MIU_33</a>
+        <button onclick="toggleLang()" class="text-[10px] border border-luxury-gold/50 px-4 py-1 text-luxury-gold uppercase font-mono">EN / 中文</button>
+    </nav>
+
+    <main class="pt-32 pb-20 px-8 max-w-4xl mx-auto">
+        <header class="text-center mb-16">
+            <h1 class="text-5xl md:text-7xl font-bold italic gold-glow uppercase tracking-tighter mb-4">The Architect</h1>
+            <p class="font-mono text-emerald-neon text-[10px] tracking-[0.4em] uppercase">Anamy Padilla // 缪联睿</p>
+        </header>
+
+        <section class="monolith p-10 space-y-8 font-mono text-xs leading-relaxed uppercase tracking-wider">
+            <div class="border-l-2 border-emerald-neon pl-6">
+                <h3 class="text-white mb-2 font-bold">Clinical Foundation (BSN)</h3>
+                <p class="opacity-60 lang-en">Applying medical-grade ergonomics and human-flow logic to digital spatial engineering.</p>
+                <p class="opacity-60 lang-zh hidden-lang">将医疗级人体工程学和人流逻辑应用于数字空间工程。</p>
+            </div>
+
+            <div class="border-l-2 border-luxury-gold pl-6">
+                <h3 class="text-white mb-2 font-bold">Economic Strategy (BSBA)</h3>
+                <p class="opacity-60 lang-en">Fusing finance-major ROI analysis with high-valuation architectural assets for Saudi Vision 2030.</p>
+                <p class="opacity-60 lang-zh hidden-lang">将财务专业的投资回报率分析与沙特 2030 愿景的高价值建筑资产相结合。</p>
+            </div>
+
+            <div class="pt-8 border-t border-white/5 opacity-30 italic text-[9px]">
+                Disclaimer: miu_Digital Architect Studio specializes in digital spatial visualization. Anamy Padilla is a Digital Architect/Consultant and is NOT a licensed structural architect.
+            </div>
+        </section>
+
+        <div class="mt-12 text-center">
+            <a href="projects.html" class="inline-block border border-emerald-neon text-emerald-neon px-8 py-3 text-[10px] hover:bg-emerald-neon hover:text-black transition-all">VIEW_PORTFOLIO_v01</a>
+        </div>
+    </main>
+
+    <script src="vault.LEGACY.js"></script>
+</body>
+</html>
