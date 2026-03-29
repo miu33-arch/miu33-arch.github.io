@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://miu33-arch.github.io/</loc>
-    <lastmod>2026-03-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
+  <url><loc>https://miu-digital-studio.pages.dev/</loc></url>
+  <url><loc>https://miu-digital-studio.pages.dev/about</loc></url>
+  <url><loc>https://miu-digital-studio.pages.dev/projects</loc></url>
+  <url><loc>https://miu-digital-studio.pages.dev/vault</loc></url>
+  <url><loc>https://miu-digital-studio.pages.dev/blog/</loc></url>
+  <url><loc>https://miu-digital-studio.pages.dev/blog/post_01</loc></url>
+  <url><loc>https://miu-digital-studio.pages.dev/blog/post_02</loc></url>
+  <url><loc>https://miu-digital-studio.pages.dev/contact</loc></url>
+  <url><loc>https://miu-digital-studio.pages.dev/shop</loc></url>
+  <url><loc>https://miu-digital-studio.pages.dev/privacy</loc></url>
+  <url><loc>https://miu-digital-studio.pages.dev/terms</loc></url>
 </urlset>
