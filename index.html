@@ -5,64 +5,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MIU_33 | Digital Architect Studio</title>
     
+    <meta property="og:title" content="MIU_33 | Digital Architect Studio">
+    <meta property="og:description" content="BSN. BSBA. Digital Architecture. Bridging clinical flow and financial logic for Saudi Vision 2030.">
+    <meta property="og:image" content="https://miu33-arch.github.io/images/og_image.jpg">
+    <meta property="og:url" content="https://miu-digital-studio.pages.dev/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://miu33-arch.github.io/images/og_image.jpg">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest" defer></script>
     <script src="https://tally.so/widgets/embed.js"></script>
     <link rel="stylesheet" href="style.css">
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        emerald: { neon: '#3CFF9B' },
-                        luxury: { gold: '#C9A46A' },
-                        concrete: { 950: '#080808' }
-                    }
-                }
-            }
-        }
-    </script>
 </head>
-<body class="bg-concrete-950 text-white selection:bg-luxury-gold overflow-x-hidden">
+<body class="bg-black text-white selection:bg-luxury-gold overflow-x-hidden">
 
     <canvas id="matrix"></canvas>
 
-    <nav class="fixed top-0 w-full z-50 bg-concrete-950/90 border-b border-white/10 backdrop-blur-xl py-5 px-8 flex justify-between items-center">
-        <div class="flex gap-8 items-center">
-            <a href="index.html" class="font-bold italic text-xl uppercase tracking-tighter hover:gold-glow transition-all">MIU_33</a>
-            
-            <div class="hidden md:flex gap-6 border-l border-white/10 pl-8">
-                <a href="about.html" class="font-mono text-[9px] text-white/40 hover:text-emerald-neon uppercase tracking-[0.2em] transition-all">About</a>
-                <a href="projects.html" class="font-mono text-[9px] text-white/40 hover:text-emerald-neon uppercase tracking-[0.2em] transition-all">Projects</a>
-                <a href="blog/index.html" class="font-mono text-[9px] text-white/40 hover:text-emerald-neon uppercase tracking-[0.2em] transition-all">Blog</a>
-                <a href="vault.html" class="font-mono text-[9px] text-white/40 hover:text-luxury-gold uppercase tracking-[0.2em] transition-all">Vault</a>
+    <nav class="fixed top-0 w-full z-50 bg-black/90 border-b border-white/10 backdrop-blur-xl py-4 px-6 flex justify-between items-center">
+        <div class="flex gap-4 items-center">
+            <a href="index.html" class="font-bold italic text-lg uppercase tracking-tighter">MIU_33</a>
+            <div class="flex gap-3 ml-4 border-l border-white/10 pl-4">
+                <a href="about.html" class="font-mono text-[8px] text-white/40 uppercase tracking-widest hover:text-emerald-neon transition-all">About</a>
+                <a href="projects.html" class="font-mono text-[8px] text-white/40 uppercase tracking-widest hover:text-emerald-neon transition-all">Projects</a>
+                <a href="blog/index.html" class="font-mono text-[8px] text-white/40 uppercase tracking-widest hover:text-emerald-neon transition-all">Blog</a>
             </div>
         </div>
-
-        <div class="flex gap-4">
-            <button onclick="toggleLang()" class="text-[10px] border border-luxury-gold/50 px-4 py-1 text-luxury-gold uppercase font-mono hover:bg-luxury-gold/10 transition-all">EN / 中文</button>
-            <button data-tally-open="gDLdXN" class="text-[10px] border border-emerald-neon px-4 py-1 text-emerald-neon uppercase font-mono italic hover:bg-emerald-neon hover:text-black transition-all">Inquiry</button>
-        </div>
+        <button onclick="toggleLang()" class="text-[8px] border border-luxury-gold/30 px-2 py-1 text-luxury-gold uppercase font-mono">EN/ZH</button>
     </nav>
 
-    <section class="relative h-screen flex flex-col justify-center items-center text-center px-4">
+    <section class="h-screen flex flex-col justify-center items-center text-center relative px-4">
         <div class="z-30">
-            <h1 class="text-7xl md:text-9xl font-bold italic gold-glow uppercase tracking-tighter leading-none mb-2">
-                Spatial Logic
-            </h1>
-            <p class="font-mono text-emerald-neon text-[10px] tracking-[0.6em] uppercase opacity-70">
-                Digital Architect // Riyadh Sync
-            </p>
+            <h1 class="text-7xl md:text-9xl font-bold italic gold-glow uppercase tracking-tighter mb-2">Spatial Logic</h1>
+            <p class="font-mono text-emerald-neon text-[10px] tracking-[0.5em] uppercase opacity-70 mb-12">Digital Architect // Riyadh Sync</p>
             
-            <div class="mt-12">
-                <a href="about.html" class="group inline-flex flex-col items-center">
-                    <span class="font-mono text-[8px] tracking-[0.4em] text-white/30 group-hover:text-emerald-neon transition-all uppercase mb-4">Initialize_Handshake</span>
-                    <div class="w-px h-12 bg-gradient-to-b from-emerald-neon/50 to-transparent group-hover:h-20 transition-all duration-700"></div>
-                </a>
+            <button data-tally-open="gDLdXN" class="font-mono text-[9px] tracking-[0.3em] text-white/30 hover:text-emerald-neon border-b border-white/10 hover:border-emerald-neon pb-1 transition-all uppercase">
+                Initialize_Handshake →
+            </button>
+        </div>
+    </section>
+
+    <section class="py-24 px-8 border-t border-white/5 bg-black/50 backdrop-blur-sm">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-luxury-gold font-mono text-[10px] tracking-[0.5em] uppercase mb-4">The miu_Digital Advantage</h2>
+            <h3 class="text-5xl font-bold italic uppercase mb-12">5 Days vs. 3 Weeks.</h3>
+            
+            <div class="monolith p-2 border-emerald-neon/20 group">
+                <img src="images/workflow_diagram.png" alt="Workflow" class="w-full opacity-90 group-hover:opacity-100 transition duration-700">
             </div>
         </div>
     </section>
+
+    <section class="py-24 px-8 bg-black">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-xs font-mono uppercase tracking-[0.6em] opacity-30 mb-16 text-center">Featured_Atmosphere // V01</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-1 bg-white/5 p-1 monolith">
+                <div class="aspect-square flex items-center justify-center p-12 text-center bg-zinc-900/50">
+                    <p class="font-serif italic text-4xl leading-tight">EVERY SCENT<br>HAS A SOUL.</p>
+                </div>
+                <div class="aspect-square overflow-hidden bg-black">
+                    <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-60">
+                        <source src="videos/advertising_showcase.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-20 px-8 border-t border-white/5 text-center">
+        <p class="font-mono text-[8px] opacity-20 uppercase tracking-[0.4em]">
+            © 2026 // Sync: Tally + n8n + NocoDB // miu_Digital Architect Studio
+        </p>
+    </footer>
 
     <script src="vault.LEGACY.js"></script>
 </body>
