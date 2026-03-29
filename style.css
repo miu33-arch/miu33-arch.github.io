@@ -1,6 +1,49 @@
-body { background-color: #080808; color: #a4a4a4; overflow-x: hidden; font-family: 'Space Grotesk', sans-serif; }
-#matrix { position: fixed; inset: 0; z-index: -1; opacity: 0.15; pointer-events: none; }
-.monolith { background: #111; border: 1px solid rgba(201,164,106,0.1); transition: 0.4s; }
-.monolith:hover { border-color: #3CFF9B; transform: translateY(-2px); }
-.gold-glow { text-shadow: 0 0 20px rgba(201, 164, 106, 0.4); }
-.hidden-lang { display: none !important; }
+/* REQUIRED FOR LENIS */
+html { scroll-behavior: auto; }
+
+body { 
+    background-color: #080808; 
+    color: #a4a4a4; 
+    overflow-x: hidden; 
+    font-family: 'Space Grotesk', sans-serif; 
+}
+
+#matrix { 
+    position: fixed; 
+    inset: 0; 
+    z-index: -1; 
+    opacity: 0.15; 
+    pointer-events: none; 
+}
+
+.monolith { 
+    background: #111; 
+    border: 1px solid rgba(201,164,106,0.1); 
+    transition: 0.4s; 
+}
+
+.monolith:hover { 
+    border-color: #3CFF9B; 
+    transform: translateY(-2px); 
+}
+
+.gold-glow { 
+    text-shadow: 0 0 20px rgba(201, 164, 106, 0.4); 
+}
+
+.hidden-lang { 
+    display: none !important; 
+}
+
+/* Selection Color */
+::selection {
+    background: #C9A46A;
+    color: #000;
+}
+
+/* Lenis Recommended CSS */
+html.lenis { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+.lenis.lenis-scrolling iframe { pointer-events: none; }

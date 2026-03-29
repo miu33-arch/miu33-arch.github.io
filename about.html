@@ -5,33 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About | MIU_33 Digital Architect</title>
     
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest" defer></script>
-    <link rel="stylesheet" href="style.css">
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
 
+    <!-- TAILWIND CONFIG -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: { emerald: { neon: '#3CFF9B' }, luxury: { gold: '#C9A46A' }, concrete: { 950: '#080808' } }
+                    colors: {
+                        'luxury-gold': '#C9A46A',
+                        'emerald-neon': '#3CFF9B',
+                        'concrete-950': '#080808'
+                    },
+                    fontFamily: {
+                        sans: ['Space Grotesk', 'sans-serif'],
+                        mono: ['Space Grotesk', 'monospace']
+                    }
                 }
             }
         }
     </script>
-    <style>.hidden-lang { display: none !important; }</style>
+
+    <!-- LENIS SMOOTH SCROLL -->
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
+
+    <!-- UTILS -->
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-concrete-950 text-white selection:bg-luxury-gold">
 
     <canvas id="matrix"></canvas>
 
     <nav class="fixed top-0 w-full z-50 bg-concrete-950/90 border-b border-white/10 backdrop-blur-xl py-5 px-8 flex justify-between items-center">
-        <a href="index.html" class="font-bold italic text-xl uppercase tracking-tighter">MIU_33</a>
-        <button onclick="toggleLang()" class="text-[10px] border border-luxury-gold/50 px-4 py-1 text-luxury-gold uppercase font-mono">EN / 中文</button>
+        <a href="index.html" class="font-bold italic text-xl uppercase tracking-tighter text-white">MIU_33</a>
+        <button onclick="toggleLang()" class="text-[10px] border border-luxury-gold/50 px-4 py-1 text-luxury-gold uppercase font-mono hover:bg-luxury-gold hover:text-black transition-all">EN / 中文</button>
     </nav>
 
     <main class="pt-32 pb-20 px-8 max-w-4xl mx-auto">
-        <header class="text-center mb-16">
-            <h1 class="text-5xl md:text-7xl font-bold italic gold-glow uppercase tracking-tighter mb-4">The Architect</h1>
+        <header class="text-center mb-16"> <h1 class="text-5xl md:text-7xl font-bold italic gold-glow uppercase tracking-tighter mb-4 text-white">The Architect</h1>
             <p class="font-mono text-emerald-neon text-[10px] tracking-[0.4em] uppercase">Anamy Padilla // 缪联睿</p>
         </header>
 
@@ -48,8 +64,16 @@
                 <p class="opacity-60 lang-zh hidden-lang">将财务专业的投资回报率分析与沙特 2030 愿景的高价值建筑资产相结合。</p>
             </div>
 
-            <div class="pt-8 border-t border-white/5 opacity-30 italic text-[9px]">
-                Disclaimer: miu_Digital Architect Studio specializes in digital spatial visualization. Anamy Padilla is a Digital Architect/Consultant and is NOT a licensed structural architect.
+            <!-- PROMINENT DISCLAIMER -->
+            <div class="mt-12 pt-8 border-t border-white/5 opacity-30 italic text-[9px] leading-relaxed">
+                <p class="lang-en">
+                    Disclaimer: miu_Digital Architect Studio specializes in digital spatial visualization. 
+                    Anamy Padilla is a Digital Architect/Consultant and is NOT a licensed structural architect.
+                </p>
+                <p class="lang-zh hidden-lang">
+                    免责声明：miu_Digital Architect Studio 专注于数字空间可视化。
+                    Anamy Padilla 是数字建筑师/顾问，并非持牌结构建筑师。
+                </p>
             </div>
         </section>
 
@@ -57,6 +81,33 @@
             <a href="projects.html" class="inline-block border border-emerald-neon text-emerald-neon px-8 py-3 text-[10px] hover:bg-emerald-neon hover:text-black transition-all">VIEW_PORTFOLIO_v01</a>
         </div>
     </main>
+
+    <!-- UNIFIED FOOTER -->
+    <footer class="py-20 px-8 border-t border-white/5 text-center bg-black/50 backdrop-blur-sm">
+        <div class="max-w-4xl mx-auto space-y-4">
+            <p class="font-mono text-[10px] uppercase tracking-[0.4em] text-luxury-gold">
+                <span class="lang-en">ANAMY PADILLA</span><span class="lang-zh hidden-lang">缪联睿</span> 
+                // 
+                <span class="lang-en">RIYADH_SYNC_V2030</span><span class="lang-zh hidden-lang">利雅得同步_V2030</span>
+            </p>
+            <p class="font-mono text-[6px] opacity-10 uppercase tracking-[0.3em] mb-2">
+                <span class="lang-en">Digital Visualization Only // Not Licensed Structural Engineering</span>
+                <span class="lang-zh hidden-lang">仅限数字可视化 // 非持牌结构工程</span>
+            </p>
+            <p class="font-mono text-[8px] opacity-20 uppercase tracking-[0.4em]">
+                <span class="lang-en">© 2026 // Sync: Tally + n8n + NocoDB</span>
+                <span class="lang-zh hidden-lang">© 2026 // 同步：Tally + n8n + NocoDB</span> <br>
+                <span class="lang-en">miu_Digital Architect Studio</span>
+                <span class="lang-zh hidden-lang">miu_数字建筑工作室</span>
+            </p>
+            <div class="flex justify-center gap-6 mt-8">
+                <a href="index.html" class="text-[8px] text-white/40 hover:text-emerald-neon transition-all">HOME</a>
+                <a href="projects.html" class="text-[8px] text-white/40 hover:text-emerald-neon transition-all">PROJECTS</a>
+                <a href="about.html" class="text-[8px] text-white/40 hover:text-emerald-neon transition-all">ABOUT</a>
+                <a href="contact.html" class="text-[8px] text-white/40 hover:text-emerald-neon transition-all">CONTACT</a>
+            </div>
+        </div>
+    </footer>
 
     <script src="vault.LEGACY.js"></script>
 </body>

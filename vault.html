@@ -1,18 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"><title>The Vault | MIU_33</title>
-    <script src="https://cdn.tailwindcss.com"></script><link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>THE_VAULT | MIU_33</title>
+    
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- TAILWIND CONFIG -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'luxury-gold': '#C9A46A',
+                        'emerald-neon': '#3CFF9B',
+                        'concrete-950': '#080808'
+                    },
+                    fontFamily: {
+                        sans: ['Space Grotesk', 'sans-serif'],
+                        mono: ['Space Grotesk', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- LENIS SMOOTH SCROLL -->
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-black text-white">
+<body class="bg-concrete-950 text-white selection:bg-luxury-gold">
+    
     <canvas id="matrix"></canvas>
-    <main class="h-screen flex flex-col justify-center items-center">
-        <div class="monolith p-20 border-emerald-400/30">
-            <h2 class="text-4xl italic uppercase mb-6">Access_Denied</h2>
-            <p class="font-mono text-[10px] opacity-40 mb-10">Submit Credentials via Inquiry to Unlock</p>
-            <a href="contact.html" class="bg-emerald-400/10 border border-emerald-400 px-8 py-2 text-emerald-400 text-[10px]">Request_Access</a>
+
+    <nav class="p-8 border-b border-white/5 flex justify-between uppercase font-mono text-[10px]">
+        <a href="index.html" class="text-emerald-neon hover:gold-glow">← EXIT_TERMINAL</a>
+        <span class="opacity-40 text-white">System_Status: Encrypted</span>
+    </nav>
+
+    <main class="h-screen flex flex-col justify-center items-center px-10">
+        <div class="monolith p-16 text-center border-emerald-neon/20 max-w-2xl">
+            <h2 class="text-5xl font-bold italic gold-glow uppercase mb-6 text-white">The Vault</h2>
+            <p class="font-mono text-[10px] opacity-60 mb-10 leading-relaxed uppercase">
+                Secure Repository for Saudi Vision 2030 Spatial Assets. <br>
+                Unauthorized access is logged via n8n protocols.
+            </p>
+            <button data-tally-open="gDLdXN" class="border border-emerald-neon text-emerald-neon px-8 py-3 text-[10px] hover:bg-emerald-neon hover:text-black transition-all">
+                REQUEST_DECRYPTION_KEY
+            </button>
         </div>
     </main>
+
+    <!-- UNIFIED FOOTER -->
+    <footer class="py-20 px-8 border-t border-white/5 text-center bg-black/50 backdrop-blur-sm">
+        <div class="max-w-4xl mx-auto space-y-4">
+            <p class="font-mono text-[10px] uppercase tracking-[0.4em] text-luxury-gold">
+                <span class="lang-en">ANAMY PADILLA</span><span class="lang-zh hidden-lang">缪联睿</span> 
+                // 
+                <span class="lang-en">RIYADH_SYNC_V2030</span><span class="lang-zh hidden-lang">利雅得同步_V2030</span>
+            </p>
+            <p class="font-mono text-[6px] opacity-10 uppercase tracking-[0.3em] mb-2">
+                <span class="lang-en">Digital Visualization Only // Not Licensed Structural Engineering</span>
+                <span class="lang-zh hidden-lang">仅限数字可视化 // 非持牌结构工程</span>
+            </p>
+            <p class="font-mono text-[8px] opacity-20 uppercase tracking-[0.4em]">
+                <span class="lang-en">© 2026 // Sync: Tally + n8n + NocoDB</span>
+                <span class="lang-zh hidden-lang">© 2026 // 同步：Tally + n8n + NocoDB</span>
+                <br>
+                <span class="lang-en">miu_Digital Architect Studio</span>
+                <span class="lang-zh hidden-lang">miu_数字建筑工作室</span>
+            </p>
+            <div class="flex justify-center gap-6 mt-8">
+                <a href="index.html" class="text-[8px] text-white/40 hover:text-emerald-neon transition-all">HOME</a>
+                <a href="projects.html" class="text-[8px] text-white/40 hover:text-emerald-neon transition-all">PROJECTS</a>
+                <a href="about.html" class="text-[8px] text-white/40 hover:text-emerald-neon transition-all">ABOUT</a>
+                <a href="contact.html" class="text-[8px] text-white/40 hover:text-emerald-neon transition-all">CONTACT</a>
+            </div>
+        </div>
+    </footer>
+
     <script src="vault.LEGACY.js"></script>
 </body>
 </html>

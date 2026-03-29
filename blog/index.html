@@ -1,22 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"><title>Archive | MIU_33</title>
-    <script src="https://cdn.tailwindcss.com"></script><link rel="stylesheet" href="../style.css">
+    <meta charset="UTF-8">
+    <title>Archive | MIU_33</title>
+    
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- TAILWIND CONFIG -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'luxury-gold': '#C9A46A',
+                        'emerald-neon': '#3CFF9B',
+                        'concrete-950': '#080808'
+                    },
+                    fontFamily: {
+                        sans: ['Space Grotesk', 'sans-serif'],
+                        mono: ['Space Grotesk', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- LENIS SMOOTH SCROLL -->
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
+
+    <link rel="stylesheet" href="../style.css">
 </head>
-<body class="bg-black text-white">
+<body class="bg-concrete-950 text-white selection:bg-luxury-gold">
     <canvas id="matrix"></canvas>
     <nav class="p-8 border-b border-white/10 flex justify-between">
-        <a href="../index.html" class="text-[10px] text-emerald-400">← TERMINAL</a>
+        <a href="../index.html" class="text-[10px] text-emerald-neon">← TERMINAL</a>
+        <button onclick="toggleLang()" class="text-[10px] border border-luxury-gold/50 px-4 py-1 text-luxury-gold uppercase font-mono hover:bg-luxury-gold hover:text-black transition-all">EN/ZH</button>
     </nav>
     <main class="p-20 max-w-4xl mx-auto">
-        <h1 class="text-5xl italic gold-glow uppercase mb-20 text-center">The Archive</h1>
+        <h1 class="text-5xl italic gold-glow uppercase mb-20 text-center text-white">The Archive</h1>
         <article class="monolith p-8 group">
-            <span class="text-[8px] text-emerald-400 font-mono">LOG_01</span>
-            <h2 class="text-2xl font-bold mt-2 group-hover:text-luxury-gold transition">The 5-Day Delivery Logic</h2>
-            <a href="post_01.html" class="mt-6 inline-block text-[9px] border-b border-emerald-400">READ_LOG</a>
+            <span class="text-[8px] text-emerald-neon font-mono">LOG_01</span>
+            <h2 class="text-2xl font-bold mt-2 group-hover:text-luxury-gold transition text-white">The 5-Day Delivery Logic</h2>
+            <a href="post_01.html" class="mt-6 inline-block text-[9px] border-b border-emerald-neon">READ_LOG</a>
         </article>
     </main>
+    
+    <!-- UNIFIED FOOTER (Paths Adjusted) -->
+    <footer class="py-20 px-8 border-t border-white/5 text-center bg-black/50 backdrop-blur-sm">
+        <div class="max-w-4xl mx-auto space-y-4">
+            <p class="font-mono text-[10px] uppercase tracking-[0.4em] text-luxury-gold">
+                <span class="lang-en">ANAMY PADILLA</span><span class="lang-zh hidden-lang">缪联睿</span> 
+                // 
+                <span class="lang-en">RIYADH_SYNC_V2030</span><span class="lang-zh hidden-lang">利雅得同步_V2030</span>
+            </p>
+            <p class="font-mono text-[6px] opacity-10 uppercase tracking-[0.3em] mb-2">
+                <span class="lang-en">Digital Visualization Only // Not Licensed Structural Engineering</span>
+                <span class="lang-zh hidden-lang">仅限数字可视化 // 非持牌结构工程</span>
+            </p>
+            <p class="font-mono text-[8px] opacity-20 uppercase tracking-[0.4em]">
+                <span class="lang-en">© 2026 // Sync: Tally + n8n + NocoDB</span>
+                <span class="lang-zh hidden-lang">© 2026 // 同步：Tally + n8n + NocoDB</span>
+                <br>
+                <span class="lang-en">miu_Digital Architect Studio</span>
+                <span class="lang-zh hidden-lang">miu_数字建筑工作室</span>
+            </p>
+            <div class="flex justify-center gap-6 mt-8">
+                <a href="../index.html" class="text-[8px] text-white/40 hover:text-emerald-neon transition-all">HOME</a>
+                <a href="../projects.html" class="text-[8px] text-white/40 hover:text-emerald-neon transition-all">PROJECTS</a>
+                <a href="../about.html" class="text-[8px] text-white/40 hover:text-emerald-neon transition-all">ABOUT</a>
+                <a href="../contact.html" class="text-[8px] text-white/40 hover:text-emerald-neon transition-all">CONTACT</a>
+            </div>
+        </div>
+    </footer>
+
     <script src="../vault.LEGACY.js"></script>
 </body>
 </html>
