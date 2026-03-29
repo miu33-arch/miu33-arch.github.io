@@ -6,13 +6,20 @@
 </head>
 <body class="bg-black text-white">
     <canvas id="matrix"></canvas>
-    <nav class="p-8 border-b border-white/10 flex justify-between uppercase font-mono text-[10px]">
-        <a href="index.html">← Terminal</a>
-        <span class="text-luxury-gold">Project_Archive_v01</span>
+    <nav class="p-8 border-b border-white/10 flex justify-between items-center">
+        <a href="index.html" class="text-[10px] text-emerald-400">← EXIT_TERMINAL</a>
+        <h2 class="text-xs font-mono uppercase tracking-[0.4em]">Spatial_Assets_v01</h2>
     </nav>
     <main class="p-20 grid grid-cols-1 md:grid-cols-2 gap-10 max-w-7xl mx-auto">
-        <div class="monolith aspect-video flex items-center justify-center">RENDER_01: NEOM_SECTOR</div>
-        <div class="monolith aspect-video flex items-center justify-center">RENDER_02: RIYADH_LUXURY</div>
+        <div class="monolith aspect-video overflow-hidden">
+            <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-60 hover:opacity-100 transition">
+                <source src="videos/mi_render.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="monolith p-10 flex flex-col justify-center">
+            <h3 class="text-xl italic uppercase gold-glow">Neural_Spatial_01</h3>
+            <p class="font-mono text-[10px] opacity-40 mt-4 uppercase">Riyadh Metropolitan Synthesis // Finance ROI 14.2%</p>
+        </div>
     </main>
     <script src="vault.LEGACY.js"></script>
 </body>
