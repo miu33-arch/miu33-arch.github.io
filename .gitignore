@@ -1,0 +1,85 @@
+# ================================
+# MIU_33 DIGITAL STUDIO .GITIGNORE
+# ================================
+
+# --- System Files ---
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# --- Editor/IDE ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# --- Logs ---
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# --- Dependencies ---
+node_modules/
+vendor/
+
+# --- Build/Deploy ---
+dist/
+build/
+public/
+*.min.js
+*.min.css
+
+# --- Environment ---
+.env
+.env.local
+.env.*.local
+*.env
+
+# --- Temporary Files ---
+tmp/
+temp/
+*.tmp
+*.temp
+
+# --- Cache ---
+.cache/
+.npm/
+.eslintcache
+*.cache
+
+# --- Media (Optional - if files too large) ---
+# Uncomment if you want to exclude large videos from git
+# videos/*.mp4
+# videos/**/*.mp4
+# images/**/*.png
+# images/**/*.jpg
+
+# --- Database ---
+*.db
+*.sqlite
+*.sqlite3
+noco.db
+
+# --- Uploads ---
+uploads/
+downloads/
+
+# --- Secrets ---
+*.pem
+*.key
+secrets/
+credentials/
+
+# --- OS Generated ---
+desktop.ini
+Icon
+icon?
