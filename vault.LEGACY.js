@@ -54,8 +54,8 @@ window.addEventListener('DOMContentLoaded', () => {
         const enElements = document.querySelectorAll('.lang-en');
         const zhElements = document.querySelectorAll('.lang-zh');
         
-        enElements.forEach(el => el.classList.toggle('hidden-lang'));
-        zhElements.forEach(el => el.classList.toggle('hidden-lang'));
+        enElements.forEach(el => el.classList.toggle('hidden'));
+        zhElements.forEach(el => el.classList.toggle('hidden'));
         
         const currentLang = document.body.classList.contains('lang-zh-active') ? 'en' : 'zh';
         document.body.classList.toggle('lang-zh-active');
@@ -66,7 +66,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const savedLang = localStorage.getItem('miu_lang');
     if(savedLang === 'zh') {
         document.body.classList.add('lang-zh-active');
-        document.querySelectorAll('.lang-en').forEach(el => el.classList.add('hidden-lang'));
-        document.querySelectorAll('.lang-zh').forEach(el => el.classList.remove('hidden-lang'));
+        document.querySelectorAll('.lang-en').forEach(el => el.classList.add('hidden'));
+        document.querySelectorAll('.lang-zh').forEach(el => el.classList.remove('hidden'));
     }
 });
