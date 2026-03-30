@@ -56,7 +56,8 @@ window.addEventListener('DOMContentLoaded', () => {
         
         enElements.forEach(el => el.classList.toggle('hidden'));
         zhElements.forEach(el => el.classList.toggle('hidden'));
-        
+        // Sassy Diagnostic
+        console.log("MIU_33: Language Sync Toggled");
         const currentLang = document.body.classList.contains('lang-zh-active') ? 'en' : 'zh';
         document.body.classList.toggle('lang-zh-active');
         localStorage.setItem('miu_lang', currentLang);
