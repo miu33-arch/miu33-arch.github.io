@@ -37,38 +37,127 @@
 <body class="bg-concrete-950 text-white selection:bg-luxury-gold">
     <canvas id="matrix"></canvas>
 
-    <nav class="fixed top-0 w-full z-50 bg-concrete-950/90 border-b border-white/10 backdrop-blur-xl py-5 px-8 flex justify-between items-center">
-        <a href="index.html" class="font-bold italic text-xl uppercase tracking-tighter text-white">MIU_33</a>
-        <button onclick="toggleLang()" class="text-[10px] border border-luxury-gold/50 px-4 py-1 text-luxury-gold uppercase font-mono hover:bg-luxury-gold hover:text-black transition-all">EN/ZH</button>
+    <!-- NAVIGATION -->
+    <nav class="fixed top-0 w-full z-50 bg-concrete-950/90 border-b border-white/10 backdrop-blur-xl py-4 px-6 flex justify-between items-center">
+        <div class="flex flex-col gap-1">
+            <a href="index.html" class="font-bold italic text-xl uppercase tracking-tighter text-white">MIU_33</a>
+            <span class="font-mono text-[8px] text-white/40 uppercase tracking-widest">Anamy Padilla // 缪联睿</span>
+        </div>
+        
+        <div class="flex gap-4 items-center">
+            <button onclick="toggleLang()" class="text-[8px] border border-luxury-gold/30 px-2 py-1 text-luxury-gold uppercase font-mono hover:bg-luxury-gold hover:text-black transition-all">EN/ZH</button>
+        </div>
     </nav>
-
     <main class="pt-32 pb-20 px-8 max-w-7xl mx-auto">
         <h2 class="text-4xl font-bold italic gold-glow uppercase mb-12 text-white">Spatial_Assets</h2>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="monolith group overflow-hidden">
-                <div class="aspect-video bg-zinc-900 overflow-hidden"> <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-50 group-hover:opacity-100 transition-all duration-700">
-                        <source src="videos/mi_render.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <div class="p-6">
-                    <span class="text-[8px] text-emerald-neon font-mono">CODE: NEURAL_01</span>
-                    <h3 class="text-xl font-bold uppercase mt-2 text-white">Metropolitan Synthesis</h3>
+        <!-- WATCHES FUND -->
+        <section class="mb-20" id="fund-watches">
+            <header class="flex items-center gap-4 mb-8">
+                <span class="text-emerald-neon font-mono text-[10px]">[01]</span>
+                <h3 class="text-2xl font-bold uppercase text-white">Watches Fund</h3>
+                <span class="text-white/30 font-mono text-[8px]">// Timepieces + Horology</span>
+            </header>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="monolith group overflow-hidden">
+                    <div class="aspect-video bg-zinc-900 overflow-hidden">
+                        <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-50 group-hover:opacity-100 transition-all duration-700">
+                            <source src="videos/portfolio/03_advertising/luxury_brands/watches/watch_render.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[8px] text-emerald-neon font-mono">CODE: WAT_001</span>
+                        <h3 class="text-xl font-bold uppercase mt-2 text-white">Brutalist Chronograph</h3>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <div class="monolith group overflow-hidden">
-                <div class="aspect-video bg-zinc-900 overflow-hidden">
-                    <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-50 group-hover:opacity-100 transition-all duration-700">
-                        <source src="videos/advertising_showcase.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <div class="p-6">
-                    <span class="text-[8px] text-emerald-neon font-mono">CODE: ADS_01</span>
-                    <h3 class="text-xl font-bold uppercase mt-2 text-white">Digital Billboard Integration</h3>
+        <!-- PERFUME FUND -->
+        <section class="mb-20" id="fund-perfume">
+            <header class="flex items-center gap-4 mb-8">
+                <span class="text-emerald-neon font-mono text-[10px]">[02]</span>
+                <h3 class="text-2xl font-bold uppercase text-white">Perfume Fund</h3>
+                <span class="text-white/30 font-mono text-[8px]">// Fragrance + Beauty</span>
+            </header>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="monolith group overflow-hidden">
+                    <div class="aspect-video bg-zinc-900 overflow-hidden">
+                        <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-50 group-hover:opacity-100 transition-all duration-700">
+                            <source src="videos/portfolio/03_advertising/luxury_brands/perfume/advertising_showcase.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[8px] text-emerald-neon font-mono">CODE: PRF_001</span>
+                        <h3 class="text-xl font-bold uppercase mt-2 text-white">Armani Privé // Scent Film</h3>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <!-- FASHION FUND -->
+        <section class="mb-20" id="fund-fashion"> <header class="flex items-center gap-4 mb-8">
+                <span class="text-emerald-neon font-mono text-[10px]">[03]</span>
+                <h3 class="text-2xl font-bold uppercase text-white">Fashion Fund</h3>
+                <span class="text-white/30 font-mono text-[8px]">// Arabic Couture + Runway</span>
+            </header>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="monolith group overflow-hidden">
+                    <div class="aspect-video bg-zinc-900 overflow-hidden">
+                        <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-50 group-hover:opacity-100 transition-all duration-700">
+                            <source src="videos/portfolio/03_advertising/luxury_brands/fashion/ADS_FSH_RUNWAY_001.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[8px] text-emerald-neon font-mono">CODE: FSH_001</span>
+                        <h3 class="text-xl font-bold uppercase mt-2 text-white">Riyadh Sync // Desert Runway</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- JEWELRY FUND -->
+        <section class="mb-20" id="fund-jewelry">
+            <header class="flex items-center gap-4 mb-8">
+                <span class="text-emerald-neon font-mono text-[10px]">[04]</span>
+                <h3 class="text-2xl font-bold uppercase text-white">Jewelry Fund</h3>
+                <span class="text-white/30 font-mono text-[8px]">// Diamonds + Gold</span>
+            </header>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="monolith group overflow-hidden">
+                    <div class="aspect-video bg-zinc-900 overflow-hidden">
+                        <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-50 group-hover:opacity-100 transition-all duration-700">
+                            <source src="videos/portfolio/03_advertising/luxury_brands/jewelry/ADS_JWL_RING_001.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[8px] text-emerald-neon font-mono">CODE: JWL_001</span>
+                        <h3 class="text-xl font-bold uppercase mt-2 text-white">Helipad Diamond Ring</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AUTOMOTIVE FUND -->
+        <section class="mb-20" id="fund-automotive">
+            <header class="flex items-center gap-4 mb-8">
+                <span class="text-emerald-neon font-mono text-[10px]">[05]</span>
+                <h3 class="text-2xl font-bold uppercase text-white">Automotive Fund</h3>
+                <span class="text-white/30 font-mono text-[8px]">// Vehicles + Spatial</span>
+            </header>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6"> <div class="monolith group overflow-hidden">
+                    <div class="aspect-video bg-zinc-900 overflow-hidden">
+                        <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-50 group-hover:opacity-100 transition-all duration-700">
+                            <source src="videos/portfolio/03_advertising/luxury_brands/automotive/ferrari_bike.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[8px] text-emerald-neon font-mono">CODE: AUT_001</span>
+                        <h3 class="text-xl font-bold uppercase mt-2 text-white">Ferrari Motorcycle</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- UNIFIED FOOTER -->
@@ -92,11 +181,15 @@
             </p>
             <div class="flex justify-center gap-6 mt-8">
                 <a href="index.html" class="text-[8px] text-white/40 hover:text-emerald-neon transition-all">HOME</a>
-                <a href="projects.html" class="text-[8px] text-white/40 hover:text-emerald-neon transition-all">PROJECTS</a>
+                <a href="project.html" class="text-[8px] text-white/40 hover:text-emerald-neon transition-all">PROJECTS</a>
                 <a href="about.html" class="text-[8px] text-white/40 hover:text-emerald-neon transition-all">ABOUT</a>
                 <a href="contact.html" class="text-[8px] text-white/40 hover:text-emerald-neon transition-all">CONTACT</a>
-            </div>
-        </div> </footer>
+                <a href="studio.html" class="text-[8px] text-white/40 hover:text-emerald-neon transition-all">STUDIO</a>
+                <a href="vault.html" class="text-[8px] text-white/40 hover:text-emerald-neon transition-all">VAULT</a>
+                <a href="blog/index.html" class="text-[8px] text-white/40 hover:text-emerald-neon transition-all">BLOG</a>
+             </div>
+        </div>
+    </footer>
 
     <script src="vault.LEGACY.js"></script>
 </body>

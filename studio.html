@@ -2,19 +2,260 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Studio | MIU_33</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio | MIU_33 Digital Architect</title>
+    
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- TAILWIND CONFIG -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'luxury-gold': '#C9A46A',
+                        'emerald-neon': '#3CFF9B',
+                        'concrete-950': '#080808'
+                    },
+                    fontFamily: {
+                        sans: ['Space Grotesk', 'sans-serif'],
+                        mono: ['Space Grotesk', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- LENIS SMOOTH SCROLL -->
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
+
+    <!-- UTILS -->
+    <script src="https://unpkg.com/lucide@latest" defer></script>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-black text-white">
-    <nav class="p-8 border-b border-white/5"><a href="index.html" class="text-[10px] text-emerald-400">← TERMINAL</a></nav>
-    <main class="py-20 text-center">
-        <h2 class="text-4xl italic gold-glow uppercase">Internal_Vault</h2>
-        <div class="mt-20 grid grid-cols-1 md:grid-cols-2 gap-10 px-10">
-            <div class="monolith aspect-video flex items-center justify-center opacity-30">ASSET_LOAD_PENDING</div>
-            <div class="monolith aspect-video flex items-center justify-center opacity-30">SYSTEM_LOG_v2030</div>
+<body class="bg-concrete-950 text-white selection:bg-luxury-gold">
+
+    <canvas id="matrix"></canvas>
+
+    <!-- NAVIGATION -->
+    <nav class="fixed top-0 w-full z-50 bg-concrete-950/90 border-b border-white/10 backdrop-blur-xl py-4 px-6 flex justify-between items-center">
+        <div class="flex flex-col gap-1">
+            <a href="index.html" class="font-bold italic text-xl uppercase tracking-tighter text-white">MIU_33</a>
+            <span class="font-mono text-[8px] text-white/40 uppercase tracking-widest">Anamy Padilla // 缪联睿</span>
         </div>
-    </main>
+                <div class="flex gap-4 items-center">
+            <div class="hidden md:flex gap-3 border-l border-white/10 pl-4 ml-2">
+                <a href="about.html" class="font-mono text-[8px] text-white/40 uppercase tracking-widest hover:text-emerald-neon transition-all">About</a>
+                <a href="studio.html" class="font-mono text-[8px] text-emerald-neon uppercase tracking-widest">Studio</a>
+                <a href="project.html" class="font-mono text-[8px] text-white/40 uppercase tracking-widest hover:text-emerald-neon transition-all">Projects</a>
+                <a href="blog/index.html" class="font-mono text-[8px] text-white/40 uppercase tracking-widest hover:text-emerald-neon transition-all">Blog</a>
+            </div>
+            <button onclick="toggleLang()" class="text-[8px] border border-luxury-gold/30 px-2 py-1 text-luxury-gold uppercase font-mono hover:bg-luxury-gold hover:text-black transition-all">EN/ZH</button>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="pt-32 pb-20 px-8 text-center">
+        <h1 class="text-5xl md:text-7xl font-bold italic gold-glow uppercase tracking-tighter mb-4 text-white">The Studio</h1>
+        <p class="font-mono text-emerald-neon text-[10px] tracking-[0.4em] uppercase">miu_Digital Architect Studio // Riyadh Sync</p>
+    </section>
+
+    <!-- STUDIO MISSION -->
+    <section class="py-16 px-8 border-t border-white/5 bg-black/30 backdrop-blur-sm">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-luxury-gold font-mono text-[10px] tracking-[0.5em] uppercase mb-8">Mission_Statement</h2>
+            <p class="font-mono text-xs leading-relaxed uppercase tracking-wider opacity-60 lang-en">
+                Bridging clinical precision with financial strategy to deliver luxury spatial visualization 
+                for Saudi Vision 2030. We transform concepts into cinematic assets in 5 days, not 3 weeks.
+            </p>
+            <p class="font-mono text-xs leading-relaxed uppercase tracking-wider opacity-60 lang-zh hidden-lang">
+                将临床精度与财务战略相结合，为沙特 2030 愿景提供豪华空间可视化。
+                我们在 5 天内将概念转化为电影级资产，而不是 3 周。
+            </p>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="py-24 px-8">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold italic uppercase mb-16 text-white text-center">Core_Capabilities</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Service 1 -->
+                <div class="monolith p-8 group">
+                    <div class="text-emerald-neon mb-4">
+                        <i data-lucide="box" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-lg font-bold uppercase text-white mb-2">3D Visualization</h3>
+                    <p class="font-mono text-[8px] opacity-60 lang-en">Photorealistic renders for architecture, products, and luxury goods.</p>
+                    <p class="font-mono text-[8px] opacity-60 lang-zh hidden-lang">建筑、产品和奢侈品的照片级真实渲染。</p>
+                </div>
+
+                <!-- Service 2 --> <div class="monolith p-8 group">
+                    <div class="text-emerald-neon mb-4">
+                        <i data-lucide="video" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-lg font-bold uppercase text-white mb-2">Cinematic Films</h3>
+                    <p class="font-mono text-[8px] opacity-60 lang-en">AI-powered luxury brand campaigns and product storytelling.</p>
+                    <p class="font-mono text-[8px] opacity-60 lang-zh hidden-lang">AI 驱动的奢侈品牌活动和产品故事。</p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="monolith p-8 group">
+                    <div class="text-emerald-neon mb-4">
+                        <i data-lucide="layers" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-lg font-bold uppercase text-white mb-2">Spatial Logic</h3>
+                    <p class="font-mono text-[8px] opacity-60 lang-en">Architectural planning with human-flow and ergonomic precision.</p>
+                    <p class="font-mono text-[8px] opacity-60 lang-zh hidden-lang">具有人流和人体工程学精度的建筑规划。</p>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="monolith p-8 group">
+                    <div class="text-emerald-neon mb-4">
+                        <i data-lucide="zap" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-lg font-bold uppercase text-white mb-2">AI Acceleration</h3>
+                    <p class="font-mono text-[8px] opacity-60 lang-en">5-day delivery workflow using advanced AI tools and automation.</p>
+                    <p class="font-mono text-[8px] opacity-60 lang-zh hidden-lang">使用先进 AI 工具和自动化的 5 天交付工作流程。</p>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="monolith p-8 group">
+                    <div class="text-emerald-neon mb-4">
+                        <i data-lucide="shield" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-lg font-bold uppercase text-white mb-2">Brand Integration</h3>
+                    <p class="font-mono text-[8px] opacity-60 lang-en">Luxury brand storytelling with consistent visual identity.</p>
+                    <p class="font-mono text-[8px] opacity-60 lang-zh hidden-lang">具有一致视觉形象的奢侈品牌故事。</p>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="monolith p-8 group">
+                    <div class="text-emerald-neon mb-4">
+                        <i data-lucide="globe" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-lg font-bold uppercase text-white mb-2">Riyadh Sync</h3>
+                    <p class="font-mono text-[8px] opacity-60 lang-en">Specialized focus on Saudi Vision 2030 giga-projects and luxury market.</p>
+                    <p class="font-mono text-[8px] opacity-60 lang-zh hidden-lang">专注于沙特 2030 愿景大型项目和奢侈品市场。</p>
+                </div>
+
+            </div> </div>
+    </section>
+
+    <!-- WORKFLOW -->
+    <section class="py-24 px-8 border-t border-white/5 bg-black/50 backdrop-blur-sm">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold italic uppercase mb-16 text-white text-center">Workflow_Protocol</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                
+                <!-- Step 1 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 border-2 border-emerald-neon rounded-full flex items-center justify-center">
+                        <span class="text-emerald-neon font-bold text-xl">01</span>
+                    </div>
+                    <h3 class="text-white font-bold uppercase mb-2">Intake</h3>
+                    <p class="font-mono text-[8px] opacity-60">Client brief via Tally form with project specifications.</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 border-2 border-luxury-gold rounded-full flex items-center justify-center">
+                        <span class="text-luxury-gold font-bold text-xl">02</span>
+                    </div>
+                    <h3 class="text-white font-bold uppercase mb-2">Concept</h3>
+                    <p class="font-mono text-[8px] opacity-60">Spatial logic design with AI-assisted visualization.</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 border-2 border-emerald-neon rounded-full flex items-center justify-center">
+                        <span class="text-emerald-neon font-bold text-xl">03</span>
+                    </div>
+                    <h3 class="text-white font-bold uppercase mb-2">Render</h3>
+                    <p class="font-mono text-[8px] opacity-60">High-fidelity production with cinematic quality output.</p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 border-2 border-luxury-gold rounded-full flex items-center justify-center">
+                        <span class="text-luxury-gold font-bold text-xl">04</span>
+                    </div>
+                    <h3 class="text-white font-bold uppercase mb-2">Deliver</h3>
+                    <p class="font-mono text-[8px] opacity-60">Final assets synced to NocoDB for client access.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- TECH STACK -->
+    <section class="py-24 px-8">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-luxury-gold font-mono text-[10px] tracking-[0.5em] uppercase mb-12">Tech_Stack</h2>
+            
+            <div class="flex flex-wrap justify-center gap-4">
+                <span class="px-6 py-3 border border-white/10 font-mono text-[8px] uppercase tracking-widest opacity-60">AI Visualization</span>
+                <span class="px-6 py-3 border border-white/10 font-mono text-[8px] uppercase tracking-widest opacity-60">Spatial Design</span>
+                <span class="px-6 py-3 border border-white/10 font-mono text-[8px] uppercase tracking-widest opacity-60">n8n Automation</span>
+                <span class="px-6 py-3 border border-white/10 font-mono text-[8px] uppercase tracking-widest opacity-60">NocoDB</span>
+                <span class="px-6 py-3 border border-white/10 font-mono text-[8px] uppercase tracking-widest opacity-60">Tally Forms</span>
+                <span class="px-6 py-3 border border-white/10 font-mono text-[8px] uppercase tracking-widest opacity-60">Cloudflare Pages</span>
+                <span class="px-6 py-3 border border-white/10 font-mono text-[8px] uppercase tracking-widest opacity-60">Tailwind CSS</span>
+                <span class="px-6 py-3 border border-white/10 font-mono text-[8px] uppercase tracking-widest opacity-60">Lenis Scroll</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-24 px-8 border-t border-white/5 bg-black/30 backdrop-blur-sm text-center">
+        <div class="max-w-2xl mx-auto">
+            <h2 class="text-3xl font-bold italic uppercase mb-8 text-white">Initialize_Collaboration</h2>
+            <p class="font-mono text-xs opacity-60 mb-12">
+                Ready to transform your vision into cinematic spatial assets? 
+                Submit your project credentials and begin the handshake protocol.
+            </p>
+            <a href="contact.html" class="inline-block border border-emerald-neon text-emerald-neon px-12 py-4 text-[10px] hover:bg-emerald-neon hover:text-black transition-all uppercase tracking-[0.3em]">
+                Start_Project →
+            </a>
+        </div>
+    </section>
+
+    <!-- UNIFIED FOOTER -->
+    <footer class="py-20 px-8 border-t border-white/5 text-center bg-black/50 backdrop-blur-sm">
+        <div class="max-w-4xl mx-auto space-y-4">
+            <p class="font-mono text-[10px] uppercase tracking-[0.4em] text-luxury-gold">
+                <span class="lang-en">ANAMY PADILLA</span><span class="lang-zh hidden-lang">缪联睿</span> 
+                // 
+                <span class="lang-en">RIYADH_SYNC_V2030</span><span class="lang-zh hidden-lang">利雅得同步_V2030</span>
+            </p>
+            <p class="font-mono text-[6px] opacity-10 uppercase tracking-[0.3em] mb-2">
+                <span class="lang-en">Digital Visualization Only // Not Licensed Structural Engineering</span>
+                <span class="lang-zh hidden-lang">仅限数字可视化 // 非持牌结构工程</span>
+            </p>
+            <p class="font-mono text-[8px] opacity-20 uppercase tracking-[0.4em]">
+                <span class="lang-en">© 2026 // Sync: Tally + n8n + NocoDB</span>
+                <span class="lang-zh hidden-lang">© 2026 // 同步：Tally + n8n + NocoDB</span>
+                <br>
+                <span class="lang-en">miu_Digital Architect Studio</span>
+                <span class="lang-zh hidden-lang">miu_数字建筑工作室</span> </p>
+            <div class="flex justify-center gap-6 mt-8">
+                <a href="index.html" class="text-[8px] text-white/40 hover:text-emerald-neon transition-all">HOME</a>
+                <a href="project.html" class="text-[8px] text-white/40 hover:text-emerald-neon transition-all">PROJECTS</a>
+                <a href="about.html" class="text-[8px] text-white/40 hover:text-emerald-neon transition-all">ABOUT</a>
+                <a href="studio.html" class="text-[8px] text-white/40 hover:text-emerald-neon transition-all">STUDIO</a>
+                <a href="contact.html" class="text-[8px] text-white/40 hover:text-emerald-neon transition-all">CONTACT</a>
+                <a href="vault.html" class="text-[8px] text-white/40 hover:text-emerald-neon transition-all">VAULT</a>
+                <a href="blog/index.html" class="text-[8px] text-white/40 hover:text-emerald-neon transition-all">BLOG</a>
+            </div>
+        </div>
+    </footer>
+
     <script src="vault.LEGACY.js"></script>
 </body>
 </html>

@@ -42,7 +42,7 @@ window.addEventListener('DOMContentLoaded', () => {
         };
         setInterval(draw, 60);
 
-        // Resize Listener (Prevents breakage on mobile rotate)
+        // Resize Listener
         window.addEventListener('resize', () => {
             width = canvas.width = window.innerWidth;
             height = canvas.height = window.innerHeight;
@@ -54,11 +54,9 @@ window.addEventListener('DOMContentLoaded', () => {
         const enElements = document.querySelectorAll('.lang-en');
         const zhElements = document.querySelectorAll('.lang-zh');
         
-        // Toggle hidden class
         enElements.forEach(el => el.classList.toggle('hidden-lang'));
         zhElements.forEach(el => el.classList.toggle('hidden-lang'));
         
-        // Save preference
         const currentLang = document.body.classList.contains('lang-zh-active') ? 'en' : 'zh';
         document.body.classList.toggle('lang-zh-active');
         localStorage.setItem('miu_lang', currentLang);
