@@ -1,0 +1,13 @@
+#:schema node_modules/wrangler/config-schema.json
+name = "miu-digital-studio"
+pages_build_output_dir = "."
+
+[vars]
+STUDIO_STATUS = "SASSY_ARCHITECT_ONLINE"
+VAULT_VERSION = "2026.1.0"
+RIYADH_SYNC = "V2030"
+
+[[pages_build_config]]
+# This ensures Cloudflare doesn't get confused by your "Swarovski" videos
+# and handles your assets correctly.
+build_command = "" 
