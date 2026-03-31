@@ -48,6 +48,17 @@
     <script src="https://unpkg.com/lucide@latest" defer></script>
     <script src="https://tally.so/widgets/embed.js"></script>
     <link rel="stylesheet" href="style.css">
+<style>
+        /* Responsive Fix for Long Headings */
+        @media (max-width: 768px) {
+            #mansion-reveal h2 {
+                font-size: 11vw !important; /* Scalable size based on width */
+                letter-spacing: -0.05em !important; /* Tighter tracking for mobile */
+                line-height: 1.1;
+            }
+        }
+    </style>
+
 </head>
 <body class="bg-concrete-950 text-white selection:bg-luxury-gold overflow-x-hidden">
 
@@ -107,7 +118,7 @@
     <div class="container mx-auto px-6">
         
         <div class="mb-16">
-            <h2 class="text-white text-5xl md:text-7xl font-light italic tracking-tighter">Restricted_Chamber</h2>
+            <h2 class="text-white text-[11vw] md:text-7xl font-light italic tracking-tighter leading-none">Restricted_Chamber</h2>
             <p class="text-emerald-500 font-mono text-[9px] tracking-[0.6em] uppercase mt-4">
                 // System_Status: 100%_Declassified // Total_Assets: 12 // Auth: Founder_33
             </p>
