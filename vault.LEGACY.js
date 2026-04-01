@@ -1,17 +1,16 @@
+/* --- MIU-33 GLOBAL LOGIC OVERRIDE --- */
+
 window.addEventListener('DOMContentLoaded', () => {
-    // Initialize Lucide Icons
+
+    // 1. Initialize Lucide Icons
     if(typeof lucide !== 'undefined') lucide.createIcons();
 
-    // --- Lenis Smooth Scroll ---
+    // 2. Lenis Smooth Scroll (Optimised for Riyadh Velocity)
     const lenis = new Lenis({
         duration: 1.2,
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        direction: 'vertical',
-        gestureDirection: 'vertical',
         smooth: true,
         mouseMultiplier: 1,
-        smoothTouch: false,
-        touchMultiplier: 2,
     });
 
     function raf(time) {
@@ -20,7 +19,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
     requestAnimationFrame(raf);
 
-    // --- Matrix Background (With Resize Fix) ---
+    // 3. Matrix Background (Refined miu-33 Visuals)
     const canvas = document.getElementById('matrix');
     if(canvas) {
         const ctx = canvas.getContext('2d');
@@ -35,39 +34,71 @@ window.addEventListener('DOMContentLoaded', () => {
             ctx.fillStyle = '#3CFF9B';
             ctx.font = '10px monospace';
             drops.forEach((y, i) => {
-                ctx.fillText("MIU33"[Math.floor(Math.random()*5)], i*20, y*20);
-                if(y*20 > height && Math.random() > 0.98) drops[i] = 0;
+                // Digital Rain now spells out the Founder's Brand
+                const text = "MIU33"[Math.floor(Math.random() * 5)];
+                ctx.fillText(text, i * 20, y * 20);
+                if(y * 20 > height && Math.random() > 0.98) drops[i] = 0;
                 drops[i]++;
             });
         };
         setInterval(draw, 60);
 
-        // Resize Listener
         window.addEventListener('resize', () => {
             width = canvas.width = window.innerWidth;
             height = canvas.height = window.innerHeight;
         });
     }
 
-    // --- Bilingual Toggle (EN/ZH) ---
+    // 4. Trilingual Toggle Logic (EN / ZH / AR)
+    // Rule: Cycle through languages to show Global Dominance
     window.toggleLang = function() {
-        const enElements = document.querySelectorAll('.lang-en');
-        const zhElements = document.querySelectorAll('.lang-zh');
+        const langs = ['en', 'zh', 'ar'];
+        let currentIdx = langs.indexOf(localStorage.getItem('miu_lang') || 'en');
+        let nextIdx = (currentIdx + 1) % langs.length;
+        let nextLang = langs[nextIdx];
+
+        // System Diagnostic
+        console.log(`MIU_33: Switching to ${nextLang.toUpperCase()} protocol...`);
         
-        enElements.forEach(el => el.classList.toggle('hidden'));
-        zhElements.forEach(el => el.classList.toggle('hidden'));
-        // Sassy Diagnostic
-        console.log("MIU_33: Language Sync Toggled");
-        const currentLang = document.body.classList.contains('lang-zh-active') ? 'en' : 'zh';
-        document.body.classList.toggle('lang-zh-active');
-        localStorage.setItem('miu_lang', currentLang);
+        applyLanguage(nextLang);
+        localStorage.setItem('miu_lang', nextLang);
     };
 
-    // --- Auto-Load Language Preference ---
-    const savedLang = localStorage.getItem('miu_lang');
-    if(savedLang === 'zh') {
-        document.body.classList.add('lang-zh-active');
-        document.querySelectorAll('.lang-en').forEach(el => el.classList.add('hidden'));
-        document.querySelectorAll('.lang-zh').forEach(el => el.classList.remove('hidden'));
+    function applyLanguage(lang) {
+        document.querySelectorAll('.lang-en, .lang-zh, .lang-ar').forEach(el => {
+            el.classList.add('hidden');
+        });
+        document.querySelectorAll(`.lang-${lang}`).forEach(el => {
+            el.classList.remove('hidden');
+        });
     }
+
+    // Load Saved Language on Boot-up
+    applyLanguage(localStorage.getItem('miu_lang') || 'en');
+
+    // 5. Restricted Chamber: Video Pause on Interaction
+    // Pauses surveillance feed when the Admin "locks in" on a target
+    const mansionVid = document.getElementById('mansion-vid');
+    const scrollContainer = document.getElementById('restricted-scroll');
+
+    if (mansionVid && scrollContainer) {
+        const pauseFeed = () => { 
+            mansionVid.pause(); 
+            console.log("MIU_33: Surveillance Feed Paused.");
+        };
+        const resumeFeed = () => { mansionVid.play(); };
+
+        scrollContainer.addEventListener('mousedown', pauseFeed);
+        scrollContainer.addEventListener('mouseup', resumeFeed);
+        scrollContainer.addEventListener('touchstart', pauseFeed, { passive: true });
+        scrollContainer.addEventListener('touchend', resumeFeed);
+    }
+
+    // 6. Scent Sync: Video Calibration
+    // Ensure both Atmosphere videos are synced for the "Soul/Structure" effect
+    const atmosphereVids = document.querySelectorAll('.aspect-square video');
+    atmosphereVids.forEach(vid => {
+        vid.playbackRate = 0.8; // Cinematic Slow-Mo
+    });
+
 });
