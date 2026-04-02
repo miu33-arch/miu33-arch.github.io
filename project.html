@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | MIU_33 Studio</title>
+   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'luxury-gold': '#C9A46A',
+                        'emerald-neon': '#3CFF9B',
+                        'concrete-950': '#080808'
+                    },
+                    fontFamily: {
+                        sans: ['Space Grotesk', 'sans-serif'],
+                        mono: ['Space Grotesk', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-concrete-950 text-white selection:bg-luxury-gold overflow-x-hidden">
+    <canvas id="matrix"></canvas>
+
+    <nav class="fixed top-0 w-full z-50 bg-concrete-950/90 border-b border-white/10 backdrop-blur-xl py-4 px-6 flex justify-between items-center">
+        <div class="flex flex-col gap-1">
+            <a href="index.html" class="font-bold italic text-xl uppercase tracking-tighter text-white">MIU_33</a>
+            <span class="font-mono text-[8px] text-white/40 uppercase tracking-widest">Anamy Padilla // 缪联睿</span>
+        </div>
+        
+        <div class="flex gap-4 items-center">
+            <button onclick="toggleLang()" class="text-[8px] border border-luxury-gold/30 px-2 py-1 text-luxury-gold uppercase font-mono hover:bg-luxury-gold hover:text-black transition-all">
+                EN / 中 / AR
+            </button>
+        </div>
+    </nav>
+
+    <main class="pt-32 pb-20 px-8 max-w-7xl mx-auto">
+        <h2 class="text-4xl md:text-5xl font-bold italic gold-glow uppercase mb-16 text-white tracking-tighter">
+            <span class="lang-en">Spatial_Assets</span>
+            <span class="lang-zh hidden">空间资产</span>
+            <span class="lang-ar hidden">الأصول المكانية</span>
+        </h2>
+        
+        <div class="space-y-32">
+
+            <section id="fund-watches">
+                <header class="flex items-center gap-4 mb-8">
+                    <span class="text-emerald-neon font-mono text-[10px]">[01]</span>
+                    <h3 class="text-2xl font-bold uppercase">
+                        <span class="lang-en">Watches Fund</span>
+                        <span class="lang-zh hidden">钟表基金</span>
+                        <span class="lang-ar hidden">صندوق الساعات</span>
+                    </h3>
+                    <span class="text-white/30 font-mono text-[8px] tracking-widest">// HOROLOGY</span>
+                </header>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="artifact-card group">
+                        <div class="aspect-video bg-zinc-900 overflow-hidden">
+                            <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-50 group-hover:opacity-100 transition-all duration-700">
+                                <source src="videos/portfolio/03_advertising/luxury_brands/watches/watch_render.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="p-6 border-t border-white/5">
+                            <span class="text-[8px] text-emerald-neon font-mono">CODE: WAT_001</span>
+                            <h4 class="text-xl font-bold uppercase mt-2">
+                                <span class="lang-en">Brutalist Chronograph</span>
+                                <span class="lang-zh hidden">粗犷主义计时码表</span>
+                                <span class="lang-ar hidden">كرونوغراف وحشي</span>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="fund-perfume">
+                <header class="flex items-center gap-4 mb-8 border-t border-white/5 pt-12">
+                    <span class="text-emerald-neon font-mono text-[10px]">[02]</span>
+                    <h3 class="text-2xl font-bold uppercase">
+                        <span class="lang-en">Perfume Fund</span>
+                        <span class="lang-zh hidden">香水基金</span>
+                        <span class="lang-ar hidden">صندوق العطور</span>
+                    </h3>
+                    <span class="text-white/30 font-mono text-[8px] tracking-widest">// ATMOSPHERE</span>
+                </header>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="artifact-card group">
+                        <div class="aspect-video bg-zinc-900 overflow-hidden">
+                            <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-50 group-hover:opacity-100 transition-all duration-700">
+                                <source src="videos/portfolio/03_advertising/luxury_brands/perfume/advertising_showcase.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="p-6 border-t border-white/5">
+                            <span class="text-[8px] text-emerald-neon font-mono">CODE: PRF_001</span>
+                            <h4 class="text-xl font-bold uppercase mt-2">
+                                <span class="lang-en">Armani Privé // Scent Film</span>
+                                <span class="lang-zh hidden">Armani Privé // 香氛短片</span>
+                                <span class="lang-ar hidden">Armani Privé // فيلم العطر</span>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="fund-fashion">
+                <header class="flex items-center gap-4 mb-8 border-t border-white/5 pt-12">
+                    <span class="text-emerald-neon font-mono text-[10px]">[03]</span>
+                    <h3 class="text-2xl font-bold uppercase">
+                        <span class="lang-en">Fashion Fund</span>
+                        <span class="lang-zh hidden">时装基金</span>
+                        <span class="lang-ar hidden">صندوق الأزياء</span>
+                    </h3>
+                    <span class="text-white/30 font-mono text-[8px] tracking-widest">// COUTURE</span>
+                </header>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="artifact-card group">
+                        <div class="aspect-video bg-zinc-900 overflow-hidden">
+                            <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-50 group-hover:opacity-100 transition-all duration-700">
+                                <source src="videos/portfolio/03_advertising/luxury_brands/fashion/ADS_FSH_RUNWAY_001.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="p-6 border-t border-white/5">
+                            <span class="text-[8px] text-emerald-neon font-mono">CODE: FSH_001</span>
+                            <h4 class="text-xl font-bold uppercase mt-2">
+                                <span class="lang-en">Riyadh Sync // Desert Runway</span>
+                                <span class="lang-zh hidden">利雅得同步 // 沙漠T台</span>
+                                <span class="lang-ar hidden">مزامنة الرياض // مدرج الصحراء</span>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="fund-jewelry">
+                <header class="flex items-center gap-4 mb-8 border-t border-white/5 pt-12">
+                    <span class="text-emerald-neon font-mono text-[10px]">[04]</span>
+                    <h3 class="text-2xl font-bold uppercase">
+                        <span class="lang-en">Jewelry Fund</span>
+                        <span class="lang-zh hidden">珠宝基金</span>
+                        <span class="lang-ar hidden">صندوق المجوهرات</span>
+                    </h3>
+                    <span class="text-white/30 font-mono text-[8px] tracking-widest">// PRECISION</span>
+                </header>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="artifact-card group">
+                        <div class="aspect-video bg-zinc-900 overflow-hidden">
+                            <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-50 group-hover:opacity-100 transition-all duration-700">
+                                <source src="videos/portfolio/03_advertising/luxury_brands/jewelry/ADS_JWL_RING_001.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="p-6 border-t border-white/5">
+                            <span class="text-[8px] text-emerald-neon font-mono">CODE: JWL_001</span>
+                            <h4 class="text-xl font-bold uppercase mt-2">
+                                <span class="lang-en">Helipad Diamond Ring</span>
+                                <span class="lang-zh hidden">停机坪钻戒</span>
+                                <span class="lang-ar hidden">خاتم الماس مهبط الطائرات</span>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="fund-automotive">
+                <header class="flex items-center gap-4 mb-8 border-t border-white/5 pt-12">
+                    <span class="text-emerald-neon font-mono text-[10px]">[05]</span>
+                    <h3 class="text-2xl font-bold uppercase">
+                        <span class="lang-en">Automotive Fund</span>
+                        <span class="lang-zh hidden">汽车基金</span>
+                        <span class="lang-ar hidden">صندوق السيارات</span>
+                    </h3>
+                    <span class="text-white/30 font-mono text-[8px] tracking-widest">// VELOCITY</span>
+                </header>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="artifact-card group">
+                        <div class="aspect-video bg-zinc-900 overflow-hidden">
+                            <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-50 group-hover:opacity-100 transition-all duration-700">
+                                <source src="videos/portfolio/03_advertising/luxury_brands/automotive/ferrari_bike.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="p-6 border-t border-white/5">
+                            <span class="text-[8px] text-emerald-neon font-mono">CODE: AUT_001</span>
+                            <h4 class="text-xl font-bold uppercase mt-2">
+                                <span class="lang-en">Ferrari Motorcycle</span>
+                                <span class="lang-zh hidden">法拉利摩托车</span>
+                                <span class="lang-ar hidden">دراجة نارية فيراري</span>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="py-20 px-8 border-t border-white/5 text-center bg-black">
+        <div class="max-w-6xl mx-auto space-y-8">
+            <nav class="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-12 uppercase font-mono text-[9px] tracking-[0.3em]">
+                <a href="index.html" class="text-white/40 hover:text-emerald-neon transition-all">
+                    <span class="lang-en">Home</span><span class="lang-zh hidden">首页</span><span class="lang-ar hidden">الرئيسية</span>
+                </a>
+                <a href="project.html" class="text-white/40 hover:text-emerald-neon transition-all">
+                    <span class="lang-en">Projects</span><span class="lang-zh hidden">项目</span><span class="lang-ar hidden">المشاريع</span>
+                </a>
+                <a href="studio.html" class="text-white/40 hover:text-emerald-neon transition-all">
+                    <span class="lang-en">Studio</span><span class="lang-zh hidden">工作室</span><span class="lang-ar hidden">الاستوديو</span>
+                </a>
+                <a href="about.html" class="text-white/40 hover:text-emerald-neon transition-all">
+                    <span class="lang-en">About</span><span class="lang-zh hidden">关于</span><span class="lang-ar hidden">حول</span>
+                </a>
+                <a href="vault.html" class="text-white/40 hover:text-emerald-neon transition-all">
+                    <span class="lang-en">Vault</span><span class="lang-zh hidden">保险库</span><span class="lang-ar hidden">القبو</span>
+                </a>
+                <a href="contact.html" class="text-white/40 hover:text-emerald-neon transition-all">
+                    <span class="lang-en">Contact</span><span class="lang-zh hidden">联系</span><span class="lang-ar hidden">اتصال</span>
+                </a>
+                <a href="blog/index.html" class="text-white/40 hover:text-emerald-neon transition-all">
+                    <span class="lang-en">Blog</span><span class="lang-zh hidden">博客</span><span class="lang-ar hidden">مدونة</span>
+                </a>
+            </nav>
+
+            <div class="space-y-4">
+                <p class="font-mono text-[10px] uppercase tracking-[0.4em] text-luxury-gold">ANAMY PADILLA // RIYADH_SYNC_V2030</p>
+                <p class="font-mono text-[7px] opacity-10 uppercase tracking-[0.3em]">
+                    <span class="lang-en">Digital Visualization Only // Not Licensed Structural Engineering</span>
+                    <span class="lang-zh hidden">仅限数字可视化 // 非持牌结构工程</span>
+                    <span class="lang-ar hidden">التصور الرقمي فقط // ليس هندسة إنشائية مرخصة</span>
+                </p>
+                <p class="font-mono text-[8px] opacity-20 uppercase tracking-[0.4em]">© 2026 // miu_Digital Architect Studio</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="vault.LEGACY.js"></script>
+</body>
+</html>

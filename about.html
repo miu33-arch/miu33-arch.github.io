@@ -4,13 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About | MIU_33 Digital Architect</title>
-    
-    <!-- GOOGLE FONTS -->
+   
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
 
-    <!-- TAILWIND CONFIG -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -30,91 +28,119 @@
         }
     </script>
 
-    <!-- LENIS SMOOTH SCROLL -->
     <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
-
-    <!-- UTILS -->
     <script src="https://unpkg.com/lucide@latest" defer></script>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-concrete-950 text-white selection:bg-luxury-gold">
+<body class="bg-concrete-950 text-white selection:bg-luxury-gold overflow-x-hidden">
 
     <canvas id="matrix"></canvas>
 
-    <!-- NAVIGATION -->
     <nav class="fixed top-0 w-full z-50 bg-concrete-950/90 border-b border-white/10 backdrop-blur-xl py-4 px-6 flex justify-between items-center">
         <div class="flex flex-col gap-1">
             <a href="index.html" class="font-bold italic text-xl uppercase tracking-tighter text-white">MIU_33</a>
             <span class="font-mono text-[8px] text-white/40 uppercase tracking-widest">Anamy Padilla // 缪联睿</span>
         </div>
-                <div class="flex gap-4 items-center">
-            <button onclick="toggleLang()" class="text-[8px] border border-luxury-gold/30 px-2 py-1 text-luxury-gold uppercase font-mono hover:bg-luxury-gold hover:text-black transition-all">EN/ZH</button>
+        <div class="flex gap-4 items-center">
+            <button onclick="toggleLang()" class="text-[8px] border border-luxury-gold/30 px-2 py-1 text-luxury-gold uppercase font-mono hover:bg-luxury-gold hover:text-black transition-all">
+                EN / 中 / AR
+            </button>
         </div>
     </nav>
 
     <main class="pt-32 pb-20 px-8 max-w-4xl mx-auto">
         <header class="text-center mb-16">
-            <h1 class="text-5xl md:text-7xl font-bold italic gold-glow uppercase tracking-tighter mb-4 text-white">The Architect</h1>
+            <h1 class="text-5xl md:text-7xl font-bold italic gold-glow uppercase tracking-tighter mb-4 text-white">
+                <span class="lang-en">The Architect</span>
+                <span class="lang-zh hidden">建筑师</span>
+                <span class="lang-ar hidden">المهندس المعماري</span>
+            </h1>
             <p class="font-mono text-emerald-neon text-[10px] tracking-[0.4em] uppercase">Anamy Padilla // 缪联睿</p>
         </header>
 
-        <section class="monolith p-10 space-y-8 font-mono text-xs leading-relaxed uppercase tracking-wider">
+        <section class="monolith p-10 space-y-12 font-mono text-xs leading-relaxed uppercase tracking-wider bg-black/40 backdrop-blur-md border border-white/5">
+            
             <div class="border-l-2 border-emerald-neon pl-6">
-                <h3 class="text-white mb-2 font-bold">Clinical Foundation (BSN)</h3>
+                <h3 class="text-white mb-4 font-bold tracking-[0.2em]">
+                    <span class="lang-en">Clinical Foundation (BSN)</span>
+                    <span class="lang-zh hidden">临床基础 (BSN)</span>
+                    <span class="lang-ar hidden">المؤسسة السريرية (BSN)</span>
+                </h3>
                 <p class="opacity-60 lang-en">Applying medical-grade ergonomics and human-flow logic to digital spatial engineering.</p>
                 <p class="opacity-60 lang-zh hidden">将医疗级人体工程学和人流逻辑应用于数字空间工程。</p>
+                <p class="opacity-60 lang-ar hidden">تطبيق بيئة العمل من الدرجة الطبية ومنطق التدفق البشري على الهندسة المكانية الرقمية.</p>
             </div>
 
             <div class="border-l-2 border-luxury-gold pl-6">
-                <h3 class="text-white mb-2 font-bold">Economic Strategy (BSBA)</h3>
+                <h3 class="text-white mb-4 font-bold tracking-[0.2em]">
+                    <span class="lang-en">Economic Strategy (BSBA)</span>
+                    <span class="lang-zh hidden">经济战略 (BSBA)</span>
+                    <span class="lang-ar hidden">الاستراتيجية الاقتصادية (BSBA)</span>
+                </h3>
                 <p class="opacity-60 lang-en">Fusing finance-major ROI analysis with high-valuation architectural assets for Saudi Vision 2030.</p>
                 <p class="opacity-60 lang-zh hidden">将财务专业的投资回报率分析与沙特 2030 愿景的高价值建筑资产相结合。</p>
+                <p class="opacity-60 lang-ar hidden">دمج تحليل العائد على الاستثمار المتخصص في التمويل مع الأصول المعمارية عالية القيمة لرؤية السعودية 2030.</p>
             </div>
 
-            <!-- PROMINENT DISCLAIMER -->
-            <div class="mt-12 pt-8 border-t border-white/5 opacity-30 italic text-[9px] leading-relaxed">
-                <p class="lang-en">
-                    Disclaimer: miu_Digital Architect Studio specializes in digital spatial visualization. 
+            <div class="mt-12 pt-8 border-t border-white/5 opacity-30 italic text-[9px] leading-relaxed lowercase">
+                <div class="lang-en">
+                    Disclaimer: miu_Digital Architect Studio specializes in digital spatial visualization.
                     Anamy Padilla is a Digital Architect/Consultant and is NOT a licensed structural architect.
-                </p>
-                <p class="lang-zh hidden">
+                </div>
+                <div class="lang-zh hidden">
                     免责声明：miu_Digital Architect Studio 专注于数字空间可视化。
                     Anamy Padilla 是数字建筑师/顾问，并非持牌结构建筑师。
-                </p>
+                </div>
+                <div class="lang-ar hidden">
+                    إخلاء المسؤولية: يتخصص miu_Digital Architect Studio في التصور المكاني الرقمي.
+                    أنامي باديلا هي مهندسة/مستشارة معمارية رقمية وليست مهندسة معمارية إنشائية مرخصة.
+                </div>
             </div>
         </section>
 
         <div class="mt-12 text-center">
-            <a href="project.html" class="inline-block border border-emerald-neon text-emerald-neon px-8 py-3 text-[10px] hover:bg-emerald-neon hover:text-black transition-all">VIEW_PORTFOLIO_v01</a>
+            <a href="project.html" class="inline-block border border-emerald-neon text-emerald-neon px-8 py-3 text-[10px] hover:bg-emerald-neon hover:text-black transition-all tracking-[0.3em] font-mono uppercase">
+                <span class="lang-en">VIEW_PORTFOLIO_v01</span>
+                <span class="lang-zh hidden">查看作品集_v01</span>
+                <span class="lang-ar hidden">عرض_المحفظة_v01</span>
+            </a>
         </div>
     </main>
 
-    <!-- UNIFIED FOOTER -->
-    <footer class="py-20 px-8 border-t border-white/5 text-center bg-black/50 backdrop-blur-sm">
-        <div class="max-w-4xl mx-auto space-y-4">
-            <p class="font-mono text-[10px] uppercase tracking-[0.4em] text-luxury-gold">
-                <span class="lang-en">ANAMY PADILLA</span><span class="lang-zh hidden">缪联睿</span> 
-                // 
-                <span class="lang-en">RIYADH_SYNC_V2030</span><span class="lang-zh hidden">利雅得同步_V2030</span>
-            </p> <p class="font-mono text-[6px] opacity-10 uppercase tracking-[0.3em] mb-2">
-                <span class="lang-en">Digital Visualization Only // Not Licensed Structural Engineering</span>
-                <span class="lang-zh hidden">仅限数字可视化 // 非持牌结构工程</span>
-            </p>
-            <p class="font-mono text-[8px] opacity-20 uppercase tracking-[0.4em]">
-                <span class="lang-en">© 2026 // Sync: Tally + n8n + NocoDB</span>
-                <span class="lang-zh hidden">© 2026 // 同步：Tally + n8n + NocoDB</span>
-                <br>
-                <span class="lang-en">miu_Digital Architect Studio</span>
-                <span class="lang-zh hidden">miu_数字建筑工作室</span>
-            </p>
-            <div class="flex justify-center gap-6 mt-8">
-                <a href="index.html" class="text-[8px] text-white/40 hover:text-emerald-neon transition-all">HOME</a>
-                <a href="project.html" class="text-[8px] text-white/40 hover:text-emerald-neon transition-all">PROJECTS</a>
-                <a href="about.html" class="text-[8px] text-white/40 hover:text-emerald-neon transition-all">ABOUT</a>
-                <a href="contact.html" class="text-[8px] text-white/40 hover:text-emerald-neon transition-all">CONTACT</a>
-                <a href="studio.html" class="text-[8px] text-white/40 hover:text-emerald-neon transition-all">STUDIO</a>
-                <a href="vault.html" class="text-[8px] text-white/40 hover:text-emerald-neon transition-all">VAULT</a>
-                <a href="blog/index.html" class="text-[8px] text-white/40 hover:text-emerald-neon transition-all">BLOG</a>
+    <footer class="py-20 px-8 border-t border-white/5 text-center bg-black">
+        <div class="max-w-6xl mx-auto space-y-8">
+            <nav class="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-12 uppercase font-mono text-[9px] tracking-[0.3em]">
+                <a href="index.html" class="text-white/40 hover:text-emerald-neon transition-all">
+                    <span class="lang-en">Home</span><span class="lang-zh hidden">首页</span><span class="lang-ar hidden">الرئيسية</span>
+                </a>
+                <a href="project.html" class="text-white/40 hover:text-emerald-neon transition-all">
+                    <span class="lang-en">Projects</span><span class="lang-zh hidden">项目</span><span class="lang-ar hidden">المشاريع</span>
+                </a>
+                <a href="studio.html" class="text-white/40 hover:text-emerald-neon transition-all">
+                    <span class="lang-en">Studio</span><span class="lang-zh hidden">工作室</span><span class="lang-ar hidden">الاستوديو</span>
+                </a>
+                <a href="about.html" class="text-white/40 hover:text-emerald-neon transition-all">
+                    <span class="lang-en">About</span><span class="lang-zh hidden">关于</span><span class="lang-ar hidden">حول</span>
+                </a>
+                <a href="vault.html" class="text-white/40 hover:text-emerald-neon transition-all">
+                    <span class="lang-en">Vault</span><span class="lang-zh hidden">保险库</span><span class="lang-ar hidden">القبو</span>
+                </a>
+                <a href="contact.html" class="text-white/40 hover:text-emerald-neon transition-all">
+                    <span class="lang-en">Contact</span><span class="lang-zh hidden">联系</span><span class="lang-ar hidden">اتصال</span>
+                </a>
+                <a href="blog/index.html" class="text-white/40 hover:text-emerald-neon transition-all">
+                    <span class="lang-en">Blog</span><span class="lang-zh hidden">博客</span><span class="lang-ar hidden">مدونة</span>
+                </a>
+            </nav>
+
+            <div class="space-y-4">
+                <p class="font-mono text-[10px] uppercase tracking-[0.4em] text-luxury-gold">ANAMY PADILLA // RIYADH_SYNC_V2030</p>
+                <p class="font-mono text-[7px] opacity-10 uppercase tracking-[0.3em]">
+                    <span class="lang-en">Digital Visualization Only // Not Licensed Structural Engineering</span>
+                    <span class="lang-zh hidden">仅限数字可视化 // 非持牌结构工程</span>
+                    <span class="lang-ar hidden">التصور الرقمي فقط // ليس هندسة إنشائية مرخصة</span>
+                </p>
+                <p class="font-mono text-[8px] opacity-20 uppercase tracking-[0.4em]">© 2026 // miu_Digital Architect Studio</p>
             </div>
         </div>
     </footer>
