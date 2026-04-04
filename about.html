@@ -3,12 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About | MIU_33 Digital Architect</title>
-   
+    
+    <!-- ✅ SORO SEO+ CORE META -->
+    <title>MIU_33 // ORIGIN_NODE // FOUNDER_33</title>
+    <meta name="description" content="MIU_33 MATRIX: System Architect with Clinical Foundation (BSN) + Economic Strategy (BSBA Finance). Cyber-brutalist architecture for Saudi Vision 2030." />
+    <meta name="keywords" content="cyber brutalist architecture, system architect, clinical design, financial strategy, Saudi Vision 2030, digital spatial IP" />
+    <meta name="theme-color" content="#00FF41" />
+    <meta name="author" content="MIU_33 MATRIX" />
+    
+    <!-- ✅ OPEN GRAPH -->
+    <meta property="og:title" content="MIU_33 // ORIGIN_NODE // SYSTEM ARCHITECT">
+    <meta property="og:description" content="Sovereign Architecture // Clinical Logic (BSN) // Financial Strategy (BSBA).">
+    <meta property="og:image" content="https://miu-digital-studio.pages.dev/images/og_image.jpg">
+    <meta property="og:url" content="https://miu-digital-studio.pages.dev/about.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="zh_CN" />
+    <meta property="og:locale:alternate" content="ar_SA" />
+    
+    <!-- ✅ TWITTER CARD -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="MIU_33 // ORIGIN_NODE // FOUNDER_33" />
+    <meta name="twitter:description" content="Clinical Foundation + Economic Strategy = Cyber-Brutalist Architecture" />
+    <meta name="twitter:image" content="https://miu-digital-studio.pages.dev/images/og_image.jpg" />
+    
+    <!-- ✅ TRILINGUAL HREFLANG -->
+    <link rel="canonical" href="https://miu-digital-studio.pages.dev/about.html" />
+    <link rel="alternate" hreflang="en" href="https://miu-digital-studio.pages.dev/en/about.html" />
+    <link rel="alternate" hreflang="zh" href="https://miu-digital-studio.pages.dev/zh/about.html" />
+    <link rel="alternate" hreflang="ar" href="https://miu-digital-studio.pages.dev/ar/about.html" />
+    
+    <!-- ✅ SCHEMA.ORG -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Founder_33 // MIU_33 MATRIX",
+      "alternateName": "System Architect",
+      "description": "Cyber-brutalist architect with Clinical Foundation (BSN) and Economic Strategy (BSBA Finance). Specializing in digital spatial IP for Saudi Vision 2030.",
+      "url": "https://miu-digital-studio.pages.dev/about.html",
+      "image": "https://miu-digital-studio.pages.dev/images/og_image.jpg",
+      "knowsAbout": ["Cyber Brutalist Architecture", "Clinical Design Logic", "Financial Strategy", "Digital Spatial IP", "Saudi Vision 2030"]
+    }
+    </script>
+    
+    <!-- ✅ FONT PRELOAD + LOAD --> <link rel="preload" href="https://fonts.googleapis.com/css2?family=Russo+One&family=Orbitron:wght@400;700;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Russo+One&family=Orbitron:wght@400;700;900&display=swap"></noscript>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
-
+    
+    <!-- ✅ PWA -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192.png" />
+    
+    <!-- ✅ TAILWIND CONFIG (Matches index.html) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -16,135 +66,161 @@
                 extend: {
                     colors: {
                         'luxury-gold': '#C9A46A',
-                        'emerald-neon': '#3CFF9B',
+                        'emerald-neon': '#00FF41', // ✅ FIXED: Pure Emerald
                         'concrete-950': '#080808'
                     },
                     fontFamily: {
-                        sans: ['Space Grotesk', 'sans-serif'],
-                        mono: ['Space Grotesk', 'monospace']
+                        header: ['Russo One', 'sans-serif'], // ✅ FIXED: Brand Font
+                        tech: ['Orbitron', 'monospace'] // ✅ FIXED: Brand Font
                     }
                 }
             }
         }
     </script>
-
+    
+    <!-- ✅ LIBRARIES -->
     <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
     <script src="https://unpkg.com/lucide@latest" defer></script>
+    <script src="https://tally.so/widgets/embed.js"></script>
+    
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body class="bg-concrete-950 text-white selection:bg-luxury-gold overflow-x-hidden">
 
-    <canvas id="matrix"></canvas>
-
-    <nav class="fixed top-0 w-full z-50 bg-concrete-950/90 border-b border-white/10 backdrop-blur-xl py-4 px-6 flex justify-between items-center">
+    <!-- ✅ GLOBAL ELEMENTS (Match index.html) -->
+    <canvas id="matrix" class="fixed inset-0 z-0 opacity-40 pointer-events-none"></canvas>
+    <div id="ballistic-overlay" class="fixed inset-0 pointer-events-none z-[60]"></div>
+    
+    <!-- ✅ HUD STATUS (Match index.html) -->
+    <div class="fixed bottom-6 left-6 z-50 font-tech text-[7px] uppercase tracking-[0.5em] text-emerald-neon/40 mix-blend-difference [writing-mode:vertical-rl] rotate-180 select-none">
+        Status: System_Override_Active // Clearance: Level_3 // Founder_33
+    </div>
+    <!-- ✅ NAVIGATION (Match index.html) -->
+    <nav aria-label="Main Navigation" class="fixed top-0 w-full z-50 bg-concrete-950/90 border-b border-white/10 backdrop-blur-xl py-4 px-6 flex justify-between items-center">
         <div class="flex flex-col gap-1">
-            <a href="index.html" class="font-bold italic text-xl uppercase tracking-tighter text-white">MIU_33</a>
-            <span class="font-mono text-[8px] text-white/40 uppercase tracking-widest">Anamy Padilla // 缪联睿</span>
+            <a href="index.html" class="font-header italic text-xl uppercase tracking-tighter text-white hover:text-emerald-neon transition-all" aria-label="MIU_33 Home">MIU_33</a>
+            <span class="font-tech text-[8px] text-white/40 uppercase tracking-widest">Founder_33 // 缪联睿</span>
         </div>
+       
         <div class="flex gap-4 items-center">
-            <button onclick="toggleLang()" class="text-[8px] border border-luxury-gold/30 px-2 py-1 text-luxury-gold uppercase font-mono hover:bg-luxury-gold hover:text-black transition-all">
+            <!-- Desktop Nav -->
+            <div class="hidden lg:flex gap-4 border-l border-white/10 pl-4 ml-2 uppercase font-tech text-[8px] tracking-widest">
+                <a href="index.html" class="hover:text-emerald-neon transition-all">Home</a>
+                <a href="about.html" class="hover:text-emerald-neon transition-all">About</a>
+                <a href="studio.html" class="hover:text-emerald-neon transition-all">Studio</a>
+                <a href="project.html" class="hover:text-emerald-neon transition-all">Projects</a>
+                <a href="vault.html" class="hover:text-emerald-neon transition-all text-luxury-gold">Vault_🔐</a>
+                <a href="shop.html" class="hover:text-emerald-neon transition-all">Shop</a>
+                <a href="blog.html" class="hover:text-emerald-neon transition-all">Blog</a>
+                <a href="contact.html" class="hover:text-emerald-neon transition-all">Contact</a>
+            </div>
+            
+            <!-- Language Toggle -->
+            <button onclick="toggleLang()" aria-label="Switch language: English, Chinese, Arabic" class="text-[8px] border border-luxury-gold/30 px-2 py-1 text-luxury-gold uppercase font-tech hover:bg-luxury-gold hover:text-black transition-all">
                 EN / 中 / AR
             </button>
         </div>
     </nav>
 
-    <main class="pt-32 pb-20 px-8 max-w-4xl mx-auto">
+    <!-- ✅ ABOUT CONTENT (Your Origin Story - PRESERVED + ENHANCED) -->
+    <main class="pt-32 pb-20 px-8 max-w-4xl mx-auto" aria-label="About: Founder Origin Story">
         <header class="text-center mb-16">
-            <h1 class="text-5xl md:text-7xl font-bold italic gold-glow uppercase tracking-tighter mb-4 text-white">
-                <span class="lang-en">The Architect</span>
-                <span class="lang-zh hidden">建筑师</span>
-                <span class="lang-ar hidden">المهندس المعماري</span>
+            <h1 class="font-header text-5xl md:text-7xl italic gold-glow uppercase tracking-tighter mb-4 text-white">
+                <span class="lang-en">Origin_Node</span>
+                <span class="lang-zh hidden">起点节点</span>
+                <span class="lang-ar hidden">عقدة الأصل</span>
             </h1>
-            <p class="font-mono text-emerald-neon text-[10px] tracking-[0.4em] uppercase">Anamy Padilla // 缪联睿</p>
+            <p class="font-tech text-emerald-neon text-[10px] tracking-[0.4em] uppercase">Founder_33 // IP Registry 033</p>
         </header>
 
-        <section class="monolith p-10 space-y-12 font-mono text-xs leading-relaxed uppercase tracking-wider bg-black/40 backdrop-blur-md border border-white/5">
-            
+        <section class="monolith p-10 space-y-12 font-tech text-[10px] leading-relaxed uppercase tracking-wider bg-concrete-950/80 backdrop-blur-md border border-white/5 rounded-lg">
+           
+            <!-- Clinical Foundation -->
             <div class="border-l-2 border-emerald-neon pl-6">
-                <h3 class="text-white mb-4 font-bold tracking-[0.2em]">
-                    <span class="lang-en">Clinical Foundation (BSN)</span>
-                    <span class="lang-zh hidden">临床基础 (BSN)</span>
-                    <span class="lang-ar hidden">المؤسسة السريرية (BSN)</span>
+                <h3 class="font-header text-white mb-4 font-bold tracking-[0.2em]">
+                    <span class="lang-en">Clinical_Foundation // BSN</span>
+                    <span class="lang-zh hidden">临床基础 // BSN</span>
+                    <span class="lang-ar hidden">المؤسسة السريرية // BSN</span>
                 </h3>
-                <p class="opacity-60 lang-en">Applying medical-grade ergonomics and human-flow logic to digital spatial engineering.</p>
-                <p class="opacity-60 lang-zh hidden">将医疗级人体工程学和人流逻辑应用于数字空间工程。</p>
-                <p class="opacity-60 lang-ar hidden">تطبيق بيئة العمل من الدرجة الطبية ومنطق التدفق البشري على الهندسة المكانية الرقمية.</p>
-            </div>
+                <p class="opacity-60 lang-en">Executing medical-grade ergonomics and human-flow logic. Bridging the gap between biological safety and spatial luxury.</p>
+                <p class="opacity-60 lang-zh hidden">执行医疗级人体工程学和人流逻辑。弥合生物安全与空间豪华之间的差距。</p>
+                <p class="opacity-60 lang-ar hidden">تنفيذ بيئة العمل من الدرجة الطبية ومنطق التدفق البشري. سد الفجوة بين السلامة البيولوجية والرفاهية المكانية.</p> </div>
 
+            <!-- Economic Strategy -->
             <div class="border-l-2 border-luxury-gold pl-6">
-                <h3 class="text-white mb-4 font-bold tracking-[0.2em]">
-                    <span class="lang-en">Economic Strategy (BSBA)</span>
-                    <span class="lang-zh hidden">经济战略 (BSBA)</span>
-                    <span class="lang-ar hidden">الاستراتيجية الاقتصادية (BSBA)</span>
+                <h3 class="font-header text-white mb-4 font-bold tracking-[0.2em]">
+                    <span class="lang-en">Economic_Strategy // BSBA Finance</span>
+                    <span class="lang-zh hidden">经济战略 // BSBA 金融</span>
+                    <span class="lang-ar hidden">الاستراتيجية الاقتصادية // BSBA تمويل</span>
                 </h3>
-                <p class="opacity-60 lang-en">Fusing finance-major ROI analysis with high-valuation architectural assets for Saudi Vision 2030.</p>
-                <p class="opacity-60 lang-zh hidden">将财务专业的投资回报率分析与沙特 2030 愿景的高价值建筑资产相结合。</p>
-                <p class="opacity-60 lang-ar hidden">دمج تحليل العائد على الاستثمار المتخصص في التمويل مع الأصول المعمارية عالية القيمة لرؤية السعودية 2030.</p>
+                <p class="opacity-60 lang-en">Analyzing ROI for architectural assets. Aligning digital spatial visualizations with Saudi Vision 2030 financial frameworks.</p>
+                <p class="opacity-60 lang-zh hidden">分析建筑资产的投资回报率。将数字空间可视化与沙特 2030 愿景财务框架对齐。</p>
+                <p class="opacity-60 lang-ar hidden">تحليل العائد على الاستثمار للأصول المعمارية. مواءمة التصورات المكانية الرقمية مع الأطر المالية لرؤية السعودية 2030.</p>
             </div>
 
-            <div class="mt-12 pt-8 border-t border-white/5 opacity-30 italic text-[9px] leading-relaxed lowercase">
+            <!-- Disclaimer -->
+            <div class="mt-12 pt-8 border-t border-white/5 opacity-30 italic text-[9px] leading-relaxed lowercase font-tech">
                 <div class="lang-en">
-                    Disclaimer: miu_Digital Architect Studio specializes in digital spatial visualization.
-                    Anamy Padilla is a Digital Architect/Consultant and is NOT a licensed structural architect.
+                    System_Notice: miu_33 specializes in digital spatial IP. 
+                    Not a licensed structural engineering firm.
                 </div>
                 <div class="lang-zh hidden">
-                    免责声明：miu_Digital Architect Studio 专注于数字空间可视化。
-                    Anamy Padilla 是数字建筑师/顾问，并非持牌结构建筑师。
+                    系统通知：miu_33 专注于数字空间知识产权。
+                    非持牌结构工程公司。
                 </div>
                 <div class="lang-ar hidden">
-                    إخلاء المسؤولية: يتخصص miu_Digital Architect Studio في التصور المكاني الرقمي.
-                    أنامي باديلا هي مهندسة/مستشارة معمارية رقمية وليست مهندسة معمارية إنشائية مرخصة.
+                    إشعار النظام: تتخصص miu_33 في الملكية الفكرية المكانية الرقمية.
+                    ليست شركة هندسة إنشائية مرخصة.
                 </div>
             </div>
         </section>
 
+        <!-- CTA -->
         <div class="mt-12 text-center">
-            <a href="project.html" class="inline-block border border-emerald-neon text-emerald-neon px-8 py-3 text-[10px] hover:bg-emerald-neon hover:text-black transition-all tracking-[0.3em] font-mono uppercase">
-                <span class="lang-en">VIEW_PORTFOLIO_v01</span>
-                <span class="lang-zh hidden">查看作品集_v01</span>
-                <span class="lang-ar hidden">عرض_المحفظة_v01</span>
+            <a href="project.html" 
+               class="inline-block font-tech text-[10px] tracking-[0.3em] text-emerald-neon border border-emerald-neon px-8 py-3 hover:bg-emerald-neon hover:text-concrete-950 transition-all uppercase cursor-pointer"
+               aria-label="Access deployments: View project armory">
+                <span class="lang-en">Access_Deployments →</span>
+                <span class="lang-zh hidden">访问部署 →</span>
+                <span class="lang-ar hidden">الوصول إلى عمليات النشر →</span>
             </a>
         </div>
     </main>
 
-    <footer class="py-20 px-8 border-t border-white/5 text-center bg-black">
+    <!-- ✅ FOOTER (Match index.html EXACTLY) -->
+    <footer class="py-20 px-8 border-t border-white/5 text-center bg-black" role="contentinfo">
         <div class="max-w-6xl mx-auto space-y-8">
-            <nav class="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-12 uppercase font-mono text-[9px] tracking-[0.3em]">
-                <a href="index.html" class="text-white/40 hover:text-emerald-neon transition-all">
-                    <span class="lang-en">Home</span><span class="lang-zh hidden">首页</span><span class="lang-ar hidden">الرئيسية</span>
-                </a>
-                <a href="project.html" class="text-white/40 hover:text-emerald-neon transition-all">
-                    <span class="lang-en">Projects</span><span class="lang-zh hidden">项目</span><span class="lang-ar hidden">المشاريع</span>
-                </a>
-                <a href="studio.html" class="text-white/40 hover:text-emerald-neon transition-all">
-                    <span class="lang-en">Studio</span><span class="lang-zh hidden">工作室</span><span class="lang-ar hidden">الاستوديو</span>
-                </a>
-                <a href="about.html" class="text-white/40 hover:text-emerald-neon transition-all">
-                    <span class="lang-en">About</span><span class="lang-zh hidden">关于</span><span class="lang-ar hidden">حول</span>
-                </a>
-                <a href="vault.html" class="text-white/40 hover:text-emerald-neon transition-all">
-                    <span class="lang-en">Vault</span><span class="lang-zh hidden">保险库</span><span class="lang-ar hidden">القبو</span>
-                </a>
-                <a href="contact.html" class="text-white/40 hover:text-emerald-neon transition-all">
-                    <span class="lang-en">Contact</span><span class="lang-zh hidden">联系</span><span class="lang-ar hidden">اتصال</span>
-                </a>
-                <a href="blog/index.html" class="text-white/40 hover:text-emerald-neon transition-all">
-                    <span class="lang-en">Blog</span><span class="lang-zh hidden">博客</span><span class="lang-ar hidden">مدونة</span>
-                </a>
-            </nav>
-
-            <div class="space-y-4">
-                <p class="font-mono text-[10px] uppercase tracking-[0.4em] text-luxury-gold">ANAMY PADILLA // RIYADH_SYNC_V2030</p>
-                <p class="font-mono text-[7px] opacity-10 uppercase tracking-[0.3em]">
-                    <span class="lang-en">Digital Visualization Only // Not Licensed Structural Engineering</span>
-                    <span class="lang-zh hidden">仅限数字可视化 // 非持牌结构工程</span>
-                    <span class="lang-ar hidden">التصور الرقمي فقط // ليس هندسة إنشائية مرخصة</span>
-                </p>
-                <p class="font-mono text-[8px] opacity-20 uppercase tracking-[0.4em]">© 2026 // miu_Digital Architect Studio</p>
+            <p class="font-tech text-[10px] uppercase tracking-[0.4em] text-luxury-gold">
+                FOUNDER_33 // RIYADH_SYNC_V2030
+            </p>
+                        <!-- Trilingual Manifesto -->
+            <div class="font-tech text-[8px] uppercase tracking-[0.3em] space-y-1">
+                <p class="text-emerald-neon/80">YOU_CAN'T_BLOCK_THE_ARCHITECT</p>
+                <p class="text-emerald-neon/60">你无法阻挡架构师</p>
+                <p class="text-emerald-neon/60">لا_يمكنك_منع_المهندس</p>
             </div>
+            
+            <!-- Legal -->
+            <p class="font-tech text-[8px] opacity-20 uppercase tracking-[0.4em]">
+                © 2026 // MIU_33 MATRIX // ALL_IP_PROTECTED
+            </p>
         </div>
     </footer>
 
+    <!-- ✅ SERVICE WORKER REGISTRATION (Match index.html) -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(reg => console.log('💚 SW_REGISTERED // CACHED_REALITY'))
+                    .catch(err => console.log('⚠️ SW_FAILED // CONNECTION_LOST'));
+            });
+        }
+    </script>
+
+    <!-- ✅ CORE LOGIC -->
     <script src="vault.LEGACY.js"></script>
+    
 </body>
 </html>

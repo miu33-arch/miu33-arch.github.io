@@ -3,18 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MIU_33 | Digital Architect Studio</title>
     
-    <meta property="og:title" content="MIU_33 | Digital Architect Studio">
-    <meta property="og:description" content="BSN. BSBA. Digital Architecture. Bridging clinical flow and financial logic.">
+    <!-- ✅ SORO SEO+ CORE META -->
+    <title>MIU_33 // SYSTEM ARCHITECT // YOU CAN'T BLOCK THE ARCHITECT</title>
+    <meta name="description" content="MIU_33 MATRIX: Cyber-brutalist architectural experiences. Concrete transforms into mechanical phoenix. Limited edition system architecture." />
+    <meta name="keywords" content="cyber brutalist architecture, phoenix transformation, WebGL architecture, Riyadh architect, cinematic renders, system architecture" />
+    <meta name="theme-color" content="#00FF41" />
+    <meta name="author" content="MIU_33 MATRIX" />
+    
+    <!-- ✅ OPEN GRAPH (Social Sharing) -->
+    <meta property="og:title" content="MIU_33 // SYSTEM ARCHITECT MATRIX">
+    <meta property="og:description" content="System Architecture // Cinematic Reality Overrides // Level 3 Clearance Required.">
     <meta property="og:image" content="https://miu-digital-studio.pages.dev/images/og_image.jpg">
     <meta property="og:url" content="https://miu-digital-studio.pages.dev">
     <meta property="og:type" content="website">
-
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="zh_CN" />
+    <meta property="og:locale:alternate" content="ar_SA" />
+    
+    <!-- ✅ TWITTER CARD -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="MIU_33 // PHOENIX PROTOCOL" />
+    <meta name="twitter:description" content="You can't block an architect who knows how to glitch the matrix" />
+    <meta name="twitter:image" content="https://miu-digital-studio.pages.dev/images/og_image.jpg" />
+    
+    <!-- ✅ TRILINGUAL HREFLANG -->
+    <link rel="canonical" href="https://miu-digital-studio.pages.dev/" />
+    <link rel="alternate" hreflang="en" href="https://miu-digital-studio.pages.dev/en" />
+    <link rel="alternate" hreflang="zh" href="https://miu-digital-studio.pages.dev/zh" />
+    <link rel="alternate" hreflang="ar" href="https://miu-digital-studio.pages.dev/ar" />
+    
+    <!-- ✅ SCHEMA.ORG (Rich Snippets) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "MIU_33 MATRIX",
+      "alternateName": "System Architect",
+      "description": "Cinematic architectural experiences. Phoenix transformation sequences. Limited edition system architecture.",
+      "url": "https://miu-digital-studio.pages.dev",
+      "image": "https://miu-digital-studio.pages.dev/images/og_image.jpg",
+      "priceRange": "$$$$",
+      "areaServed": ["Saudi Arabia", "UAE", "Qatar", "Global"],
+      "knowsAbout": ["Cyber Brutalist Architecture", "WebGL Experiences", "System Architecture"]
+    }
+    </script>    
+    <!-- ✅ FONT PRELOAD + LOAD (Russo One + Orbitron) -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Russo+One&family=Orbitron:wght@400;700;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Russo+One&family=Orbitron:wght@400;700;900&display=swap"></noscript>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
-
+    
+    <!-- ✅ PWA (Installable App) -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192.png" />
+    
+    <!-- ✅ TAILWIND CONFIG (Dev CDN) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -22,197 +68,137 @@
                 extend: {
                     colors: {
                         'luxury-gold': '#C9A46A',
-                        'emerald-neon': '#3CFF9B',
+                        'emerald-neon': '#00FF41', // ✅ FIXED: Pure Emerald
                         'concrete-950': '#080808'
                     },
                     fontFamily: {
-                        sans: ['Space Grotesk', 'sans-serif'],
-                        mono: ['Space Grotesk', 'monospace']
+                        header: ['Russo One', 'sans-serif'], // ✅ FIXED: Brand Font
+                        tech: ['Orbitron', 'monospace'] // ✅ FIXED: Brand Font
                     }
                 }
             }
         }
     </script>
-
+    
+    <!-- ✅ LIBRARIES -->
     <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
     <script src="https://unpkg.com/lucide@latest" defer></script>
     <script src="https://tally.so/widgets/embed.js"></script>
+    
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="bg-concrete-950 text-white selection:bg-luxury-gold overflow-x-hidden">
 
-    <canvas id="matrix"></canvas>
+    <!-- ✅ MATRIX CANVAS -->
+    <canvas id="matrix" class="fixed inset-0 z-0 opacity-40 pointer-events-none"></canvas>
 
-    <nav class="fixed top-0 w-full z-50 bg-concrete-950/90 border-b border-white/10 backdrop-blur-xl py-4 px-6 flex justify-between items-center">
+    <!-- ✅ BALLISTIC OVERLAY -->
+    <div id="ballistic-overlay" class="fixed inset-0 pointer-events-none z-[60]"></div>
+
+    <!-- ✅ HUD STATUS --> <div class="fixed bottom-6 left-6 z-50 font-tech text-[7px] uppercase tracking-[0.5em] text-emerald-neon/40 mix-blend-difference [writing-mode:vertical-rl] rotate-180 select-none">
+        Status: System_Override_Active // Clearance: Level_3 // Founder_33
+    </div>
+
+    <!-- ✅ NAVIGATION -->
+    <nav aria-label="Main Navigation" class="fixed top-0 w-full z-50 bg-concrete-950/90 border-b border-white/10 backdrop-blur-xl py-4 px-6 flex justify-between items-center">
         <div class="flex flex-col gap-1">
-            <a href="index.html" class="font-bold italic text-xl uppercase tracking-tighter text-white">MIU_33</a>
-            <span class="font-mono text-[8px] text-white/40 uppercase tracking-widest">Anamy Padilla // 缪联睿</span>
+            <a href="index.html" class="font-header italic text-xl uppercase tracking-tighter text-white hover:text-emerald-neon transition-all" aria-label="MIU_33 Home">MIU_33</a>
+            <span class="font-tech text-[8px] text-white/40 uppercase tracking-widest">Founder_33 // 缪联睿</span>
         </div>
-        
+       
         <div class="flex gap-4 items-center">
-            <div class="hidden md:flex gap-3 border-l border-white/10 pl-4 ml-2 uppercase font-mono text-[8px] tracking-widest">
-                <a href="about.html" class="hover:text-emerald-neon transition-all">
-                    <span class="lang-en">About</span><span class="lang-zh hidden">关于</span><span class="lang-ar hidden">حول</span>
-                </a>
-                <a href="project.html" class="hover:text-emerald-neon transition-all">
-                    <span class="lang-en">Projects</span><span class="lang-zh hidden">项目</span><span class="lang-ar hidden">المشاريع</span>
-                </a>
-                <a href="blog/index.html" class="hover:text-emerald-neon transition-all">
-                    <span class="lang-en">Blog</span><span class="lang-zh hidden">博客</span><span class="lang-ar hidden">مدونة</span>
-                </a>
+            <!-- Desktop Nav -->
+            <div class="hidden lg:flex gap-4 border-l border-white/10 pl-4 ml-2 uppercase font-tech text-[8px] tracking-widest">
+                <a href="index.html" class="hover:text-emerald-neon transition-all">Home</a>
+                <a href="about.html" class="hover:text-emerald-neon transition-all">About</a>
+                <a href="studio.html" class="hover:text-emerald-neon transition-all">Studio</a>
+                <a href="project.html" class="hover:text-emerald-neon transition-all">Projects</a>
+                <a href="vault.html" class="hover:text-emerald-neon transition-all text-luxury-gold">Vault_🔐</a>
+                <a href="shop.html" class="hover:text-emerald-neon transition-all">Shop</a>
+                <a href="blog.html" class="hover:text-emerald-neon transition-all">Blog</a>
+                <a href="contact.html" class="hover:text-emerald-neon transition-all">Contact</a>
             </div>
-            <button onclick="toggleLang()" class="text-[8px] border border-luxury-gold/30 px-2 py-1 text-luxury-gold uppercase font-mono hover:bg-luxury-gold hover:text-black transition-all">
+            
+            <!-- Language Toggle -->
+            <button onclick="toggleLang()" aria-label="Switch language: English, Chinese, Arabic" class="text-[8px] border border-luxury-gold/30 px-2 py-1 text-luxury-gold uppercase font-tech hover:bg-luxury-gold hover:text-black transition-all">
                 EN / 中 / AR
             </button>
         </div>
     </nav>
 
-    <section class="h-screen flex flex-col justify-center items-center text-center relative px-4 overflow-hidden">
-        <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-30 z-0">
-            <source src="videos/spatial_logic_hero.mp4" type="video/mp4">
-        </video>
-        <div class="absolute inset-0 bg-black/40 z-20 pointer-events-none"></div>
+    <!-- ✅ HERO SECTION -->
+    <section class="h-screen flex flex-col justify-center items-center text-center relative px-4 overflow-hidden" aria-label="Hero: System Matrix Introduction">
         
-        <div class="z-30 relative">
-            <h1 class="text-7xl md:text-9xl font-bold italic uppercase tracking-tighter mb-2 text-white">
-                <span class="lang-en">Spatial Logic</span>
-                <span class="lang-zh hidden">空间逻辑</span>
-                <span class="lang-ar hidden">المنطق المكاني</span>
+        <!-- Optimized Video -->
+        <video 
+          autoplay 
+          muted 
+          loop 
+          playsinline 
+          preload="metadata"
+          poster="/images/hero-poster.avif"
+          class="absolute inset-0 w-full h-full object-cover opacity-30 z-0"
+          aria-label="Cinematic background: abstract spatial logic animation"
+        >
+          <source src="videos/spatial_logic_hero.webm" type="video/webm">
+          <source src="videos/spatial_logic_hero.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+                <!-- Overlay -->
+        <div class="absolute inset-0 bg-black/40 z-20 pointer-events-none" aria-hidden="true"></div>
+       
+        <!-- Content -->
+        <div class="z-30 relative max-w-4xl">
+            <h1 class="font-header text-7xl md:text-9xl italic uppercase tracking-tighter mb-2 text-white animate-phoenix-pulse">
+                System_Matrix
             </h1>
-            <p class="font-mono text-emerald-neon text-[10px] tracking-[0.5em] uppercase opacity-70 mb-12">
-                <span class="lang-en">Digital Architect // Riyadh Sync</span>
-                <span class="lang-zh hidden">数字建筑师 // 利雅得同步</span>
-                <span class="lang-ar hidden">مهندس معماري رقمي // مزامنة الرياض</span>
+            <p class="font-tech text-emerald-neon text-[10px] tracking-[0.5em] uppercase opacity-70 mb-12">
+                System Architect // Cinematic Reality Overrides
             </p>
-            
-            <button data-tally-open="gDLdXN" class="font-mono text-[9px] tracking-[0.3em] text-white/30 hover:text-emerald-neon border-b border-white/10 hover:border-emerald-neon pb-1 transition-all uppercase">
-                <span class="lang-en">Initialize_Handshake →</span>
-                <span class="lang-zh hidden">初始化握手 →</span>
-                <span class="lang-ar hidden">بدء المصافحة →</span>
+           
+            <!-- CTA -->
+            <button data-tally-open="gDLdXN" 
+                    class="font-tech text-[9px] tracking-[0.3em] text-white/30 hover:text-emerald-neon border-b border-white/10 hover:border-emerald-neon pb-1 transition-all uppercase cursor-pointer"
+                    aria-label="Initialize handshake: Start collaboration inquiry">
+                Initialize_Handshake →
             </button>
         </div>
     </section>
 
-    <section id="mansion-reveal" class="py-24 bg-black border-y border-white/5">
-        <div class="container mx-auto px-6">
-            <div class="mb-16">
-                <h2 class="text-white text-[11vw] md:text-7xl font-light italic tracking-tighter leading-none">
-                    <span class="lang-en">Restricted_Chamber</span>
-                    <span class="lang-zh hidden">受限商会</span>
-                    <span class="lang-ar hidden">الغرفة المقيدة</span>
-                </h2>
-                <p class="text-emerald-500 font-mono text-[9px] tracking-[0.6em] uppercase mt-4">
-                    <span class="lang-en">// System_Status: 100%_Declassified // Auth: Founder_33</span>
-                    <span class="lang-zh hidden">// 系统状态：100% 已解密 // 授权：创始人 33</span>
-                    <span class="lang-ar hidden">// حالة النظام: 100% تم رفع السرية // التفويض: مؤسس 33</span>
-                </p>
-            </div>
-
-            <div id="restricted-scroll" class="flex overflow-x-auto snap-x snap-mandatory no-scrollbar gap-2 py-4 px-2">
-                <div class="snap-center shrink-0 w-[85vw] md:w-[45vw] aspect-video relative overflow-hidden bg-zinc-900 border border-white/10">
-                    <img src="images/int_vault_01.jpg" class="w-full h-full object-cover">
-                    <div class="absolute bottom-4 left-4 font-mono text-[8px] text-emerald-500 uppercase tracking-widest">[INT_VAULT_01]</div>
-                </div>
-                <div class="snap-center shrink-0 w-[85vw] md:w-[45vw] aspect-video relative overflow-hidden bg-zinc-950 border border-emerald-500/20 group">
-                    <video id="mansion-vid" autoplay muted loop playsinline class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity">
-                        <source src="videos/ext_reveal_033.mp4" type="video/mp4">
-                    </video>
-                    <div class="absolute top-4 left-4 font-mono text-[7px] text-emerald-500 animate-pulse uppercase tracking-widest">● LIVE_FEED_033</div>
-                </div>
-                </div>
-        </div>
-    </section>
-
-    <section class="py-24 px-8 bg-black">
-        <div class="max-w-6xl mx-auto text-center">
-            <h2 class="text-luxury-gold font-mono text-[10px] tracking-[0.5em] uppercase mb-12">
-                <span class="lang-en">[OLFACTORY_INTEGRATION]</span>
-                <span class="lang-zh hidden">[嗅觉整合]</span>
-                <span class="lang-ar hidden">[التكامل الشمي]</span>
-            </h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-1 bg-white/5 p-1 border border-white/10">
-                <div class="aspect-square relative overflow-hidden group">
-                    <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-all duration-1000">
-                        <source src="videos/aurelia_paris.mp4" type="video/mp4">
-                    </video>
-                    <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-                        <span class="font-serif italic text-2xl text-white mix-blend-difference uppercase tracking-tighter">Aurelia Paris</span>
-                    </div>
-                </div>
-                <div class="aspect-square relative overflow-hidden group">
-                    <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-all duration-1000">
-                        <source src="videos/armani_prive.mp4" type="video/mp4">
-                    </video>
-                    <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-                        <span class="font-serif italic text-2xl text-white mix-blend-difference uppercase tracking-tighter">Armani Privé</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mt-12 space-y-4">
-                <div class="lang-en">
-                    <p class="text-white text-xl md:text-2xl font-light italic">"Every structure has a scent. Every scent has a soul."</p>
-                    <p class="font-mono text-[8px] text-emerald-neon uppercase tracking-[0.4em] mt-2">Engineering the atmosphere of the Vanguard Villa V1.0</p>
-                </div>
-                <div class="lang-zh hidden">
-                    <p class="text-white text-xl md:text-2xl font-light italic">"每一个建筑都有灵魂，每一缕香气都有生命。"</p>
-                    <p class="font-mono text-[8px] text-emerald-neon uppercase tracking-[0.4em] mt-2">正在构建 Vanguard Villa V1.0 的空间氛围</p>
-                </div>
-                <div class="lang-ar hidden">
-                    <p class="text-white text-xl md:text-2xl font-light italic">"لكل منشأة روح، ولكل عطر جوهر."</p>
-                    <p class="font-mono text-[8px] text-emerald-neon uppercase tracking-[0.4em] mt-2">هندسة أجواء فانجارد فيلا النسخة 1.0</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="flex flex-col items-center justify-center pt-32 pb-16 bg-zinc-950 border-t border-white/5">
-        <div id="mansion-portal" class="relative group cursor-pointer w-72 h-44 bg-black border border-white/10 p-6 backdrop-blur-2xl rounded-sm transition-all duration-700 hover:border-emerald-500/50 mb-12 text-center">
-            <div class="absolute inset-x-0 top-0 h-[1px] bg-emerald-500/40 shadow-[0_0_15px_#10B981] animate-pulse"></div>
-            <h4 class="text-white font-light text-sm tracking-widest mb-1 uppercase">
-                <span class="lang-en">Founder’s Wing</span>
-                <span class="lang-zh hidden">创始人翼</span>
-                <span class="lang-ar hidden">جناح المؤسس</span>
-            </h4>
-            <p class="text-[8px] text-white/30 font-mono uppercase tracking-tighter">Access: Restricted Mansion Chamber</p>
-        </div>
-    </div>
-
-    <footer class="py-20 px-8 border-t border-white/5 text-center bg-black">
+    <!-- ✅ FOOTER -->
+    <footer class="py-20 px-8 border-t border-white/5 text-center bg-black" role="contentinfo">
         <div class="max-w-6xl mx-auto space-y-8">
-            <nav class="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-12 uppercase font-mono text-[9px] tracking-[0.3em]">
-                <a href="index.html" class="text-white/40 hover:text-emerald-neon transition-all">
-                    <span class="lang-en">Home</span><span class="lang-zh hidden">首页</span><span class="lang-ar hidden">الرئيسية</span>
-                </a>
-                <a href="project.html" class="text-white/40 hover:text-emerald-neon transition-all">
-                    <span class="lang-en">Projects</span><span class="lang-zh hidden">项目</span><span class="lang-ar hidden">المشاريع</span>
-                </a>
-                <a href="studio.html" class="text-white/40 hover:text-emerald-neon transition-all">
-                    <span class="lang-en">Studio</span><span class="lang-zh hidden">工作室</span><span class="lang-ar hidden">الاستوديو</span>
-                </a>
-                <a href="about.html" class="text-white/40 hover:text-emerald-neon transition-all">
-                    <span class="lang-en">About</span><span class="lang-zh hidden">关于</span><span class="lang-ar hidden">حول</span>
-                </a>
-                <a href="vault.html" class="text-white/40 hover:text-emerald-neon transition-all">
-                    <span class="lang-en">Vault</span><span class="lang-zh hidden">保险库</span><span class="lang-ar hidden">القبو</span>
-                </a>
-                <a href="contact.html" class="text-white/40 hover:text-emerald-neon transition-all">
-                    <span class="lang-en">Contact</span><span class="lang-zh hidden">联系</span><span class="lang-ar hidden">اتصال</span>
-                </a>
-                <a href="blog/index.html" class="text-white/40 hover:text-emerald-neon transition-all">
-                    <span class="lang-en">Blog</span><span class="lang-zh hidden">博客</span><span class="lang-ar hidden">مدونة</span>
-                </a>
-            </nav>
-
-            <div class="space-y-4">
-                <p class="font-mono text-[10px] uppercase tracking-[0.4em] text-luxury-gold">ANAMY PADILLA // RIYADH_SYNC_V2030</p>
-                <p class="font-mono text-[8px] opacity-20 uppercase tracking-[0.4em]">© 2026 // miu_Digital Architect Studio</p>
+            <p class="font-tech text-[10px] uppercase tracking-[0.4em] text-luxury-gold">
+                FOUNDER_33 // RIYADH_SYNC_V2030
+            </p>
+            
+            <!-- Trilingual Manifesto -->
+            <div class="font-tech text-[8px] uppercase tracking-[0.3em] space-y-1">
+                <p class="text-emerald-neon/80">YOU_CAN'T_BLOCK_THE_ARCHITECT</p>
+                <p class="text-emerald-neon/60">你无法阻挡架构师</p>
+                <p class="text-emerald-neon/60">لا_يمكنك_منع_المهندس</p>
             </div>
+            
+            <!-- Legal -->
+            <p class="font-tech text-[8px] opacity-20 uppercase tracking-[0.4em]">
+                © 2026 // MIU_33 MATRIX // ALL_IP_PROTECTED
+            </p>
         </div>
     </footer>
 
+    <!-- ✅ SERVICE WORKER REGISTRATION (Offline-First) -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(reg => console.log('💚 SW_REGISTERED // CACHED_REALITY'))
+                    .catch(err => console.log('⚠️ SW_FAILED // CONNECTION_LOST'));
+            }); }
+    </script>
+
+    <!-- ✅ CORE LOGIC -->
     <script src="vault.LEGACY.js"></script>
+    
 </body>
 </html>
