@@ -1,127 +1,73 @@
-// sw.js - MIU_33 MATRIX // V1.0 LOCKED
-// Service Worker: Offline-First Caching Strategy
 
-const CACHE_NAME = 'miu33_matrix_v1';
+// sw.js - MIU_33 MATRIX // V1.3 MASTER // FINAL LOCK
+// AUTHOR: Miu Lián Ruì // PROJECT: OMISSION
+const CACHE_NAME = 'miu33_matrix_v1_locked';
+
 const CORE_ASSETS = [
   '/',
   '/index.html',
-  '/about.html',
-  '/project.html',
-  '/contact.html',
   '/style.css',
-  '/vault.LEGACY.js',
-  '/manifest.json',
-  '/images/hero-poster.avif',
-  '/images/og_image.jpg',
-  '/videos/spatial_logic_hero.mp4',
-  'https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.42/bundled/lenis.min.js',
-  'https://unpkg.com/lucide@latest',
-  'https://tally.so/widgets/embed.js',
-  'https://fonts.googleapis.com/css2?family=Russo+One&family=Orbitron:wght@400;700;900&display=swap',
+  '/main.js',
+  '/images/MIU_DATA_VILLA_BLUEPRINT.jpg',
+  '/images/MIU_EXPERIMENT_LOG_PHOENIX.jpg',
+  '/images/MIU_COMMAND_POSTER_V2.jpg',
+  '/images/MIU_HUD_INTERFACE_ALFA.jpg',
+  '/videos/MIU_HERO_SYSTEM_BYPASS_V1.mp4',
+  '/videos/MODULE_01_CHRONOS_PRECISION.mp4',
+  '/videos/MODULE_02_VELOCITY_CARBON.mp4',
+  '/videos/MODULE_03_ARMANI_PRIVE_SYNC.mp4',
+  '/videos/MODULE_04_AURELIA_SENSORY.mp4'
 ];
 
-// ✅ INSTALL: Cache critical assets
+// 1. INSTALL: Resilient caching of the Carbon ecosystem
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      console.log('💚 SW: Caching core assets...');
-      return cache.addAll(CORE_ASSETS).catch((err) => {
-        console.log('⚠️ SW: Some assets failed to cache (non-critical):', err);
-      });
+      console.log('⚡ SW: IGNITING_VAULT_CACHE');
+      // allSettled prevents one missing video from breaking the entire installation
+      return Promise.allSettled(
+        CORE_ASSETS.map(url => cache.add(url))
+      );
     }).then(() => self.skipWaiting())
   );
 });
 
-// ✅ ACTIVATE: Clean old caches
+// 2. ACTIVATE: Omission of old system fragments
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys().then((names) => {
+    caches.keys().then((cacheNames) => {
       return Promise.all(
-        names.filter((name) => name !== CACHE_NAME).map((name) => {
-          console.log('🗑️ SW: Deleting old cache:', name);
-          return caches.delete(name);
+        cacheNames.map((cache) => {
+          if (cache !== CACHE_NAME) {
+            console.log('🗑️ SW: OMITTING_OLD_SYSTEM_CACHE:', cache);
+            return caches.delete(cache);
+          }
         })
       );
     }).then(() => self.clients.claim())
   );
 });
 
-// ✅ FETCH: Network-first with cache fallback (best for dynamic content)
-self.addEventListener('fetch', (event) => { const { request } = event;
-  const url = new URL(request.url);
+// 3. FETCH: Velocity-First Strategy
+self.addEventListener('fetch', (event) => {
+  const url = new URL(event.request.url);
 
-  // Skip non-GET requests
-  if (request.method !== 'GET') return;
-
-  // Skip external analytics/trackers
-  if (url.hostname.includes('analytics') || url.hostname.includes('track')) return;
-
-  // Strategy: Network-first for HTML, Cache-first for assets
-  if (request.destination === 'document') {
-    // HTML pages: Try network, fallback to cache
+  // Special Handling for Heavy Media (.mp4 / .jpg)
+  if (url.pathname.endsWith('.mp4') || url.pathname.endsWith('.jpg')) {
     event.respondWith(
-      fetch(request).then((response) => {
-        // Clone and cache successful responses
-        const responseClone = response.clone();
-        caches.open(CACHE_NAME).then((cache) => {
-          cache.put(request, responseClone);
+      caches.match(event.request).then((cachedResponse) => {
+        // Return from cache, or fetch and cache on the fly
+        return cachedResponse || fetch(event.request).then((networkResponse) => {
+          const cacheCopy = networkResponse.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, cacheCopy));
+          return networkResponse;
         });
-        return response;
-      }).catch(() => {
-        // Offline: Serve from cache
-        return caches.match(request);
       })
     );
   } else {
-    // Assets (CSS, JS, images, fonts): Cache-first
+    // Standard Network-First for Logic (main.js / html) to ensure latest system updates
     event.respondWith(
-      caches.match(request).then((cached) => {
-        return cached || fetch(request).then((response) => {
-          // Cache new assets
-          if (response.ok) {
-            const responseClone = response.clone();
-            caches.open(CACHE_NAME).then((cache) => {
-              cache.put(request, responseClone);
-            });
-          }
-          return response;
-        });
-      })
+      fetch(event.request).catch(() => caches.match(event.request))
     );
   }
 });
-
-// ✅ BACKGROUND SYNC (Optional: Queue form submissions when offline)
-self.addEventListener('sync', (event) => {
-  if (event.tag === 'sync-inquiry') {
-    event.waitUntil(
-      // Retry failed form submissions when back online
-      console.log('🔄 SW: Background sync triggered // Retrying submissions...') );
-  }
-});
-
-// ✅ PUSH NOTIFICATIONS (Optional: Future feature)
-self.addEventListener('push', (event) => {
-  const options = {
-    body: event.data?.text() || '🦅 MIU_33: System update available',
-    icon: '/icons/icon-192.png',
-    badge: '/icons/icon-192.png',
-    vibrate: [100, 50, 100],
-    data: { url: '/' },
-  };
-  
-  event.waitUntil(
-    self.registration.showNotification('MIU_33 MATRIX', options)
-  );
-});
-
-// ✅ NOTIFICATION CLICK (Open app when user taps notification)
-self.addEventListener('notificationclick', (event) => {
-  event.notification.close();
-  event.waitUntil(
-    clients.openWindow(event.notification.data?.url || '/')
-  );
-});
-
-// ✅ LOG INIT
-console.log('💚 MIU_33 SERVICE WORKER // V1.0 LOCKED // OFFLINE-FIRST ACTIVE');

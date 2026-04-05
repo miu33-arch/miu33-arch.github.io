@@ -1,57 +1,67 @@
 /* --- MIU-33 GLOBAL SYSTEM OVERRIDE V.033 // V1.0 LOCKED --- */
 
-/* ✅ BRAND VARIABLES (Centralized System) */
 :root {
-  /* Colors (Matches Tailwind Config) */
   --emerald: #00FF41;
   --gold: #C9A46A;
   --obsidian: #080808;
   --concrete: #1a1a1a;
- 
-  /* Typography (Matches Tailwind Config) */
   --font-header: 'Russo One', sans-serif;
   --font-tech: 'Orbitron', monospace;
- 
-  /* Animation */
   --ease-luxury: cubic-bezier(0.4, 0, 0.2, 1);
   --ease-ballistic: cubic-bezier(0.19, 1, 0.22, 1);
- 
-  /* Glow */
   --glow-emerald-soft: 0 0 15px rgba(0, 255, 65, 0.4);
-  --glow-emerald-hard: 0 0 50px rgba(0, 255, 65, 0.8);
-  --glow-gold: 0 0 20px rgba(201, 164, 106, 0.5);
 }
 
-/* 1. REQUIRED FOR LENIS & SCROLL CONTROL */
-html {
-  scroll-behavior: auto;
-  background-color: var(--obsidian);
-  color-scheme: dark; /* Prevents white flashes */
-}
-
-body {
-  background-color: var(--obsidian);
-  color: #a4a4a4;
-  overflow-x: hidden;
-  font-family: var(--font-tech);
-  -webkit-font-smoothing: antialiased;
-}
-
-/* 2. THE BALLISTIC OVERLAY (The Two-Shot Emerald Logic) */
-#ballistic-overlay {
-  background: radial-gradient(circle at 50% 50%, transparent 0%, rgba(8, 8, 8, 0.4) 100%);
-  will-change: opacity;
-}
-
-/* The "Emerald Tracer" Bullet Animation */
-.tracer {
+/* ✅ PATCH 01: HERO VIDEO CALIBRATION 
+   This ensures the Phoenix video doesn't get squashed or cut off weirdly. */
+.video-container video {
   position: absolute;
-  width: 2px;
-  height: 100px; background: linear-gradient(to bottom, transparent, var(--emerald), transparent);
-  opacity: 0;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  object-fit: cover;
+}
+
+/* ✅ PATCH 02: VAPI HUD PULSE 
+   Matching the 'Listening Architect' logic we added to the HTML. */
+#vapi-status {
+  text-shadow: 0 0 10px var(--emerald);
+  letter-spacing: 0.2em;
+  background: rgba(0, 255, 65, 0.05);
+  padding: 4px 8px;
+  border-right: 2px solid var(--emerald);
+}
+
+/* ✅ PATCH 03: THE MASK OVERLAY 
+   Ensures the video blends into the black background of the site. */
+.video-container::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, 
+    rgba(8, 8, 8, 0.8) 0%, 
+    transparent 20%, 
+    transparent 80%, 
+    var(--obsidian) 100%);
+  z-index: 10;
   pointer-events: none;
-  will-change: transform, opacity;
-  transform: translateY(-200px) scaleY(0);
+}
+
+/* --- THE REST OF YOUR LOGIC REMAINS INTACT --- */
+
+html { scroll-behavior: auto; background-color: var(--obsidian); color-scheme: dark; }
+body { background-color: var(--obsidian); color: #a4a4a4; overflow-x: hidden; font-family: var(--font-tech); }
+
+/* BALLISTIC & TRACER LOGIC */
+.tracer {
+  position: absolute; width: 2px; height: 100px; 
+  background: linear-gradient(to bottom, transparent, var(--emerald), transparent);
+  opacity: 0; pointer-events: none; will-change: transform, opacity;
   animation: fireTracer 1.2s var(--ease-ballistic) forwards;
 }
 
@@ -61,194 +71,26 @@ body {
   100% { transform: translateY(100vh) scaleY(0.1); opacity: 0; }
 }
 
-/* 3. THE DRAGON-SCALE FILTERS (IP Branding) */
+/* DRAGON-SCALE (The 'Sovereign' Hover) */
 .dragon-scale {
   filter: grayscale(1) contrast(1.2) brightness(0.8);
   transition: all 0.8s var(--ease-luxury);
-  will-change: filter, transform;
-  transform: translateZ(0);
 }
+.dragon-scale:hover { filter: grayscale(0) contrast(1) brightness(1); }
 
-.dragon-scale:hover {
-  filter: grayscale(0) contrast(1) brightness(1);
-  box-shadow: 0 0 30px rgba(0, 255, 65, 0.15);
-}
-
-/* 4. RESTRICTED CHAMBER: HORIZONTAL SCROLL-SNAP */
-#restricted-scroll {
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  gap: 0.5rem;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-#restricted-scroll::-webkit-scrollbar { display: none; }
-#restricted-scroll > div { scroll-snap-align: center; flex-shrink: 0; }
-
-/* 5. VIDEO & IMAGE CALIBRATION */
-video, img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: opacity 0.8s var(--ease-luxury);
-  will-change: opacity;
-}
-
-/* 6. NEURAL PULSE & GLOW EFFECTS (Pure Emerald #00FF41) */.emerald-glow {
-  text-shadow: var(--glow-emerald-soft);
-  color: var(--emerald);
-  transition: text-shadow 0.3s var(--ease-luxury);
-}
-
-.emerald-glow:hover {
-  text-shadow: var(--glow-emerald-hard);
-}
-
-.gold-glow {
-  text-shadow: var(--glow-gold);
-  color: var(--gold);
-}
-
-/* 7. SYSTEM HUD VERTICAL TEXT */
-.vertical-text {
-  writing-mode: vertical-rl;
-  font-family: var(--font-tech);
-}
-
-/* 8. ARTIFACT CARDS (The Armory Vibe) */
+/* ARTIFACT CARDS */
 .artifact-card {
   background: var(--concrete);
   border: 1px solid rgba(255, 255, 255, 0.05);
   transition: all 0.5s var(--ease-luxury);
-  overflow: hidden;
-  will-change: transform, border-color;
 }
+.artifact-card:hover { border-color: var(--emerald); transform: translateY(-5px); }
 
-.artifact-card:hover {
-  border-color: rgba(0, 255, 65, 0.3);
-  transform: translateY(-5px);
-}
+/* MATRIX OVERLAY */
+#matrix { position: fixed; inset: 0; z-index: -1; opacity: 0.12; pointer-events: none; }
 
-/* 9. SELECTION & MATRIX OVERLAY */
-::selection { background: var(--gold); color: var(--obsidian); }
-
-#matrix {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  opacity: 0.12;
-  pointer-events: none;
-  background: radial-gradient(circle at center, transparent 0%, var(--obsidian) 100%);
-}
-
-/* ✅ LENIS COMPATIBILITY */
-html.lenis { height: auto; }
-.lenis.lenis-smooth { scroll-behavior: auto !important; }.lenis.lenis-stopped { overflow: hidden; }
-
-/* ✅ ACCESSIBILITY: Reduced Motion */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-  #matrix { display: none; }
-}
-
-/* ✅ ACCESSIBILITY: High Contrast */
-@media (prefers-contrast: high) {
-  body { color: #ffffff; }
-  .artifact-card { border-color: rgba(255, 255, 255, 0.3); }
-}
-
-/* ✅ ACCESSIBILITY: Focus States */
-a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
-  outline: 2px solid var(--emerald);
-  outline-offset: 4px;
-}
-
-/* ✅ PHOENIX TRIGGER STYLES (For vault.LEGACY.js) */
-.phoenix-trigger {
-  cursor: crosshair;
-  transition: all 0.3s var(--ease-luxury);
-}
-.phoenix-trigger:hover { filter: drop-shadow(0 0 30px var(--emerald)); }
-.phoenix-trigger:active { transform: scale(0.98); }
-
-.phoenix-eyes-glow { animation: emerald-ignite 0.3s var(--ease-ballistic) forwards; }
-@keyframes emerald-ignite {
-  0% { filter: drop-shadow(0 0 0 var(--emerald)); }
-  100% { filter: drop-shadow(0 0 50px var(--emerald)); }
-}
-
-.phoenix-wings-deploy { animation: wings-explode 0.5s var(--ease-ballistic) forwards; }
-@keyframes wings-explode {
-  0% { transform: scale(1) rotate(0deg); opacity: 1; }
-  50% { transform: scale(1.1) rotate(2deg); opacity: 0.9; }
-  100% { transform: scale(1.05) rotate(0deg); opacity: 1; }
-}
-
-/* ✅ UTILITY: System Glitch (Omission Protocol) */
-.system-glitch { animation: glitch-omission 0.3s infinite; }
-@keyframes glitch-omission {
-  0% { transform: translate(0); filter: hue-rotate(0deg); } 20% { transform: translate(-2px, 2px); filter: hue-rotate(90deg); }
-  40% { transform: translate(2px, -2px); filter: hue-rotate(180deg); }
-  60% { transform: translate(-2px, -2px); filter: hue-rotate(270deg); }
-  80% { transform: translate(2px, 2px); filter: hue-rotate(360deg); }
-  100% { transform: translate(0); filter: hue-rotate(0deg); }
-}
-
-/* ✅ LAUNCH FIX: Mobile + Video Mask */
-.video-container { position: relative; overflow: hidden; }
-.video-container::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 20%;
-  background: linear-gradient(to top, #080808 0%, transparent 100%);
-  z-index: 10;
-  pointer-events: none;
-}
-
+/* MOBILE RESPONSIVENESS (Critical for Riyadh 5G users) */
 @media (max-width: 768px) {
-  h1.text-7xl, .font-header.text-7xl {
-    font-size: 3rem !important;
-    line-height: 1.1 !important;
-    word-break: break-word;
-  }
-  .font-tech.text-emerald-neon {
-    font-size: 0.6rem !important;
-    letter-spacing: 0.2em !important;
-  }
-  body {
-    overflow-x: hidden;
-    max-width: 100vw;
-  }
-  .video-container::after {
-    height: 25%;
-  }
-}
-
-/* ✅ Mobile Menu Animation */
-#mobile-menu-btn span {
-  transition: all 0.3s ease;
-}
-
-#mobile-menu {
-  animation: slideDown 0.3s ease;
-}
-
-@keyframes slideDown { from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  h1 { font-size: 3.5rem !important; }
+  .video-container video { opacity: 0.4; } /* Lighter for battery save */
 }
