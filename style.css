@@ -7,15 +7,15 @@
   --gold: #C9A46A;
   --obsidian: #080808;
   --concrete: #1a1a1a;
-  
+ 
   /* Typography (Matches Tailwind Config) */
   --font-header: 'Russo One', sans-serif;
   --font-tech: 'Orbitron', monospace;
-  
+ 
   /* Animation */
   --ease-luxury: cubic-bezier(0.4, 0, 0.2, 1);
   --ease-ballistic: cubic-bezier(0.19, 1, 0.22, 1);
-  
+ 
   /* Glow */
   --glow-emerald-soft: 0 0 15px rgba(0, 255, 65, 0.4);
   --glow-emerald-hard: 0 0 50px rgba(0, 255, 65, 0.8);
@@ -33,24 +33,24 @@ body {
   background-color: var(--obsidian);
   color: #a4a4a4;
   overflow-x: hidden;
-  font-family: var(--font-tech); /* ✅ FIXED: Brand Font */
+  font-family: var(--font-tech);
   -webkit-font-smoothing: antialiased;
 }
 
 /* 2. THE BALLISTIC OVERLAY (The Two-Shot Emerald Logic) */
 #ballistic-overlay {
   background: radial-gradient(circle at 50% 50%, transparent 0%, rgba(8, 8, 8, 0.4) 100%);
-  will-change: opacity; /* ✅ Performance */
+  will-change: opacity;
 }
 
 /* The "Emerald Tracer" Bullet Animation */
 .tracer {
   position: absolute;
   width: 2px;
-  height: 100px;  background: linear-gradient(to bottom, transparent, var(--emerald), transparent); /* ✅ FIXED: Pure Emerald */
+  height: 100px; background: linear-gradient(to bottom, transparent, var(--emerald), transparent);
   opacity: 0;
   pointer-events: none;
-  will-change: transform, opacity; /* ✅ Performance */
+  will-change: transform, opacity;
   transform: translateY(-200px) scaleY(0);
   animation: fireTracer 1.2s var(--ease-ballistic) forwards;
 }
@@ -65,13 +65,13 @@ body {
 .dragon-scale {
   filter: grayscale(1) contrast(1.2) brightness(0.8);
   transition: all 0.8s var(--ease-luxury);
-  will-change: filter, transform; /* ✅ Performance */
-  transform: translateZ(0); /* ✅ GPU Acceleration */
+  will-change: filter, transform;
+  transform: translateZ(0);
 }
 
 .dragon-scale:hover {
   filter: grayscale(0) contrast(1) brightness(1);
-  box-shadow: 0 0 30px rgba(0, 255, 65, 0.15); /* ✅ FIXED: Pure Emerald */
+  box-shadow: 0 0 30px rgba(0, 255, 65, 0.15);
 }
 
 /* 4. RESTRICTED CHAMBER: HORIZONTAL SCROLL-SNAP */
@@ -93,7 +93,7 @@ video, img {
   height: 100%;
   object-fit: cover;
   transition: opacity 0.8s var(--ease-luxury);
-  will-change: opacity; /* ✅ Performance */
+  will-change: opacity;
 }
 
 /* 6. NEURAL PULSE & GLOW EFFECTS (Pure Emerald #00FF41) */.emerald-glow {
@@ -123,11 +123,11 @@ video, img {
   border: 1px solid rgba(255, 255, 255, 0.05);
   transition: all 0.5s var(--ease-luxury);
   overflow: hidden;
-  will-change: transform, border-color; /* ✅ Performance */
+  will-change: transform, border-color;
 }
 
 .artifact-card:hover {
-  border-color: rgba(0, 255, 65, 0.3); /* ✅ FIXED: Pure Emerald */
+  border-color: rgba(0, 255, 65, 0.3);
   transform: translateY(-5px);
 }
 
@@ -155,7 +155,7 @@ html.lenis { height: auto; }
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-  #matrix { display: none; } /* Disable matrix rain for motion-sensitive users */
+  #matrix { display: none; }
 }
 
 /* ✅ ACCESSIBILITY: High Contrast */
@@ -194,16 +194,61 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 /* ✅ UTILITY: System Glitch (Omission Protocol) */
 .system-glitch { animation: glitch-omission 0.3s infinite; }
 @keyframes glitch-omission {
-  0% { transform: translate(0); filter: hue-rotate(0deg); }  20% { transform: translate(-2px, 2px); filter: hue-rotate(90deg); }
+  0% { transform: translate(0); filter: hue-rotate(0deg); } 20% { transform: translate(-2px, 2px); filter: hue-rotate(90deg); }
   40% { transform: translate(2px, -2px); filter: hue-rotate(180deg); }
   60% { transform: translate(-2px, -2px); filter: hue-rotate(270deg); }
   80% { transform: translate(2px, 2px); filter: hue-rotate(360deg); }
   100% { transform: translate(0); filter: hue-rotate(0deg); }
 }
+
 /* ✅ LAUNCH FIX: Mobile + Video Mask */
-.video-container{position:relative;overflow:hidden}
-.video-container::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:20%;background:linear-gradient(to top,#080808 0%,transparent 100%);z-index:10;pointer-events:none}
-@media(max-width:768px){h1.text-7xl,.font-header.text-7xl{font-size:3rem!important;line-height:1.1!important;word-break:break-word}
-.font-tech.text-emerald-neon{font-size:0.6rem!important;letter-spacing:0.2em!important}
-body{overflow-x:hidden;max-width:100vw}
-.video-container::after{height:25%}}
+.video-container { position: relative; overflow: hidden; }
+.video-container::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 20%;
+  background: linear-gradient(to top, #080808 0%, transparent 100%);
+  z-index: 10;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  h1.text-7xl, .font-header.text-7xl {
+    font-size: 3rem !important;
+    line-height: 1.1 !important;
+    word-break: break-word;
+  }
+  .font-tech.text-emerald-neon {
+    font-size: 0.6rem !important;
+    letter-spacing: 0.2em !important;
+  }
+  body {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+  .video-container::after {
+    height: 25%;
+  }
+}
+
+/* ✅ Mobile Menu Animation */
+#mobile-menu-btn span {
+  transition: all 0.3s ease;
+}
+
+#mobile-menu {
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown { from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
