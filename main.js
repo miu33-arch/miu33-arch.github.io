@@ -86,3 +86,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
+// FORCE IGNITE: Ensure blueprints are visible even if observer lags
+setTimeout(() => {
+    document.querySelectorAll('.dragon-scale').forEach(el => {
+        el.style.clipPath = 'inset(0 0 0 0)';
+        el.style.transform = 'translateY(0)';
+        el.style.opacity = '1';
+    });
+}, 1000); 
