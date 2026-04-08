@@ -224,64 +224,58 @@
     </div>
 
     <!-- BREACH_RITUAL_ONLY: Bot Detection + Typewriter + Reveal (FINAL PRODUCTION CODE) -->
-    <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // === 1. BOT DETECTION ===
-        const isBot = navigator.webdriver || /bot|crawler|spider|googlebot|bingbot|perplexity/i.test(navigator.userAgent);
-        const intro = document.getElementById('intro-sequence');
-        const main = document.getElementById('main-matrix');
-        const terminal = document.getElementById('terminal-feed');
-        
-        // === 2. BREACH SEQUENCE ===
-        const lines = [
-            "> SYSTEM_INIT: MIU_33_MATRIX",
-            "> ORIGIN: RIYADH_MANSION_DNA",
-            "> CLEARANCE: Founder_33 // VERIFIED",
-            "> BREACH_SEQUENCE: 5... 4... 3... 2... 1...",
-            "> ACCESS_GRANTED"
-        ];
-        
-        const runBreach = () => {
-            // DEFENSIVE: Ensure terminal exists before typing
-            if (!terminal) {                console.warn('MIU_33: #terminal-feed not found. Breach Ritual degraded to instant reveal.');
-                if(intro) intro.style.display = 'none';
-                if(main) main.style.opacity = '1';
-                return;
-            }
-            
-            let i = 0;
-            const typeLine = () => {
-                if (i < lines.length) {
-                    const line = document.createElement('div');
-                    line.textContent = lines[i];
-                    line.style.marginBottom = "4px";
-                    terminal.appendChild(line);
-                    i++;
-                    setTimeout(typeLine, 400); 
-                } else {
+    <<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const isBot = navigator.webdriver || /bot|crawler|spider|googlebot|bingbot/i.test(navigator.userAgent);
+    const intro = document.getElementById('intro-sequence');
+    const main = document.getElementById('main-matrix');
+    const terminal = document.getElementById('terminal-feed');
+    
+    const lines = [
+        "> SYSTEM_INIT: MIU_33_MATRIX",
+        "> ORIGIN: RIYADH_MANSION_DNA",
+        "> CLEARANCE: Founder_33 // VERIFIED",
+        "> BREACH_SEQUENCE: 5... 4... 3... 2... 1...",
+        "> ACCESS_GRANTED"
+    ];
+    
+    const runBreach = () => {
+        let i = 0;
+        const typeLine = () => {
+            if (i < lines.length) {
+                const line = document.createElement('div');
+                line.textContent = lines[i];
+                line.style.marginBottom = "4px";
+                terminal.appendChild(line);
+                i++;
+                setTimeout(typeLine, 400); 
+            } else {
+                setTimeout(() => {
+                    intro.style.opacity = '0';
                     setTimeout(() => {
-                        if(intro) intro.style.opacity = '0';
-                        setTimeout(() => {
-                            if(intro) intro.style.display = 'none';
-                            if(main) main.style.opacity = '1';
-                        }, 1000);
+                        intro.style.display = 'none';
+                        main.style.opacity = '1';
+                        // FORCE ENGINE START
+                        if (typeof initializePostBreachEngines === 'function') {
+                            initializePostBreachEngines();
+                        }
                     }, 1000);
-                }
-            };
-            typeLine();
+                }, 1000);
+            }
         };
-        
-        // === 3. EXECUTION FLOW ===
-        if (isBot) {
-            if(intro) intro.style.display = 'none';
-            if(main) main.style.opacity = '1';
-        } else {
-            runBreach();
-        }
-    });
-    </script>
-
-    <!-- MAIN ENGINE: Post-Breach Logic (Lenis, Matrix Rain, Video Lazy-Load, etc.) -->
+        typeLine();
+    };
+    
+    if (isBot) {
+        intro.style.display = 'none';
+        main.style.opacity = '1';
+        if (typeof initializePostBreachEngines === 'function') initializePostBreachEngines();
+    } else {
+        runBreach();
+    }
+});
+</script>
+  
     <script src="main.js"></script>
 </body>
 </html>
