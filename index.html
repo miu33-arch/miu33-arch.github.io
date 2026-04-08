@@ -223,41 +223,70 @@
 
     </div>
 
-    <!-- BREACH_RITUAL_ONLY: Bot Detection + Typewriter + Reveal (FINAL PRODUCTION CODE) -->
-    <<script>
+   <script>
+// --- VAPI_GLOBAL_LINK ---
+// We define this globally so the HUD button 'onclick' always finds it.
+window.vapiStatus = function() {
+    const hud = document.getElementById('vapi-status');
+    if (!hud) return;
+
+    hud.innerText = "VAPI_LINK: ACTIVE // SYNCING_VOICE...";
+    hud.style.color = '#C9A46A'; // Riyadh Gold
+    
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const msg = new SpeechSynthesisUtterance("Welcome Architect. Miu 33 Matrix is synchronized.");
+        msg.pitch = 0.7; 
+        msg.rate = 0.85;
+        window.speechSynthesis.speak(msg);
+    }
+    
+    setTimeout(() => { 
+        if (hud) {
+            hud.innerText = "VAPI_LINK: SECURE // ENCRYPTED";
+        }
+    }, 3000);
+};
+
 document.addEventListener('DOMContentLoaded', () => {
-    const isBot = navigator.webdriver || /bot|crawler|spider|googlebot|bingbot/i.test(navigator.userAgent);
+    // === 1. BOT DETECTION (RESTORED: Critical for SEO/AEO/LLO) ===
+    const isBot = navigator.webdriver || /bot|crawler|spider|googlebot|bingbot|perplexity/i.test(navigator.userAgent);
+    
     const intro = document.getElementById('intro-sequence');
     const main = document.getElementById('main-matrix');
     const terminal = document.getElementById('terminal-feed');
     
-    const lines = [
-        "> SYSTEM_INIT: MIU_33_MATRIX",
-        "> ORIGIN: RIYADH_MANSION_DNA",
-        "> CLEARANCE: Founder_33 // VERIFIED",
-        "> BREACH_SEQUENCE: 5... 4... 3... 2... 1...",
-        "> ACCESS_GRANTED"
-    ];
+    // === 2. BREACH SEQUENCE (Simplified) ===
+    const lines = ["> SYSTEM_INIT: MIU_33_MATRIX", "> ORIGIN: RIYADH_MANSION_DNA", "> ACCESS_GRANTED"];
     
     const runBreach = () => {
+        // DEFENSIVE: Ensure terminal exists before typing
+        if (!terminal) {
+            console.warn('MIU_33: #terminal-feed not found. Breach Ritual degraded to instant reveal.');
+            if(intro) intro.style.display = 'none';
+            if(main) main.style.opacity = '1';
+            // Trigger engines even if terminal missing
+            if (window.initializePostBreachEngines) window.initializePostBreachEngines();
+            return;
+        }
+        
         let i = 0;
         const typeLine = () => {
             if (i < lines.length) {
-                const line = document.createElement('div');
-                line.textContent = lines[i];
-                line.style.marginBottom = "4px";
-                terminal.appendChild(line);
+                const div = document.createElement('div');
+                div.textContent = lines[i];
+                terminal.appendChild(div);
                 i++;
-                setTimeout(typeLine, 400); 
+                setTimeout(typeLine, 400);
             } else {
                 setTimeout(() => {
-                    intro.style.opacity = '0';
+                    if(intro) intro.style.opacity = '0';
+                    if(main) main.style.opacity = '1';
                     setTimeout(() => {
-                        intro.style.display = 'none';
-                        main.style.opacity = '1';
-                        // FORCE ENGINE START
-                        if (typeof initializePostBreachEngines === 'function') {
-                            initializePostBreachEngines();
+                        if(intro) intro.style.display = 'none';
+                        // MASTER TRIGGER: Wake up the main.js engines
+                        if (window.initializePostBreachEngines) {
+                            window.initializePostBreachEngines();
                         }
                     }, 1000);
                 }, 1000);
@@ -266,16 +295,21 @@ document.addEventListener('DOMContentLoaded', () => {
         typeLine();
     };
     
+    // === 3. EXECUTION FLOW (Bot vs Human) ===
     if (isBot) {
-        intro.style.display = 'none';
-        main.style.opacity = '1';
-        if (typeof initializePostBreachEngines === 'function') initializePostBreachEngines();
+        // Bots skip ritual: instant access for crawling/indexing
+        if(intro) intro.style.display = 'none';
+        if(main) main.style.opacity = '1';
+        // Trigger engines immediately for bots
+        if (window.initializePostBreachEngines) {
+            window.initializePostBreachEngines();
+        }
     } else {
+        // Humans experience the Breach
         runBreach();
     }
 });
 </script>
-  
     <script src="main.js"></script>
 </body>
 </html>
