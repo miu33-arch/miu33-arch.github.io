@@ -1,4 +1,4 @@
-/* --- MIU-33 GLOBAL SYSTEM OVERRIDE V.033 // MOBILE_SOVEREIGN_PATCH --- */
+/* --- MIU-33 GLOBAL SYSTEM OVERRIDE V.033 // FINAL_MOBILE_SOVEREIGN --- */
 
 :root {
   --emerald: #00FF41;
@@ -12,11 +12,11 @@
   --glow-emerald-soft: 0 0 15px rgba(0, 255, 65, 0.4);
 }
 
-/* ✅ PATCH 01: HERO VIDEO CALIBRATION + iOS FIX */
+/* HERO VIDEO CALIBRATION + iOS FIX */
 .video-container {
   position: relative;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   overflow: hidden;
 }
 
@@ -31,25 +31,23 @@
   transform: translate(-50%, -50%);
   z-index: 0;
   object-fit: cover;
-  /* iOS autoplay enforcement */
   -webkit-transform: translateZ(0);
   will-change: transform;
 }
 
-/* ✅ PATCH 02: VAPI HUD PULSE */
+/* VAPI HUD */
 #vapi-status {
   text-shadow: 0 0 10px var(--emerald);
   letter-spacing: 0.2em;
   background: rgba(0, 255, 65, 0.05);
   padding: 4px 8px;
   border-right: 2px solid var(--emerald);
-  /* Prevent HUD from blocking scroll */
   pointer-events: auto;
   touch-action: manipulation;
 }
-/* ✅ PATCH 03: THE MASK OVERLAY */
-.video-container::after {
-  content: '';
+
+/* VIDEO MASK OVERLAY */
+.video-container::after { content: '';
   position: absolute;
   inset: 0;
   background: linear-gradient(to bottom,
@@ -58,10 +56,10 @@
     transparent 80%,
     var(--obsidian) 100%);
   z-index: 10;
-  pointer-events: none; /* Critical: lets clicks pass through to video */
+  pointer-events: none;
 }
 
-/* ✅ PATCH 04: MOBILE SCROLL RESCUE (AGGRESSIVE) */
+/* MOBILE SCROLL RESCUE */
 @media (pointer: coarse) {
   html {
     scroll-behavior: auto !important;
@@ -75,62 +73,55 @@
     touch-action: pan-y !important;
     position: relative !important;
     height: auto !important;
-    /* Prevent body from being "fixed" by JS */
     transform: none !important;
   }
   
-  /* Canvas must NEVER intercept touch on mobile */
   #matrix {
     pointer-events: none !important;
     user-select: none !important;
     -webkit-user-select: none !important;
     touch-action: none !important;
-    opacity: 0.05 !important; /* Reduce GPU load */
+    opacity: 0.15 !important; /* VISIBLE ON MOBILE */
   }
   
-  /* Intro overlay must release touch after fade */
   #intro-sequence {
     pointer-events: none !important;
   }
   
-  /* Module cards: allow vertical scroll, block horizontal pinch */
   .dragon-scale {
     touch-action: pan-y !important;
-  }  
-  /* Video containers: let scroll pass through */
+  }
+  
   .video-container,
   video[data-src],
   #hero-video {
     touch-action: pan-y !important;
-    pointer-events: auto; /* Video itself can receive play/pause */
-  }
+    pointer-events: auto; }
   
-  /* Navigation: ensure tap targets work */
   nav a {
     touch-action: manipulation !important;
     -webkit-tap-highlight-color: transparent;
   }
 }
 
-/* ✅ PATCH 05: DESKTOP LENIS COMPATIBILITY */
+/* DESKTOP LENIS COMPATIBILITY */
 @media (pointer: fine) {
   html {
-    scroll-behavior: auto; /* Lenis controls scroll, not CSS */
+    scroll-behavior: auto;
   }
   body {
     overflow-y: auto;
   }
   #matrix {
-    pointer-events: none; /* Always non-blocking */
+    pointer-events: none;
     opacity: 0.12;
   }
 }
 
-/* --- CORE SYSTEM STYLES --- */
+/* CORE SYSTEM */
 html { 
   background-color: var(--obsidian); 
   color-scheme: dark; 
-  /* Prevent iOS zoom on input focus */
   text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
@@ -140,14 +131,21 @@ body {
   color: #a4a4a4; 
   overflow-x: hidden; 
   font-family: var(--font-tech);
-  /* Smooth font rendering */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* BALLISTIC & TRACER LOGIC */.tracer {
-  position: absolute; width: 2px; height: 100px;
-  background: linear-gradient(to bottom, transparent, var(--emerald), transparent);
+/* HERO VIDEO PERSISTENCE */
+#hero-video {
+  contain: layout style paint;
+  will-change: transform;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+/* TRACER ANIMATION */
+.tracer {
+  position: absolute; width: 2px; height: 100px; background: linear-gradient(to bottom, transparent, var(--emerald), transparent);
   opacity: 0; pointer-events: none; will-change: transform, opacity;
   animation: fireTracer 1.2s var(--ease-ballistic) forwards;
 }
@@ -158,11 +156,10 @@ body {
   100% { transform: translateY(100vh) scaleY(0.1); opacity: 0; }
 }
 
-/* DRAGON-SCALE (The 'Sovereign' Hover) */
+/* DRAGON-SCALE */
 .dragon-scale {
   filter: grayscale(1) contrast(1.2) brightness(0.8);
   transition: all 0.8s var(--ease-luxury);
-  /* Prevent drag-interference on mobile */
   touch-action: pan-y;
 }
 .dragon-scale:hover { filter: grayscale(0) contrast(1) brightness(1); }
@@ -175,30 +172,29 @@ body {
 }
 .artifact-card:hover { border-color: var(--emerald); transform: translateY(-5px); }
 
-/* MATRIX OVERLAY - Base State */
+/* MATRIX OVERLAY */
 #matrix { 
   position: fixed; 
   inset: 0; 
   z-index: -1; 
   opacity: 0.12; 
-  pointer-events: none; /* Always non-blocking */
+  pointer-events: none;
 }
 
-/* MOBILE RESPONSIVENESS */
+/* RESPONSIVE */
 @media (max-width: 768px) {
   h1 { font-size: 3.5rem !important; }
-  .video-container video { opacity: 0.4; } /* Lighter for battery save */
+  .video-container video { opacity: 0.4; }
   
-  /* Ensure touch targets are large enough */
   button, a, [onclick] {
     min-height: 44px;
     min-width: 44px;
     display: inline-flex;
-    align-items: center; justify-content: center;
+    align-items: center;
+    justify-content: center;
   }
 }
-
-/* ✅ PATCH 06: REDUCED MOTION (Accessibility) */
+/* REDUCED MOTION */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
