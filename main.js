@@ -1,4 +1,4 @@
-/* --- MIU_33 MATRIX // CORE ENGINE V2.4 // PRODUCTION_READY --- */
+/* --- MIU_33 MATRIX // CORE ENGINE V2.5 // MOBILE_STABILITY_PATCH --- */
 
 /**
  * MASTER INITIALIZER
@@ -10,33 +10,44 @@ function initializePostBreachEngines() {
 
     console.log("MIU_33: Initializing Post-Breach Engines...");
 
-    // 1. Force the Hero Video to play immediately (LCP optimization)
-    // Hero uses direct src="" in HTML (no data-src lazy-load needed)
+    // 1. Hero Video: Robust iOS Autoplay Handling
     const heroVideo = document.getElementById('hero-video');
     if (heroVideo) {
-        heroVideo.load(); // Ensure fresh fetch (useful for cached pages)
-        heroVideo.play().catch(e => {
-            // Autoplay blocked? Fallback: let user interaction trigger it
-            console.warn("MIU_33: Hero autoplay blocked. Awaiting user interaction.");
-            // Click-to-play fallback (graceful degradation)
-            document.addEventListener('click', () => {
-                heroVideo.play().catch(() => {});
-            }, { once: true });
-        });
+        // Force load + play
+        heroVideo.load();
+        const playPromise = heroVideo.play();
+        if (playPromise !== undefined) {
+            playPromise.catch(() => {
+                // iOS blocked autoplay? Fallback: play on first touch/click
+                console.warn("MIU_33: iOS autoplay blocked. Enabling touch-to-play fallback.");
+                const playOnInteraction = () => {
+                    heroVideo.play().catch(() => {});
+                    document.removeEventListener('touchstart', playOnInteraction);
+                    document.removeEventListener('click', playOnInteraction);
+                };
+                document.addEventListener('touchstart', playOnInteraction, { once: true });
+                document.addEventListener('click', playOnInteraction, { once: true });
+            });
+        }
     }
 
-    // 2. Initialize Core Systems in precise order
+    // 2. Initialize Core Systems
     initializeLenis();
     initializeMatrixRain();
-    initializeVideoLazyLoad(); // Handles module videos with data-src
+    initializeVideoLazyLoad();
     initializeDragonScaleHover();
 }
 
-/* --- ENGINE A: LENIS SMOOTH SCROLL (Pillar 14: Clinical Flow) --- */
+/* --- ENGINE A: LENIS SMOOTH SCROLL (iOS Optimized) --- */
 function initializeLenis() {
-    // Safety: ensure Lenis library is loaded
-    if (typeof Lenis === 'undefined') {
-        console.warn('MIU_33: Lenis library not detected.');
+    // iOS Safari has superior native momentum scroll. Lenis often causes "stuck" feel.
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+    if (isIOS) {
+        console.log("MIU_33: iOS detected. Using native scroll for buttery performance.");
+        return; // Skip Lenis entirely on iOS
+    }
+
+    if (typeof Lenis === 'undefined') { console.warn('MIU_33: Lenis library not detected.');
         return;
     }
     
@@ -44,35 +55,36 @@ function initializeLenis() {
         duration: 1.2,
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         smoothWheel: true,
-        touchMultiplier: 2
+        smoothTouch: false, // Prevents double-scroll friction
+        touchMultiplier: 1
     });
     
-    function raf(time) {        lenis.raf(time);
+    function raf(time) {
+        lenis.raf(time);
         requestAnimationFrame(raf);
     }
     requestAnimationFrame(raf);
     
-    // Pause Lenis during video playback for performance (prevents jank)
+    // Pause Lenis during video playback for performance
     document.querySelectorAll('video').forEach(video => {
         video.addEventListener('play', () => lenis.stop());
         video.addEventListener('pause', () => lenis.start());
     });
 }
 
-/* --- ENGINE B: MATRIX RAIN (Riyadh Gold Sync) --- */
+/* --- ENGINE B: MATRIX RAIN (Mobile GPU Optimized) --- */
 function initializeMatrixRain() {
     const canvas = document.getElementById('matrix');
     if (!canvas) return;
     
-    // Respect reduced-motion preference (Accessibility/UXO compliance)
+    // Accessibility
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        canvas.style.opacity = '0.1'; // Subtle fallback
+        canvas.style.opacity = '0.1';
         return;
     }
     
     const ctx = canvas.getContext('2d');
     
-    // Responsive resize handler
     function resize() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
@@ -80,72 +92,71 @@ function initializeMatrixRain() {
     window.addEventListener('resize', resize);
     resize();
     
-    const characters = "01MIU33架构师ΣΩΔ";
-    const fontSize = 10;
+    // Mobile performance: reduce density on touch devices
+    const isMobile = window.matchMedia('(pointer: coarse)').matches;
+    const fontSize = isMobile ? 8 : 10;
+    const resetChance = isMobile ? 0.995 : 0.975; // Fewer active drops on mobile
+        const characters = "01MIU33架构师ΣΩΔ";
     const columns = Math.floor(canvas.width / fontSize);
     const drops = Array(columns).fill(1);
     
     function draw() {
-        // Fade effect for trailing
         ctx.fillStyle = 'rgba(8, 8, 8, 0.05)';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-        
-        ctx.fillStyle = '#C9A46A'; // Riyadh Gold
+        ctx.fillStyle = '#C9A46A';
         ctx.font = `${fontSize}px Orbitron, monospace`;
         
         for (let i = 0; i < drops.length; i++) {
             const text = characters.charAt(Math.floor(Math.random() * characters.length));
             ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-                        // Reset drop randomly
-            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+            if (drops[i] * fontSize > canvas.height && Math.random() > resetChance) {
                 drops[i] = 0;
             }
             drops[i]++;
         }
     }
     
-    // Use requestAnimationFrame for smoother animation
-    function animateMatrix() {
-        draw();
+    // Throttle to 30fps on mobile to save GPU for scroll/video
+    let lastTime = 0;
+    const fpsLimit = isMobile ? 30 : 60;
+    const frameInterval = 1000 / fpsLimit;
+    
+    function animateMatrix(time) {
         requestAnimationFrame(animateMatrix);
+        if (time - lastTime < frameInterval) return;
+        lastTime = time - (time % frameInterval);
+        draw();
     }
-    animateMatrix();
+    requestAnimationFrame(animateMatrix);
 }
 
 /* --- ENGINE C: VIDEO LAZY-LOAD (Module Videos Only) --- */
-/* 
-   NOTE: Hero video uses direct src="" in HTML.
-   This function handles ONLY module videos with data-src attribute.
-*/
 function initializeVideoLazyLoad() {
     if (!('IntersectionObserver' in window)) return;
-
     const videos = document.querySelectorAll('video[data-src]');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const video = entry.target;
-                // Only load if not already loaded
                 if (!video.src && video.dataset.src) {
                     video.src = video.dataset.src;
                     video.load();
-                    video.play().catch(() => {}); // Silent fail if autoplay blocked
+                    video.play().catch(() => {});
                 }
                 observer.unobserve(video);
             }
-        });
-    }, { threshold: 0.1 });
-    
+        }); }, { threshold: 0.1 });
     videos.forEach(v => observer.observe(v));
 }
 
-/* --- ENGINE D: DRAGON-SCALE HOVER (Luxury Micro-Interaction) --- */
+/* --- ENGINE D: DRAGON-SCALE HOVER --- */
 function initializeDragonScaleHover() {
     document.querySelectorAll('.dragon-scale').forEach(card => {
         card.addEventListener('mouseenter', () => {
             card.style.borderColor = '#C9A46A';
             card.style.boxShadow = '0 0 20px rgba(201, 164, 106, 0.15)';
-            card.style.transition = 'border-color 0.3s ease, box-shadow 0.3s ease';        });
+            card.style.transition = 'border-color 0.3s ease, box-shadow 0.3s ease';
+        });
         card.addEventListener('mouseleave', () => {
             card.style.borderColor = 'rgba(255, 255, 255, 0.1)';
             card.style.boxShadow = 'none';
@@ -153,6 +164,4 @@ function initializeDragonScaleHover() {
         });
     });
 }
-
-// NOTE: vapiStatus() is defined globally in index.html.
-// Do NOT redefine here to avoid function overwriting conflicts.
+// NOTE: vapiStatus() remains in index.html only.
