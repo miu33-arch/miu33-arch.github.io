@@ -1,87 +1,55 @@
 {
-  "name": "MIU_33 MATRIX",
-  "short_name": "MIU_33",
+  "name": "MIU_33 // NEXUSCORE",
+  "short_name": "MIU33",
   "description": "System Architect // Cinematic Reality Overrides // Cyber-Brutalist Architecture",
-  "start_url": "/",
+  "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#080808",
-  "theme_color": "#00FF41",
+  "theme_color": "#00FF85",
   "orientation": "portrait-primary",
   "scope": "/",
   "lang": "en",
   "dir": "ltr",
-  
   "icons": [
     {
-      "src": "/icons/icon-192.png",
+      "src": "icons/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/icons/icon-512.png",
+      "src": "icons/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
-    },
-    {
-      "src": "/icons/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "maskable"
-    },
-    {
-      "src": "/icons/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable"
     }
   ],
-  
   "screenshots": [
     {
-      "src": "/images/og_image.jpg",
+      "src": "images/miu-digital-architect-vogue-triptych.webp",
       "sizes": "1200x630",
-      "type": "image/jpeg",
+      "type": "image/webp",
       "form_factor": "wide",
-      "label": "MIU_33 Matrix - System Architect Homepage"
+      "label": "NEXUSCORE Terminal Interface"
     }
   ],
-  
   "categories": [
     "business",
     "design",
-    "productivity",
-    "lifestyle"
+    "productivity"
   ],
-  
   "shortcuts": [
     {
-      "name": "Projects",
+      "name": "Project Armory",
       "short_name": "Projects",
-      "description": "View MIU_33 project armory",
       "url": "/project.html",
-      "icons": [
-        {
-          "src": "/icons/icon-192.png",
-          "sizes": "192x192"
-        }
-      ]
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
     },
     {
-      "name": "Contact",
+      "name": "Initialize Handshake",
       "short_name": "Contact",
-      "description": "Initialize handshake with MIU_33",
-      "url": "/contact.html",
-      "icons": [
-        {
-          "src": "/icons/icon-192.png",
-          "sizes": "192x192"
-        }
-      ]
+      "url": "/index.html#vault-terminal",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
     }
-  ],
-  
-  "related_applications": [],
-  "prefer_related_applications": false
+  ]
 }

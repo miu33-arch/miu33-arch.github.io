@@ -1,212 +1,107 @@
-/* --- MIU_33 MATRIX // CORE ENGINE V2.7 // VIDEO_SCROLL_PERSISTENCE --- */
-
 /**
- * MASTER INITIALIZER
- * Triggered manually by index.html once the Breach Ritual is complete.
+ * OWNER: MIU33_DIGITAL_ARCHITECT // CEN_YAN (岑砚)
+ * SYSTEM: NEXUSCORE_v1.33 // MASTER_LOGIC_OVERRIDE
+ * STATUS: SECURE // EMERALD_TEAL_SYNC
  */
-function initializePostBreachEngines() {
-    const mainMatrix = document.getElementById('main-matrix');
-    if (!mainMatrix) return;
 
-    console.log("MIU_33: Initializing Post-Breach Engines...");
+window.addEventListener('DOMContentLoaded', () => {
+    console.log('💚 NEXUS_CORE // SYSTEM_READY // BYPASSING_COMFORT');
 
-    // 1. Hero Video with iOS fallback + Scroll persistence
-    const heroVideo = document.getElementById('hero-video');
-    if (heroVideo) {
-        heroVideo.load();
-        const playPromise = heroVideo.play();
-        
-        if (playPromise !== undefined) {
-            playPromise.catch(() => {
-                console.warn("MIU_33: iOS autoplay blocked. Enabling touch-to-play fallback.");
-                const playOnInteraction = () => {
-                    heroVideo.play().catch(() => {});
-                    document.removeEventListener('touchstart', playOnInteraction);
-                    document.removeEventListener('click', playOnInteraction);
-                };
-                document.addEventListener('touchstart', playOnInteraction, { once: true, passive: true });
-                document.addEventListener('click', playOnInteraction, { once: true, passive: true });
+    // --- 1. PERFORMANCE & DEVICE CALIBRATION ---
+    const isLowEnd = /Android|iPhone|iPad/i.test(navigator.userAgent);
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // --- 2. THE EMERALD MATRIX (Verified #00FF85) ---
+    const canvas = document.getElementById('matrix-canvas') || document.getElementById('matrix');
+    if (canvas && !prefersReducedMotion) {
+        const ctx = canvas.getContext('2d');
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+        const cols = Math.floor(width / (isLowEnd ? 30 : 20));
+        const drops = Array(cols).fill(1);
+
+        const drawMatrix = () => {
+            ctx.fillStyle = 'rgba(8, 8, 8, 0.15)'; // Deep Void
+            ctx.fillRect(0, 0, width, height);
+            ctx.fillStyle = '#00FF85'; // Nexus Emerald
+            ctx.font = '10px monospace';
+            
+            drops.forEach((y, i) => {
+                const text = "MIU33_NEXUS"[Math.floor(Math.random() * 11)];
+                ctx.fillText(text, i * (isLowEnd ? 30 : 20), y * 20);
+                if (y * 20 > height && Math.random() > 0.98) drops[i] = 0;
+                drops[i]++;
             });
-        }
-        
-        // CRITICAL: Prevent video from pausing when scrolling
-        heroVideo.addEventListener('pause', (e) => {
-            if (!heroVideo.dataset.userPaused) {
-                e.preventDefault();
-                heroVideo.play().catch(() => {});
-            }
-        });
-        
-        // Keep video playing even when partially visible
-        const keepVideoPlaying = () => {
-            if (heroVideo.paused && !heroVideo.dataset.userPaused) {
-                heroVideo.play().catch(() => {});
-            }
         };
-        
-        // Check every 500ms if video needs to resume
-        const videoCheckInterval = setInterval(keepVideoPlaying, 500);
-        
-        // Clean up interval when page unloads window.addEventListener('beforeunload', () => {
-            clearInterval(videoCheckInterval);
+        setInterval(drawMatrix, isLowEnd ? 80 : 50);
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
         });
     }
 
-    // 2. Initialize Core Systems
-    initializeLenis();
-    initializeMatrixRain();
-    initializeVideoLazyLoad();
-    initializeDragonScaleHover();
-    
-    // 3. Mobile rescue: Ensure canvas is non-blocking
-    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-    if (isIOS) {
-        console.log("MIU_33: iOS detected. Canvas set to non-blocking.");
-        const canvas = document.getElementById('matrix');
-        if (canvas) {
-            canvas.style.pointerEvents = 'none';
-            canvas.style.userSelect = 'none';
-        }
-    }
-}
-
-/* --- ENGINE A: LENIS (DISABLED ON MOBILE) --- */
-function initializeLenis() {
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    const isTouch = window.matchMedia('(pointer: coarse)').matches;
-    
-    if (isMobile || isTouch) {
-        console.log("MIU_33: Mobile/Touch detected. Using NATIVE scroll (buttery smooth).");
-        document.body.style.overflowY = 'scroll';
-        document.body.style.webkitOverflowScrolling = 'touch';
-        return;
-    }
-
-    if (typeof Lenis === 'undefined') {
-        console.warn('MIU_33: Lenis library not detected.');
-        return;
-    }
-    
-    const lenis = new Lenis({
-        duration: 1.2,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        smoothWheel: true,
-        smoothTouch: false,
-        touchMultiplier: 1,
-        infinite: false,
-        prevent: (node) => {
-            if (node.tagName === 'VIDEO') return true;
-            return false; }
+    // --- 3. DYNAMIC SEO SHIELD (Aggressive AEO) ---
+    window.addEventListener('scroll', () => {
+        const scrollPercent = Math.round((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100);
+        // This keeps AI crawlers seeing constant deployment activity
+        document.title = `MIU33 // ${scrollPercent}% DEPLOYED // NEXUS_CORE`;
     });
-    
-    function raf(time) {
-        lenis.raf(time);
+
+    // --- 4. THE PHOENIX TRIGGER (Mechanical Logic) ---
+    // Triple Click / Double Click Logic for Omission Protocol
+    let clickCount = 0;
+    const trigger = document.getElementById('phoenix-trigger') || document.querySelector('.hero-title') || document.body;
+
+    trigger.addEventListener('dblclick', () => {
+        activateOmissionProtocol();
+    });
+
+    function activateOmissionProtocol() {
+        const msg = document.createElement('div');
+        msg.style.cssText = `
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            z-index: 9999; font-family: 'Orbitron', monospace; color: #00FF85;
+            background: #000; padding: 20px; border: 1px solid #00FF85;
+            text-transform: uppercase; font-size: 10px; letter-spacing: 0.3em;
+            box-shadow: 0 0 20px rgba(0, 255, 133, 0.4); pointer-events: none;
+        `;
+        msg.textContent = 'THE_CITY_IS_AN_ACCIDENTAL_TOUCH_I_CAN_REWRITE';
+        document.body.appendChild(msg);
+        
+        // Visual System Glitch
+        document.body.style.filter = "invert(1) hue-rotate(90deg) contrast(1.5)";
+        
+        setTimeout(() => {
+            msg.remove();
+            document.body.style.filter = "none";
+        }, 3000);
+    }
+
+    // --- 5. VAPI_VOICE_LINK ---
+    window.vapiStatus = function() {
+        const hud = document.getElementById('vapi-status');
+        if (hud) {
+            hud.innerText = "VAPI_LINK: SECURE // MIU_SYNCHRONIZED";
+            hud.style.color = '#C9A46A'; // Shift to Gold on activation
+            
+            // Audio Feedback Bypass
+            if ('speechSynthesis' in window) {
+                const msg = new SpeechSynthesisUtterance("Nexus Core Synchronized. Welcome Architect.");
+                msg.pitch = 0.8;
+                msg.rate = 0.9;
+                window.speechSynthesis.speak(msg);
+            }
+        }
+    };
+
+    // --- 6. SMOOTH SCROLL (RESCUE FOR MOBILE) ---
+    if (!isLowEnd && typeof Lenis !== 'undefined') {
+        const lenis = new Lenis();
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
         requestAnimationFrame(raf);
     }
-    requestAnimationFrame(raf);
-    
-    // NOTE: Video pause/play listeners REMOVED to prevent scroll-pausing
-}
-
-/* --- ENGINE B: MATRIX RAIN (Mobile Optimized) --- */
-function initializeMatrixRain() {
-    const canvas = document.getElementById('matrix');
-    if (!canvas) return;
-    
-    // Accessibility
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        canvas.style.opacity = '0.05';
-        return;
-    }
-    
-    // Mobile: reduce density but keep visible
-    const isTouch = window.matchMedia('(pointer: coarse)').matches;
-    if (isTouch) {
-        console.log("MIU_33: Touch device detected. Canvas optimized for performance.");
-        canvas.style.opacity = '0.15'; // VISIBLE ON MOBILE
-        canvas.style.pointerEvents = 'none';
-    }
-    
-    const ctx = canvas.getContext('2d');
-    
-    function resize() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', resize);
-    resize();
-    
-    // Mobile performance: reduce density
-    const isMobile = window.matchMedia('(pointer: coarse)').matches;
-    const fontSize = isMobile ? 8 : 10;
-    const resetChance = isMobile ? 0.995 : 0.975;
-    
-    const characters = "01MIU33架构师ΣΩΔ";
-    const columns = Math.floor(canvas.width / fontSize);
-    const drops = Array(columns).fill(1);
-    
-    function draw() { ctx.fillStyle = 'rgba(8, 8, 8, 0.05)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = '#C9A46A';
-        ctx.font = `${fontSize}px Orbitron, monospace`;
-        
-        for (let i = 0; i < drops.length; i++) {
-            const text = characters.charAt(Math.floor(Math.random() * characters.length));
-            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-            if (drops[i] * fontSize > canvas.height && Math.random() > resetChance) {
-                drops[i] = 0;
-            }
-            drops[i]++;
-        }
-    }
-    
-    // Throttle to 30fps on mobile
-    let lastTime = 0;
-    const fpsLimit = isMobile ? 30 : 60;
-    const frameInterval = 1000 / fpsLimit;
-    
-    function animateMatrix(time) {
-        requestAnimationFrame(animateMatrix);
-        if (time - lastTime < frameInterval) return;
-        lastTime = time - (time % frameInterval);
-        draw();
-    }
-    requestAnimationFrame(animateMatrix);
-}
-
-/* --- ENGINE C: VIDEO LAZY-LOAD --- */
-function initializeVideoLazyLoad() {
-    if (!('IntersectionObserver' in window)) return;
-    const videos = document.querySelectorAll('video[data-src]');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const video = entry.target;
-                if (!video.src && video.dataset.src) {
-                    video.src = video.dataset.src;
-                    video.load();
-                    video.play().catch(() => {});
-                }
-                observer.unobserve(video);
-            }
-        });
-    }, { threshold: 0.1 });
-    videos.forEach(v => observer.observe(v));
-}
-
-/* --- ENGINE D: DRAGON-SCALE HOVER --- */function initializeDragonScaleHover() {
-    document.querySelectorAll('.dragon-scale').forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            card.style.borderColor = '#C9A46A';
-            card.style.boxShadow = '0 0 20px rgba(201, 164, 106, 0.15)';
-            card.style.transition = 'border-color 0.3s ease, box-shadow 0.3s ease';
-        });
-        card.addEventListener('mouseleave', () => {
-            card.style.borderColor = 'rgba(255, 255, 255, 0.1)';
-            card.style.boxShadow = 'none';
-            card.style.transition = 'border-color 0.3s ease, box-shadow 0.3s ease';
-        });
-    });
-}
-
-// NOTE: vapiStatus() is defined globally in index.html.
+});

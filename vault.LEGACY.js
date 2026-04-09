@@ -1,107 +1,82 @@
-/* --- MIU-33 GLOBAL LOGIC OVERRIDE V.033 // V1.0 LOCKED --- */
+/**
+ * OWNER: MIU33_DIGITAL_ARCHITECT // CEN_YAN
+ * SYSTEM: NEXUSCORE_v1.33 // MASTER_LOGIC
+ * STATUS: SECURE
+ */
 
 window.addEventListener('DOMContentLoaded', () => {
+    console.log('💚 NEXUS_CORE // SYSTEM_READY // BYPASSING_COMFORT');
 
-    // ✅ 0. PERFORMANCE & SEO SHIELDS
-    const isLowEnd = /Android|webOS|iPhone|iPad|iPod/i.test(navigator.userAgent) || (navigator.deviceMemory < 4);
+    // --- 1. PERFORMANCE & DEVICE CALIBRATION ---
+    const isLowEnd = /Android|iPhone|iPad/i.test(navigator.userAgent);
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // 1. Initialize Icons
-    if(typeof lucide !== 'undefined') lucide.createIcons();
-
-    // 2. Lenis Smooth Scroll (Riyadh Velocity)
-    const lenis = new Lenis({
-        duration: 1.2,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        smooth: true,
-    });
-
-    function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-
-    // ✅ PATCH: DYNAMIC SEO TITLE (Aggressive AEO)
-    lenis.on('scroll', ({ scroll }) => {
-        const maxScroll = document.body.scrollHeight - window.innerHeight;
-        const progress = Math.round((scroll / maxScroll) * 100);
-        // Dynamic Title for AI Crawlers
-        document.title = `MIU_33 // ${progress}% DEPLOYED // BYPASS_ACTIVE`;
-    });
-
-    // 3. THE MATRIX (Pure Emerald #00FF41)
-    const canvas = document.getElementById('matrix');
-    if(canvas && !prefersReducedMotion) {
+    // --- 2. THE EMERALD MATRIX (Verified #00FF85) ---
+    const canvas = document.getElementById('matrix-canvas');
+    if (canvas && !prefersReducedMotion) {
         const ctx = canvas.getContext('2d');
         let width = canvas.width = window.innerWidth;
         let height = canvas.height = window.innerHeight;
         const cols = Math.floor(width / (isLowEnd ? 30 : 20));
         const drops = Array(cols).fill(1);
 
-        const draw = () => {
-            ctx.fillStyle = 'rgba(8, 8, 8, 0.15)';
+        const drawMatrix = () => {
+            ctx.fillStyle = 'rgba(8, 8, 8, 0.15)'; // Deep Void
             ctx.fillRect(0, 0, width, height);
-            ctx.fillStyle = '#00FF41'; 
+            ctx.fillStyle = '#00FF85'; // Nexus Emerald
             ctx.font = '10px monospace';
+            
             drops.forEach((y, i) => {
-                const text = "MIU33"[Math.floor(Math.random() * 5)];
+                const text = "MIU33_NEXUS"[Math.floor(Math.random() * 11)];
                 ctx.fillText(text, i * (isLowEnd ? 30 : 20), y * 20);
-                if(y * 20 > height && Math.random() > 0.98) drops[i] = 0;
+                if (y * 20 > height && Math.random() > 0.98) drops[i] = 0;
                 drops[i]++;
             });
         };
-        setInterval(draw, isLowEnd ? 80 : 50);
+        setInterval(drawMatrix, isLowEnd ? 80 : 50);
     }
 
-    // ✅ PATCH: SOUND ENGINE (Bypass Chrome/Safari Autoplay Blocks)
-    let audioUnlocked = false;
-    const unlockAudio = () => {
-        if (audioUnlocked) return;
-        ['sound-emerald-ignite', 'sound-mechanical-deploy'].forEach(id => {
-            const audio = document.getElementById(id);
-            if (audio) {
-                audio.play().then(() => { audio.pause(); audio.currentTime = 0; });
-            }
-        });
-        audioUnlocked = true;
-        document.removeEventListener('click', unlockAudio);
-    };
-    document.addEventListener('click', unlockAudio);
+    // --- 3. DYNAMIC SEO SHIELD (Aggressive AEO) ---
+    window.addEventListener('scroll', () => {
+        const scrollPercent = Math.round((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100);
+        document.title = `MIU33 // ${scrollPercent}% DEPLOYED // NEXUS_CORE`;
+    });
 
-    // 4. PHOENIX TRIGGER (The Bang-Bang Sequence)
-    const phoenixTrigger = document.getElementById('phoenix-trigger');
+    // --- 4. THE PHOENIX TRIGGER (Mechanical Logic) ---
     let clickCount = 0;
+    const trigger = document.getElementById('phoenix-trigger') || document.body;
 
-    if (phoenixTrigger) {
-        phoenixTrigger.addEventListener('click', () => {
-            clickCount++;
-            if (clickCount === 1) {
-                document.querySelectorAll('.phoenix-eyes').forEach(el => el.classList.add('phoenix-eyes-glow'));
-                console.log("EYES_IGNITED");
-            }
-            if (clickCount === 2) {
-                document.querySelectorAll('.phoenix-wings').forEach(el => el.classList.add('phoenix-wings-deploy'));
-                console.log("WINGS_DEPLOYED");
-            }
-            if (clickCount === 3) {
-                activateOmissionProtocol();
-                clickCount = 0; 
-            }
-        });
-    }
+    trigger.addEventListener('dblclick', () => {
+        // Double Click for Sovereign Activation
+        activateOmissionProtocol();
+    });
 
     function activateOmissionProtocol() {
-        document.body.classList.add('system-glitch');
         const msg = document.createElement('div');
-        msg.className = 'fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[100] font-tech text-emerald-neon text-[10px] bg-black p-4 border border-emerald-neon';
+        msg.style.cssText = `
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            z-index: 9999; font-family: 'Orbitron', monospace; color: #00FF85;
+            background: #000; padding: 20px; border: 1px solid #00FF85;
+            text-transform: uppercase; font-size: 10px; letter-spacing: 0.3em;
+            box-shadow: 0 0 20px rgba(0, 255, 133, 0.4);
+        `;
         msg.textContent = 'THE_CITY_IS_AN_ACCIDENTAL_TOUCH_I_CAN_REWRITE';
         document.body.appendChild(msg);
+        
+        document.body.style.filter = "invert(1) hue-rotate(90deg)"; // Temporary Glitch Effect
+        
         setTimeout(() => {
-            document.body.classList.remove('system-glitch');
             msg.remove();
-        }, 4000);
+            document.body.style.filter = "none";
+        }, 3000);
     }
 
-    console.log('💚 MIU_33 MATRIX // SYSTEM_READY // BYPASSING_COMFORT');
+    // --- 5. VAPI_VOICE_LINK (Main.js Integration) ---
+    window.vapiStatus = function() {
+        const hud = document.getElementById('vapi-status');
+        if (hud) {
+            hud.innerText = "VAPI_LINK: SECURE // MIU_SYNCHRONIZED";
+            hud.style.color = '#C9A46A'; // Shift to Gold on activation
+        }
+    };
 });
