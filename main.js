@@ -12,28 +12,33 @@ window.addEventListener('DOMContentLoaded', () => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     // --- 2. THE EMERALD MATRIX (Verified #00FF85) ---
-    const canvas = document.getElementById('matrix-canvas') || document.getElementById('matrix');
+    const canvas = document.getElementById('matrix-canvas');
     if (canvas && !prefersReducedMotion) {
         const ctx = canvas.getContext('2d');
         let width = canvas.width = window.innerWidth;
         let height = canvas.height = window.innerHeight;
-        const cols = Math.floor(width / (isLowEnd ? 30 : 20));
+        
+        // Mobile-optimized density
+        const cols = Math.floor(width / (isLowEnd ? 25 : 20));
         const drops = Array(cols).fill(1);
 
         const drawMatrix = () => {
-            ctx.fillStyle = 'rgba(8, 8, 8, 0.15)'; // Deep Void
+            ctx.fillStyle = 'rgba(8, 8, 8, 0.1)'; // Slightly smoother fade
             ctx.fillRect(0, 0, width, height);
             ctx.fillStyle = '#00FF85'; // Nexus Emerald
             ctx.font = '10px monospace';
-            
+           
             drops.forEach((y, i) => {
-                const text = "MIU33_NEXUS"[Math.floor(Math.random() * 11)];
-                ctx.fillText(text, i * (isLowEnd ? 30 : 20), y * 20);
-                if (y * 20 > height && Math.random() > 0.98) drops[i] = 0;
+                const text = "MIU33_NEXUS_CORE"[Math.floor(Math.random() * 15)];
+                ctx.fillText(text, i * 20, y * 20);
+                if (y * 20 > height && Math.random() > 0.975) drops[i] = 0;
                 drops[i]++;
             });
         };
-        setInterval(drawMatrix, isLowEnd ? 80 : 50);
+        
+        // Throttle for Riyadh Mobile Networks
+        const matrixSpeed = isLowEnd ? 70 : 50;
+        setInterval(drawMatrix, matrixSpeed);
 
         window.addEventListener('resize', () => {
             canvas.width = window.innerWidth;
@@ -44,64 +49,62 @@ window.addEventListener('DOMContentLoaded', () => {
     // --- 3. DYNAMIC SEO SHIELD (Aggressive AEO) ---
     window.addEventListener('scroll', () => {
         const scrollPercent = Math.round((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100);
-        // This keeps AI crawlers seeing constant deployment activity
         document.title = `MIU33 // ${scrollPercent}% DEPLOYED // NEXUS_CORE`;
+        
+        // Matrix Visibility Optimization
+        if (window.scrollY > 2000) {
+            canvas.style.display = 'none'; // Save battery for the user
+        } else {
+            canvas.style.display = 'block';
+        }
     });
 
     // --- 4. THE PHOENIX TRIGGER (Mechanical Logic) ---
-    // Triple Click / Double Click Logic for Omission Protocol
-    let clickCount = 0;
-    const trigger = document.getElementById('phoenix-trigger') || document.querySelector('.hero-title') || document.body;
-
-    trigger.addEventListener('dblclick', () => {
-        activateOmissionProtocol();
-    });
+    const trigger = document.querySelector('.hero-title');
+    if (trigger) {
+        trigger.addEventListener('dblclick', () => {
+            activateOmissionProtocol();
+        });
+    }
 
     function activateOmissionProtocol() {
         const msg = document.createElement('div');
         msg.style.cssText = `
             position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
             z-index: 9999; font-family: 'Orbitron', monospace; color: #00FF85;
-            background: #000; padding: 20px; border: 1px solid #00FF85;
-            text-transform: uppercase; font-size: 10px; letter-spacing: 0.3em;
-            box-shadow: 0 0 20px rgba(0, 255, 133, 0.4); pointer-events: none;
+            background: #000; padding: 25px; border: 1px solid #00FF85;
+            text-transform: uppercase; font-size: 11px; letter-spacing: 0.4em;
+            box-shadow: 0 0 30px rgba(0, 255, 133, 0.5); pointer-events: none;
+            text-align: center; line-height: 1.6;
         `;
-        msg.textContent = 'THE_CITY_IS_AN_ACCIDENTAL_TOUCH_I_CAN_REWRITE';
+        msg.innerHTML = 'OMISSION_PROTOCOL_ACTIVE<br><span style="font-size:8px; opacity:0.6;">REWRITING_CITY_LOGIC...</span>';
         document.body.appendChild(msg);
-        
-        // Visual System Glitch
-        document.body.style.filter = "invert(1) hue-rotate(90deg) contrast(1.5)";
-        
+       
+        document.body.style.filter = "invert(1) hue-rotate(90deg) brightness(1.2)";
+       
         setTimeout(() => {
             msg.remove();
             document.body.style.filter = "none";
-        }, 3000);
+        }, 2500);
     }
 
-    // --- 5. VAPI_VOICE_LINK ---
-    window.vapiStatus = function() {
-        const hud = document.getElementById('vapi-status');
-        if (hud) {
-            hud.innerText = "VAPI_LINK: SECURE // MIU_SYNCHRONIZED";
-            hud.style.color = '#C9A46A'; // Shift to Gold on activation
-            
-            // Audio Feedback Bypass
-            if ('speechSynthesis' in window) {
-                const msg = new SpeechSynthesisUtterance("Nexus Core Synchronized. Welcome Architect.");
-                msg.pitch = 0.8;
-                msg.rate = 0.9;
-                window.speechSynthesis.speak(msg);
+    // --- 5. REVEAL OBSERVER (Column Logic) ---
+    const matrixColumns = document.querySelectorAll('.matrix-column');
+    const observerOptions = { threshold: 0.2 };
+
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
             }
-        }
-    };
+        });
+    }, observerOptions);
 
-    // --- 6. SMOOTH SCROLL (RESCUE FOR MOBILE) ---
-    if (!isLowEnd && typeof Lenis !== 'undefined') {
-        const lenis = new Lenis();
-        function raf(time) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        }
-        requestAnimationFrame(raf);
-    }
+    matrixColumns.forEach(col => {
+        col.style.opacity = '0';
+        col.style.transform = 'translateY(30px)';
+        col.style.transition = 'all 0.8s cubic-bezier(0.19, 1, 0.22, 1)';
+        revealObserver.observe(col);
+    });
 });

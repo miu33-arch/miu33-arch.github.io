@@ -2,7 +2,7 @@
   "name": "MIU_33 // NEXUSCORE",
   "short_name": "MIU33",
   "description": "System Architect // Cinematic Reality Overrides // Cyber-Brutalist Architecture",
-  "start_url": "/index.html",
+  "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#080808",
   "theme_color": "#00FF85",
@@ -42,13 +42,13 @@
     {
       "name": "Project Armory",
       "short_name": "Projects",
-      "url": "/project.html",
+      "url": "./project.html",
       "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
     },
     {
       "name": "Initialize Handshake",
       "short_name": "Contact",
-      "url": "/index.html#vault-terminal",
+      "url": "./index.html#vault-terminal",
       "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
     }
   ]
