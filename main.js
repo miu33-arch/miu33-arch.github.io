@@ -136,3 +136,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         });
     });
 });
+window.addEventListener('load', () => {
+    const video = document.querySelector('.bg-video');
+    if (video) {
+        video.play();
+    }
+});

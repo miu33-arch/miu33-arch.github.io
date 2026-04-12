@@ -225,3 +225,12 @@ body {
     color: #00ff85; /* Using that signature Nexuscore green */
     opacity: 0.9;
 }
+.hero-section {
+    background: transparent !important;
+}
+
+.bg-video {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
