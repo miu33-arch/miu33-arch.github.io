@@ -1,55 +1,24 @@
 {
-  "name": "MIU_33 // NEXUSCORE",
-  "short_name": "MIU33",
-  "description": "System Architect // Cinematic Reality Overrides // Cyber-Brutalist Architecture",
-  "start_url": "./index.html",
+  "short_name": "MIU_33",
+  "name": "MIU_33 // NEXUSCORE ARCH STUDIO",
+  "description": "CÉN YÀN // Sovereign Digital Architecture & System Design.",
+  "start_url": "/",
   "display": "standalone",
-  "background_color": "#080808",
-  "theme_color": "#00FF85",
-  "orientation": "portrait-primary",
-  "scope": "/",
-  "lang": "en",
-  "dir": "ltr",
+  "orientation": "portrait",
+  "background_color": "#000000",
+  "theme_color": "#00ff85",
   "icons": [
     {
-      "src": "icons/icon-192.png",
+      "src": "assets/icon-192.png",
+      "type": "image/png",
       "sizes": "192x192",
-      "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "icons/icon-512.png",
+      "src": "assets/icon-512.png",
+      "type": "image/png",
       "sizes": "512x512",
-      "type": "image/png",
       "purpose": "any maskable"
-    }
-  ],
-  "screenshots": [
-    {
-      "src": "images/miu-digital-architect-vogue-triptych.webp",
-      "sizes": "1200x630",
-      "type": "image/webp",
-      "form_factor": "wide",
-      "label": "NEXUSCORE Terminal Interface"
-    }
-  ],
-  "categories": [
-    "business",
-    "design",
-    "productivity"
-  ],
-  "shortcuts": [
-    {
-      "name": "Project Armory",
-      "short_name": "Projects",
-      "url": "./project.html",
-      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
-    },
-    {
-      "name": "Initialize Handshake",
-      "short_name": "Contact",
-      "url": "./index.html#vault-terminal",
-      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
     }
   ]
 }

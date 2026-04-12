@@ -108,3 +108,31 @@ window.addEventListener('DOMContentLoaded', () => {
         revealObserver.observe(col);
     });
 });
+// Ensure Hero Video plays on all devices
+document.addEventListener('DOMContentLoaded', () => {
+    const heroVideo = document.querySelector('.bg-video');
+    if (heroVideo) {
+        heroVideo.play().catch(() => {
+            // If autoplay is blocked, play on first user interaction
+            document.addEventListener('click', () => {
+                heroVideo.play();
+            }, { once: true });
+        });
+    }
+});
+// Subtle Flicker for the Nexuscore Title
+const title = document.querySelector('.hero-text h1');
+if (title) {
+    setInterval(() => {
+        title.style.opacity = Math.random() > 0.95 ? '0.6' : '1';
+    }, 100);
+}
+// Smooth Scrolling for Navigation
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
