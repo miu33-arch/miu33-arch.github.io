@@ -234,3 +234,17 @@ body {
     visibility: visible !important;
     opacity: 1 !important;
 }
+/* Mobile Optimization for Sovereignty Grid */
+@media (max-width: 768px) {
+    .pillars-grid { 
+        grid-template-columns: repeat(2, 1fr) !important; 
+        gap: 15px !important;
+        padding: 10px !important;
+    }
+
+    .pillar-item h3 {
+        font-size: 0.7rem !important; /* Makes text legible but compact */
+        letter-spacing: 0.1em;
+        line-height: 1.4;
+    }
+}
