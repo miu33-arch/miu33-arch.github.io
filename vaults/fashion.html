@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PILLAR_12 // STRUCTURAL_FASHION</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #000; color: #fff; font-family: monospace; }
+        .emerald-glow { text-shadow: 0 0 10px #00ff41; }
+        /* The Correction Bar Animation */
+        .scanline {
+            width: 100%;
+            height: 2px;
+            background: rgba(0, 255, 65, 0.2);
+            position: absolute;
+            animation: scan 4s linear infinite;
+        }
+        @keyframes scan {
+            0% { top: 0%; }
+            100% { top: 100%; }
+        }
+    </style>
+</head>
+<body class="p-8 md:p-20 min-h-screen">
+    <nav class="flex justify-between items-center mb-20">
+        <a href="../index.html" class="text-[10px] tracking-[0.5em] text-white/40 hover:text-emerald-neon transition-all">
+            [ BACK_TO_COMMAND_CENTER ]
+        </a>
+        <span class="text-[10px] text-emerald-neon emerald-glow tracking-widest">MIU_DIGITAL_ARCHITECT // P.12</span>
+    </nav>
+
+    <main class="max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <div class="space-y-8">
+                <h1 class="text-4xl md:text-6xl font-bold tracking-tighter uppercase leading-none">
+                    Structural<br><span class="text-emerald-neon">Fashion Intelligence</span>
+                </h1>
+                <p class="text-white/60 text-sm leading-relaxed max-w-md">
+                    Volumetric garment synthesis and hardware logic. We treat fashion as wearable architecture—precise, skeletal, and hyper-functional.
+                </p>
+                <div class="pt-6">
+                    <button class="bg-emerald-neon/10 border border-emerald-neon/40 px-8 py-3 text-emerald-neon text-[10px] tracking-[0.4em] uppercase hover:bg-emerald-neon hover:text-black transition-all">
+                        VIEW_MATERIALS_LAB
+                    </button>
+                </div>
+            </div>
+            
+            <div class="relative border border-white/10 bg-black overflow-hidden aspect-square flex items-center justify-center">
+                <div class="scanline"></div>
+                <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-80">
+                    <source src="../images/1000008336.mp4" type="video/mp4">
+                </video>
+                
+                <div class="absolute bottom-[18%] left-0 w-full bg-black/90 py-3 border-y border-emerald-neon/20 backdrop-blur-md">
+                    <div class="flex justify-between px-4 items-center">
+                        <span class="text-emerald-neon text-[9px] tracking-[0.3em]">PROTOTYPE_012 // SKELETAL_GOLD</span>
+                        <span class="text-white/20 text-[7px] tracking-[0.2em]">SYSTEM_STABLE</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-32 border-t border-white/5 pt-10">
+            <h3 class="text-[10px] text-white/20 tracking-[0.5em] mb-12 uppercase">Technical_Specifications // P.12</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-12 text-[9px] tracking-[0.4em] text-white/40 uppercase">
+                <div class="flex flex-col gap-2">
+                    <span class="text-emerald-neon/60">Asset_Type</span>
+                    <span>[01] VOLUMETRIC_FABRIC</span>
+                </div>
+                <div class="flex flex-col gap-2">
+                    <span class="text-emerald-neon/60">Logic_Base</span>
+                    <span>[02] SKELETAL_HARDWARE</span>
+                </div>
+                <div class="flex flex-col gap-2">
+                    <span class="text-emerald-neon/60">Dynamics</span>
+                    <span>[03] KINETIC_CLOTH</span>
+                </div>
+                <div class="flex flex-col gap-2">
+                    <span class="text-emerald-neon/60">Geometry</span>
+                    <span>[04] AVANT_GARDE_V3</span>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
