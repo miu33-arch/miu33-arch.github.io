@@ -286,3 +286,28 @@ body {
     box-shadow: 0 0 25px rgba(0, 255, 133, 0.5);
     transform: translateY(-5px); /* Subtle lift effect */
 }
+/* --- MIU_33 INFRASTRUCTURE: PENDING NODES --- */
+
+.pending-node {
+    color: #444; /* Dimmed state */
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-family: 'Inter', 'Courier New', monospace; /* Technical feel */
+    border: 1px solid #111;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: #050505;
+    transition: all 0.3s ease;
+    cursor: default;
+    min-height: 100px; /* Keeps the grid uniform */
+}
+
+.pending-node:hover {
+    color: #666;
+    border-color: #222;
+    background: #080808;
+}
