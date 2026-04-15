@@ -6,54 +6,57 @@
     <title>PILLAR_09 // PARISIAN_DNA</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Refined Global Video Logic */
-video {
-    filter: contrast(1.1) brightness(0.9) saturate(1.1);
-    /* Subtle technical color correction to match the UI */
-    mix-blend-mode: screen; 
-    /* Ensures the video blends perfectly into the black background */
-}
+        /* CRITICAL: Force black background to prevent white-flash glitch */
+        body { 
+            background-color: #000 !important; 
+            color: #fff;
+            margin: 0;
+            overflow-x: hidden;
+        }
 
-.emerald-glow {
-    text-shadow: 0 0 10px #00ff41;
-}
+        video {
+            filter: contrast(1.1) brightness(0.9) saturate(1.1);
+            background-color: #000;
+        }
 
-/* Enhanced Scanline for Motion Assets */
-.scanline {
-    width: 100%;
-    height: 1px; /* Thinner for a more precise, architectural feel */
-    background: rgba(0, 255, 65, 0.15); /* Softer so it doesn't fight the video motion */
-    position: absolute;
-    z-index: 10; /* Ensures it floats over the video */
-    pointer-events: none;
-    animation: scan 6s linear infinite; /* Slower speed for "Quiet Luxury" */
-}
+        .emerald-glow {
+            text-shadow: 0 0 10px #00ff41;
+        }
 
-/* Pulse effect for technical labels at 3% baseline */
-.system-pulse {
-    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
+        .scanline {
+            width: 100%;
+            height: 1px;
+            background: rgba(0, 255, 65, 0.15);
+            position: absolute;
+            z-index: 10;
+            pointer-events: none;
+            animation: scan 6s linear infinite;
+        }
 
-@keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: .5; }
-}
+        .system-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
 
-@keyframes scan {
-    0% { top: 0%; }
-    100% { top: 100%; }
-}
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .5; }
+        }
+
+        @keyframes scan {
+            0% { top: 0%; }
+            100% { top: 100%; }
+        }
     </style>
 </head>
-<body class="p-8 md:p-20 chic-gradient min-h-screen">
+<body class="p-8 md:p-20 min-h-screen">
     <nav class="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 md:mb-20 gap-4">
-    <a href="../index.html" class="text-[9px] md:text-[10px] tracking-[0.4em] text-white/40 hover:text-emerald-neon transition-all">
-        [ BACK_TO_COMMAND_CENTER ]
-    </a>
-    <span class="text-[9px] md:text-[10px] text-emerald-neon emerald-glow tracking-widest border-l border-emerald-neon/20 pl-4 md:border-none md:pl-0">
-        MIU_DIGITAL_ARCHITECT // P.16
-    </span>
-</nav>
+        <a href="../index.html" class="text-[9px] md:text-[10px] tracking-[0.4em] text-white/40 hover:text-emerald-neon transition-all">
+            [ BACK_TO_COMMAND_CENTER ]
+        </a>
+        <span class="text-[9px] md:text-[10px] text-emerald-neon emerald-glow tracking-widest border-l border-emerald-neon/20 pl-4 md:border-none md:pl-0">
+            MIU_DIGITAL_ARCHITECT // P.09
+        </span>
+    </nav>
 
     <main class="max-w-6xl mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
@@ -64,30 +67,39 @@ video {
                 <p class="text-white/60 text-sm leading-relaxed max-w-md border-l border-emerald-neon/30 pl-6">
                     Deconstructing the essence of Haussmann-era elegance and re-encoding it for the digital frontier. A synthesis of heritage aesthetics and minimalist node-mapping.
                 </p>
+                
                 <div class="pt-6">
-                    <button class="border border-white/20 px-8 py-3 text-white/40 text-[10px] tracking-[0.4em] uppercase hover:border-emerald-neon hover:text-emerald-neon transition-all">
-                        Request_Access_Protocol
-                    </button>
+                    <a href="mailto:arch@miu33archstudio.com" class="border border-emerald-neon px-10 py-4 text-emerald-neon text-xs tracking-[0.3em] hover:bg-emerald-neon hover:text-black transition-all inline-block uppercase">
+                        INITIATE_DNA_PROTOCOL
+                    </a>
                 </div>
             </div>
-            
+           
             <div class="relative group">
-    <div class="absolute -inset-1 bg-emerald-neon/10 blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
-    <div class="relative border border-white/10 bg-black overflow-hidden">
-        <video 
-    autoplay 
-    muted 
-    loop 
-    playsinline 
-    webkit-playsinline
-    preload="auto" 
-    class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700"
->
-    <source src="../videos/dna_hero.mp4" type="video/mp4">
-</video>
+                <div class="absolute -inset-1 bg-emerald-neon/10 blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+                <div class="relative border border-white/10 bg-black overflow-hidden">
+                    <div class="scanline"></div>
+                    <video
+                        autoplay
+                        muted
+                        loop
+                        playsinline
+                        webkit-playsinline
+                        preload="auto"
+                        class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700"
+                    >
+                        <source src="../videos/dna_hero.mp4" type="video/mp4">
+                    </video>
 
-    </div>
-</div>
+                    <div class="absolute bottom-[3%] left-0 w-full bg-black/80 py-2 border-y border-white/5 system-pulse">
+                        <div class="flex justify-between px-4 items-center">
+                            <span class="text-emerald-neon text-[8px] tracking-[0.4em]">PROTOTYPE_009 // DNA_HERO</span>
+                            <span class="text-white/40 text-[8px] tracking-[0.2em] uppercase">SYSTEM_STABLE</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="mt-32 border-t border-white/5 pt-10">
             <h3 class="text-[10px] text-white/20 tracking-[0.5em] mb-12 uppercase">Technical_Specifications // P.09</h3>

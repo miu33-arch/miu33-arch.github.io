@@ -6,56 +6,57 @@
     <title>PILLAR_16 // DIGITAL_ARCHITECTURE</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-/* Refined Global Video Logic */
-video {
-    filter: contrast(1.1) brightness(0.9) saturate(1.1);
-    /* Subtle technical color correction to match the UI */
-    mix-blend-mode: screen; 
-    /* Ensures the video blends perfectly into the black background */
-}
+        /* CRITICAL: Force black background to prevent white-flash glitch on mobile */
+        body { 
+            background-color: #000 !important; 
+            color: #fff;
+            margin: 0;
+            overflow-x: hidden;
+        }
 
-.emerald-glow {
-    text-shadow: 0 0 10px #00ff41;
-}
+        video {
+            filter: contrast(1.1) brightness(0.9) saturate(1.1);
+            background-color: #000;
+        }
 
-/* Enhanced Scanline for Motion Assets */
-.scanline {
-    width: 100%;
-    height: 1px; /* Thinner for a more precise, architectural feel */
-    background: rgba(0, 255, 65, 0.15); /* Softer so it doesn't fight the video motion */
-    position: absolute;
-    z-index: 10; /* Ensures it floats over the video */
-    pointer-events: none;
-    animation: scan 6s linear infinite; /* Slower speed for "Quiet Luxury" */
-}
+        .emerald-glow {
+            text-shadow: 0 0 10px #00ff41;
+        }
 
-/* Pulse effect for technical labels at 3% baseline */
-.system-pulse {
-    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
+        .scanline {
+            width: 100%;
+            height: 1px;
+            background: rgba(0, 255, 65, 0.15);
+            position: absolute;
+            z-index: 10;
+            pointer-events: none;
+            animation: scan 6s linear infinite;
+        }
 
-@keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: .5; }
-}
+        .system-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
 
-@keyframes scan {
-    0% { top: 0%; }
-    100% { top: 100%; }
-}
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .5; }
+        }
 
+        @keyframes scan {
+            0% { top: 0%; }
+            100% { top: 100%; }
+        }
     </style>
 </head>
 <body class="p-8 md:p-20">
     <nav class="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 md:mb-20 gap-4">
-    <a href="../index.html" class="text-[9px] md:text-[10px] tracking-[0.4em] text-white/40 hover:text-emerald-neon transition-all">
-        [ BACK_TO_COMMAND_CENTER ]
-    </a>
-    <span class="text-[9px] md:text-[10px] text-emerald-neon emerald-glow tracking-widest border-l border-emerald-neon/20 pl-4 md:border-none md:pl-0">
-        MIU_DIGITAL_ARCHITECT // P.16
-    </span>
-</nav>
-
+        <a href="../index.html" class="text-[9px] md:text-[10px] tracking-[0.4em] text-white/40 hover:text-emerald-neon transition-all">
+            [ BACK_TO_COMMAND_CENTER ]
+        </a>
+        <span class="text-[9px] md:text-[10px] text-emerald-neon emerald-glow tracking-widest border-l border-emerald-neon/20 pl-4 md:border-none md:pl-0">
+            MIU_DIGITAL_ARCHITECT // P.16
+        </span>
+    </nav>
 
     <main class="max-w-6xl mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -65,14 +66,34 @@ video {
                     Operationalizing spatial logic through recursive node mapping. We don't just design; we build the structural DNA of digital environments.
                 </p>
                 <div class="pt-10">
-                    <a href="mailto:architect@miu33.com" class="border border-emerald-neon px-10 py-4 text-emerald-neon text-xs tracking-[0.3em] hover:bg-emerald-neon hover:text-black transition-all">
+                    <a href="mailto:arch@miu33archstudio.com" class="border border-emerald-neon px-10 py-4 text-emerald-neon text-xs tracking-[0.3em] hover:bg-emerald-neon hover:text-black transition-all">
                         INITIATE_CONSULTATION
                     </a>
                 </div>
             </div>
-            
-            <div class="border border-white/10 p-2 bg-white/5">
-                <img src="../images/pillar_16_digital_arch.jpg" class="w-full h-auto opacity-80">
+           
+            <div class="relative group border border-white/10 p-2 bg-white/5 overflow-hidden">
+                <div class="scanline"></div>
+                
+                <video 
+                    autoplay 
+                    muted 
+                    loop 
+                    playsinline 
+                    webkit-playsinline
+                    preload="auto" 
+                    class="w-full h-auto opacity-90 group-hover:opacity-100 transition-opacity duration-700"
+                >
+                    <source src="../videos/arch_core.mp4" type="video/mp4">
+                    <img src="../images/pillar_16_digital_arch.jpg" title="Your browser does not support the video tag.">
+                </video>
+
+                <div class="absolute bottom-[3%] left-0 w-full bg-black/80 py-2 border-y border-white/5 system-pulse">
+                    <div class="flex justify-between px-4 items-center">
+                        <span class="text-emerald-neon text-[8px] tracking-[0.4em]">PROTOTYPE_016 // ARCH_CORE</span>
+                        <span class="text-white/40 text-[8px] tracking-[0.2em] uppercase">STABLE_V3</span>
+                    </div>
+                </div>
             </div>
         </div>
 
