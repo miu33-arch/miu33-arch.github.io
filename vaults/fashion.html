@@ -49,11 +49,15 @@
                 </div>
             </div>
             
-            <div class="relative border border-white/10 bg-black overflow-hidden aspect-square flex items-center justify-center">
-                <div class="scanline"></div>
-                <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-80">
-                    <source src="../images/1000008336.mp4" type="video/mp4">
-                </video>
+            <div class="relative group">
+    <div class="absolute -inset-1 bg-emerald-neon/5 blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+    <div class="relative border border-white/10 bg-black overflow-hidden">
+        <video autoplay muted loop playsinline preload="metadata" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-1000">
+            <source src="../videos /fashion_hero.mp4" type="video/mp4">
+        </video>
+    </div>
+</div>
+
                 
                 <div class="absolute bottom-[18%] left-0 w-full bg-black/90 py-3 border-y border-emerald-neon/20 backdrop-blur-md">
                     <div class="flex justify-between px-4 items-center">
