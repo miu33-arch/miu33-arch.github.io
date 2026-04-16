@@ -1,4 +1,10 @@
 User-agent: *
 Allow: /
+Allow: /index.html
+Allow: /images/
 
-Sitemap: https://miu-digital-studio.pages.dev/sitemap.xml
+# Technical integrity: Pointing to the indexing map
+Sitemap: https://miu33archstudio.com/sitemap.xml
+
+# Resource Preservation: Prevents bot-flooding
+Crawl-delay: 10
