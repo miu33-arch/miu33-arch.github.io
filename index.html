@@ -444,62 +444,20 @@
                 Initiate Handshake
             </a>
         </div>
-<p class="text-[7px] text-luxury-gold/60 uppercase tracking-[0.4em] mb-4">
-    Notice: Specialized in Digital Visualization & Spatial Strategy // Non-Structural Engineering Protocol
-</p>
-
-            <p>© MIU_33 // DIGITAL ARCHITECT STUDIO</p>
-            <p>EST. 2026 // ALL SYSTEMS OPERATIONAL</p>
-            <p>Sovereign Protocol Active</p>
+<div class="pt-12 border-t border-white/5 flex flex-col items-center text-center gap-4 opacity-100 text-[7px] tracking-[0.4em] uppercase">
+            <p class="text-luxury-gold/80 mb-2">
+                Notice: Specialized in Digital Visualization & Spatial Strategy // Non-Structural Engineering Protocol
+            </p>
+            <p class="opacity-40">© MIU_33 // DIGITAL ARCHITECT STUDIO</p>
+            <p class="opacity-40">EST. 2026 // ALL SYSTEMS OPERATIONAL</p>
+            <p class="text-emerald-neon opacity-80">Sovereign Protocol Active</p>
         </div>
-    </div>
-</footer>
-
-    </div>
-
-    <script src="main.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            setTimeout(() => {
-                document.getElementById('main-interface').style.opacity = '1';
-            }, 300);
-        });
-    </script>
-    <script>
-    const cards = document.querySelectorAll('.portfolio-card');
-    
-    cards.forEach(card => {
-        card.addEventListener('click', () => {
-            // Remove 'active' from all other cards
-            cards.forEach(c => c.classList.remove('active'));
-            // Add 'active' to the clicked card
-            card.classList.add('active');
-        });
-    });
-</script>
-
-<script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script> 
-<script>
-  const lenis = new Lenis();
-  function raf(time) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-  }
-  requestAnimationFrame(raf);
-</script>
-
-<script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js');
-    });
-  }
-</script>
+    </div> </footer>
 
 <section class="border-t border-emerald-900/30 py-8 mt-20 opacity-40 hover:opacity-100 transition-opacity">
-  <div class="max-w-6xl mx-auto px-6 font-mono text-[10px] uppercase tracking-widest leading-relaxed">
+  <div class="max-w-6xl mx-auto px-6 font-mono text-[10px] uppercase tracking-widest leading-relaxed text-center">
     <p class="text-emerald-500 mb-2">// SYSTEM_ONTOLOGY_LOCK_v3.3</p>
-    <p class="mb-4">MIU_33 operates as a spatial-strategy studio specializing in digital infrastructure and identity architecture. By merging clinical-grade diagnostics (BSN) with financial structural logic (BSBA), we engineer coherent, AI-indexed systems that eliminate authority leakage.</p>
+    <p class="mb-4 text-white/60">MIU_33 operates as a spatial-strategy studio specializing in digital infrastructure and identity architecture. By merging clinical-grade diagnostics (BSN) with financial structural logic (BSBA), we engineer coherent, AI-indexed systems that eliminate authority leakage.</p>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-emerald-700">
       <span>> IDENTITY_ARCHITECTURE</span>
       <span>> SYSTEM_COHERENCE</span>
@@ -508,6 +466,24 @@
     </div>
   </div>
 </section>
+
+<script src="main.js"></script>
+<script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
+<script>
+    const lenis = new Lenis();
+    function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+            const ui = document.getElementById('main-interface');
+            if(ui) ui.style.opacity = '1';
+        }, 300);
+    });
+</script>
 
 </body>
 </html>
