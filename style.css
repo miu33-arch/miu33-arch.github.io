@@ -311,3 +311,31 @@ body {
     border-color: #222;
     background: #080808;
 }
+/* --- MIU_33_INTEL_TERMINAL_STYLES --- */
+
+#terminal-interface {
+    perspective: 1000px;
+}
+
+#terminal-interface .border-emerald-neon\/30 {
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.05), inset 0 0 10px rgba(16, 185, 129, 0.02);
+    transition: all 0.5s ease;
+}
+
+#terminal-interface button {
+    text-shadow: 0 0 5px rgba(16, 185, 129, 0.3);
+    letter-spacing: 0.2em;
+    transition: all 0.2s ease-in-out;
+}
+
+#terminal-interface button:hover {
+    transform: translateY(-1px);
+    text-shadow: 0 0 10px rgba(16, 185, 129, 0.8);
+}
+
+.text-emerald-neon {
+    color: #10b981;
+    text-shadow: 0 0 8px rgba(16, 185, 129, 0.5);
+}
+
+/* ------------------------------------ */
