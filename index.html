@@ -392,13 +392,66 @@
             [ REQUEST_SYSTEM_METHODOLOGY_V3.3 ]
         </button>
     </div>
+    </div>
 </section>
 
 <script>
+const diagnosticSteps = [
+    "DIAGNOSTIC 01: Is your infrastructure built for absolute sovereignty?",
+    "DIAGNOSTIC 02: Do you prioritize clinical logic over aesthetic excess?",
+    "DIAGNOSTIC 03: Confirm identity synchronization with miu_33 protocol?"
+];
+
+let currentStep = 0;
+
+function startDiagnostic() {
+    currentStep = 0;
+    renderStep();
+}
+
+function renderStep() {
+    const content = document.getElementById('terminal-content');
+    if (!content) return;
+    
+    const currentQuestion = diagnosticSteps[currentStep];
+    
+    content.innerHTML = `
+        <p class="text-emerald-neon uppercase tracking-[0.2em] animate-pulse">Analyzing...</p>
+        <p class="text-white/80">` + currentQuestion + `</p>
+        <div class="flex gap-4 mt-4">
+            <button onclick="processChoice()" class="text-emerald-neon hover:text-white underline decoration-dotted">[ AFFIRM ]</button>
+            <button onclick="location.reload()" class="text-red-500/50 hover:text-red-500 underline decoration-dotted">[ ABORT ]</button>
+        </div>
+    `;
+}
+
+function processChoice() {
+    currentStep++;
+    const content = document.getElementById('terminal-content');
+    if (currentStep < diagnosticSteps.length) {
+        renderStep();
+    } else {
+        content.innerHTML = `
+            <p class="text-emerald-neon uppercase tracking-widest">DIAGNOSTIC_COMPLETE</p>
+            <p class="text-white/60 mb-4">System alignment confirmed. Protocol 33 active.</p>
+            <button onclick="requestMethodology()" class="bg-emerald-neon/10 border border-emerald-neon/50 text-emerald-neon px-6 py-2 hover:bg-emerald-neon hover:text-black transition-all">
+                [ EXTRACT_METHODOLOGY_PDF ]
+            </button>
+            <div class="mt-4">
+                <a href="intel/methodology.pdf" download class="text-emerald-neon underline text-[9px] hover:text-white transition-all">
+                    [ DIRECT_DOWNLOAD_FALLBACK ]
+                </a>
+            </div>
+        `;
+    }
+}
+
 function requestMethodology() {
-    console.log("INITIALIZING_SECURE_TRANSFER...");
+    // This console line often clears the "blue wiggle" warning
+    console.log("SECURE_ACCESS_GRANTED: Opening Methodology PDF...");
     window.open("intel/methodology.pdf", "_blank");
 }
+
 </script>
 
 <section id="diagnostic-vault" class="py-20 bg-black">
