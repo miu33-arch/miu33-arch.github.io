@@ -339,3 +339,31 @@ body {
 }
 
 /* ------------------------------------ */
+/* --- UNIFIED PORTFOLIO SCAN PROTOCOL --- */
+
+/* Targets all 4 renders in the grid */
+#portfolio-grid img {
+    filter: grayscale(80%) brightness(0.7) contrast(1.1);
+    transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* Wakes up the image on hover */
+#portfolio-grid .group:hover img {
+    filter: grayscale(0%) brightness(1) contrast(1);
+    transform: scale(1.05);
+}
+
+/* Special Emphasis for the Large Hero (The first of the four) */
+#portfolio-grid .group:first-child img {
+    filter: grayscale(40%) brightness(0.8) contrast(1.2); /* Slightly more vivid by default */
+}
+
+/* Optional: Adds a subtle emerald glow border on hover */
+#portfolio-grid .group {
+    outline: 1px solid rgba(0, 255, 133, 0);
+    transition: outline 0.3s ease;
+}
+
+#portfolio-grid .group:hover {
+    outline: 1px solid rgba(0, 255, 133, 0.4);
+}
