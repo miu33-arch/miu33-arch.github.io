@@ -4,14 +4,30 @@
  * STATUS: SECURE // EMERALD_TEAL_SYNC
  */
 
+// 1. GLOBAL CONTENT ARCHIVE
+const studioContent = {
+    en: {
+        id: "CÉN_YÀN",
+        status: "OPERATIONAL",
+        pillars: "// THE_16_PILLARS_OF_SOVEREIGNTY //"
+    },
+    zh: {
+        id: "缪联睿",
+        status: "运行中",
+        pillars: "// 主权十六支柱 //"
+    }
+};
+
+// 2. CORE SYSTEM INITIALIZATION
 window.addEventListener('DOMContentLoaded', () => {
-    console.log('💚 NEXUS_CORE // SYSTEM_READY // BYPASSING_COMFORT');
+    console.log('💚 NEXUS_CORE // SYSTEM_READY');
 
     // --- 1. PERFORMANCE & DEVICE CALIBRATION ---
     const isLowEnd = /Android|iPhone|iPad/i.test(navigator.userAgent);
+   
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // --- 2. THE EMERALD MATRIX (Verified #00FF85) ---
+    // --- MATRIX LOGIC ---
     const canvas = document.getElementById('matrix-canvas');
     if (canvas && !prefersReducedMotion) {
         const ctx = canvas.getContext('2d');
@@ -23,9 +39,9 @@ window.addEventListener('DOMContentLoaded', () => {
         const drops = Array(cols).fill(1);
 
         const drawMatrix = () => {
-            ctx.fillStyle = 'rgba(8, 8, 8, 0.1)'; // Slightly smoother fade
+            ctx.fillStyle = 'rgba(8, 8, 8, 0.1)';
             ctx.fillRect(0, 0, width, height);
-            ctx.fillStyle = '#00FF85'; // Nexus Emerald
+            ctx.fillStyle = '#00FF85';
             ctx.font = '10px monospace';
            
             drops.forEach((y, i) => {
@@ -35,60 +51,17 @@ window.addEventListener('DOMContentLoaded', () => {
                 drops[i]++;
             });
         };
-        
-        // Throttle for Riyadh Mobile Networks
-        const matrixSpeed = isLowEnd ? 70 : 50;
-        setInterval(drawMatrix, matrixSpeed);
-
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
+        setInterval(drawMatrix, isLowEnd ? 70 : 50);
     }
 
-    // --- 3. DYNAMIC SEO SHIELD (Aggressive AEO) ---
+    // --- SEO & SCROLL LOGIC ---
     window.addEventListener('scroll', () => {
         const scrollPercent = Math.round((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100);
-        document.title = `MIU33 // ${scrollPercent}% DEPLOYED // NEXUS_CORE`;
-        
-        // Matrix Visibility Optimization
-        if (window.scrollY > 2000) {
-            canvas.style.display = 'none'; // Save battery for the user
-        } else {
-            canvas.style.display = 'block';
-        }
+        document.title = `MIU33 // ${scrollPercent}% DEPLOYED`;
+        if (canvas) canvas.style.display = window.scrollY > 2000 ? 'none' : 'block';
     });
 
-    // --- 4. THE PHOENIX TRIGGER (Mechanical Logic) ---
-    const trigger = document.querySelector('.hero-title');
-    if (trigger) {
-        trigger.addEventListener('dblclick', () => {
-            activateOmissionProtocol();
-        });
-    }
-
-    function activateOmissionProtocol() {
-        const msg = document.createElement('div');
-        msg.style.cssText = `
-            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            z-index: 9999; font-family: 'Orbitron', monospace; color: #00FF85;
-            background: #000; padding: 25px; border: 1px solid #00FF85;
-            text-transform: uppercase; font-size: 11px; letter-spacing: 0.4em;
-            box-shadow: 0 0 30px rgba(0, 255, 133, 0.5); pointer-events: none;
-            text-align: center; line-height: 1.6;
-        `;
-        msg.innerHTML = 'OMISSION_PROTOCOL_ACTIVE<br><span style="font-size:8px; opacity:0.6;">REWRITING_CITY_LOGIC...</span>';
-        document.body.appendChild(msg);
-       
-        document.body.style.filter = "invert(1) hue-rotate(90deg) brightness(1.2)";
-       
-        setTimeout(() => {
-            msg.remove();
-            document.body.style.filter = "none";
-        }, 2500);
-    }
-
-    // --- 5. REVEAL OBSERVER (Column Logic) ---
+    // --- REVEAL OBSERVER ---
     const matrixColumns = document.querySelectorAll('.matrix-column');
     const observerOptions = { threshold: 0.2 };
 
@@ -99,7 +72,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 entry.target.style.transform = 'translateY(0)';
             }
         });
-    }, observerOptions);
+    }, { threshold: 0.2 });
 
     matrixColumns.forEach(col => {
         col.style.opacity = '0';
@@ -108,37 +81,36 @@ window.addEventListener('DOMContentLoaded', () => {
         revealObserver.observe(col);
     });
 });
-// Ensure Hero Video plays on all devices
-document.addEventListener('DOMContentLoaded', () => {
-    const heroVideo = document.querySelector('.bg-video');
-    if (heroVideo) {
-        heroVideo.play().catch(() => {
-            // If autoplay is blocked, play on first user interaction
-            document.addEventListener('click', () => {
-                heroVideo.play();
-            }, { once: true });
-        });
+
+// 3. LANGUAGE OVERRIDE PROTOCOL (Global Scope)
+function setLanguage(lang) {
+    // Update Pulse Status
+    const statusText = document.querySelector('.animate-pulse');
+    if (statusText) statusText.textContent = studioContent[lang].status;
+ // --- NEW: Update System ID Identity ---
+    const idText = document.querySelector('.text-[7px].text-white');
+    if (idText) {
+        idText.innerHTML = `SYSTEM_ID: ${studioContent[lang].id} // STATUS: <span class="text-emerald-neon animate-pulse">${studioContent[lang].status}</span>`;
+    }   
+    // Update Pillars Heading
+    const pillarHeading = document.querySelector('#pillars h2');
+    if (pillarHeading) pillarHeading.textContent = studioContent[lang].pillars;
+
+    // UI Toggle State
+    const zhBtn = document.getElementById('lang-zh');
+    const enBtn = document.getElementById('lang-en');
+
+    if (lang === 'zh') {
+        zhBtn.className = 'text-emerald-neon';
+        enBtn.className = 'text-white/40 hover:text-white';
+    } else {
+        enBtn.className = 'text-emerald-neon';
+        zhBtn.className = 'text-white/40 hover:text-emerald-neon';
     }
-});
-// Subtle Flicker for the Nexuscore Title
-const title = document.querySelector('.hero-text h1');
-if (title) {
-    setInterval(() => {
-        title.style.opacity = Math.random() > 0.95 ? '0.6' : '1';
-    }, 100);
 }
-// Smooth Scrolling for Navigation
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
-});
-window.addEventListener('load', () => {
-    const video = document.querySelector('.bg-video');
-    if (video) {
-        video.play();
-    }
-});
+
+// 4. VIDEO & UTILITY
+document.addEventListener('click', () => {
+    const heroVideo = document.querySelector('.bg-video');
+    if (heroVideo) heroVideo.play();
+}, { once: true });
