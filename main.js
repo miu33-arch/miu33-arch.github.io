@@ -87,12 +87,12 @@ function setLanguage(lang) {
     // Update Pulse Status
     const statusText = document.querySelector('.animate-pulse');
     if (statusText) statusText.textContent = studioContent[lang].status;
- // --- NEW: Update System ID Identity ---
-    const idText = document.querySelector('.text-[7px].text-white');
-    if (idText) {
-        idText.innerHTML = `SYSTEM_ID: ${studioContent[lang].id} // STATUS: <span class="text-emerald-neon animate-pulse">${studioContent[lang].status}</span>`;
-    }   
-    // Update Pillars Heading
+// --- NEW: Update System ID Identity ---
+const idText = document.querySelector('.text-[7px].text-white');
+if (idText) {
+    idText.innerHTML = `SYSTEM_ID: ${studioContent[lang].id} // STATUS: <span class="text-emerald-neon animate-pulse">${studioContent[lang].status}</span>`;
+}
+// Update Pillars Heading
     const pillarHeading = document.querySelector('#pillars h2');
     if (pillarHeading) pillarHeading.textContent = studioContent[lang].pillars;
 
@@ -114,3 +114,42 @@ document.addEventListener('click', () => {
     const heroVideo = document.querySelector('.bg-video');
     if (heroVideo) heroVideo.play();
 }, { once: true });
+function updateRiyadhTime() {
+    const options = {
+        timeZone: 'Asia/Riyadh',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+    };
+    
+    const formatter = new Intl.DateTimeFormat('en-GB', options);
+    const timeString = formatter.format(new Date());
+    
+    const clockElement = document.getElementById('riyadh-clock');
+    if (clockElement) clockElement.textContent = timeString;
+
+    // --- Dynamic Atmospheric Shift ---
+    // If it's late night in Riyadh (22:00 - 04:00), slow down the matrix
+    const hour = parseInt(timeString.split(':')[0]);
+    const isNight = hour >= 22 || hour <= 4;
+    
+    if (isNight) {
+        document.body.style.filter = "brightness(0.8) contrast(1.1)";
+    } else {
+        document.body.style.filter = "none";
+    }
+}
+
+// Update every second
+setInterval(updateRiyadhTime, 1000);
+// 6. PORTFOLIO_SCAN_PROTOCOL
+document.querySelectorAll('#portfolio-grid div').forEach(item => {
+    item.addEventListener('click', () => {
+        const imgSrc = item.querySelector('img').src;
+        console.log(`INITIATING_DEEP_SCAN: ${imgSrc}`);
+        
+        // Logic to open a full-screen overlay with a "Scanning" animation
+        // This is where we will build the "Architect Overlay" later
+    });
+});
