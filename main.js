@@ -167,3 +167,21 @@ document.querySelectorAll('#diagnostic-vault button').forEach(button => {
         }, 1500);
     });
 });
+/* --- INITIATION_PROTOCOL_LOGIC --- */
+document.querySelector('#initiation form').addEventListener('submit', function(e) {
+    const btn = this.querySelector('button');
+    const originalText = btn.innerText;
+    
+    // Visually lock the terminal while transmitting
+    btn.disabled = true;
+    btn.innerText = "PREPARING_UPLINK...";
+    btn.style.opacity = "0.6";
+    
+    // Simulate signal handshake before Formspree takes over
+    setTimeout(() => {
+        btn.innerText = "TRANSMITTING_SIGNAL...";
+        btn.classList.add('animate-pulse');
+        
+        // Formspree will handle the actual redirect after this
+    }, 1000);
+});
