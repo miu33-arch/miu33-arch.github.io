@@ -673,6 +673,23 @@ function requestMethodology() {
     </div>
   </div>
 </section>
+<div id="success-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-xl hidden opacity-0 transition-all duration-700">
+    <div class="border border-emerald-neon/20 bg-[#050505] p-12 max-w-lg w-full text-center font-mono relative">
+        <div class="absolute top-0 left-0 w-full h-[2px] bg-emerald-neon shadow-[0_0_20px_#00ff85] animate-scan"></div>
+        
+        <span class="text-emerald-neon text-[8px] tracking-[0.8em] uppercase">// UPLINK_ESTABLISHED //</span>
+        <h3 class="text-white text-3xl mt-6 tracking-tighter uppercase font-bold">Signal_Verified</h3>
+        
+        <div class="my-8 space-y-2">
+            <p class="text-white/50 text-[10px] leading-relaxed uppercase">Data packets successfully routed to Miu_Architect.</p>
+            <p class="text-white/30 text-[8px] uppercase">Tracking_ID: <span class="text-emerald-neon">#NX-{{ Math.floor(Math.random()*9000) }}</span></p>
+        </div>
+        
+        <button onclick="closeModal()" class="w-full border border-white/10 py-4 text-white text-[9px] hover:bg-white hover:text-black transition-all uppercase tracking-[0.4em]">
+            Return_to_Nexus
+        </button>
+    </div>
+</div>
 
 <script src="main.js"></script>
 <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>

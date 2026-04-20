@@ -185,3 +185,45 @@ document.querySelector('#initiation form').addEventListener('submit', function(e
         // Formspree will handle the actual redirect after this
     }, 1000);
 });
+/* --- AJAX_TRANSMISSION_PROTOCOL --- */
+const contactForm = document.querySelector('#initiation form');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', async function(e) {
+        e.preventDefault(); // Stop the page from refreshing
+        
+        const btn = this.querySelector('button');
+        const formData = new FormData(this);
+        
+        // Phase 1: Initiation
+        btn.disabled = true;
+        btn.innerText = "ENCRYPTING_PACKETS...";
+        btn.style.opacity = "0.5";
+
+        try {
+            // Phase 2: Transmission
+            const response = await fetch(this.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                // Phase 3: Success
+                btn.innerText = "SIGNAL_VERIFIED";
+                this.reset();
+                showSuccess(); // Trigger the modal you just pasted
+            } else {
+                throw new Error('Uplink Failed');
+            }
+        } catch (error) {
+            // Phase 4: Error Handling
+            btn.innerText = "RETRY_TRANSMISSION";
+            btn.disabled = false;
+            btn.style.opacity = "1";
+            alert("Protocol Error: Signal lost in transit.");
+        }
+    });
+}

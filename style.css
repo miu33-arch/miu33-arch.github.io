@@ -367,3 +367,15 @@ body {
 #portfolio-grid .group:hover {
     outline: 1px solid rgba(0, 255, 133, 0.4);
 }
+/* SCANNER_ANIMATION */
+@keyframes scan {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+.animate-scan {
+    position: absolute;
+    animation: scan 2s linear infinite;
+    width: 50%;
+    background: linear-gradient(90deg, transparent, #00ff85, transparent);
+}
