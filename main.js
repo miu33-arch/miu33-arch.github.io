@@ -153,3 +153,17 @@ document.querySelectorAll('#portfolio-grid div').forEach(item => {
         // This is where we will build the "Architect Overlay" later
     });
 });
+document.querySelectorAll('#diagnostic-vault button').forEach(button => {
+    button.addEventListener('click', function() {
+        const originalText = this.innerText;
+        this.innerText = "EXTRACTING...";
+        this.classList.add('animate-pulse');
+        
+        setTimeout(() => {
+            this.innerText = "SUCCESS";
+            this.style.background = "#00ff85";
+            this.style.color = "black";
+            // Logic to actually trigger download goes here
+        }, 1500);
+    });
+});
