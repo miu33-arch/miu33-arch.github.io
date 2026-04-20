@@ -227,3 +227,69 @@ if (contactForm) {
         }
     });
 }
+/* MIU_33 // VASCULAR MAPPING LOGIC
+   Handles terminal diagnostics and secure file extraction.
+*/
+
+const diagnosticSteps = [
+    "DIAGNOSTIC 01: Is your infrastructure built for absolute sovereignty?",
+    "DIAGNOSTIC 02: Do you prioritize clinical logic over aesthetic excess?",
+    "DIAGNOSTIC 03: Confirm identity synchronization with miu_33 protocol?"
+];
+
+let currentStep = 0;
+
+function startDiagnostic() {
+    const content = document.getElementById('terminal-content');
+    if (content) {
+        currentStep = 0;
+        renderStep();
+    }
+}
+
+function renderStep() {
+    const content = document.getElementById('terminal-content');
+    const currentQuestion = diagnosticSteps[currentStep];
+   
+    content.innerHTML = `
+        <div class="space-y-4 animate-in fade-in duration-500">
+            <p class="text-emerald-neon uppercase tracking-[0.2em] text-[9px] animate-pulse">Analyzing_Protocol...</p>
+            <p class="text-white/80 font-mono text-[11px] leading-relaxed">${currentQuestion}</p>
+            <div class="flex gap-6 mt-6">
+                <button onclick="processChoice()" class="text-emerald-neon hover:text-white text-[10px] uppercase tracking-widest transition-colors">[ AFFIRM ]</button>
+                <button onclick="resetTerminal()" class="text-red-500/50 hover:text-red-500 text-[10px] uppercase tracking-widest transition-colors">[ ABORT ]</button>
+            </div>
+        </div>
+    `;
+}
+
+function processChoice() {
+    currentStep++;
+    if (currentStep < diagnosticSteps.length) {
+        renderStep();
+    } else {
+        completeDiagnostic();
+    }
+}
+
+function completeDiagnostic() {
+    const content = document.getElementById('terminal-content');
+    content.innerHTML = `
+        <div class="space-y-4 animate-in zoom-in-95 duration-500">
+            <p class="text-emerald-neon uppercase tracking-widest text-[10px]">DIAGNOSTIC_COMPLETE</p>
+            <p class="text-white/60 text-[10px] mb-6">System alignment confirmed. Protocol 33 active.</p>
+            
+            <div class="flex flex-col gap-3">
+                <a href="intel/methodology.pdf" download="MIU_System_Methodology_v3.3" 
+                   class="inline-block bg-emerald-neon/10 border border-emerald-neon/50 text-emerald-neon px-6 py-3 hover:bg-emerald-neon hover:text-black transition-all text-center text-[10px] tracking-widest uppercase">
+                    [ EXTRACT_METHODOLOGY_PDF ]
+                </a>
+                <p class="text-[8px] text-white/30 italic">Secure download path: /intel/methodology.pdf</p>
+            </div>
+        </div>
+    `;
+}
+
+function resetTerminal() {
+    location.reload(); // Hard reset for sovereignty
+}

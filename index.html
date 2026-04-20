@@ -485,11 +485,10 @@
 <section class="py-12 bg-black border-t border-white/10">
     <div class="max-w-4xl mx-auto px-4 text-center">
         <p class="text-[9px] uppercase tracking-[0.3em] text-emerald-neon mb-4">Intel_Protocol_01</p>
-        <button onclick="requestMethodology()" 
-                class="inline-block border border-emerald-neon/50 bg-transparent hover:bg-emerald-neon/10 text-white px-8 py-4 text-[10px] uppercase tracking-widest transition-all duration-300">
+        <a href="intel/methodology.pdf" download="MIU_System_Methodology_v3.3"
+           class="inline-block border border-emerald-neon/50 bg-transparent hover:bg-emerald-neon/10 text-white px-8 py-4 text-[10px] uppercase tracking-widest transition-all duration-300">
             [ REQUEST_SYSTEM_METHODOLOGY_V3.3 ]
-        </button>
-    </div>
+        </a>
     </div>
 </section>
 
@@ -510,12 +509,12 @@ function startDiagnostic() {
 function renderStep() {
     const content = document.getElementById('terminal-content');
     if (!content) return;
-    
+   
     const currentQuestion = diagnosticSteps[currentStep];
-    
+   
     content.innerHTML = `
         <p class="text-emerald-neon uppercase tracking-[0.2em] animate-pulse">Analyzing...</p>
-        <p class="text-white/80">` + currentQuestion + `</p>
+        <p class="text-white/80">${currentQuestion}</p>
         <div class="flex gap-4 mt-4">
             <button onclick="processChoice()" class="text-emerald-neon hover:text-white underline decoration-dotted">[ AFFIRM ]</button>
             <button onclick="location.reload()" class="text-red-500/50 hover:text-red-500 underline decoration-dotted">[ ABORT ]</button>
@@ -532,11 +531,13 @@ function processChoice() {
         content.innerHTML = `
             <p class="text-emerald-neon uppercase tracking-widest">DIAGNOSTIC_COMPLETE</p>
             <p class="text-white/60 mb-4">System alignment confirmed. Protocol 33 active.</p>
-            <button onclick="requestMethodology()" class="bg-emerald-neon/10 border border-emerald-neon/50 text-emerald-neon px-6 py-2 hover:bg-emerald-neon hover:text-black transition-all">
+            <a href="intel/methodology.pdf" download="MIU_System_Methodology_v3.3" 
+               class="inline-block bg-emerald-neon/10 border border-emerald-neon/50 text-emerald-neon px-6 py-2 hover:bg-emerald-neon hover:text-black transition-all text-center">
                 [ EXTRACT_METHODOLOGY_PDF ]
-            </button>
+            </a>
             <div class="mt-4">
-                <a href="intel/methodology.pdf" download class="text-emerald-neon underline text-[9px] hover:text-white transition-all">
+                <a href="intel/methodology.pdf" download="MIU_System_Methodology_v3.3" 
+                   class="text-emerald-neon underline text-[9px] hover:text-white transition-all">
                     [ DIRECT_DOWNLOAD_FALLBACK ]
                 </a>
             </div>

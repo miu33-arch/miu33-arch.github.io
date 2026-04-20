@@ -378,4 +378,56 @@ body {
     animation: scan 2s linear infinite;
     width: 50%;
     background: linear-gradient(90deg, transparent, #00ff85, transparent);
+}/* MIU_33 // OBSIDIAN & GOLD ARMOR 
+   Structural styling for elite diagnostic interfaces.
+*/
+
+:root {
+    --emerald-neon: #00ff85;
+    --obsidian-deep: #050505;
+    --gold-blueprint: #d4af37; /* For subtle tactical accents */
+}
+
+/* Diagnostic Section Container */
+.diagnostic-vault {
+    background: var(--obsidian-deep);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+/* The Pulse Effect for Protocol Signaling */
+.animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+/* Emerald Neon Button Glow */
+.text-emerald-neon {
+    color: var(--emerald-neon);
+    text-shadow: 0 0 10px rgba(0, 255, 133, 0.3);
+}
+
+.border-emerald-neon\/50 {
+    border-color: rgba(0, 255, 133, 0.5);
+}
+
+/* Hover State: Tactical Inversion */
+.hover\:bg-emerald-neon:hover {
+    background-color: var(--emerald-neon);
+    box-shadow: 0 0 20px rgba(0, 255, 133, 0.5);
+}
+
+/* Typography for Structural Authority */
+.font-mono {
+    font-family: 'Courier New', Courier, monospace;
+}
+.font-header {
+    font-family: 'Russo One', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
 }
