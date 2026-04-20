@@ -1,26 +1,29 @@
 # 🖤 MIU_33 | Digital Architect Studio
 
-**BSN. BSBA. Digital Architecture.**  
-Bridging clinical flow and financial logic for Saudi Vision 2030.
+**BSN. BSBA. Digital Architecture.** Bridging clinical flow and financial logic for Saudi Vision 2030.
 
 ---
 
-## 🌐 Live
-
-[miu-digital-studio.pages.dev](https://miu-digital-studio.pages.dev/)
+## 🚀 Performance Metrics
+- **Current SEO/Lighthouse Score:** 87%
+- **Response Protocol:** AJAX Terminals (Formspree Integrated)
+- **Deployment:** GitHub Pages Pipeline
 
 ---
 
-## 🛠 Stack
+## 📁 Infrastructure
+- `/renders`: High-fidelity structural visualizations.
+- `/blueprints`: [v3.0 Development] Technical schematics and spatial logic.
+- `/js`: AJAX Handshake & UI Logic.
 
-| Layer | Tool |
-|-------|------|
-| Frontend | HTML + Tailwind CSS |
-| Scroll | Lenis |
-| Forms | Tally |
-| Automation | n8n |
-| Database | NocoDB |
-| Hosting | Cloudflare Pages |
+---
+
+## 🛠 Current Stack
+| Layer | Tool | Status |
+|-------|------|--------|
+| Frontend | HTML + Tailwind CSS | Optimized |
+| Handshake | AJAX + Formspree | Verified |
+| Source Control | GitHub | Active |
 
 ---
 
@@ -31,5 +34,4 @@ Bridging clinical flow and financial logic for Saudi Vision 2030.
 ---
 
 ## 🖤 Riyadh Sync V2030
-
-© 2026 miu_Digital Architect Studio
+© 2026 miu_Digital Architect Studio // KSA
