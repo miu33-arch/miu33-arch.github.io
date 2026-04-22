@@ -224,28 +224,31 @@
     <div id="main-interface" class="relative z-10 opacity-0 transition-opacity duration-1000">
 
         <nav class="fixed top-0 w-full z-50 bg-black/90 border-b border-emerald-neon/10 backdrop-blur-md py-4 px-8 flex justify-between items-center">
-            <div class="flex flex-col items-start">
-    <a href="index.html" class="logo-link">
-        <img src="images/icon-512.png" alt="MIU_33" style="height: 42px; filter: drop-shadow(0 0 8px rgba(0, 255, 133, 0.6));">
-    </a>
-    <span class="text-[7px] text-white tracking-[0.2em] mt-1 uppercase">
-    SYSTEM_ID: CÉN_YÀN // STATUS: <span class="text-emerald-neon animate-pulse">OPERATIONAL</span>
-</span>
-<div class="flex gap-4 font-mono text-[10px] tracking-widest">
-    <button onclick="setLanguage('en')" id="lang-en" class="text-emerald-neon">EN</button>
-    <span class="text-white/20">|</span>
-    <button onclick="setLanguage('zh')" id="lang-zh" class="text-white/40 hover:text-white transition-colors">中文</button>
-</div>
-<div class="text-[8px] text-white/40 tracking-[0.3em] uppercase mt-1">
-    LOC: RUH_KSA // TIME: <span id="riyadh-clock">00:00:00</span>
-</div>
-</div>
+    <div class="flex flex-col items-start">
+        <a href="index.html" class="logo-link">
+            <img src="images/icon-512.png" alt="MIU_33" style="height: 42px; filter: drop-shadow(0 0 8px rgba(0, 255, 133, 0.6));">
+        </a>
+        <span class="text-[7px] text-white tracking-[0.2em] mt-1 uppercase">
+            SYSTEM_ID: CÉN_YÀN // STATUS: <span class="text-emerald-neon animate-pulse">OPERATIONAL</span>
+        </span>
+        <div class="flex gap-4 font-mono text-[10px] tracking-widest">
+            <button onclick="setLanguage('en')" id="lang-en" class="text-emerald-neon">EN</button>
+            <span class="text-white/20">|</span>
+            <button onclick="setLanguage('zh')" id="lang-zh" class="text-white/40 hover:text-white transition-colors">中文</button>
+        </div>
+        <div class="text-[8px] text-white/40 tracking-[0.3em] uppercase mt-1">
+            LOC: RUH_KSA // TIME: <span id="riyadh-clock">00:00:00</span>
+        </div>
+    </div>
 
-            <div class="hidden lg:flex gap-8 text-[9px] tracking-[0.3em]">
-                <a href="#matrix" class="hover:text-emerald-neon transition-colors underline decoration-emerald-neon/30 underline-offset-8">OPERATIONS</a>
-                <a href="vault.html" class="text-luxury-gold hover:brightness-125 transition-all">SECURE_VAULT_v3.0</a>
-            </div>
-        </nav>
+    <div class="hidden lg:flex items-center gap-8 text-[9px] tracking-[0.3em]">
+        <a href="#matrix" class="hover:text-emerald-neon transition-colors underline decoration-emerald-neon/30 underline-offset-8 uppercase">OPERATIONS</a>
+        <a href="https://miu-digital-architect-studio.myshopify.com" target="_blank" class="text-luxury-gold hover:brightness-125 transition-all uppercase">SECURE_VAULT_v3.0</a>
+        <a href="https://www.upwork.com/freelancers/~0166f8d8363a49457b" target="_blank" class="border border-emerald-neon/40 px-5 py-2 text-[9px] tracking-[0.3em] hover:bg-emerald-neon hover:text-black transition-all uppercase">
+            CONTRACT_MIU
+        </a>
+    </div>
+</nav>
 
         <section class="h-screen flex flex-col justify-center items-center text-center px-6">
             <div class="mb-4 py-1 px-3 border border-emerald-neon/20 text-[8px] text-emerald-neon tracking-[0.5em] uppercase">Status: System Operational</div>
@@ -422,13 +425,14 @@
         <h3 class="text-white font-mono text-xl tracking-tighter mt-2 uppercase">// DEEP_SCAN_PORTFOLIO //</h3>
     </div>
     
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[250px]">
-        <div class="md:col-span-2 md:row-span-2 border border-white/10 group overflow-hidden relative cursor-crosshair">
-            <img src="renders/hero_arch.jpg" alt="NEOM_SPIRE" class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105 opacity-60 group-hover:opacity-100">
-            <div class="absolute bottom-4 left-4 font-mono text-[7px] text-emerald-neon bg-black/90 p-2 border border-emerald-neon/20">
-                REF: RUH_CENTRAL_SPIRE_V1
-            </div>
-        </div>
+    <a href="https://www.pinterest.com/miu_DigitalStudio" target="_blank" class="md:col-span-2 md:row-span-2 border border-white/10 group overflow-hidden relative cursor-crosshair block">
+    <img src="renders/hero_arch.jpg" alt="NEOM_SPIRE" class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105 opacity-60 group-hover:opacity-100">
+    <div class="absolute bottom-4 left-4 font-mono text-[7px] text-emerald-neon bg-black/90 p-2 border border-emerald-neon/20">
+        REF: RUH_CENTRAL_SPIRE_V1 // [ACCESS_PINTEREST_VAULT]
+    </div>
+</a>
+
+
 
         <div class="md:row-span-2 border border-white/10 group overflow-hidden relative cursor-crosshair">
             <img src="renders/material_scan.jpg" alt="MATERIAL_STUDY" class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105 opacity-40 group-hover:opacity-100">
@@ -460,26 +464,26 @@
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 font-mono">
-        <div class="border border-white/10 p-6 flex justify-between items-center group hover:bg-emerald-neon/5 transition-all">
-            <div>
-                <div class="text-white text-xs mb-1">PROMPT_PACK_01_RIYADH_NEO</div>
-                <div class="text-[8px] text-white/30 uppercase">Format: .PDF // Size: 12.4MB</div>
-            </div>
-            <button class="text-[10px] text-emerald-neon border border-emerald-neon/30 px-4 py-2 hover:bg-emerald-neon hover:text-black transition-all">
-                EXTRACT_DATA
-            </button>
+    <div class="border border-white/10 p-6 flex justify-between items-center group hover:bg-emerald-neon/5 transition-all">
+        <div>
+            <div class="text-white text-xs mb-1 uppercase">PROMPT_PACK_01_RIYADH_NEO</div>
+            <div class="text-[8px] text-white/30 uppercase">Format: .PDF // Shopify_Sync</div>
         </div>
-
-        <div class="border border-white/10 p-6 flex justify-between items-center group hover:bg-emerald-neon/5 transition-all">
-            <div>
-                <div class="text-white text-xs mb-1">BLUEPRINT_SCHEMATICS_SET</div>
-                <div class="text-[8px] text-white/30 uppercase">Format: .JPG_HD // Size: 45.1MB</div>
-            </div>
-            <button class="text-[10px] text-emerald-neon border border-emerald-neon/30 px-4 py-2 hover:bg-emerald-neon hover:text-black transition-all">
-                EXTRACT_DATA
-            </button>
-        </div>
+        <a href="https://miu-digital-architect-studio.myshopify.com" target="_blank" class="text-[10px] text-emerald-neon border border-emerald-neon/30 px-4 py-2 hover:bg-emerald-neon hover:text-black transition-all">
+            EXTRACT_DATA
+        </a>
     </div>
+
+    <div class="border border-white/10 p-6 flex justify-between items-center group hover:bg-emerald-neon/5 transition-all">
+        <div>
+            <div class="text-white text-xs mb-1 uppercase">BLUEPRINT_SCHEMATICS_SET</div>
+            <div class="text-[8px] text-white/30 uppercase">Format: .JPG_HD // Shopify_Sync</div>
+        </div>
+        <a href="https://miu-digital-architect-studio.myshopify.com" target="_blank" class="text-[10px] text-emerald-neon border border-emerald-neon/30 px-4 py-2 hover:bg-emerald-neon hover:text-black transition-all">
+            EXTRACT_DATA
+        </a>
+    </div>
+</div>
 </section>
 
 <section class="py-12 bg-black border-t border-white/10">
@@ -697,19 +701,38 @@ function requestMethodology() {
 <script src="main.js"></script>
 <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
 <script>
-    const lenis = new Lenis();
-    function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-    }
+   const lenis = new Lenis();
+function raf(time) {
+    lenis.raf(time);
     requestAnimationFrame(raf);
+}
+requestAnimationFrame(raf);
 
-    document.addEventListener('DOMContentLoaded', () => {
-        setTimeout(() => {
-            const ui = document.getElementById('main-interface');
-            if(ui) ui.style.opacity = '1';
-        }, 300);
-    });
+// RIYADH TEMPORAL HEARTBEAT
+function updateRiyadhTime() {
+    const options = { 
+        timeZone: 'Asia/Riyadh', 
+        hour: '2-digit', 
+        minute: '2-digit', 
+        second: '2-digit', 
+        hour12: false 
+    };
+    const formatter = new Intl.DateTimeFormat([], options);
+    const clockElement = document.getElementById('riyadh-clock');
+    if (clockElement) {
+        clockElement.textContent = formatter.format(new Date());
+    }
+}
+setInterval(updateRiyadhTime, 1000);
+updateRiyadhTime();
+
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+        const ui = document.getElementById('main-interface');
+        if (ui) ui.style.opacity = '1';
+    }, 300);
+});
+
 </script>
 
 </body>

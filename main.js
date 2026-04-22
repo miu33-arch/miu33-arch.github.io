@@ -18,25 +18,41 @@ const studioContent = {
     }
 };
 
-// 2. CORE SYSTEM INITIALIZATION
+// --- 0. GLOBAL SMOOTH SCROLL (LENIS) ---
+const lenis = new Lenis();
+function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+}
+requestAnimationFrame(raf);
+
+// --- 2. CORE SYSTEM INITIALIZATION ---
 window.addEventListener('DOMContentLoaded', () => {
+    // Reveal main interface with 300ms delay
+    setTimeout(() => {
+        const ui = document.getElementById('main-interface');
+        if (ui) ui.style.opacity = '1';
+    }, 300);
+
     console.log('💚 NEXUS_CORE // SYSTEM_READY');
 
-    // --- 1. PERFORMANCE & DEVICE CALIBRATION ---
+    // --- 1. PERFORMANCE & DEVICE CALIBRATION (PRESERVED) ---
     const isLowEnd = /Android|iPhone|iPad/i.test(navigator.userAgent);
    
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // --- MATRIX LOGIC ---
+    // --- MATRIX LOGIC (PRESERVED) ---
     const canvas = document.getElementById('matrix-canvas');
     if (canvas && !prefersReducedMotion) {
         const ctx = canvas.getContext('2d');
         let width = canvas.width = window.innerWidth;
         let height = canvas.height = window.innerHeight;
-        
-        // Mobile-optimized density
+       
+        // Mobile-optimized density (Honoring your original values)
         const cols = Math.floor(width / (isLowEnd ? 25 : 20));
         const drops = Array(cols).fill(1);
+        
+        // ... rest of your drawMatrix function remains exactly as is ...
 
         const drawMatrix = () => {
             ctx.fillStyle = 'rgba(8, 8, 8, 0.1)';
@@ -143,30 +159,32 @@ function updateRiyadhTime() {
 
 // Update every second
 setInterval(updateRiyadhTime, 1000);
-// 6. PORTFOLIO_SCAN_PROTOCOL
-document.querySelectorAll('#portfolio-grid div').forEach(item => {
-    item.addEventListener('click', () => {
-        const imgSrc = item.querySelector('img').src;
-        console.log(`INITIATING_DEEP_SCAN: ${imgSrc}`);
-        
-        // Logic to open a full-screen overlay with a "Scanning" animation
-        // This is where we will build the "Architect Overlay" later
+// --- REVISED: PORTFOLIO_SCAN_PROTOCOL ---
+document.querySelectorAll('#portfolio-grid a').forEach(item => {
+    item.addEventListener('click', function(e) {
+        const refElement = this.querySelector('div');
+        const refText = refElement ? refElement.innerText : "UNKNOWN_REF";
+        console.log(`INITIATING_DEEP_SCAN: ${refText}`);
+        // Protocol: The anchor tag will naturally route to Pinterest
     });
 });
-document.querySelectorAll('#diagnostic-vault button').forEach(button => {
-    button.addEventListener('click', function() {
+
+// --- REVISED: VAULT_MERCHANT_PROTOCOL ---
+document.querySelectorAll('#diagnostic-vault a').forEach(link => {
+    link.addEventListener('click', function(e) {
         const originalText = this.innerText;
-        this.innerText = "EXTRACTING...";
+        this.innerText = "INITIALIZING_UPLINK...";
         this.classList.add('animate-pulse');
-        
+        this.style.pointerEvents = 'none'; // Lock during transmission
+       
         setTimeout(() => {
-            this.innerText = "SUCCESS";
+            this.innerText = "UPLINK_SUCCESS";
             this.style.background = "#00ff85";
             this.style.color = "black";
-            // Logic to actually trigger download goes here
-        }, 1500);
+        }, 1000);
     });
 });
+
 /* --- INITIATION_PROTOCOL_LOGIC --- */
 document.querySelector('#initiation form').addEventListener('submit', function(e) {
     const btn = this.querySelector('button');
@@ -292,4 +310,7 @@ function completeDiagnostic() {
 
 function resetTerminal() {
     location.reload(); // Hard reset for sovereignty
+}
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js');
 }

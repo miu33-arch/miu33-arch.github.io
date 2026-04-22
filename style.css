@@ -234,3 +234,88 @@ body {
   opacity: 1;
   filter: drop-shadow(0 0 8px var(--luxury-gold));
 }
+/* --- MIU33 // COMMERCIAL_NODE_EXTENSIONS --- */
+
+/* 1. THE SHOP_GLIDE (Shopify Vault Buttons) */
+#diagnostic-vault a {
+    transition: all 0.5s var(--ease-nexus);
+    position: relative;
+    overflow: hidden;
+}
+
+#diagnostic-vault a:hover {
+    letter-spacing: 3px;
+    box-shadow: 0 0 25px rgba(0, 255, 133, 0.4);
+    background: rgba(0, 255, 133, 0.05);
+}
+
+/* 2. THE PINTEREST_HANDSHAKE (Portfolio Portal) */
+#portfolio-grid a.group::before {
+    content: "SCANNING_ID...";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 6px;
+    color: var(--emerald-neon);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 30;
+    letter-spacing: 1px;
+}
+
+#portfolio-grid a.group:hover::before {
+    opacity: 1;
+}
+
+/* 3. THE HUD_CONTRACT (Upwork Protocol) */
+/* Ensuring your "Contract Miu" button has the authority teal glow */
+.nav-header a[href*="upwork"] {
+    border: 1px solid rgba(0, 255, 133, 0.4);
+    padding: 8px 16px;
+    transition: all 0.4s var(--ease-nexus);
+}
+
+.nav-header a[href*="upwork"]:hover {
+    background: var(--emerald-neon);
+    color: var(--void-black) !important;
+    box-shadow: 0 0 15px var(--emerald-neon);
+}
+
+/* 4. TEMPORAL CLOCK SYNC */
+#riyadh-clock {
+    font-variant-numeric: tabular-nums;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+}
+
+/* 5. SUCCESS MODAL (AJAX Response Logic) */
+#success-modal.hidden {
+    display: none;
+    opacity: 0;
+}
+
+#success-modal {
+    display: flex;
+    opacity: 1;
+    transition: opacity 0.8s var(--ease-nexus);
+}
+
+/* THE MECHANICAL SCAN ANIMATION (Success Modal Header) */
+@keyframes mechanicalScan {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+.animate-scan {
+    position: relative;
+    overflow: hidden;
+}
+
+.animate-scan::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, var(--emerald-neon), transparent);
+    animation: mechanicalScan 1.5s infinite;
+}
