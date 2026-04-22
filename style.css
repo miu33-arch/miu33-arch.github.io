@@ -1,18 +1,23 @@
-/* --- MIU33 // NEXUSCORE // GLOBAL_SYSTEM_OVERRIDE_v1.33 --- */
+/* --- MIU33 // NEXUSCORE // SPATIAL_OVERRIDE_v2.0 --- */
 /* ARCHITECT: CÉN YÀN // 岑砚 */
 
 :root {
-  --emerald-neon: #00FF85; /* Verified: Global Authority Teal */
-  --luxury-gold: #D4AF37; /* Refined to Sovereign DMARC Gold */
-  --void-black: #001A11; 
+  --emerald-neon: #00FF85;
+  --luxury-gold: #D4AF37;
+  --void-black: #001A11;
   --concrete-950: #080808;
   --font-header: 'Russo One', sans-serif;
   --font-tech: 'Orbitron', monospace;
+  
+  /* REFINED PHYSICS: The "Shopify Glide" Curve */
   --ease-nexus: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-fluid: cubic-bezier(0.4, 0, 0.2, 1);
+  
   --glow-core: 0 0 20px rgba(0, 255, 133, 0.3);
+  --glass-bg: rgba(8, 8, 8, 0.75);
 }
 
-/* 1. STRUCTURAL STABILIZATION */
+/* 1. GLOBAL ATMOSPHERE */
 html {
   background-color: var(--concrete-950);
   color-scheme: dark;
@@ -28,25 +33,40 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* 2. THE MATRIX CORE LAYER */
-#matrix-canvas {
+/* 2. THE GLASS HUD (Precision Injection #1) */
+.nav-header {
   position: fixed;
-  inset: 0;
-  z-index: 0;
-  opacity: 0.25;
-  pointer-events: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  z-index: 1000; /* Highest Elevation */
+  background: var(--glass-bg);
+  backdrop-filter: blur(15px); /* The "Expensive" Interface Blur */
+  -webkit-backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(0, 255, 133, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5%;
+  transition: border 0.4s var(--ease-fluid);
 }
 
-/* 3. COLUMN_MATRIX_ARCHITECTURE */
+.nav-header:hover {
+  border-bottom: 1px solid var(--emerald-neon);
+}
+
+/* 3. THE 16-PILLAR MATRIX (Precision Injection #2) */
 .matrix-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr); /* 4x4 Grid for 16 Pillars */
   gap: 1px;
   background-color: rgba(255,255,255,0.05);
   border-top: 1px solid rgba(0, 255, 133, 0.2);
   border-bottom: 1px solid rgba(0, 255, 133, 0.2);
   z-index: 10;
   position: relative;
+  margin-top: 70px; /* Offset for the fixed HUD */
 }
 
 .matrix-column {
@@ -56,378 +76,94 @@ body {
   position: relative;
   overflow: hidden;
   border-right: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  
+  /* INITIAL STATE: "Offline" Grayscale */
+  filter: grayscale(100%) brightness(0.7);
+  transition: 
+    filter 0.8s var(--ease-fluid),
+    transform 0.8s var(--ease-nexus),
+    background-color 0.5s ease;
 }
 
-.matrix-column:hover {
-  background-color: #0a0a0a;
+/* 4. TACTILE ACTIVATION (Precision Injection #3) */
+.matrix-column:hover,
+.matrix-column:active {
+  background-color: #0d0d0d;
+  filter: grayscale(0%) brightness(1.1);
+  transform: translateY(-5px) scale(1.02); /* Physical Feedback */
+  z-index: 20;
 }
 
-/* THE GLOW_BAR INDICATOR */
+/* THE FLOATING DATA LAYER (Parallax Injection) */
+.pillar-title {
+  position: relative;
+  z-index: 30;
+  color: var(--luxury-gold);
+  font-family: var(--font-header);
+  /* This text "floats" slightly faster on interaction */
+  transition: transform 0.6s var(--ease-nexus);
+}
+
+.matrix-column:hover .pillar-title {
+  transform: translateZ(20px) translateY(-2px);
+  text-shadow: 0 10px 20px rgba(0,0,0,1);
+}
+
+/* 5. THE EMERALD GLOW BAR */
 .glow-bar {
   position: absolute;
   left: 0;
-  top: 0;
-  width: 2px;
-  height: 0%;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
   background: var(--emerald-neon);
-  transition: height 0.6s var(--ease-nexus);
+  transform: scaleX(0);
+  transition: transform 0.6s var(--ease-nexus);
+  transform-origin: left;
 }
 
 .matrix-column:hover .glow-bar {
-  height: 100%;
+  transform: scaleX(1);
 }
 
-/* 4. HERO_VIDEO & HUD */
-.video-container {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  z-index: 1;
-}
-
-#hero-video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(0.4) contrast(1.1);
-}
-
-/* 5. DRAGON-SCALE & HUD */
-.dragon-scale {
-  border: 1px solid rgba(0, 255, 133, 0.1);
-  background: rgba(0, 0, 0, 0.6);
-  transition: all 0.6s var(--ease-nexus);
-  overflow: hidden;
-}
-
-.dragon-scale:hover {
-  border-color: var(--emerald-neon);
-  box-shadow: var(--glow-core);
-  transform: translateY(-5px);
-}
-
-/* 6. MOBILE SOVEREIGN RESCUE (Touch-Ready) */
+/* 6. MOBILE SOVEREIGN RESCUE */
 @media (max-width: 1024px) {
   .matrix-grid {
-    grid-template-columns: 1fr; /* Vertical Stack for Riyadh Mobile Network */
+    grid-template-columns: repeat(2, 1fr); /* 2x2 for readability */
   }
 
-  .matrix-column {
-    border-right: none;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-    padding: 2rem 1.25rem;
+  .nav-header {
+    height: 60px;
+    padding: 0 20px;
   }
-
-  h1 { font-size: 2.8rem !important; line-height: 1.1; }
- 
-  .dragon-scale:hover { transform: none; }
- 
-  button, a {
-    min-height: 48px;
-    padding: 12px;
-  }
-
-  #matrix-canvas { opacity: 0.15; }
 }
 
-/* 7. THE TRACER ANIMATION */
+@media (max-width: 640px) {
+  .matrix-grid {
+    grid-template-columns: 1fr; /* Single column stack */
+  }
+}
+
+/* 7. SCANNER TRACER (Visual Movement) */
 .tracer {
   position: absolute;
-  width: 1px;
-  height: 150px;
+  width: 2px;
+  height: 100px;
   background: linear-gradient(to bottom, transparent, var(--emerald-neon), transparent);
-  animation: fireTracer 1.5s var(--ease-nexus) infinite;
+  animation: fireTracer 2s var(--ease-nexus) infinite;
+  opacity: 0.3;
 }
 
 @keyframes fireTracer {
-  0% { transform: translateY(-100%); opacity: 0; }
-  50% { opacity: 1; }
-  100% { transform: translateY(100vh); opacity: 0; }
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
 }
 
-/* 8. SCROLLBAR: THE EMERALD SPINE */
+/* 8. SCROLLBAR MINIMALISM */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--concrete-950); }
-::-webkit-scrollbar-thumb { background: var(--emerald-neon); }
-@media screen and (max-width: 600px) {
-    /* Prevents columns from smashing into each other */
-    .matrix-column-group {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 30px;
-    }
-
-    /* Scales down the font so it doesn't break the layout */
-    .font-mono {
-        font-size: 10px !important;
-        letter-spacing: 0.1em;
-    }
-}
-/* Line 169 - Updated Hero Layout */
-.hero-section {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end; 
-    align-items: center;
-    /* Increased padding to push text to the absolute bottom */
-    padding-bottom: 8vh; 
-    background: #000;
-}
-
-/* This adds a dark 'fade' at the bottom so the video is clear but text is readable */
-.hero-section::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 30vh;
-    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-    z-index: 5;
-    pointer-events: none;
-}
-/* The Background Video */
-.bg-video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    transform: translate(-50%, -50%);
-    object-fit: cover;
-    z-index: 1;
-    filter: brightness(0.5) contrast(1.2); /* Darkens video so text pops */
-}
-
-/* The Glass/Video Overlay for Depth */
-.video-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, transparent 50%, rgba(0,0,0,0.8) 100%);
-    z-index: 2;
-}
-
-/* Hero Content Layering */
-.hero-text {
-    position: relative;
-    z-index: 3;
-    text-align: center;
-    color: #ffffff;
-    padding: 0 20px;
-}
-.hero-text h1 {
-    font-family: 'font-header', sans-serif;
-    text-transform: uppercase;
-    font-weight: 900;
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-}
-
-.hero-text p {
-    font-family: 'font-mono', monospace;
-    text-transform: uppercase;
-    color: #00ff85; /* Using that signature Nexuscore green */
-    opacity: 0.9;
-}
-.hero-section {
-    background: transparent !important;
-}
-
-.bg-video {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-}
-/* Mobile Optimization for Sovereignty Grid */
-@media (max-width: 768px) {
-    .pillars-grid { 
-        grid-template-columns: repeat(2, 1fr) !important; 
-        gap: 15px !important;
-        padding: 10px !important;
-    }
-
-    .pillar-item h3 {
-        font-size: 0.7rem !important; /* Makes text legible but compact */
-        letter-spacing: 0.1em;
-        line-height: 1.4;
-    }
-}
-.portfolio-card img {
-    filter: grayscale(100%);
-    transition: all 0.5s ease;
-}
-
-.portfolio-card:hover img, 
-.portfolio-card:active img {
-    filter: grayscale(0%) brightness(1.2);
-    /* This adds the Emerald Neon pulse */
-    box-shadow: 0 0 20px rgba(0, 255, 133, 0.4); 
-}
-/* Industrial Grayscale by default */
-#portfolio img {
-    filter: grayscale(100%);
-    transition: all 0.6s ease;
-}
-
-/* Emerald Ignition on Hover/Tap */
-#portfolio div:hover img, 
-#portfolio div:active img {
-    filter: grayscale(0%) brightness(1.1);
-    box-shadow: 0 0 25px rgba(0, 255, 133, 0.5);
-    transform: translateY(-5px); /* Subtle lift effect */
-}
-/* --- MIU_33 INFRASTRUCTURE: PENDING NODES --- */
-
-.pending-node {
-    color: #444; /* Dimmed state */
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    font-family: 'Inter', 'Courier New', monospace; /* Technical feel */
-    border: 1px solid #111;
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background: #050505;
-    transition: all 0.3s ease;
-    cursor: default;
-    min-height: 100px; /* Keeps the grid uniform */
-}
-
-.pending-node:hover {
-    color: #666;
-    border-color: #222;
-    background: #080808;
-}
-/* --- MIU_33_INTEL_TERMINAL_STYLES --- */
-
-#terminal-interface {
-    perspective: 1000px;
-}
-
-#terminal-interface .border-emerald-neon\/30 {
-    box-shadow: 0 0 20px rgba(16, 185, 129, 0.05), inset 0 0 10px rgba(16, 185, 129, 0.02);
-    transition: all 0.5s ease;
-}
-
-#terminal-interface button {
-    text-shadow: 0 0 5px rgba(16, 185, 129, 0.3);
-    letter-spacing: 0.2em;
-    transition: all 0.2s ease-in-out;
-}
-
-#terminal-interface button:hover {
-    transform: translateY(-1px);
-    text-shadow: 0 0 10px rgba(16, 185, 129, 0.8);
-}
-
-.text-emerald-neon {
-    color: #10b981;
-    text-shadow: 0 0 8px rgba(16, 185, 129, 0.5);
-}
-
-/* ------------------------------------ */
-/* --- UNIFIED PORTFOLIO SCAN PROTOCOL --- */
-
-/* Targets all 4 renders in the grid */
-#portfolio-grid img {
-    filter: grayscale(80%) brightness(0.7) contrast(1.1);
-    transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-/* Wakes up the image on hover */
-#portfolio-grid .group:hover img {
-    filter: grayscale(0%) brightness(1) contrast(1);
-    transform: scale(1.05);
-}
-
-/* Special Emphasis for the Large Hero (The first of the four) */
-#portfolio-grid .group:first-child img {
-    filter: grayscale(40%) brightness(0.8) contrast(1.2); /* Slightly more vivid by default */
-}
-
-/* Optional: Adds a subtle emerald glow border on hover */
-#portfolio-grid .group {
-    outline: 1px solid rgba(0, 255, 133, 0);
-    transition: outline 0.3s ease;
-}
-
-#portfolio-grid .group:hover {
-    outline: 1px solid rgba(0, 255, 133, 0.4);
-}
-/* SCANNER_ANIMATION */
-@keyframes scan {
-    0% { left: -100%; }
-    100% { left: 100%; }
-}
-
-.animate-scan {
-    position: absolute;
-    animation: scan 2s linear infinite;
-    width: 50%;
-    background: linear-gradient(90deg, transparent, #00ff85, transparent);
-}/* MIU_33 // OBSIDIAN & GOLD ARMOR 
-   Structural styling for elite diagnostic interfaces.
-*/
-
-:root {
-    --emerald-neon: #00ff85;
-    --obsidian-deep: #050505;
-    --gold-blueprint: #d4af37; /* For subtle tactical accents */
-}
-
-/* Diagnostic Section Container */
-.diagnostic-vault {
-    background: var(--obsidian-deep);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    position: relative;
-    overflow: hidden;
-}
-
-/* The Pulse Effect for Protocol Signaling */
-.animate-pulse {
-    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-@keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
-}
-
-/* Emerald Neon Button Glow */
-.text-emerald-neon {
-    color: var(--emerald-neon);
-    text-shadow: 0 0 10px rgba(0, 255, 133, 0.3);
-}
-
-.border-emerald-neon\/50 {
-    border-color: rgba(0, 255, 133, 0.5);
-}
-
-/* Hover State: Tactical Inversion */
-.hover\:bg-emerald-neon:hover {
-    background-color: var(--emerald-neon);
-    box-shadow: 0 0 20px rgba(0, 255, 133, 0.5);
-}
-
-/* Typography for Structural Authority */
-.font-mono {
-    font-family: 'Courier New', Courier, monospace;
-}
-.font-header {
-    font-family: 'Russo One', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
+::-webkit-scrollbar-thumb { 
+  background: var(--emerald-neon); 
+  border-radius: 10px;
 }
