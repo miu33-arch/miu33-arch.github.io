@@ -1,15 +1,16 @@
-/* --- MIU33 // NEXUSCORE // SPATIAL_OVERRIDE_v2.0 --- */
+/* --- MIU33 // NEXUSCORE // FULL_SYSTEM_OVERRIDE_v2.0 --- */
 /* ARCHITECT: CÉN YÀN // 岑砚 */
 
 :root {
-  --emerald-neon: #00FF85;
-  --luxury-gold: #D4AF37;
+  --emerald-neon: #00FF85; /* Global Authority Teal */
+  --luxury-gold: #D4AF37; /* Sovereign DMARC Gold */
   --void-black: #001A11;
   --concrete-950: #080808;
+  --obsidian-deep: #050505;
   --font-header: 'Russo One', sans-serif;
   --font-tech: 'Orbitron', monospace;
   
-  /* REFINED PHYSICS: The "Shopify Glide" Curve */
+  /* PRECISION PHYSICS: The "Shopify Glide" */
   --ease-nexus: cubic-bezier(0.19, 1, 0.22, 1);
   --ease-fluid: cubic-bezier(0.4, 0, 0.2, 1);
   
@@ -17,7 +18,7 @@
   --glass-bg: rgba(8, 8, 8, 0.75);
 }
 
-/* 1. GLOBAL ATMOSPHERE */
+/* 1. GLOBAL ENVIRONMENT */
 html {
   background-color: var(--concrete-950);
   color-scheme: dark;
@@ -33,16 +34,16 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* 2. THE GLASS HUD (Precision Injection #1) */
+/* 2. THE GLASS HUD (Precision Menu) */
 .nav-header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 70px;
-  z-index: 1000; /* Highest Elevation */
-  background: var(--glass-bg);
-  backdrop-filter: blur(15px); /* The "Expensive" Interface Blur */
+  z-index: 1000; /* Highest layer */
+  background: rgba(8, 8, 8, 0.75);
+  backdrop-filter: blur(15px); /* Professional Spatial Blur */
   -webkit-backdrop-filter: blur(15px);
   border-bottom: 1px solid rgba(0, 255, 133, 0.1);
   display: flex;
@@ -56,61 +57,40 @@ body {
   border-bottom: 1px solid var(--emerald-neon);
 }
 
-/* 3. THE 16-PILLAR MATRIX (Precision Injection #2) */
+/* 3. THE 16-PILLAR MATRIX */
 .matrix-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4x4 Grid for 16 Pillars */
+  grid-template-columns: repeat(4, 1fr); /* 4x4 Symmetrical Matrix */
   gap: 1px;
   background-color: rgba(255,255,255,0.05);
   border-top: 1px solid rgba(0, 255, 133, 0.2);
   border-bottom: 1px solid rgba(0, 255, 133, 0.2);
   z-index: 10;
   position: relative;
-  margin-top: 70px; /* Offset for the fixed HUD */
+  margin-top: 70px; /* Offset for Header */
 }
 
 .matrix-column {
   background-color: var(--concrete-950);
   padding: 3rem 1.5rem;
-  transition: all 0.6s var(--ease-nexus);
+  transition: 
+    filter 0.8s var(--ease-fluid), 
+    transform 0.8s var(--ease-nexus),
+    background-color 0.6s var(--ease-nexus);
   position: relative;
   overflow: hidden;
   border-right: 1px solid rgba(255,255,255,0.05);
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-  
-  /* INITIAL STATE: "Offline" Grayscale */
-  filter: grayscale(100%) brightness(0.7);
-  transition: 
-    filter 0.8s var(--ease-fluid),
-    transform 0.8s var(--ease-nexus),
-    background-color 0.5s ease;
+  filter: grayscale(100%) brightness(0.7); /* Grayscale by default */
 }
 
-/* 4. TACTILE ACTIVATION (Precision Injection #3) */
-.matrix-column:hover,
-.matrix-column:active {
-  background-color: #0d0d0d;
-  filter: grayscale(0%) brightness(1.1);
-  transform: translateY(-5px) scale(1.02); /* Physical Feedback */
+.matrix-column:hover {
+  background-color: #0a0a0a;
+  filter: grayscale(0%) brightness(1.1); /* "Wake up" on Tap/Hover */
+  transform: translateY(-5px) scale(1.02);
   z-index: 20;
 }
 
-/* THE FLOATING DATA LAYER (Parallax Injection) */
-.pillar-title {
-  position: relative;
-  z-index: 30;
-  color: var(--luxury-gold);
-  font-family: var(--font-header);
-  /* This text "floats" slightly faster on interaction */
-  transition: transform 0.6s var(--ease-nexus);
-}
-
-.matrix-column:hover .pillar-title {
-  transform: translateZ(20px) translateY(-2px);
-  text-shadow: 0 10px 20px rgba(0,0,0,1);
-}
-
-/* 5. THE EMERALD GLOW BAR */
+/* THE GLOW_BAR INDICATOR */
 .glow-bar {
   position: absolute;
   left: 0;
@@ -127,43 +107,130 @@ body {
   transform: scaleX(1);
 }
 
+/* 4. HERO_VIDEO LAYERING */
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding-bottom: 8vh;
+  background: #000;
+  z-index: 1;
+}
+
+.bg-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  z-index: 1;
+  filter: brightness(0.5) contrast(1.2);
+}
+
+.video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, transparent 50%, rgba(0,0,0,0.8) 100%);
+  z-index: 2;
+}
+
+/* 5. DRAGON-SCALE HUD COMPONENTS */
+.dragon-scale {
+  border: 1px solid rgba(0, 255, 133, 0.1);
+  background: rgba(0, 0, 0, 0.6);
+  transition: all 0.6s var(--ease-nexus);
+  overflow: hidden;
+}
+
+.dragon-scale:hover {
+  border-color: var(--emerald-neon);
+  box-shadow: var(--glow-core);
+  transform: translateY(-5px);
+}
+
 /* 6. MOBILE SOVEREIGN RESCUE */
 @media (max-width: 1024px) {
-  .matrix-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2x2 for readability */
-  }
-
-  .nav-header {
-    height: 60px;
-    padding: 0 20px;
-  }
+  .matrix-grid { grid-template-columns: repeat(2, 1fr); }
+  .nav-header { height: 60px; }
+  h1 { font-size: 2.2rem !important; }
 }
 
 @media (max-width: 640px) {
-  .matrix-grid {
-    grid-template-columns: 1fr; /* Single column stack */
-  }
+  .matrix-grid { grid-template-columns: 1fr; }
 }
 
-/* 7. SCANNER TRACER (Visual Movement) */
+/* 7. SCANNER TRACER & SYSTEM ANIMATIONS */
 .tracer {
   position: absolute;
-  width: 2px;
-  height: 100px;
+  width: 1px;
+  height: 150px;
   background: linear-gradient(to bottom, transparent, var(--emerald-neon), transparent);
-  animation: fireTracer 2s var(--ease-nexus) infinite;
-  opacity: 0.3;
+  animation: fireTracer 1.5s var(--ease-nexus) infinite;
+  pointer-events: none;
 }
 
 @keyframes fireTracer {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(100vh); }
+  0% { transform: translateY(-100%); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
 }
 
-/* 8. SCROLLBAR MINIMALISM */
+/* 8. TERMINAL INTERFACE STYLES */
+#terminal-interface .border-emerald-neon\/30 {
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.05);
+}
+
+.text-emerald-neon {
+  color: var(--emerald-neon);
+  text-shadow: 0 0 10px rgba(0, 255, 133, 0.3);
+}
+
+/* 9. SCROLLBAR: THE EMERALD SPINE */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--concrete-950); }
 ::-webkit-scrollbar-thumb { 
   background: var(--emerald-neon); 
   border-radius: 10px;
+}
+/* THE CONTRACT NODE // UPWORK_SPEC */
+.btn-contract {
+  padding: 12px 28px;
+  background: transparent;
+  border: 1px solid var(--emerald-neon);
+  color: var(--emerald-neon);
+  font-family: var(--font-tech);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.8rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s var(--ease-nexus);
+  cursor: pointer;
+  z-index: 1001; /* Above the Glass HUD */
+}
+
+.btn-contract:hover {
+  background: var(--emerald-neon);
+  color: var(--void-black);
+  box-shadow: 0 0 30px rgba(0, 255, 133, 0.6);
+  transform: translateY(-2px);
+}
+
+/* Pinterest Icon Subtle Glow */
+.pin-link {
+  color: var(--luxury-gold);
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.pin-link:hover {
+  opacity: 1;
+  filter: drop-shadow(0 0 8px var(--luxury-gold));
 }
