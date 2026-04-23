@@ -733,6 +733,36 @@ document.addEventListener('DOMContentLoaded', () => {
         if (ui) ui.style.opacity = '1';
     }, 300);
 });
+// --- MIU_33 SOVEREIGNTY GRID LOGIC ---
+    const pillarGrid = document.querySelector('#pillars .grid');
+    if (pillarGrid) {
+        const items = pillarGrid.children;
+
+        // Target Pillar 08 (Cén Yàn Identity)
+        const pillar08 = items[7]; 
+        if (pillar08) {
+            const statusText = pillar08.querySelector('p:last-of-type');
+            const originalContent = statusText.innerHTML;
+
+            pillar08.addEventListener('mouseenter', () => {
+                statusText.style.color = "#d4af37"; 
+                statusText.innerHTML = "Status: AUTHENTICATED // ACCESS GRANTED";
+            });
+
+            pillar08.addEventListener('mouseleave', () => {
+                statusText.style.color = ""; 
+                statusText.innerHTML = originalContent;
+            });
+        }
+
+        // Add NODE_REF Log to all 16 pillars
+        Array.from(items).forEach((item, i) => {
+            const log = document.createElement('div');
+            log.style.cssText = "font-size: 6px; color: rgba(0, 255, 170, 0.1); margin-top: 8px; font-family: monospace; letter-spacing: 1px;";
+            log.innerText = `NODE_REF: 0x${(i + 1).toString(16).toUpperCase()} // STABLE`;
+            item.appendChild(log);
+        });
+    }
 
 </script>
 
