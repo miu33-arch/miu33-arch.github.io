@@ -1,0 +1,61 @@
+<style>
+    /* Add this to your existing CSS */
+    .dashboard-grid {
+        display: grid;
+        grid-template-columns: 1fr 2fr; /* Left for status, Right for data */
+        gap: 20px;
+        width: 90%;
+        max-width: 1200px;
+        margin-top: 50px;
+    }
+
+    .panel {
+        background: rgba(10, 10, 10, 0.8);
+        border: 1px solid rgba(0, 242, 255, 0.3);
+        padding: 20px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 0 20px rgba(0, 242, 255, 0.1);
+    }
+
+    .panel-header {
+        font-size: 0.8rem;
+        color: #ffcc00; /* Desert Gold */
+        border-bottom: 1px solid rgba(255, 204, 0, 0.3);
+        margin-bottom: 15px;
+        padding-bottom: 5px;
+    }
+
+    .email-item {
+        border-left: 2px solid #00f2ff;
+        padding-left: 10px;
+        margin-bottom: 15px;
+        font-size: 0.9rem;
+    }
+
+    .email-item span {
+        display: block;
+        font-size: 0.7rem;
+        color: rgba(0, 242, 255, 0.6);
+    }
+</style>
+
+<div class="dashboard-grid">
+    <div class="panel">
+        <div class="panel-header">NODE STATUS: RIYADH_01</div>
+        <p>> SHOPIFY: <span style="color: #00ff00;">ONLINE</span></p>
+        <p>> PINTEREST: <span style="color: #00ff00;">SYNCED</span></p>
+        <p>> REVENUE FLOW: <span style="color: #ffcc00;">STABLE</span></p>
+    </div>
+
+    <div class="panel">
+        <div class="panel-header">INCOMING TRANSMISSIONS [@miu33archstudio.com]</div>
+        <div class="email-item">
+            <span>FROM: [CLIENT_NODE_04]</span>
+            PROMPT_PACK_QUERY: "Requesting custom desert-minimalism pack..."
+        </div>
+        <div class="email-item" style="border-color: #ffcc00;">
+            <span>FROM: [SYSTEM_AUTO]</span>
+            PINTEREST_ALERT: "Your 'Obsidian Void' pin is trending."
+        </div>
+    </div>
+</div>

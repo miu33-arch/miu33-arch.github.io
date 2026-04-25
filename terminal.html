@@ -53,6 +53,38 @@
         <div class="line" style="animation-delay: 3.5s; color: #ffcc00;">> WELCOME BACK, DIGITAL ARCHITECT.</div>
         <div class="line" style="animation-delay: 4.0s;">> SYSTEM STATUS: SOVEREIGN</div>
     </div>
+<script>
+    const logs = [
+        "SYNCHRONIZING WITH SHOPIFY API...",
+        "DECRYPTING PROTON_MAIL PACKETS...",
+        "FETCHING PINTEREST ANALYTICS: 24H TREND [UP]",
+        "ARCHITECTURE RENDER CACHE: 100% OPTIMIZED",
+        "UPDATING MIU_33 SECURITY PROTOCOLS...",
+        "NODE [RIYADH_01] STATUS: NOMINAL"
+    ];
+
+    let logIndex = 0;
+    const terminal = document.getElementById('terminal-log');
+
+    function addLogLine() {
+        if (logIndex < logs.length) {
+            const line = document.createElement('div');
+            line.className = 'line';
+            line.innerHTML = `> ${logs[logIndex]}`;
+            line.style.opacity = "1"; // Immediate visible flow
+            terminal.appendChild(line);
+            
+            // Auto-scroll to keep the latest log at the bottom
+            terminal.scrollTop = terminal.scrollHeight;
+            
+            logIndex++;
+            setTimeout(addLogLine, 800); // The "streaming" speed
+        }
+    }
+
+    // Start the diagnostic after the initial boot sequence
+    setTimeout(addLogLine, 4500);
+</script>
 
 </body>
 </html>
