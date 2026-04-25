@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            background-color: #050505; /* Deep Obsidian */
+            color: #00f2ff; /* Cyan Neon-Noir */
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        #terminal-log {
+            width: 80%;
+            max-width: 800px;
+            text-shadow: 0 0 10px #00f2ff;
+        }
+
+        .line {
+            margin-bottom: 10px;
+            opacity: 0;
+            animation: fadeIn 0.5s forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .matrix-rain {
+            color: rgba(0, 242, 255, 0.1);
+            position: absolute;
+            top: 0;
+            font-size: 10px;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="terminal-log">
+        <div class="line" style="animation-delay: 0.5s;">> INITIALIZING MIU_33 PROTOCOL...</div>
+        <div class="line" style="animation-delay: 1.2s;">> LINKING PROTON ENCRYPTION NODES... [OK]</div>
+        <div class="line" style="animation-delay: 1.8s;">> CONNECTING SHOPIFY API... [OK]</div>
+        <div class="line" style="animation-delay: 2.4s;">> PINTEREST TRAFFIC DETECTED... [VOLUME: HIGH]</div>
+        <div class="line" style="animation-delay: 3.5s; color: #ffcc00;">> WELCOME BACK, DIGITAL ARCHITECT.</div>
+        <div class="line" style="animation-delay: 4.0s;">> SYSTEM STATUS: SOVEREIGN</div>
+    </div>
+
+</body>
+</html>
