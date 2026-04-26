@@ -2,15 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>MIU_33 | SYSTEM TERMINAL</title>
+    <title>MIU_33 | CORE TERMINAL</title>
     <style>
         body {
-            background-color: #050505; 
-            /* THE ARCHITECTURAL GRID */
-            background-image: 
-                linear-gradient(rgba(0, 242, 255, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 242, 255, 0.05) 1px, transparent 1px);
-            background-size: 50px 50px;
+            background-color: #020202;
             color: #00f2ff;
             font-family: 'Courier New', Courier, monospace;
             display: flex;
@@ -24,67 +19,47 @@
             letter-spacing: 2px;
         }
 
-        /* SCAN-LINE EFFECT Overlay */
-        body::before {
-            content: " ";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), 
-                        linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
-            background-size: 100% 4px, 3px 100%;
-            pointer-events: none;
-            z-index: 10;
+        #matrix-canvas {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1; opacity: 0.15;
         }
+
+        .status-header {
+            position: absolute; top: 20px; right: 30px; text-align: right;
+            font-size: 0.7rem; color: rgba(0, 242, 255, 0.7); z-index: 20;
+        }
+        .status-header span { color: #ffcc00; }
 
         #terminal-log {
-            width: 80%;
-            max-width: 800px;
-            height: 60vh;
-            overflow-y: auto;
-            text-shadow: 0 0 10px #00f2ff;
-            margin-bottom: 20px;
-            z-index: 5;
+            width: 85%; max-width: 900px; height: 50vh;
+            overflow-y: auto; text-shadow: 0 0 8px #00f2ff;
+            margin-bottom: 20px; z-index: 5; background: rgba(0,0,0,0.4);
+            padding: 10px; border: 1px solid rgba(0, 242, 255, 0.1);
         }
-
-        /* Hide Scrollbar for clean look */
         #terminal-log::-webkit-scrollbar { display: none; }
 
-        .line {
-            margin-bottom: 10px;
-            opacity: 0;
-            animation: fadeIn 0.5s forwards;
-        }
+        .line { margin-bottom: 8px; opacity: 0; animation: fadeIn 0.4s forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: translateX(0); } }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        .business-nodes { display: flex; gap: 15px; margin-bottom: 20px; z-index: 5; }
+        .node-box {
+            background: rgba(0, 0, 0, 0.7); border: 1px solid rgba(0, 242, 255, 0.2);
+            padding: 12px; font-size: 0.6rem; min-width: 150px;
         }
+        .node-box span { display: block; color: #ffcc00; font-size: 0.8rem; margin-top: 5px; }
+        .pulse { display: inline-block; width: 6px; height: 6px; background: #00ff00; border-radius: 50%; margin-right: 5px; animation: blink 1.5s infinite; }
+        @keyframes blink { 50% { opacity: 0.3; } }
 
         .command-line {
-            width: 80%;
-            max-width: 800px;
-            display: flex;
-            align-items: center;
-            font-size: 1rem;
-            color: #ffcc00; /* Desert Gold */
-            border-top: 1px solid rgba(0, 242, 255, 0.2);
-            padding-top: 15px;
-            z-index: 5;
+            width: 85%; max-width: 900px; display: flex; align-items: center;
+            font-size: 1rem; color: #ffcc00; border-top: 1px solid rgba(0, 242, 255, 0.2);
+            padding-top: 15px; z-index: 5;
         }
 
         #user-input {
-            background: transparent;
-            border: none;
-            color: #00f2ff;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 1rem;
-            flex: 1;
-            margin-left: 10px;
-            outline: none;
-            text-transform: uppercase;
+            background: transparent; border: none; color: #00f2ff;
+            font-family: 'Courier New', Courier, monospace; font-size: 1rem;
+            flex: 1; margin-left: 10px; outline: none; text-transform: uppercase;
         }
         .status-header {
     position: absolute;
@@ -104,18 +79,23 @@
     </style>
 </head>
 <body>
-<div class="status-header">
-    NODE: <span id="node-id">RUH_SA_01</span><br>
-    COORDINATES: <span>24.7136° N, 46.6753° E</span><br>
-    LOCAL_TIME: <span id="clock">00:00:00</span>
-</div>
+
+    <canvas id="matrix-canvas"></canvas>
+
+    <div class="status-header">
+        NODE: <span>RUH_SA_01</span><br>
+        COORDINATES: <span>24.7136° N, 46.6753° E</span><br>
+        LOCAL_TIME: <span id="clock">00:00:00</span>
+    </div>
+
     <div id="terminal-log">
-        <div class="line" style="animation-delay: 0.5s;">> INITIALIZING MIU_33 PROTOCOL...</div>
-        <div class="line" style="animation-delay: 1.2s;">> LINKING PROTON ENCRYPTION NODES... [OK]</div>
-        <div class="line" style="animation-delay: 1.8s;">> CONNECTING SHOPIFY API... [OK]</div>
-        <div class="line" style="animation-delay: 2.4s;">> PINTEREST TRAFFIC DETECTED... [VOLUME: HIGH]</div>
-        <div class="line" style="animation-delay: 3.5s; color: #ffcc00;">> WELCOME BACK, DIGITAL ARCHITECT.</div>
-        <div class="line" style="animation-delay: 4.0s;">> SYSTEM STATUS: SOVEREIGN</div>
+        <div class="line" style="animation-delay: 0.5s;">> MIU_33 CORE [ONLINE]</div>
+        <div class="line" style="animation-delay: 1.2s;">> MATRIX DATA STREAM: ESTABLISHED</div>
+    </div>
+
+    <div class="business-nodes">
+        <div class="node-box"><div class="pulse"></div> SHOPIFY_NODE <span>ACTIVE</span></div>
+        <div class="node-box"><div class="pulse"></div> PINTEREST_NODE <span>SYNCED</span></div>
     </div>
 
     <div class="command-line">
@@ -124,37 +104,37 @@
     </div>
 
 <script>
-    const logs = [
-        "SYNCHRONIZING WITH SHOPIFY API...",
-        "DECRYPTING PROTON_MAIL PACKETS...",
-        "FETCHING PINTEREST ANALYTICS...",
-        "ARCHITECTURE RENDER CACHE: 100% OPTIMIZED",
-        "UPDATING MIU_33 SECURITY PROTOCOLS...",
-        "NODE [RIYADH_01] STATUS: NOMINAL"
-    ];
+    /* CLOCK LOGIC */
+    function updateClock() {
+        const now = new Date();
+        document.getElementById('clock').innerHTML = now.toLocaleTimeString('en-GB', { hour12: false });
+    }
+    setInterval(updateClock, 1000); updateClock();
 
-    let logIndex = 0;
-    const terminal = document.getElementById('terminal-log');
-
-    function addLogLine() {
-        if (logIndex < logs.length) {
-            const line = document.createElement('div');
-            line.className = 'line';
-            line.innerHTML = `> ${logs[logIndex]}`;
-            line.style.opacity = "1";
-            terminal.appendChild(line);
-            
-            // Auto-scroll to keep the latest log at the bottom
-            terminal.scrollTop = terminal.scrollHeight;
-            
-            logIndex++;
-            setTimeout(addLogLine, 800);
+    /* MATRIX LOGIC */
+    const canvas = document.getElementById('matrix-canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789MIU33";
+    const fontSize = 16;
+    const columns = canvas.width / fontSize;
+    const drops = [];
+    for (let i = 0; i < columns; i++) drops[i] = 1;
+    function drawMatrix() {
+        ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "#00f2ff";
+        ctx.font = fontSize + "px monospace";
+        for (let i = 0; i < drops.length; i++) {
+            const text = letters.charAt(Math.floor(Math.random() * letters.length));
+            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+            drops[i]++;
         }
     }
+    setInterval(drawMatrix, 33);
 
-    // Start the diagnostic after the initial boot sequence
-    setTimeout(addLogLine, 4500);
-
+    /* COMMAND LOGIC */
     const input = document.getElementById('user-input');
     input.addEventListener('keypress', function (e) {
         if (e.key === 'Enter') {
@@ -165,26 +145,15 @@
     });
 
     function handleCommand(cmd) {
+        const terminal = document.getElementById('terminal-log');
         let response = "";
-
-        if (cmd === '/status') {
-            response = "SYSTEM STATUS: 100% OPERATIONAL. ALL NODES SYNCED.";
-        } else if (cmd === '/mail') {
-            response = "INITIALIZING PROPORTON_BRIDGE... REDIRECTING TO SECURE COMMS.";
-            window.open('https://mail.proton.me/', '_blank');
-        } else if (cmd === '/gallery') {
-            response = "ACCESSING RENDER VAULT... REDIRECTING TO PORTFOLIO NODE.";
-            setTimeout(() => { window.location.href = "https://miu33-arch.github.io/"; }, 2000);
-        } else if (cmd === '/help') {
-            response = "AVAILABLE COMMANDS: /status, /mail, /gallery, /help";
-        } else {
-            response = `COMMAND NOT RECOGNIZED: ${cmd}`;
-        }
+        if (cmd === '/status') response = "SYSTEM: NOMINAL. REVENUE FLOWING.";
+        else if (cmd === '/mail') window.open('https://mail.proton.me/', '_blank');
+        else if (cmd === '/help') response = "COMMANDS: /status, /mail, /help";
+        else response = `ERR: CMD NOT RECOGNIZED`;
 
         const line = document.createElement('div');
-        line.className = 'line';
-        line.style.color = "#ffcc00"; 
-        line.style.opacity = "1";
+        line.className = 'line'; line.style.color = "#ffcc00"; 
         line.innerHTML = `> ${response}`;
         terminal.appendChild(line);
         terminal.scrollTop = terminal.scrollHeight;
