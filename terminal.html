@@ -167,47 +167,65 @@
     }
     setInterval(drawMatrix, 33);
 
-/* COMMAND LOGIC */
+ /* COMMAND LOGIC */
 function handleCommand(cmd) {
-    if (cmd === '/pins') {
+    const terminal = document.getElementById('terminal-log');
+    let response = "";
+
+    // NODE 1: PROTON MAIL
+    if (cmd === '/mail') {
+        response = "INITIALIZING PROTON_BRIDGE... [ENCRYPTED]";
+        window.open('https://mail.proton.me/', '_blank');
+    } 
+    // NODE 2: FORMSPREE INBOX
+    else if (cmd === '/inbox') {
+        response = "QUERYING FORMSPREE GATEWAY... [FETCHING SUBMISSIONS]";
+        setTimeout(() => { window.open('https://formspree.io/forms/', '_blank'); }, 1000);
+    } 
+    // NODE 3: PINTEREST VISUALS (MOOD SCRAPER)
+    else if (cmd === '/pins') {
         const overlay = document.getElementById('mood-overlay');
-        
-        // Simulate scraping a random architectural render from your style
-        // Using a high-end architecture source for the "mood"
+        // High-end obsidian architecture mood image
         overlay.style.backgroundImage = "url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2070')";
-        overlay.style.opacity = "0.4"; // The "Ghost" effect
-
-        const terminal = document.getElementById('terminal-log');
-        const line = document.createElement('div');
-        line.className = 'line'; line.style.color = "#ffcc00"; 
-        line.innerHTML = "> SCRAPING VISUAL_NODES... [MOOD_BOARD_SYNC]";
-        terminal.appendChild(line);
-
-        // Fade the image back out after 6 seconds
-        setTimeout(() => {
-            overlay.style.opacity = "0";
-        }, 6000);
-
-        // Then open the actual Pinterest board
-        setTimeout(() => {
-            window.open('https://www.pinterest.com/miu_DigitalStudio/', '_blank');
-        }, 2000);
+        overlay.style.opacity = "0.4"; 
+        
+        response = "SCRAPING VISUAL_NODES... [MOOD_BOARD_SYNC]";
+        
+        // Fade out after 6 seconds
+        setTimeout(() => { overlay.style.opacity = "0"; }, 6000); 
+        // Launch Pinterest
+        setTimeout(() => { window.open('https://www.pinterest.com/miu_DigitalStudio/', '_blank'); }, 2000);
+    }
+    // SYSTEM STATUS
+    else if (cmd === '/status') {
+        response = "SYSTEM: 100% OPERATIONAL. ALL NODES (MAIL, INBOX, PINS) SYNCED.";
+    } 
+    // HELP PROTOCOL
+    else if (cmd === '/help') {
+        response = "COMMANDS: /mail, /inbox, /pins, /status, /help";
+    } 
+    else {
+        response = `ERR: COMMAND '${cmd}' NOT RECOGNIZED`;
     }
 
-    // Final Action: Open the vault
-    setTimeout(() => {
-        window.open('https://www.pinterest.com/miu_DigitalStudio/', '_blank');
-    }, 2200);
+    // Output to Terminal
+    const line = document.createElement('div');
+    line.className = 'line'; 
+    line.style.color = "#ffcc00"; // Signature Gold
+    line.innerHTML = `> ${response}`;
+    terminal.appendChild(line);
+    terminal.scrollTop = terminal.scrollHeight;
 }
 
 const input = document.getElementById('user-input');
 input.addEventListener('keypress', function (e) {
     if (e.key === 'Enter') {
-        const command = this.value.toLowerCase();
+        const command = this.value.toLowerCase().trim();
         handleCommand(command);
         this.value = '';
     }
 });
+
 </script>
 
 </body>
