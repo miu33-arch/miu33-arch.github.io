@@ -75,18 +75,50 @@
 .status-header span {
     color: #ffcc00; /* Gold for the active data */
 }
+#mood-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: -2; /* Between the matrix and the obsidian background */
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+    filter: grayscale(100%) contrast(120%) brightness(30%); /* Keep it "Obsidian" style */
+}
+.studio-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffcc00; /* Your signature Gold */
+    text-shadow: 0 0 15px rgba(255, 204, 0, 0.5);
+    margin-bottom: 20px;
+    letter-spacing: 5px;
+    z-index: 10;
+    animation: glitch 3s infinite;
+}
+
+@keyframes glitch {
+    0% { opacity: 1; }
+    95% { opacity: 1; }
+    96% { opacity: 0.7; transform: skewX(2deg); }
+    97% { opacity: 1; transform: skewX(0deg); }
+    100% { opacity: 1; }
+}
 
     </style>
 </head>
 <body>
 
     <canvas id="matrix-canvas"></canvas>
-
+<div id="mood-overlay"></div>
     <div class="status-header">
         NODE: <span>RUH_SA_01</span><br>
         COORDINATES: <span>24.7136° N, 46.6753° E</span><br>
         LOCAL_TIME: <span id="clock">00:00:00</span>
     </div>
+<div class="studio-logo">MIU_DIGITAL ARCHITECT STUDIO</div>
 
     <div id="terminal-log">
         <div class="line" style="animation-delay: 0.5s;">> MIU_33 CORE [ONLINE]</div>
@@ -135,49 +167,47 @@
     }
     setInterval(drawMatrix, 33);
 
-    /* COMMAND LOGIC */
-    const input = document.getElementById('user-input');
-    input.addEventListener('keypress', function (e) {
-        if (e.key === 'Enter') {
-            const command = this.value.toLowerCase();
-            handleCommand(command);
-            this.value = ''; 
-        }
-    });
+/* COMMAND LOGIC */
+function handleCommand(cmd) {
+    if (cmd === '/pins') {
+        const overlay = document.getElementById('mood-overlay');
+        
+        // Simulate scraping a random architectural render from your style
+        // Using a high-end architecture source for the "mood"
+        overlay.style.backgroundImage = "url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2070')";
+        overlay.style.opacity = "0.4"; // The "Ghost" effect
 
-    function handleCommand(cmd) {
-    const terminal = document.getElementById('terminal-log');
-    let response = "";
+        const terminal = document.getElementById('terminal-log');
+        const line = document.createElement('div');
+        line.className = 'line'; line.style.color = "#ffcc00"; 
+        line.innerHTML = "> SCRAPING VISUAL_NODES... [MOOD_BOARD_SYNC]";
+        terminal.appendChild(line);
 
-    if (cmd === '/status') {
-        response = "SYSTEM: NOMINAL. REVENUE NODES SYNCED.";
-    } else if (cmd === '/mail') {
-        response = "INITIALIZING PROTON_BRIDGE... [ENCRYPTED]";
-        window.open('https://mail.proton.me/', '_blank');
-    } else if (cmd === '/inbox') {
-        response = "QUERYING FORMSPREE GATEWAY... [FETCHING SUBMISSIONS]";
-        // This opens your Formspree dashboard to see direct inquiries
-        setTimeout(() => { window.open('https://formspree.io/forms/', '_blank'); }, 1000);
-    } else if (cmd === '/help') {
-        response = "COMMANDS: /status, /mail, /inbox, /help";
-    } else {
-        response = `ERR: COMMAND '${cmd}' NOT RECOGNIZED`;
+        // Fade the image back out after 6 seconds
+        setTimeout(() => {
+            overlay.style.opacity = "0";
+        }, 6000);
+
+        // Then open the actual Pinterest board
+        setTimeout(() => {
+            window.open('https://www.pinterest.com/miu_DigitalStudio/', '_blank');
+        }, 2000);
     }
 
-    const line = document.createElement('div');
-    line.className = 'line'; 
-    line.style.color = "#ffcc00"; // Desert Gold for system responses
-    line.innerHTML = `> ${response}`;
-    terminal.appendChild(line);
-    terminal.scrollTop = terminal.scrollHeight;
+    // Final Action: Open the vault
+    setTimeout(() => {
+        window.open('https://www.pinterest.com/miu_DigitalStudio/', '_blank');
+    }, 2200);
 }
-    function updateClock() {
-    const now = new Date();
-    const timeString = now.toLocaleTimeString('en-GB', { hour12: false });
-    document.getElementById('clock').innerHTML = timeString;
-}
-setInterval(updateClock, 1000);
-updateClock();
+
+const input = document.getElementById('user-input');
+input.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        const command = this.value.toLowerCase();
+        handleCommand(command);
+        this.value = '';
+    }
+});
 </script>
 
 </body>
