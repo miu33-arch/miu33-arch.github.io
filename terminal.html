@@ -100,7 +100,7 @@
 
     <div class="command-line">
         <span>MIU_33@TERMINAL:~#</span>
-        <input type="text" id="user-input" autofocus autocomplete="off" inputmode="text" spellcheck="false">
+        <input type="text" id="user-input" autofocus autocomplete="off" inputmode="text" title="Terminal Input">
 
     </div>
 
@@ -146,19 +146,31 @@
     });
 
     function handleCommand(cmd) {
-        const terminal = document.getElementById('terminal-log');
-        let response = "";
-        if (cmd === '/status') response = "SYSTEM: NOMINAL. REVENUE FLOWING.";
-        else if (cmd === '/mail') window.open('https://mail.proton.me/', '_blank');
-        else if (cmd === '/help') response = "COMMANDS: /status, /mail, /help";
-        else response = `ERR: CMD NOT RECOGNIZED`;
+    const terminal = document.getElementById('terminal-log');
+    let response = "";
 
-        const line = document.createElement('div');
-        line.className = 'line'; line.style.color = "#ffcc00"; 
-        line.innerHTML = `> ${response}`;
-        terminal.appendChild(line);
-        terminal.scrollTop = terminal.scrollHeight;
+    if (cmd === '/status') {
+        response = "SYSTEM: NOMINAL. REVENUE NODES SYNCED.";
+    } else if (cmd === '/mail') {
+        response = "INITIALIZING PROTON_BRIDGE... [ENCRYPTED]";
+        window.open('https://mail.proton.me/', '_blank');
+    } else if (cmd === '/inbox') {
+        response = "QUERYING FORMSPREE GATEWAY... [FETCHING SUBMISSIONS]";
+        // This opens your Formspree dashboard to see direct inquiries
+        setTimeout(() => { window.open('https://formspree.io/forms/', '_blank'); }, 1000);
+    } else if (cmd === '/help') {
+        response = "COMMANDS: /status, /mail, /inbox, /help";
+    } else {
+        response = `ERR: COMMAND '${cmd}' NOT RECOGNIZED`;
     }
+
+    const line = document.createElement('div');
+    line.className = 'line'; 
+    line.style.color = "#ffcc00"; // Desert Gold for system responses
+    line.innerHTML = `> ${response}`;
+    terminal.appendChild(line);
+    terminal.scrollTop = terminal.scrollHeight;
+}
     function updateClock() {
     const now = new Date();
     const timeString = now.toLocaleTimeString('en-GB', { hour12: false });
