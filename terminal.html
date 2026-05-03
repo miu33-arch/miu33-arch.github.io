@@ -167,84 +167,62 @@
     }
     setInterval(drawMatrix, 33);
 
- /* COMMAND LOGIC */
-function handleCommand(cmd) {
-    const terminal = document.getElementById('terminal-log');
-    let response = "";
+    /* SYSTEM STATE */
+    let isAuthorized = false;
 
-    // NODE 1: PROTON MAIL
-    if (cmd === '/mail') {
-        response = "INITIALIZING PROTON_BRIDGE... [ENCRYPTED]";
-        window.open('https://mail.proton.me/', '_blank');
-    } 
-    // NODE 2: FORMSPREE INBOX
-    else if (cmd === '/inbox') {
-        response = "QUERYING FORMSPREE GATEWAY... [FETCHING SUBMISSIONS]";
-        setTimeout(() => { window.open('https://formspree.io/forms/', '_blank'); }, 1000);
-    } 
-    // NODE 3: PINTEREST VISUALS (MOOD SCRAPER)
-    else if (cmd === '/pins') {
-        const overlay = document.getElementById('mood-overlay');
-        // High-end obsidian architecture mood image
-        overlay.style.backgroundImage = "url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2070')";
-        overlay.style.opacity = "0.4"; 
-        
-        response = "SCRAPING VISUAL_NODES... [MOOD_BOARD_SYNC]";
-        
-        // Fade out after 6 seconds
-        setTimeout(() => { overlay.style.opacity = "0"; }, 6000); 
-        // Launch Pinterest
-        setTimeout(() => { window.open('https://www.pinterest.com/miu_DigitalStudio/', '_blank'); }, 2000);
-    }
-    // SYSTEM STATUS
-    else if (cmd === '/status') {
-        response = "SYSTEM: 100% OPERATIONAL. ALL NODES (MAIL, INBOX, PINS) SYNCED.";
-    } 
-    // HELP PROTOCOL
-    else if (cmd === '/help') {
-        response = "COMMANDS: /mail, /inbox, /pins, /status, /help";
-    } 
-    else {
-        response = `ERR: COMMAND '${cmd}' NOT RECOGNIZED`;
-    }
+    function handleCommand(cmd) {
+        const terminal = document.getElementById('terminal-log');
+        let response = "";
 
-    // Output to Terminal
-    const line = document.createElement('div');
-    line.className = 'line'; 
-    line.style.color = "#ffcc00"; // Signature Gold
-    line.innerHTML = `> ${response}`;
-    terminal.appendChild(line);
-    terminal.scrollTop = terminal.scrollHeight;
-}
-
-const input = document.getElementById('user-input');
-input.addEventListener('keypress', function (e) {
-    if (e.key === 'Enter') {
-        const command = this.value.toLowerCase().trim();
-        handleCommand(command);
-        this.value = '';
-    }
-});
-const terminalInput = document.getElementById('input'); // Adjust to your ID
-
-terminalInput.addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') {
-        const command = this.value.trim();
-        
-        // Example: type 'root [your_password]' to unlock
-        if (command.startsWith('root ')) {
-            const pass = command.split(' ')[1];
-            if (pass === 'YOUR_SECURE_KEY') {
-                renderDashboard(); // Function that shows your links
-                printToTerminal("Access Granted. Systems Online.");
+        // AUTHENTICATION CHECK
+        if (cmd.startsWith('root ')) {
+            const pass = cmd.split(' ')[1];
+            if (pass === 'kai3478_CHANGMIU') { // Change this to your real password
+                isAuthorized = true;
+                response = "ACCESS GRANTED. ENCRYPTED NODES UNLOCKED.";
             } else {
-                printToTerminal("Error: Invalid Credentials.");
+                response = "ERR: INVALID CREDENTIALS. ACCESS DENIED.";
             }
+        } 
+        else if (!isAuthorized) {
+            response = "SYSTEM LOCKED. PLEASE LOGIN VIA 'root [password]'";
         }
-        this.value = '';
-    }
-});
-</script>
+        // PROTECTED COMMANDS
+        else if (cmd === '/mail') {
+            response = "OPENING PROTON_MAIL...";
+            window.open('https://mail.proton.me/', '_blank');
+        } 
+        else if (cmd === '/inbox') {
+            response = "OPENING FORMSPREE...";
+            window.open('https://formspree.io/forms/', '_blank');
+        } 
+        else if (cmd === '/pins') {
+            response = "SYNCING VISUAL_NODES...";
+            document.getElementById('mood-overlay').style.opacity = "0.4";
+            setTimeout(() => { window.open('https://www.pinterest.com/miu_DigitalStudio/', '_blank'); }, 1500);
+        }
+        else if (cmd === '/help') {
+            response = "COMMANDS: /mail, /inbox, /pins, /status, /help";
+        }
+        else {
+            response = `ERR: COMMAND '${cmd}' NOT RECOGNIZED`;
+        }
 
+        const line = document.createElement('div');
+        line.className = 'line'; 
+        line.style.color = "#ffcc00"; 
+        line.innerHTML = `> ${response}`;
+        terminal.appendChild(line);
+        terminal.scrollTop = terminal.scrollHeight;
+    }
+
+    const input = document.getElementById('user-input');
+    input.addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            handleCommand(this.value.toLowerCase().trim());
+            this.value = '';
+        }
+    });
+</script>
 </body>
 </html>
