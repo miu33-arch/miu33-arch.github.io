@@ -225,7 +225,25 @@ input.addEventListener('keypress', function (e) {
         this.value = '';
     }
 });
+const terminalInput = document.getElementById('input'); // Adjust to your ID
 
+terminalInput.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+        const command = this.value.trim();
+        
+        // Example: type 'root [your_password]' to unlock
+        if (command.startsWith('root ')) {
+            const pass = command.split(' ')[1];
+            if (pass === 'YOUR_SECURE_KEY') {
+                renderDashboard(); // Function that shows your links
+                printToTerminal("Access Granted. Systems Online.");
+            } else {
+                printToTerminal("Error: Invalid Credentials.");
+            }
+        }
+        this.value = '';
+    }
+});
 </script>
 
 </body>
