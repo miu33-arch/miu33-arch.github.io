@@ -76,3 +76,66 @@
         grid-template-columns: 1fr;
     }
 }
+/* 1. Base Card Styling */
+.collection-card {
+    position: relative;
+    overflow: hidden;
+    background-color: #0d1117; /* Obsidian base */
+    min-height: 550px;
+    display: flex;
+    flex-col: column;
+    justify-content: space-between;
+}
+
+/* 2. Video Layer Handling */
+.collection-card video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 0;
+    object-fit: cover;
+    pointer-events: none; /* Allows clicks to pass through to links */
+}
+
+/* 3. The Desktop Hover Logic */
+@media (hover: hover) {
+    .collection-card video {
+        opacity: 0;
+        transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .collection-card:hover video {
+        opacity: 0.5; /* Clinical transparency */
+    }
+
+    /* Section 02 (The Glow) starts slightly visible to show "Stability" */
+    .collection-card:nth-child(2) video {
+        opacity: 0.1;
+    }
+}
+
+/* 4. The Mobile Touch Logic (Always Visible but Subdued) */
+@media (hover: none) {
+    .collection-card video {
+        opacity: 0.3 !important; /* Low-light glow for mobile performance */
+    }
+    
+    .collection-card {
+        min-height: 450px; /* Shorter for better mobile scrolling */
+    }
+}
+
+/* 5. Contrast Overlay (Ensures text stays readable over videos) */
+.collection-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(13,17,23,0.9) 0%, rgba(13,17,23,0.4) 50%, rgba(13,17,23,0.9) 100%);
+    z-index: 5;
+    pointer-events: none;
+}
