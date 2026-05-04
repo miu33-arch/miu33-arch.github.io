@@ -156,16 +156,39 @@
         }
         setInterval(drawMatrix, 60);
 
-        // SYSTEM BOOT SEQUENCE
+        // SYSTEM BOOT SEQUENCE // MIU_33_v4.0
+        const protocolStrings = [
+            "INITIALIZING_MATRIX...",
+            "STRUCTURAL_INTEGRITY: 8.55M",
+            "SATELLITE_LINK: RIYADH_KSA",
+            "ENCRYPTED: arch@miu33archstudio.com",
+            "NEXUS_CORE_ACTIVE."
+        ];
+
+        let stringIndex = 0;
+        function typeProtocol() {
+            const authMsg = document.getElementById('auth-msg');
+            if (stringIndex < protocolStrings.length) {
+                authMsg.classList.remove('opacity-0');
+                authMsg.innerHTML = protocolStrings[stringIndex];
+                stringIndex++;
+                setTimeout(typeProtocol, 800); // Speed of the text cycle
+            }
+        }
+
         window.addEventListener('load', () => {
+            // Delay 1s, then start the identity verification
             setTimeout(() => {
-                document.getElementById('auth-msg').classList.remove('opacity-0');
+                typeProtocol();
+                // After 5 seconds (total sequence time), transition to main interface
                 setTimeout(() => {
                     document.getElementById('splash-screen').style.opacity = '0';
                     document.getElementById('main-interface').style.opacity = '1';
-                    setTimeout(() => { document.getElementById('splash-screen').style.display = 'none'; }, 1000);
-                }, 1500);
-            }, 2500);
+                    setTimeout(() => { 
+                        document.getElementById('splash-screen').style.display = 'none'; 
+                    }, 1000);
+                }, 5000);
+            }, 1000);
         });
 
         // LENIS SCROLL ENGINE
