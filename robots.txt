@@ -1,10 +1,7 @@
 User-agent: *
 Allow: /
 Allow: /index.html
-Allow: /images/
+Allow: /images/og_image.jpg
 
-# Technical integrity: Pointing to the indexing map
+# MAP TO THE SOVEREIGN NODE
 Sitemap: https://miu33archstudio.com/sitemap.xml
-
-# Resource Preservation: Prevents bot-flooding
-Crawl-delay: 10

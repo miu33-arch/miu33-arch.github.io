@@ -1,24 +1,18 @@
 {
   "short_name": "MIU_33",
-  "name": "MIU_33 // NEXUSCORE ARCH STUDIO",
-  "description": "CÉN YÀN // Sovereign Digital Architecture & System Design.",
-  "start_url": "/",
-  "display": "standalone",
-  "orientation": "portrait",
-  "background_color": "#000000",
-  "theme_color": "#00ff85",
+  "name": "MIU_33 // NEXUS_CORE",
   "icons": [
     {
-      "src": "images/icon-192.png",
-      "type": "image/png",
-      "sizes": "192x192",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "images/icon-512.png",
+      "src": "images/favicon-512.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "any maskable"
     }
-  ]
+  ],
+  "start_url": "/index.html",
+  "background_color": "#050505",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#050505",
+  "description": "Sovereign Digital Architecture Studio."
 }

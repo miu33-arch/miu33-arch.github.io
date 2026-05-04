@@ -1,70 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MIU_33 // NEXUS_CORE // SYSTEM ARCHITECT</title>
-   
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: 'unsafe-inline' 'unsafe-eval'; img-src 'self' data: https:; video-src 'self' https:;">
-    <meta name="description" content="MIU_33 is a high-discretion digital architecture studio applying clinical-grade precision (BSN) and financial structural logic (BSBA) to design resilient, AI-ready identity infrastructures for Ghost Founders in Riyadh.">
-    <meta name="author" content="Miu Lián Ruì (Anamy Padilla) // 缪联睿 — Cén Yàn // 岑砚">
-
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://miu33archstudio.com/">
-   
-   
-    <meta property="og:title" content="MIU_33 // NEXUSCORE">
-    <meta property="og:description" content="CÉN YÀN // Sovereign Digital Architecture & System Design. Beyond imagination, capacity, & borders.">
-    <meta property="og:image" content="https://miu33archstudio.com/images/master-monument.jpg">
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://miu33archstudio.com/">
-    <meta name="twitter:title" content="MIU_33 // NEXUSCORE">
-    <meta name="twitter:description" content="CÉN YÀN // Sovereign Digital Architecture & System Design.">
-    <meta name="twitter:image" content="https://miu33archstudio.com/images/og_image.jpg">
-    <meta name="description" content="Miu_Digital Architect Studio: Bridging nursing precision and financial strategy with AI-driven architectural visualization in Riyadh, KSA.">
-    <meta name="keywords" content="Digital Architect, Riyadh Architecture, AI Visualization, Miu Studio">
-    <meta name="p:domain_verify" content="8c010db340ae539d04a26d158ae78db3"/>
+    <link rel="canonical" href="https://miu33archstudio.com/" />
     
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
     <link rel="apple-touch-icon" sizes="512x512" href="images/favicon-512.png">
-    <link rel="manifest" href="/manifest.json">
-    <link rel="canonical" href="https://miu33archstudio.com/" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Russo+One&family=Orbitron:wght@400;700;900&display=swap">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="manifest" href="manifest.json">
+    <title>MIU_33 // NEXUS_CORE</title>
     
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "@id": "https://miu33archstudio.com/#studio",
-      "name": "miu_Digital Architect Studio",
-      "alternateName": "MIU_33",
-      "url": "https://miu33archstudio.com/",
-      "logo": "https://miu33archstudio.com/images/favicon-512.png",
-      "image": [
-        "https://miu33archstudio.com/images/master-monument.jpg"
-      ],
-      "description": "Sovereign Digital Architecture for Ghost Founders in Riyadh.",
-      "founder": {
-        "@type": "Person",
-        "@id": "https://miu33archstudio.com/#anamy",
-        "name": "Anamy Padilla",
-        "jobTitle": "Lead Digital Architect"
-      },
-      "areaServed": "Riyadh, Saudi Arabia",
-      "priceRange": "$$$"
-    }
-    </script>
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="MIU_33 // NEXUS_CORE">
+    <meta property="og:description" content="CÉN YÀN // Sovereign Digital Architecture & System Design.">
+    <meta property="og:image" content="https://miu33archstudio.com/images/og_image.jpg">
+    <meta name="description" content="Sovereign Digital Architecture for Ghost Founders in Riyadh. BSN Precision // BSBA Logic.">
 
-   <script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Russo+One&family=Orbitron:wght@400;700;900&display=swap">
+    
+    <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
                         'cyan-neon': '#00FFFF',
-                        'void-black': '#0B0B0B',
+                        'obsidian': '#050505',
                         'satin-gold': '#C9A46A',
                         'concrete-950': '#080808'
                     },
@@ -78,554 +41,145 @@
     </script>
 
     <style>
-        body { background-color: #080808; overflow-x: hidden; color: white; }
-        #matrix-canvas { position: fixed; top: 0; left: 0; z-index: 0; opacity: 0.2; pointer-events: none; }
-        
-        /* COLUMN_MATRIX_LOGIC */
-        .matrix-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1px; 
-            background-color: rgba(255,255,255,0.05);
-            border-top: 1px solid rgba(0, 255, 255, 0.2);
-            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
-        }
-
-        .matrix-column {
-            background-color: #080808;
-            padding: 2.5rem 1.5rem;
-            transition: all 0.5s ease;
-            position: relative;
-            overflow: hidden;
-            border-right: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .matrix-column:hover { background-color: #0a0a0a; }
-        .matrix-column:hover .glow-bar { height: 100%; }
-
-        .glow-bar {
-            position: absolute; left: 0; top: 0; width: 2px; height: 0%;
-            background: #00FFFF;
-            transition: height 0.6s cubic-bezier(0.19, 1, 0.22, 1);
-        }
-
-        /* MOBILE_OVERRIDE_STACK */
-        @media (max-width: 1024px) {
-            .matrix-grid { grid-template-columns: 1fr; }
-            .matrix-column { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        }
-
-        .hero-title { text-shadow: 0 0 30px rgba(0, 255, 255, 0.3); }
-        #portfolio-grid img { filter: grayscale(100%) contrast(1.2); transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1); }
-        #portfolio-grid .group:hover img { filter: grayscale(0%) contrast(1); transform: scale(1.05); }
-        #portfolio-grid .group::after { content: ''; position: absolute; inset: 0; border: 1px solid rgba(0, 255, 255, 0); transition: all 0.3s; pointer-events: none; }
-        #portfolio-grid .group:hover::after { border: 1px solid rgba(0, 255, 255, 0.3); box-shadow: inset 0 0 20px rgba(0, 255, 255, 0.1); }
+        body { background-color: #050505; color: white; overflow-x: hidden; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        #matrix-canvas { position: fixed; top: 0; left: 0; z-index: -5; opacity: 0.1; pointer-events: none; }
+        #bg-video { filter: grayscale(100%) contrast(110%) brightness(20%); }
+        .authorized-msg { transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
     </style>
 </head>
 
-<body class="font-tech selection:bg-cyan-neon">
-
-    <section class="hero-section" style="position: relative; height: 100vh; overflow: hidden;">
-        <video autoplay muted loop playsinline class="bg-video" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
-            <source src="videos/homepage_preview.mp4" type="video/mp4">
-        </video>
-        <div class="video-overlay" style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,8,8,0.7) 0%, rgba(8,8,8,0.95) 100%); z-index: 1;"></div>
-        
-        <div class="hero-text" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white; z-index: 10; width: 100%; max-width: 600px;">
-            <div class="mb-4 inline-block py-1 px-3 border border-cyan-neon/30 text-[8px] text-cyan-neon tracking-[0.5em] uppercase">System Status: Operational // Node: Riyadh</div>
-            <h1 style="font-family: 'Russo One', sans-serif; font-style: italic; font-size: 3.5rem; margin-bottom: 20px; color: #C9A46A; text-shadow: 0 0 20px rgba(0, 255, 255, 0.3);">
-                MIU33 <br><span style="color: white;">NEXUS</span>
-            </h1>
-            <p style="font-family: 'Orbitron', monospace; letter-spacing: 0.3em; margin: 0 auto; color: rgba(255,255,255,0.6); font-size: 0.8rem; line-height: 1.6;">
-                SPECIALIZING IN <span style="color: #00FFFF;">MONOLITHIC IDENTITY</span> FOR GHOST FOUNDERS. <br>
-                BUILDING THE ARCHITECTURE OF AUTHORITY WHILE MAINTAINING THE LOGIC OF PRIVACY.
-            </p>
-        </div>
-    </section>
+<body class="font-tech selection:bg-cyan-neon no-scrollbar">
 
     <canvas id="matrix-canvas"></canvas>
+    <video autoplay muted loop playsinline id="bg-video" class="fixed inset-0 w-full h-full object-cover -z-10">
+        <source src="videos/homepage_preview.mp4" type="video/mp4">
+    </video>
 
-    <div id="main-interface" class="relative z-10 opacity-0 transition-opacity duration-1000">
+    <div id="splash-screen" class="fixed inset-0 z-[100] bg-obsidian flex flex-col justify-center items-center transition-opacity duration-1000">
+        <div id="boot-log" class="w-80 border-l border-cyan-neon pl-4 text-[0.7rem] tracking-[3px] text-cyan-neon uppercase leading-relaxed">
+            [SYS_BOOT]: MATRIX_INITIALIZED...<br>
+            [DOMAIN]: MIU33ARCHSTUDIO.COM<br>
+            [STATUS]: 4_COLLECTIONS_LOCKED<br>
+            [IDENTITY]: MIU_LIÁN_RUÌ_AUTHORIZED
+        </div>
+        <div id="auth-msg" class="mt-8 px-6 py-2 border border-white text-[10px] opacity-0 tracking-[4px] uppercase font-bold">
+            Protocol_Active
+        </div>
+    </div>
 
-        <nav class="fixed top-0 w-full z-50 bg-black/90 border-b border-cyan-neon/10 backdrop-blur-md py-4 px-8 flex justify-between items-center">
-            <div class="flex flex-col items-start">
-                <a href="index.html" class="logo-link">
-                    <img src="images/favicon-512.png" alt="MIU_33" style="height: 42px; filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.6));">
-                </a>
-                <span class="text-[7px] text-white tracking-[0.2em] mt-1 uppercase">
-                    SYSTEM_ID: CÉN_YÀN // STATUS: <span class="text-cyan-neon animate-pulse">OPERATIONAL</span>
-                </span>
-                <div class="flex gap-4 font-mono text-[10px] tracking-widest">
-                    <button onclick="setLanguage('en')" id="lang-en" class="text-cyan-neon">EN</button>
-                    <span class="text-white/20">|</span>
-                    <button onclick="setLanguage('zh')" id="lang-zh" class="text-white/40 hover:text-white transition-colors">中文</button>
-                </div>
-                <div class="text-[8px] text-white/40 tracking-[0.3em] uppercase mt-1">
-                    LOC: RUH_KSA // TIME: <span id="riyadh-clock">00:00:00</span>
-                </div>
+    <div id="main-interface" class="opacity-0 transition-opacity duration-[2000ms]">
+        
+        <nav class="fixed top-0 w-full z-50 bg-obsidian/90 backdrop-blur-xl border-b border-white/5 py-4 px-8 flex justify-between items-center">
+            <div class="flex flex-col">
+                <img src="images/favicon-512.png" alt="MIU_33" class="h-10 w-auto filter drop-shadow-[0_0_8px_#00FFFF]">
+                <span class="text-[7px] text-cyan-neon tracking-widest mt-1 uppercase">NODE: RIYADH // PROT: v4.0</span>
             </div>
-
-            <div class="hidden lg:flex items-center gap-8 text-[9px] tracking-[0.3em]">
-                <a href="#matrix" class="hover:text-cyan-neon transition-colors underline decoration-cyan-neon/30 underline-offset-8 uppercase">OPERATIONS</a>
-                <a href="https://miu-digital-architect-studio.myshopify.com" target="_blank" class="text-satin-gold hover:brightness-125 transition-all uppercase">SECURE_VAULT_v3.0</a>
-                <a href="https://www.upwork.com/freelancers/~0166f8d8363a49457b" target="_blank" class="border border-cyan-neon/40 px-5 py-2 text-[9px] tracking-[0.3em] hover:bg-cyan-neon hover:text-black transition-all uppercase">
-                    CONTRACT_MIU
-                </a>
+            <div class="flex gap-8 items-center text-[9px] tracking-[0.3em]">
+                <a href="https://miu-digital-architect-studio.myshopify.com" target="_blank" class="text-satin-gold border border-satin-gold/20 px-6 py-2 hover:bg-satin-gold hover:text-black transition-all uppercase">Secure_Vault</a>
             </div>
         </nav>
 
-        <section id="matrix" class="matrix-grid">
+        <section class="h-screen flex flex-col justify-center px-12 lg:px-24">
+            <span class="text-[10px] text-white/30 tracking-[10px] mb-6 uppercase animate-pulse font-mono">// MIU_33_SYSTEM_ARCHITECT</span>
+            <h1 class="font-header italic text-6xl lg:text-[9rem] text-satin-gold leading-[0.85] tracking-tighter uppercase mb-12">
+                THE PURE<br><span class="text-white">VOID</span>
+            </h1>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 max-w-5xl text-[10px] tracking-widest leading-loose uppercase text-white/50 border-l border-cyan-neon/30 pl-6">
+                <p>[STRUCTURAL]: 8.55M CLEAR SPAN VIA UNBONDED PT PHYSICS. ZERO COLUMN INTERFERENCE.</p>
+                <p>[CLIMATIC]: MONOLITHIC OBSIDIAN ENVELOPE. THERMAL MASS SOVEREIGNTY FOR RIYADH_2026.</p>
+            </div>
+        </section>
+
+        <section id="collections" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 bg-obsidian/80 border-t border-white/5">
             
-            <div class="matrix-column group">
-                <div class="glow-bar"></div>
-                <h3 class="text-cyan-neon text-xs mb-2 tracking-[0.4em] uppercase">01 // VOLUMETRIC</h3>
-                <h2 class="font-header text-2xl uppercase italic mb-6 text-satin-gold">Structural IP</h2>
-                <div class="aspect-[3/4] bg-void-black mb-6 overflow-hidden border border-white/5 group-hover:border-cyan-neon/30 transition-colors">
-                    <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-50 group-hover:opacity-80 transition-opacity">
-                        <source src="videos/MIU.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <p class="text-[9px] text-white/40 leading-relaxed uppercase tracking-widest">
-                    Massive scale architectural logic. Blueprints for the Nexus Core Riyadh Tower. Sovereign spatial data deployment.
-                </p>
+            <div class="p-12 border-r border-b border-white/5 hover:bg-white/5 transition-all group relative h-[500px] flex flex-col justify-between">
+                <div class="absolute top-0 left-0 h-0 w-[2px] bg-cyan-neon group-hover:h-full transition-all duration-700"></div>
+                <h3 class="text-cyan-neon text-[9px] tracking-[5px] mb-4 uppercase">01 // IDENTITY</h3>
+                <h2 class="text-2xl text-satin-gold uppercase italic font-header">Ghost_Foundations</h2>
+                <p class="text-[9px] text-white/30 tracking-[2px] leading-relaxed">HARD-CODED IDENTITY STRUCTURES FOR GHOST FOUNDERS. ERASING AUTHORITY LEAKAGE.</p>
             </div>
 
-            <div class="matrix-column group">
-                <div class="glow-bar" style="background: #C9A46A;"></div>
-                <h3 class="text-satin-gold text-xs mb-2 tracking-[0.4em] uppercase">02 // ATMOSPHERIC</h3>
-                <h2 class="font-header text-2xl uppercase italic mb-6 text-white">Retail Monolith</h2>
-                <div class="aspect-[3/4] bg-void-black mb-6 overflow-hidden border border-white/5 group-hover:border-satin-gold/30 transition-colors">
-                    <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-50 group-hover:opacity-80 transition-opacity">
-                        <source src="videos/MODULE_04_AURELIA_SENSORY.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <p class="text-[9px] text-white/40 leading-relaxed uppercase tracking-widest">
-                    Perfume monoliths. Sensory interior overrides. Paris DNA integrated with Cyber-Industrial aesthetics.
-                </p>
+            <div class="p-12 border-r border-b border-white/5 hover:bg-white/5 transition-all group relative h-[500px] flex flex-col justify-between">
+                <div class="absolute top-0 left-0 h-0 w-[2px] bg-satin-gold group-hover:h-full transition-all duration-700"></div>
+                <h3 class="text-satin-gold text-[9px] tracking-[5px] mb-4 uppercase">02 // VOLUMETRIC</h3>
+                <h2 class="text-2xl text-white uppercase italic font-header">Void_Physics</h2>
+                <p class="text-[9px] text-white/30 tracking-[2px] leading-relaxed">8.55M CLEAR SPAN LOGISTICS. UNBONDED POST-TENSIONING ANALYTICS FOR RIYADH MASTER BUILDS.</p>
             </div>
 
-            <div class="matrix-column group">
-                <div class="glow-bar"></div>
-                <h3 class="text-white/60 text-xs mb-2 tracking-[0.4em] uppercase">03 // LOGIC</h3>
-                <h2 class="font-header text-2xl uppercase italic mb-6 text-satin-gold">Protocol ID</h2>
-                <div class="aspect-[3/4] bg-concrete-950 mb-6 flex items-center justify-center border border-white/5 group-hover:border-cyan-neon/20 transition-all p-8">
-                   <div class="text-center">
-                       <div class="text-[8px] text-cyan-neon mb-4 tracking-[0.5em] animate-pulse">ENCRYPTING_CONNECTION...</div>
-                       <div class="font-mono text-[7px] text-white/20 leading-tight">
-                           CENYAN@MIU33ARCHSTUDIO.COM<br>
-                           DMARC: PROTECTED<br>
-                           SPF: ALIGNED<br>
-                           STATUS: SOVEREIGN
-                       </div>
-                   </div>
-                </div>
-                <p class="text-[9px] text-white/40 leading-relaxed uppercase tracking-widest">
-                    Secure Swiss communication via Proton Mail. Digital identity fortification. The brain behind the architecture.
-                </p>
+            <div class="p-12 border-r border-b border-white/5 hover:bg-white/5 transition-all group relative h-[500px] flex flex-col justify-between">
+                <div class="absolute top-0 left-0 h-0 w-[2px] bg-white group-hover:h-full transition-all duration-700"></div>
+                <h3 class="text-white/40 text-[9px] tracking-[5px] mb-4 uppercase">03 // CLINICAL</h3>
+                <h2 class="text-2xl text-satin-gold uppercase italic font-header">Diagnostic_AI</h2>
+                <p class="text-[9px] text-white/30 tracking-[2px] leading-relaxed">BSN-DERIVED CLINICAL LOGIC APPLIED TO ARCHITECTURAL VISUALIZATION AND PROMPT PIPELINES.</p>
+            </div>
+
+            <div class="p-12 border-b border-white/5 hover:bg-white/5 transition-all group relative h-[500px] flex flex-col justify-between">
+                <div class="absolute top-0 left-0 h-0 w-[2px] bg-cyan-neon group-hover:h-full transition-all duration-700"></div>
+                <h3 class="text-cyan-neon text-[9px] tracking-[5px] mb-4 uppercase">04 // STRATEGIC</h3>
+                <h2 class="text-2xl text-white uppercase italic font-header">Master_Vault</h2>
+                <p class="text-[9px] text-white/30 tracking-[2px] leading-relaxed">BSBA FINANCIAL LOGIC FOR HIGH-DISCRETION ACQUISITION TIERS AND SECURE DATA EXTRACTION.</p>
             </div>
 
         </section>
 
-        <section id="pillars" class="py-20 bg-[#050505] border-t border-white/5">
-            <div class="max-w-7xl mx-auto px-6">
-                <h2 class="font-header text-xs text-cyan-neon tracking-[0.6em] uppercase mb-12 text-center">// THE_16_PILLARS_OF_SOVEREIGNTY //</h2>
-               
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div class="border border-white/5 p-4 hover:border-cyan-neon/40 transition-all">
-                        <span class="text-[8px] text-white/20">01</span>
-                        <p class="text-[9px] uppercase tracking-widest mt-2">Data Sovereignty</p>
-                        <p class="text-[7px] text-white/40 uppercase mt-1">Status: Encrypted</p>
-                    </div>
-                    <div class="border border-white/5 p-4 hover:border-cyan-neon/40 transition-all">
-                        <span class="text-[8px] text-white/20">02</span>
-                        <p class="text-[9px] uppercase tracking-widest mt-2">Kinetic Spine</p>
-                        <p class="text-[7px] text-white/40 uppercase mt-1">Structural Fluidity</p>
-                    </div>
-                    <div class="border border-white/5 p-4 hover:border-cyan-neon/40 transition-all">
-                        <span class="text-[8px] text-white/20">03</span>
-                        <p class="text-[9px] uppercase tracking-widest mt-2">Atmospheric Override</p>
-                        <p class="text-[7px] text-white/40 uppercase mt-1">Lighting Logic</p>
-                    </div>
-                    <div class="border border-white/5 p-4 hover:border-cyan-neon/40 transition-all">
-                        <span class="text-[8px] text-white/20">04</span>
-                        <p class="text-[9px] uppercase tracking-widest mt-2">Mechanical Phoenix</p>
-                        <p class="text-[7px] text-white/40 uppercase mt-1">Regenerative Systems</p>
-                    </div>
-                    <div class="border border-white/5 p-4 hover:border-cyan-neon/40 transition-all">
-                        <span class="text-[8px] text-white/20">05</span>
-                        <p class="text-[9px] uppercase tracking-widest mt-2">Riyadh Industrial</p>
-                        <p class="text-[7px] text-white/40 uppercase mt-1">Locality: Central Province</p>
-                    </div>
-                    <div class="border border-white/5 p-4 hover:border-cyan-neon/40 transition-all">
-                        <span class="text-[8px] text-white/20">06</span>
-                        <p class="text-[9px] uppercase tracking-widest mt-2">Swiss Encryption</p>
-                        <p class="text-[7px] text-white/40 uppercase mt-1">Vault Level 09</p>
-                    </div>
-                    <div class="border border-white/5 p-4 hover:border-cyan-neon/40 transition-all">
-                        <span class="text-[8px] text-white/20">07</span>
-                        <p class="text-[9px] uppercase tracking-widest mt-2">DMARC Authority</p>
-                        <p class="text-[7px] text-white/40 uppercase mt-1">Email Integrity</p>
-                    </div>
-                    <div class="border border-white/5 p-4 hover:border-satin-gold/40 transition-all">
-                        <span class="text-[8px] text-white/20">08</span>
-                        <p class="text-[9px] uppercase tracking-widest mt-2 text-satin-gold">Cén Yàn Identity</p>
-                        <p class="text-[7px] text-white/40 uppercase mt-1">Alias: 缪联睿</p>
-                    </div>
-
-                    <a href="vaults/dna.html" class="block border border-white/5 p-0 hover:border-satin-gold/40 transition-all overflow-hidden relative group cursor-pointer">
-                        <img src="images/pillar_09_parisian_dna.jpg" class="w-full h-32 object-cover opacity-60 group-hover:opacity-100 transition-opacity">
-                        <div class="p-4 absolute bottom-0 left-0 w-full bg-gradient-to-t from-black to-transparent">
-                            <span class="text-[8px] text-white/20">09</span>
-                            <p class="text-[9px] uppercase tracking-widest mt-1 text-satin-gold">Parisian DNA</p>
-                            <p class="text-[7px] text-white/60 uppercase mt-1">European Structural Logic</p>
-                        </div>
-                    </a>
-
-                    <div class="border border-white/5 p-4 hover:border-cyan-neon/40 transition-all">
-                        <span class="text-[8px] text-white/20">10</span>
-                        <p class="text-[9px] uppercase tracking-widest mt-2">Omission Protocol</p>
-                        <p class="text-[7px] text-white/40 uppercase mt-1">Strategic Noise Reduction</p>
-                    </div>
-                    <div class="border border-white/5 p-4 hover:border-cyan-neon/40 transition-all">
-                        <span class="text-[8px] text-white/20">11</span>
-                        <p class="text-[9px] uppercase tracking-widest mt-2">Matrix Propagation</p>
-                        <p class="text-[7px] text-white/40 uppercase mt-1">China-KSA-EU</p>
-                    </div>
-
-                    <a href="vaults/fashion.html" class="block border border-white/5 p-0 hover:border-satin-gold/40 transition-all overflow-hidden relative group cursor-pointer">
-                        <img src="images/pillar_12_structural_fashion.jpg" class="w-full h-32 object-cover opacity-60 group-hover:opacity-100 transition-opacity">
-                        <div class="p-4 absolute bottom-0 left-0 w-full bg-gradient-to-t from-black to-transparent">
-                            <span class="text-[8px] text-white/20">12</span>
-                            <p class="text-[9px] uppercase tracking-widest mt-1 text-satin-gold">Structural Fashion</p>
-                            <p class="text-[7px] text-white/60 uppercase mt-1">Material Strategy</p>
-                        </div>
-                    </a>
-
-                    <div class="border border-white/5 p-4 hover:border-cyan-neon/40 transition-all">
-                        <span class="text-[8px] text-white/20">13</span>
-                        <p class="text-[9px] uppercase tracking-widest mt-2">Logic-Based Design</p>
-                        <p class="text-[7px] text-white/40 uppercase mt-1">BSN Clinical Diagnostic</p>
-                    </div>
-                    <div class="border border-white/5 p-4 hover:border-cyan-neon/40 transition-all">
-                        <span class="text-[8px] text-white/20">14</span>
-                        <p class="text-[9px] uppercase tracking-widest mt-2">Zero-Bias Code</p>
-                        <p class="text-[7px] text-white/40 uppercase mt-1">BSBA Strategic Focus</p>
-                    </div>
-                    <div class="border border-white/5 p-4 hover:border-cyan-neon/40 transition-all">
-                        <span class="text-[8px] text-white/20">15</span>
-                        <p class="text-[9px] uppercase tracking-widest mt-2">Cyber-Industrialism</p>
-                        <p class="text-[7px] text-white/40 uppercase mt-1">Obsidian // Neon</p>
-                    </div>
-
-                    <a href="vaults/arch.html" class="block border border-white/5 p-0 hover:border-cyan-neon/40 transition-all overflow-hidden relative group cursor-pointer">
-                        <img src="images/pillar_16_digital_arch.jpg" class="w-full h-32 object-cover opacity-60 group-hover:opacity-100 transition-opacity">
-                        <div class="p-4 absolute bottom-0 left-0 w-full bg-gradient-to-t from-black to-transparent">
-                            <span class="text-[8px] text-white/20">16</span>
-                            <p class="text-[9px] uppercase tracking-widest mt-1 text-cyan-neon">Digital Architecture</p>
-                            <p class="text-[7px] text-white/60 uppercase mt-1">Sovereign System Build</p>
-                        </div>
-                    </a>
-                </div>
+        <footer class="py-24 border-t border-white/5 text-center bg-obsidian">
+            <h2 class="font-header text-xl text-white/90 italic tracking-widest mb-10">MIU LIÁN RUÌ // 缪联睿</h2>
+            <div class="text-[7px] tracking-[5px] text-white/20 uppercase">
+                © MIU_33 // EST. 2026 // NODE: RIYADH_KSA // ALL SYSTEMS OPERATIONAL
             </div>
-        </section>
-
-        <section id="portfolio-grid" class="max-w-7xl mx-auto px-6 py-20 border-t border-white/5">
-            <div class="flex flex-col mb-12">
-                <span class="text-satin-gold font-mono text-[8px] tracking-[0.6em] uppercase">Visual_Evidence</span>
-                <h3 class="text-white font-mono text-xl tracking-tighter mt-2 uppercase">// DEEP_SCAN_PORTFOLIO //</h3>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <a href="https://www.pinterest.com/miu_DigitalStudio" target="_blank" class="md:col-span-2 lg:row-span-2 border border-white/10 group overflow-hidden relative cursor-crosshair block">
-                    <img src="renders/hero_arch.jpg" alt="NEOM_SPIRE" class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105 opacity-60 group-hover:opacity-100">
-                    <div class="absolute bottom-4 left-4 font-mono text-[7px] text-satin-gold bg-black/90 p-2 border border-satin-gold/20">
-                        REF: RUH_CENTRAL_SPIRE_V1 // [ACCESS_PINTEREST_VAULT]
-                    </div>
-                </a>
-
-                <div class="lg:row-span-2 border border-white/10 group overflow-hidden relative cursor-crosshair">
-                    <img src="renders/material_scan.jpg" alt="MATERIAL_STUDY" class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105 opacity-40 group-hover:opacity-100">
-                    <div class="absolute bottom-4 left-4 font-mono text-[7px] text-white/50 bg-black/90 p-2">
-                        STUDY: OBSIDIAN_GLASS_09
-                    </div>
-                </div>
-
-                <div class="border border-white/10 group overflow-hidden relative cursor-crosshair">
-                    <img src="renders/detail_01.jpg" alt="SCAN_01" class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105 opacity-40 group-hover:opacity-100">
-                    <div class="absolute bottom-4 left-4 font-mono text-[7px] text-white/30 bg-black/90 p-2">
-                        DAT_POINT: 001
-                    </div>
-                </div>
-
-                <div class="border border-white/10 group overflow-hidden relative cursor-crosshair">
-                    <img src="renders/detail_02.jpg" alt="SCAN_02" class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105 opacity-40 group-hover:opacity-100">
-                    <div class="absolute bottom-4 left-4 font-mono text-[7px] text-white/30 bg-black/90 p-2">
-                        DAT_POINT: 002
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section id="diagnostic-vault" class="max-w-7xl mx-auto px-6 py-20 border-t border-white/5 bg-black/40">
-            <div class="mb-10">
-                <span class="text-cyan-neon font-mono text-[8px] tracking-[0.6em] uppercase">// SYSTEM_EXTRACT_PROTOCOL //</span>
-                <h3 class="text-white font-mono text-2xl tracking-tighter mt-2 uppercase">Diagnostic_Vault_v1.33</h3>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 font-mono">
-                <div class="border border-white/10 p-6 flex justify-between items-center group hover:bg-cyan-neon/5 transition-all">
-                    <div>
-                        <div class="text-white text-xs mb-1 uppercase">PROMPT_PACK_01_RIYADH_NEO</div>
-                        <div class="text-[8px] text-white/30 uppercase">Format: .PDF // Shopify_Sync</div>
-                    </div>
-                    <a href="https://miu-digital-architect-studio.myshopify.com" target="_blank" class="text-[10px] text-cyan-neon border border-cyan-neon/30 px-4 py-2 hover:bg-cyan-neon hover:text-black transition-all">
-                        EXTRACT_DATA
-                    </a>
-                </div>
-
-                <div class="border border-white/10 p-6 flex justify-between items-center group hover:bg-cyan-neon/5 transition-all">
-                    <div>
-                        <div class="text-white text-xs mb-1 uppercase">BLUEPRINT_SCHEMATICS_SET</div>
-                        <div class="text-[8px] text-white/30 uppercase">Format: .JPG_HD // Shopify_Sync</div>
-                    </div>
-                    <a href="https://miu-digital-architect-studio.myshopify.com" target="_blank" class="text-[10px] text-cyan-neon border border-cyan-neon/30 px-4 py-2 hover:bg-cyan-neon hover:text-black transition-all">
-                        EXTRACT_DATA
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section id="diagnostic-terminal" class="py-20 bg-black border-t border-white/5">
-            <div class="max-w-3xl mx-auto px-6">
-                <div class="terminal-window border border-white/20 bg-black/50 p-6 font-mono text-xs shadow-[0_0_30px_rgba(0,255,255,0.05)]">
-                    <div class="terminal-header flex justify-between border-b border-white/10 pb-2 mb-6">
-                        <span class="text-cyan-neon uppercase tracking-widest">MIU_33 // SYSTEM_DIAGNOSTIC_v1.0</span>
-                        <span class="text-white/30">REF: RIYADH_CORE_ARCH</span>
-                    </div>
-                    
-                    <div id="terminal-content" class="space-y-4">
-                        <p class="text-white/60">Ready to assess system volatility?</p>
-                        <div class="flex gap-4">
-                            <button onclick="startDiagnostic()" class="text-cyan-neon hover:text-white transition-colors underline decoration-dotted">
-                                [ RUN_INITIAL_SCAN ]
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="initiation" class="max-w-7xl mx-auto px-6 py-32 border-t border-cyan-neon/20 bg-[#050505]">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
-                <div class="flex flex-col justify-center">
-                    <span class="text-cyan-neon font-mono text-[8px] tracking-[0.6em] uppercase animate-pulse">
-                        // SECURE_CHANNEL_ACTIVE //
-                    </span>
-                    <h3 class="text-white font-mono text-3xl tracking-tighter mt-4 uppercase">Initiation_Protocol</h3>
-                    <p class="text-white/40 font-mono text-[10px] mt-6 leading-relaxed max-w-md uppercase">
-                        Handshake Protocol: Required. Direct frequency for architectural consultation, AI visualization pipelines, or blockchain spatial integration.
-                        <br><br>
-                        Current Node: <span class="text-cyan-neon">RIYADH_KSA [24.7136° N, 46.6753° E]</span>
-                    </p>
-                </div>
-
-                <form action="https://formspree.io/f/xwvaqqbe" method="POST" class="space-y-6 font-mono">
-                    <div class="border-b border-white/10 pb-2 focus-within:border-cyan-neon transition-colors">
-                        <label class="text-[7px] text-cyan-neon uppercase tracking-widest">User_Identity</label>
-                        <input type="text" name="name" required placeholder="IDENTIFIER // NAME" 
-                            class="w-full bg-transparent border-none text-white text-[10px] focus:ring-0 placeholder:text-white/10 p-0 uppercase">
-                    </div>
-                    <div class="border-b border-white/10 pb-2 focus-within:border-cyan-neon transition-colors">
-                        <label class="text-[7px] text-cyan-neon uppercase tracking-widest">Access_Point</label>
-                        <input type="email" name="email" required placeholder="ENCRYPTED_EMAIL // @EMAIL" 
-                            class="w-full bg-transparent border-none text-white text-[10px] focus:ring-0 placeholder:text-white/10 p-0 uppercase">
-                    </div>
-                    <div class="border-b border-white/10 pb-2 focus-within:border-cyan-neon transition-colors">
-                        <label class="text-[7px] text-cyan-neon uppercase tracking-widest">System_Request</label>
-                        <textarea name="message" required rows="3" placeholder="DESCRIBE_PROJECT_SCOPE" 
-                            class="w-full bg-transparent border-none text-white text-[10px] focus:ring-0 placeholder:text-white/10 p-0 resize-none uppercase"></textarea>
-                    </div>
-                    <button type="submit" class="w-full py-4 bg-white text-black text-[9px] font-bold uppercase tracking-[0.3em] hover:bg-cyan-neon transition-all duration-500">
-                        Send_Transmission
-                    </button>
-                </form>
-            </div>
-        </section>
-
-        <footer class="py-20 bg-[#050505] border-t border-white/5">
-            <div class="max-w-7xl mx-auto px-6 text-center">
-                
-                <div class="mb-12 opacity-50">
-                    <h4 class="text-[9px] tracking-[0.5em] uppercase mb-3 text-white/40">Institutional Framework</h4>
-                    <p class="text-[10px] uppercase tracking-[0.3em] text-cyan-neon">BSN (Clinical Diagnostic) // BSBA (Financial Strategy)</p>
-                </div>
-
-                <div class="mb-12">
-                    <p class="text-white/60 text-[11px] tracking-[0.6em] uppercase mb-2">MIU LIÁN RUÌ // 缪联睿</p>
-                    <p class="text-white/20 text-[8px] tracking-[0.8em] uppercase italic">CÉN YÀN // SYSTEM_ARCHITECT</p>
-                </div>
-
-                <div class="mb-16">
-                    <h2 class="font-header text-xl tracking-tighter mb-4 italic text-white/90">SECURE_INQUIRY_PROTOCOL</h2>
-                    <p class="text-white/40 text-[9px] uppercase mb-8 max-w-xs mx-auto leading-relaxed tracking-widest">
-                        Active Nodes: Riyadh // Qingdao // Paris.<br> Accepting Strategic Collaborations 2026.
-                    </p>
-                    <a href="mailto:arch@miu33archstudio.com" class="inline-block border border-white/10 px-10 py-4 text-[9px] uppercase tracking-[0.4em] hover:bg-cyan-neon hover:text-black hover:border-cyan-neon transition-all duration-500">
-                        Initiate Handshake
-                    </a>
-                </div>
-
-                <div class="pt-12 border-t border-white/5 flex flex-col items-center text-center gap-4 opacity-100 text-[7px] tracking-[0.4em] uppercase">
-                    <p class="text-satin-gold mb-2">Notice: Specialized in Digital Visualization & Spatial Strategy // Non-Structural Engineering Protocol</p>
-                    <p class="opacity-40">© MIU_33 // DIGITAL ARCHITECT STUDIO</p>
-                    <p class="opacity-40">EST. 2026 // ALL SYSTEMS OPERATIONAL</p>
-                    <p class="text-cyan-neon opacity-80">Sovereign Protocol Active</p>
-                </div>
-            </div> 
         </footer>
     </div>
 
-<script src="main.js"></script>
-<script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
-<script>
-    // LENIS SCROLL LOGIC
-    const lenis = new Lenis();
-    function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
+    <script>
+        // MATRIX RAIN ENGINE
+        const canvas = document.getElementById('matrix-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        const characters = '01';
+        const fontSize = 10;
+        const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
 
-    // RIYADH TEMPORAL HEARTBEAT
-    function updateRiyadhTime() {
-        const options = { timeZone: 'Asia/Riyadh', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
-        const formatter = new Intl.DateTimeFormat([], options);
-        const clockElement = document.getElementById('riyadh-clock');
-        if (clockElement) clockElement.textContent = formatter.format(new Date());
-    }
-    setInterval(updateRiyadhTime, 1000);
-    updateRiyadhTime();
-
-    // UI FADE IN
-    document.addEventListener('DOMContentLoaded', () => {
-        setTimeout(() => {
-            const ui = document.getElementById('main-interface');
-            if (ui) ui.style.opacity = '1';
-        }, 300);
-    });
-
-    // DIAGNOSTIC LOGIC
-    const diagnosticSteps = [
-        "DIAGNOSTIC 01: Is your infrastructure built for absolute sovereignty?",
-        "DIAGNOSTIC 02: Do you prioritize clinical logic over aesthetic excess?",
-        "DIAGNOSTIC 03: Confirm identity synchronization with miu_33 protocol?"
-    ];
-    let currentStep = 0;
-
-    function startDiagnostic() {
-        currentStep = 0;
-        renderStep();
-    }
-
-    function renderStep() {
-        const content = document.getElementById('terminal-content');
-        if (!content) return;
-        const currentQuestion = diagnosticSteps[currentStep];
-        content.innerHTML = `
-            <p class="text-cyan-neon uppercase tracking-[0.2em] animate-pulse">Analyzing...</p>
-            <p class="text-white/80">${currentQuestion}</p>
-            <div class="flex gap-4 mt-4">
-                <button onclick="processChoice()" class="text-cyan-neon hover:text-white underline decoration-dotted">[ AFFIRM ]</button>
-                <button onclick="location.reload()" class="text-red-500/50 hover:text-red-500 underline decoration-dotted">[ ABORT ]</button>
-            </div>
-        `;
-    }
-
-    function processChoice() {
-        currentStep++;
-        const content = document.getElementById('terminal-content');
-        if (currentStep < diagnosticSteps.length) {
-            renderStep();
-        } else {
-            content.innerHTML = `
-                <p class="text-cyan-neon uppercase tracking-widest">DIAGNOSTIC_COMPLETE</p>
-                <p class="text-white/60 mb-4">System alignment confirmed. Protocol 33 active.</p>
-                <a href="intel/methodology.pdf" download="MIU_System_Methodology_v3.3" 
-                   class="inline-block bg-cyan-neon/10 border border-cyan-neon/50 text-cyan-neon px-6 py-2 hover:bg-cyan-neon hover:text-black transition-all text-center">
-                    [ EXTRACT_METHODOLOGY_PDF ]
-                </a>
-            `;
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(5, 5, 5, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#00FFFF';
+            ctx.font = fontSize + 'px monospace';
+            for (let i = 0; i < drops.length; i++) {
+                const text = characters.charAt(Math.floor(Math.random() * characters.length));
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+                drops[i]++;
+            }
         }
-    }
+        setInterval(drawMatrix, 60);
 
-    // PILLAR INTERACTION LOGIC
-    const pillarGrid = document.querySelector('#pillars .grid');
-    if (pillarGrid) {
-        const items = pillarGrid.children;
-
-        // Target Pillar 08 (Cén Yàn Identity)
-        const pillar08 = items[7]; 
-        if (pillar08) {
-            const statusText = pillar08.querySelector('p:last-of-type');
-            const originalContent = statusText.innerHTML;
-
-            pillar08.addEventListener('mouseenter', () => {
-                statusText.style.color = "#C9A46A"; 
-                statusText.innerHTML = "Status: AUTHENTICATED // ACCESS GRANTED";
-            });
-
-            pillar08.addEventListener('mouseleave', () => {
-                statusText.style.color = ""; 
-                statusText.innerHTML = originalContent;
-            });
-        }
-        
-        Array.from(items).forEach((item, i) => {
-            const log = document.createElement('div');
-            log.style.cssText = "font-size: 6px; color: rgba(0, 255, 255, 0.2); margin-top: 8px; font-family: monospace; letter-spacing: 1px;";
-            log.innerText = `NODE_REF: 0x${(i + 1).toString(16).toUpperCase()} // STABLE`;
-            item.appendChild(log);
+        // SYSTEM BOOT SEQUENCE
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('auth-msg').classList.remove('opacity-0');
+                setTimeout(() => {
+                    document.getElementById('splash-screen').style.opacity = '0';
+                    document.getElementById('main-interface').style.opacity = '1';
+                    setTimeout(() => { document.getElementById('splash-screen').style.display = 'none'; }, 1000);
+                }, 1500);
+            }, 2500);
         });
-    }
 
-</script>
-<section class="border-t border-cyan-neon/30 py-8 mt-20 opacity-40 hover:opacity-100 transition-opacity">
-  <div class="max-w-6xl mx-auto px-6 font-mono text-[10px] uppercase tracking-widest leading-relaxed text-center">
-    <p class="text-cyan-neon mb-2">// SYSTEM_ONTOLOGY_LOCK_v3.3</p>
-    <p class="mb-4 text-white/60">MIU_33 operates as a spatial-strategy studio specializing in digital infrastructure and identity architecture. By merging clinical-grade diagnostics (BSN) with financial structural logic (BSBA), we engineer coherent, AI-indexed systems that eliminate authority leakage.</p>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-cyan-neon/70">
-      <span>> IDENTITY_ARCHITECTURE</span>
-      <span>> SYSTEM_COHERENCE</span>
-      <span>> AUTHORITY_PRESERVATION</span>
-      <span>> STRUCTURAL_DIAGNOSTICS</span>
-    </div>
-  </div>
-</section>
-
-<div id="success-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-xl hidden opacity-0 transition-all duration-700">
-    <div class="border border-cyan-neon/20 bg-[#050505] p-12 max-w-lg w-full text-center font-mono relative">
-        <div class="absolute top-0 left-0 w-full h-[2px] bg-cyan-neon shadow-[0_0_20px_#00FFFF] animate-pulse"></div>
-        
-        <span class="text-cyan-neon text-[8px] tracking-[0.8em] uppercase">// UPLINK_ESTABLISHED //</span>
-        <h3 class="text-white text-3xl mt-6 tracking-tighter uppercase font-bold">Signal_Verified</h3>
-        
-        <div class="my-8 space-y-2">
-            <p class="text-white/50 text-[10px] leading-relaxed uppercase">Data packets successfully routed to Miu_Architect.</p>
-            <p class="text-white/30 text-[8px] uppercase">Tracking_ID: <span class="text-cyan-neon">#NX-<span id="random-id"></span></span></p>
-        </div>
-        
-        <button onclick="document.getElementById('success-modal').classList.add('hidden')" class="w-full border border-white/10 py-4 text-white text-[9px] hover:bg-white hover:text-black transition-all uppercase tracking-[0.4em]">
-            Return_to_Nexus
-        </button>
-    </div>
-</div>
-
-<script>
-    // Tiny script to generate that random Tracking ID for the modal
-    document.addEventListener('DOMContentLoaded', () => {
-        const idSpan = document.getElementById('random-id');
-        if(idSpan) idSpan.innerText = Math.floor(Math.random() * 9000) + 1000;
+        // LENIS SCROLL ENGINE
+        const lenis = new Lenis();
+        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+        requestAnimationFrame(raf);
+        // REGISTER SERVICE WORKER
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+            .then(reg => console.log('[SYS]: Persistence_Active'))
+            .catch(err => console.log('[SYS]: Persistence_Failed', err));
     });
-</script>
+}
+ </script>
 </body>
 </html>

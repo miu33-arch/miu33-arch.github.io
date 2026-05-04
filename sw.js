@@ -1,14 +1,15 @@
-const CACHE_NAME = 'miu33-v3.3-nexus'; // Version bumped for clinical sync
+const CACHE_NAME = 'miu33-v4-cache';
 const ASSETS = [
   '/',
   '/index.html',
-  '/main.js',
-  '/images/icon-512.png', // Crucial for PWA identity
-  'https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js',
-  'https://cdn.tailwindcss.com' // Cached for mobile speed
+  '/images/favicon-512.png',
+  '/images/og_image.jpg',
+  '/videos/homepage_preview.mp4',
+  'https://cdn.tailwindcss.com',
+  'https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js'
 ];
 
-// 1. INSTALL: Archiving the Core Infrastructure
+// INSTALLATION: PRE-CACHE ASSETS
 self.addEventListener('install', (event) => {
   self.skipWaiting(); // Forces the new version to take over immediately
   event.waitUntil(
@@ -18,23 +19,18 @@ self.addEventListener('install', (event) => {
   );
 });
 
-// 2. ACTIVATE: Deleting Legacy Nodes (Zero-Waste Protocol)
+// ACTIVATION: PURGE OLD LOGIC
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys().then((cacheNames) => {
+    caches.keys().then((keys) => {
       return Promise.all(
-        cacheNames.map((cache) => {
-          if (cache !== CACHE_NAME) {
-            console.log('SW: Purging Legacy Cache:', cache);
-            return caches.delete(cache);
-          }
-        })
+        keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key))
       );
-    }).then(() => self.clients.claim())
+    })
   );
 });
 
-// 3. FETCH: Sovereign Resilience Protocol
+// FETCH: SERVE FROM CACHE OR NETWORK
 self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(event.request).then((response) => {
