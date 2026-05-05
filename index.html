@@ -175,18 +175,25 @@
 
     <div class="collection-card p-12 border-r border-b border-white/5 hover:bg-white/5 transition-all group relative h-[500px] flex flex-col justify-between overflow-hidden">
     
-    <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-50 transition-opacity duration-1000 z-0">
+    <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-30 transition-opacity duration-1000 z-0">
         <source src="videos/diagnostic_skeletal_scan.mp4" type="video/mp4">
     </video>
 
-    <div class="relative z-10">
+    <div class="absolute inset-0 bg-gradient-to-b from-obsidian via-transparent to-obsidian opacity-80 z-5 pointer-events-none"></div>
+
+    <div class="relative z-10 pointer-events-none">
         <div class="absolute top-0 left-0 h-0 w-[2px] bg-white group-hover:h-full transition-all duration-700"></div>
         <h3 class="text-white/40 text-[9px] tracking-[5px] mb-4 uppercase">03 // CLINICAL</h3>
         <h2 class="text-2xl text-satin-gold uppercase italic font-header">Diagnostic_AI</h2>
-        <p class="text-[9px] text-white/30 tracking-[2px] leading-relaxed">
+        <p class="text-[9px] text-white/100 tracking-[2px] leading-relaxed drop-shadow-md">
             BSN-DERIVED CLINICAL LOGIC. FORENSIC SKELETAL MAPPING OF GENERATIVE STRUCTURES. ELIMINATING MARGINAL ERROR THROUGH SYSTEMIC PRECISION.
         </p>
     </div>
+
+    <div class="relative z-10 mt-auto opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+        <span class="text-[7px] text-cyan-neon font-mono tracking-[3px]">STATUS: ANALYZING_FROG_SKELETON_03</span>
+    </div>
+</div>
 
     <div class="relative z-10 mt-8 space-y-2 opacity-0 group-hover:opacity-100 transition-opacity duration-700 font-mono text-[8px]">
         <div class="flex justify-between border-b border-white/10 pb-1">
