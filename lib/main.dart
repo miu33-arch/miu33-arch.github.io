@@ -25,15 +25,27 @@ class MiuLandingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text(
-          '势', // Shì - Power/Momentum
-          style: TextStyle(
-            fontSize: 100,
-            color: Color(0xFFC9A46A), // Miu Gold
-            fontWeight: FontWeight.w100,
-            letterSpacing: 8,
+    return Scaffold(
+      body: Container(
+        // The Outer Frame
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: const Color(0xFFC9A46A).withOpacity(0.2), // Faint gold border
+            width: 20,
+          ),
+        ),
+        child: Center(
+          child: Text(
+            '势', 
+            style: TextStyle(
+              fontSize: 120,
+              color: const Color(0xFFC9A46A), // Miu Gold
+              fontWeight: FontWeight.w100,
+              shadows: [
+                Shadow(blurRadius: 10.0, color: Color(0xFFC9A46A)),
+                Shadow(blurRadius: 40.0, color: Color(0xFFC9A46A).withOpacity(0.8)),
+              ],
+            ),
           ),
         ),
       ),
